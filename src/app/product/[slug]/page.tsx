@@ -6,6 +6,7 @@ import { products, getProductBySlug } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { ProductActions } from "@/components/product/product-actions";
 import { ProductCard } from "@/components/product/product-card";
+import { ProductViewTracker } from "@/components/product/product-view-tracker";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -62,6 +63,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <div className="py-8 sm:py-14">
+      <ProductViewTracker product={product} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8 text-xs text-[var(--color-muted)]">

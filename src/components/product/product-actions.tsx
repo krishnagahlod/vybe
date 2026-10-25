@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Product } from "@/types/product";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/format";
+import { trackAddToCart } from "@/lib/analytics";
 
 type ProductActionsProps = {
   product: Product;
@@ -32,6 +33,7 @@ export function ProductActions({ product }: ProductActionsProps) {
     }
 
     addItem(product.id, selectedSize, quantity);
+    trackAddToCart(product, quantity, selectedSize);
     setIsAdded(true);
 
     // Auto-clear success message after 6 seconds if desired

@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { getProductById } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { CheckoutConfirmation, DemoOrderData } from "@/components/checkout/checkout-confirmation";
+import { trackBeginCheckout, trackDemoCheckoutComplete } from "@/lib/analytics";
 
 const CAMPAIGN_CITIES = [
   "Mumbai",
@@ -51,6 +52,14 @@ export default function CheckoutPage() {
     return resolvedItems.reduce((acc, curr) => acc + curr.lineTotal, 0);
   }, [resolvedItems]);
 
+  const hasTrackedCheckoutRef = useRef(false);
+  useEffect(() => {
+    if (resolvedItems.length > 0 && !hasTrackedCheckoutRef.current) {
+      hasTrackedCheckoutRef.current = true;
+      trackBeginCheckout(totalCount, subtotal);
+    }
+  }, [resolvedItems.length, totalCount, subtotal]);
+
   const validate = () => {
     const errs: { fullName?: string; email?: string } = {};
     if (!formData.fullName.trim()) {
@@ -95,6 +104,8 @@ export default function CheckoutPage() {
       clearCart();
 
       // Dispatch custom demo completion event for analytics readiness without triggering real purchase
+      trackDemoCheckoutComplete(orderPayload.orderId, totalCount, subtotal);
+
       if (typeof window !== "undefined") {
         window.dispatchEvent(
           new CustomEvent("vybe:demo_checkout_complete", {
