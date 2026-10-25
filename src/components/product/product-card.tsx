@@ -22,7 +22,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <article className="group flex flex-col h-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
       {/* Product Image Frame */}
       <Link
-        href={`/shop#${product.slug}`}
+        href={`/product/${product.slug}`}
         className="relative block aspect-[4/5] w-full overflow-hidden bg-[var(--vybe-peach)]/20 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
         aria-label={`View details for ${product.name}`}
       >
@@ -60,7 +60,7 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="flex flex-col flex-1 p-5">
         <div className="flex-1">
           <h3 className="font-serif text-lg font-medium text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors mb-1.5">
-            <Link href={`/shop#${product.slug}`} className="focus-visible:outline-hidden">
+            <Link href={`/product/${product.slug}`} className="focus-visible:outline-hidden">
               {product.name}
             </Link>
           </h3>
