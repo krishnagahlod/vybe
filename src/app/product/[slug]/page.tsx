@@ -56,10 +56,23 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       ? product.images[0].alt
       : `${product.name} concept product preview`;
 
-  // Get up to 3 complementary products
-  const relatedProducts = products
-    .filter((p) => p.id !== product.id)
-    .slice(0, 3);
+  // Intelligent styling pairing for "Complete the Look"
+  const complementaryCategories: Record<string, string[]> = {
+    leggings: ["sports-bras", "layers", "tops"],
+    shorts: ["sports-bras", "tops", "layers"],
+    "sports-bras": ["leggings", "shorts", "layers"],
+    tops: ["leggings", "shorts", "layers"],
+    layers: ["leggings", "sports-bras", "shorts"],
+    sets: ["layers", "sports-bras", "tops"],
+  };
+
+  const targetCategories = complementaryCategories[product.category] || ["leggings", "sports-bras"];
+  const relatedProducts = Array.from(
+    new Set([
+      ...products.filter((p) => p.id !== product.id && targetCategories.includes(p.category)),
+      ...products.filter((p) => p.id !== product.id),
+    ])
+  ).slice(0, 3);
 
   return (
     <div className="py-8 sm:py-14">
@@ -212,6 +225,43 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                       <tr><td className="py-1.5 font-semibold text-[var(--color-text)]">XL</td><td>38-40&quot;</td><td>32-34&quot;</td><td>42-44&quot;</td></tr>
                     </tbody>
                   </table>
+                </div>
+              </details>
+
+              <details className="group border border-[var(--color-border)] rounded-xl p-4 bg-[var(--color-surface)]">
+                <summary className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)] cursor-pointer list-none flex items-center justify-between">
+                  <span>Fabric Architecture &amp; Climate Care</span>
+                  <span className="transition-transform group-open:rotate-180 text-[var(--color-muted)]">
+                    &darr;
+                  </span>
+                </summary>
+                <div className="pt-3 text-xs text-[var(--color-muted)] leading-relaxed space-y-2">
+                  <p>
+                    <strong className="text-[var(--color-text)]">Composition:</strong> 78% Micro-Interlock Polyamide, 22% High-Recovery Elastane. Tested for 100% squat-proof opacity and zero slip.
+                  </p>
+                  <p>
+                    <strong className="text-[var(--color-text)]">Climate Engineered:</strong> Air-permeable micro-channels dissipate heat in tropical and humid Indian conditions (Mumbai, Delhi summer, Pune, Bangalore).
+                  </p>
+                  <p>
+                    <strong className="text-[var(--color-text)]">Care:</strong> Cold machine wash at 30&deg;C. Line dry in shade. Avoid fabric softeners and high-heat tumble drying to protect bonded elastic trims.
+                  </p>
+                </div>
+              </details>
+
+              <details className="group border border-[var(--color-border)] rounded-xl p-4 bg-[var(--color-surface)]">
+                <summary className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)] cursor-pointer list-none flex items-center justify-between">
+                  <span>Delivery &amp; Fit Exchange Simulation</span>
+                  <span className="transition-transform group-open:rotate-180 text-[var(--color-muted)]">
+                    &darr;
+                  </span>
+                </summary>
+                <div className="pt-3 text-xs text-[var(--color-muted)] leading-relaxed space-y-2">
+                  <p>
+                    Complimentary express dispatch on all bags over {formatPrice(1500)}. Delivery within 24&ndash;48 hours to Mumbai and Pune; 2&ndash;3 business days to Delhi NCR and Bangalore.
+                  </p>
+                  <p>
+                    Simulated 14-day doorstep size exchanges. If your piece doesn&rsquo;t fit as expected, size swaps are arranged free of charge.
+                  </p>
                 </div>
               </details>
 

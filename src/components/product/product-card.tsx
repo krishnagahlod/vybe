@@ -1,13 +1,19 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product";
 import { formatPrice } from "@/lib/format";
+import { useWishlist } from "@/lib/wishlist-context";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+  const { isInWishlist, toggleWishlist } = useWishlist();
+  const isSaved = isInWishlist(product.id);
+
   const imageSrc =
     product.images && product.images.length > 0
       ? product.images[0].src
@@ -19,7 +25,7 @@ export function ProductCard({ product }: ProductCardProps) {
       : `${product.name} concept athleisure preview`;
 
   return (
-    <article className="group flex flex-col h-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <article className="group flex flex-col h-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 relative">
       {/* Product Image Frame */}
       <Link
         href={`/product/${product.slug}`}
@@ -45,6 +51,26 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
+
+        {/* Wishlist Heart Toggle Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleWishlist(product.id);
+          }}
+          aria-label={isSaved ? `Remove ${product.name} from saved items` : `Save ${product.name} to wishlist`}
+          className={`absolute top-3 right-3 z-20 p-2 rounded-full transition-all duration-200 shadow-sm cursor-pointer ${
+            isSaved
+              ? "bg-[var(--vybe-rose)] text-white scale-105"
+              : "bg-white/85 backdrop-blur-xs text-[var(--color-muted)] hover:text-[var(--vybe-mauve)] hover:bg-white"
+          }`}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </button>
 
         {/* Color Badge if available */}
         {product.colorName && (

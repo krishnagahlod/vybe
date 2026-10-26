@@ -2,10 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
+import { WishlistProvider } from "@/lib/wishlist-context";
 import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { CartDrawer } from "@/components/cart/cart-drawer";
+import { WishlistModal } from "@/components/wishlist/wishlist-modal";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -55,13 +58,17 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
         <CartProvider>
-          <AnalyticsProvider />
-          <AnnouncementBar />
-          <Header />
-          <main id="main-content" className="flex-1 w-full">
-            {children}
-          </main>
-          <Footer />
+          <WishlistProvider>
+            <AnalyticsProvider />
+            <CartDrawer />
+            <WishlistModal />
+            <AnnouncementBar />
+            <Header />
+            <main id="main-content" className="flex-1 w-full">
+              {children}
+            </main>
+            <Footer />
+          </WishlistProvider>
         </CartProvider>
       </body>
     </html>

@@ -3,10 +3,12 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { useWishlist } from "@/lib/wishlist-context";
 import { MobileNav } from "./mobile-nav";
 
 export function Header() {
-  const { totalCount, isLoaded } = useCart();
+  const { totalCount, isLoaded, openCartDrawer } = useCart();
+  const { wishlistCount, openWishlistModal } = useWishlist();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -73,12 +75,42 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Action items: Cart Bag */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="/cart"
-                aria-label={`Shopping bag containing ${isLoaded ? totalCount : 0} items`}
-                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center group"
+            {/* Action items: Wishlist & Cart Bag Triggers */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {/* Wishlist Heart Button */}
+              <button
+                type="button"
+                onClick={openWishlistModal}
+                aria-label={`Open saved items list containing ${wishlistCount} items`}
+                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center cursor-pointer group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 group-hover:scale-105 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
+                {wishlistCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[1.2rem] h-4.5 px-1 text-[10px] font-bold rounded-full bg-[var(--vybe-rose)] text-white shadow-xs">
+                    {wishlistCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Cart Bag Trigger */}
+              <button
+                type="button"
+                onClick={openCartDrawer}
+                aria-label={`Open shopping bag drawer containing ${isLoaded ? totalCount : 0} items`}
+                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center group cursor-pointer"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +134,7 @@ export function Header() {
                 >
                   {isLoaded ? totalCount : 0}
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

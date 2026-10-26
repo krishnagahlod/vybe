@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { products, getProductsByCategory } from "@/data/products";
-import { ProductCard } from "@/components/product/product-card";
+import { products } from "@/data/products";
+import { ShopFilters } from "@/components/shop/shop-filters";
 
 export const metadata: Metadata = {
   title: "Shop Athleisure Collection",
@@ -10,74 +10,14 @@ export const metadata: Metadata = {
     "Browse our complete 12-piece concept catalogue of women's activewear. Studio leggings, sports bras, breathable tops, matching sets, and transitional layers.",
 };
 
-const CATEGORIES = [
-  { id: "all", label: "All Movement" },
-  { id: "leggings", label: "Leggings & Tights" },
-  { id: "sports-bras", label: "Sports Bras" },
-  { id: "tops", label: "Tops & Tanks" },
-  { id: "shorts", label: "Shorts" },
-  { id: "sets", label: "Matching Sets" },
-  { id: "layers", label: "Layers & Joggers" },
-];
-
 async function ShopCatalog({
   searchParams,
 }: {
   searchParams: Promise<{ category?: string }>;
 }) {
   const { category = "all" } = await searchParams;
-  const filteredProducts = getProductsByCategory(category);
 
-  return (
-    <>
-      {/* Category Filters */}
-      <div className="mb-12 overflow-x-auto pb-2 scrollbar-none">
-        <div className="flex items-center gap-2 sm:gap-2.5 min-w-max">
-          {CATEGORIES.map((cat) => {
-            const isActive = category === cat.id;
-            return (
-              <Link
-                key={cat.id}
-                href={cat.id === "all" ? "/shop" : `/shop?category=${cat.id}`}
-                className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] ${
-                  isActive
-                    ? "bg-[var(--color-text)] text-white shadow-xs"
-                    : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[var(--color-text)] hover:border-[var(--vybe-mauve)] hover:bg-[var(--vybe-peach)]/20"
-                }`}
-                aria-current={isActive ? "true" : undefined}
-              >
-                {cat.label}
-              </Link>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Products Grid */}
-      {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-20 border border-dashed border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] p-8">
-          <h2 className="font-serif text-2xl font-medium text-[var(--color-text)] mb-2">
-            No products found in this category
-          </h2>
-          <p className="text-sm text-[var(--color-muted)] max-w-md mx-auto mb-6">
-            We couldn&apos;t find any concept pieces matching this filter.
-          </p>
-          <Link
-            href="/shop"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-colors"
-          >
-            View All 12 Concepts
-          </Link>
-        </div>
-      )}
-    </>
-  );
+  return <ShopFilters initialProducts={products} initialCategory={category} />;
 }
 
 function ShopSkeleton() {

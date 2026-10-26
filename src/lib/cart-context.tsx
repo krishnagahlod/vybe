@@ -22,6 +22,10 @@ type CartContextType = {
   items: CartItem[];
   totalCount: number;
   isLoaded: boolean;
+  isCartDrawerOpen: boolean;
+  openCartDrawer: () => void;
+  closeCartDrawer: () => void;
+  toggleCartDrawer: () => void;
   addItem: (productId: string, size: string, quantity?: number) => void;
   updateQuantity: (productId: string, size: string, quantity: number) => void;
   removeItem: (productId: string, size: string) => void;
@@ -31,6 +35,11 @@ type CartContextType = {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
+  const [isCartDrawerOpen, setIsCartDrawerOpen] = React.useState<boolean>(false);
+
+  const openCartDrawer = useCallback(() => setIsCartDrawerOpen(true), []);
+  const closeCartDrawer = useCallback(() => setIsCartDrawerOpen(false), []);
+  const toggleCartDrawer = useCallback(() => setIsCartDrawerOpen((prev) => !prev), []);
   // Subscribe to external localStorage store with React's official useSyncExternalStore
   const rawCart = useSyncExternalStore(
     subscribeToCart,
@@ -58,6 +67,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = useCallback((productId: string, size: string, quantity = 1) => {
     addToCartStorage(productId, size, quantity);
+    setIsCartDrawerOpen(true);
   }, []);
 
   const updateQuantity = useCallback((productId: string, size: string, quantity: number) => {
@@ -81,12 +91,27 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       items,
       totalCount,
       isLoaded: true,
+      isCartDrawerOpen,
+      openCartDrawer,
+      closeCartDrawer,
+      toggleCartDrawer,
       addItem,
       updateQuantity,
       removeItem,
       clearCart,
     }),
-    [items, totalCount, addItem, updateQuantity, removeItem, clearCart]
+    [
+      items,
+      totalCount,
+      isCartDrawerOpen,
+      openCartDrawer,
+      closeCartDrawer,
+      toggleCartDrawer,
+      addItem,
+      updateQuantity,
+      removeItem,
+      clearCart,
+    ]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

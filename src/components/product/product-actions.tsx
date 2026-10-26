@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Product } from "@/types/product";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/format";
 import { trackAddToCart } from "@/lib/analytics";
+
+import { FitFinderModal } from "./fit-finder-modal";
 
 type ProductActionsProps = {
   product: Product;
@@ -17,14 +19,30 @@ export function ProductActions({ product }: ProductActionsProps) {
   const [quantity, setQuantity] = useState<number>(1);
   const [sizeError, setSizeError] = useState<boolean>(false);
   const [isAdded, setIsAdded] = useState<boolean>(false);
+  const [isFitFinderOpen, setIsFitFinderOpen] = useState<boolean>(false);
+  const [showStickyBar, setShowStickyBar] = useState<boolean>(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Monitor scroll to show mobile sticky bar when scrolled past primary button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!formRef.current) return;
+      const rect = formRef.current.getBoundingClientRect();
+      // If the bottom of the form has scrolled above the viewport bottom - 80px
+      setShowStickyBar(rect.bottom < 80);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSelectSize = (size: string) => {
     setSelectedSize(size);
     if (sizeError) setSizeError(false);
   };
 
-  const handleAddToCart = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleAddToCart = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
 
     // Size selection validation required
     if (!selectedSize) {
@@ -36,7 +54,6 @@ export function ProductActions({ product }: ProductActionsProps) {
     trackAddToCart(product, quantity, selectedSize);
     setIsAdded(true);
 
-    // Auto-clear success message after 6 seconds if desired
     setTimeout(() => {
       setIsAdded(false);
     }, 6000);
@@ -44,19 +61,33 @@ export function ProductActions({ product }: ProductActionsProps) {
 
   return (
     <div className="space-y-6">
-      <form onSubmit={handleAddToCart} className="space-y-6">
+      <form ref={formRef} onSubmit={handleAddToCart} className="space-y-6">
         {/* Size Selection */}
         <div className="space-y-2.5">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
-              <span>Select Size</span>
-              <span className="text-[var(--vybe-mauve)]">*</span>
-            </label>
-            {selectedSize && (
-              <span className="text-xs font-medium text-[var(--vybe-mauve)]">
-                Selected: <strong className="text-[var(--color-text)]">{selectedSize}</strong>
-              </span>
-            )}
+            <div className="flex items-center gap-2">
+              <label className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
+                <span>Select Size</span>
+                <span className="text-[var(--vybe-mauve)]">*</span>
+              </label>
+              {selectedSize && (
+                <span className="text-xs font-medium text-[var(--vybe-mauve)]">
+                  Selected: <strong className="text-[var(--color-text)]">{selectedSize}</strong>
+                </span>
+              )}
+            </div>
+
+            {/* Fit Finder Trigger */}
+            <button
+              type="button"
+              onClick={() => setIsFitFinderOpen(true)}
+              className="text-xs font-semibold text-[var(--vybe-mauve)] hover:text-[var(--color-text)] flex items-center gap-1.5 underline underline-offset-4 transition-colors cursor-pointer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[var(--vybe-rose)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span>Fit Finder</span>
+            </button>
           </div>
 
           <div
@@ -205,6 +236,45 @@ export function ProductActions({ product }: ProductActionsProps) {
           </div>
         </div>
       )}
+
+      {/* Sticky Mobile Add to Bag Bar */}
+      {showStickyBar && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md border-t border-[var(--color-border)] p-3 md:hidden shadow-xl animate-fade-in flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-medium text-[var(--color-text)] truncate">{product.name}</p>
+            <p className="font-serif text-sm font-bold text-[var(--color-text)]">{formatPrice(product.price)}</p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <select
+              value={selectedSize}
+              onChange={(e) => handleSelectSize(e.target.value)}
+              aria-label="Select size"
+              className="h-10 px-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold text-[var(--color-text)]"
+            >
+              <option value="">Size</option>
+              {product.sizes.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+            <button
+              type="button"
+              onClick={() => handleAddToCart()}
+              className="h-10 px-4 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve)] transition-colors shadow-xs"
+            >
+              Add to Bag
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Sizing Recommender Modal */}
+      <FitFinderModal
+        isOpen={isFitFinderOpen}
+        onClose={() => setIsFitFinderOpen(false)}
+        onSelectSize={handleSelectSize}
+        category={product.category}
+        availableSizes={product.sizes}
+      />
     </div>
   );
 }
