@@ -91,23 +91,39 @@ export function Footer() {
           {/* Project & Support Column */}
           <div>
             <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-4">
-              Project Information
+              Care &amp; Guidance
             </h3>
             <ul className="space-y-2.5 text-sm">
+              <li>
+                <Link
+                  href="/size-guide"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                >
+                  Size &amp; Fit Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/faq"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                >
+                  Frequently Asked Questions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/track-order"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                >
+                  Track Movement Order
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/about"
                   className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
                 >
-                  Brand Story & Vision
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Contact & Inquiries
+                  Brand Story &amp; Vision
                 </Link>
               </li>
               <li>
@@ -115,7 +131,7 @@ export function Footer() {
                   href="/shipping-returns"
                   className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
                 >
-                  Shipping & Returns Notice
+                  Shipping &amp; Returns Notice
                 </Link>
               </li>
               <li>
@@ -123,7 +139,7 @@ export function Footer() {
                   href="/privacy"
                   className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
                 >
-                  Privacy Policy & Demo Scope
+                  Privacy Policy &amp; Scope
                 </Link>
               </li>
             </ul>

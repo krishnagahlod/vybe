@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src"
+    "lint": "node node_modules/eslint/bin/eslint.js src"
   },
   "dependencies": {
     "framer-motion": "^14.6.0",

@@ -112,16 +112,22 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       {/* Return to Exploration CTAs */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
         <Link
+          href={`/track-order?ref=${encodeURIComponent(order.orderId)}`}
+          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-sage)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center gap-2"
+        >
+          Track Simulated Order &rarr;
+        </Link>
+        <Link
           href="/shop"
           className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
         >
-          Browse Full Catalogue &rarr;
+          Browse Full Catalogue
         </Link>
         <Link
           href="/"
           className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
         >
-          Return to Homepage
+          Return Home
         </Link>
       </div>
     </div>

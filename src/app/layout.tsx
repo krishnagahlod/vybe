@@ -9,6 +9,10 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
 import { WishlistModal } from "@/components/wishlist/wishlist-modal";
+import { OrganizationJsonLd } from "@/components/seo/json-ld";
+
+import { ToastProvider } from "@/lib/toast-context";
+import { ToastContainer } from "@/components/ui/toast";
 
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -23,6 +27,9 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://vybe-storefront.vercel.app"
+  ),
   title: {
     default: "VYBE — Made for your kind of movement",
     template: "%s | VYBE Athleisure",
@@ -35,8 +42,33 @@ export const metadata: Metadata = {
     "studio leggings",
     "sports bras",
     "VYBE movement",
+    "Indian activewear",
   ],
   authors: [{ name: "VYBE Team" }],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "/",
+    siteName: "VYBE Athleisure",
+    title: "VYBE — Made for your kind of movement",
+    description:
+      "Contemporary women's athleisure designed for mindful movement and daily rhythm in Indian metro climates.",
+    images: [
+      {
+        url: "/images/hero-athleisure.webp",
+        width: 1200,
+        height: 630,
+        alt: "VYBE Movement Collection",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "VYBE — Made for your kind of movement",
+    description:
+      "Contemporary women's athleisure designed for mindful movement and daily rhythm in Indian metro climates.",
+    images: ["/images/hero-athleisure.webp"],
+  },
 };
 
 export const viewport: Viewport = {
@@ -57,19 +89,23 @@ export default function RootLayout({
       className={`${jakartaSans.variable} ${playfairDisplay.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
-        <CartProvider>
-          <WishlistProvider>
-            <AnalyticsProvider />
-            <CartDrawer />
-            <WishlistModal />
-            <AnnouncementBar />
-            <Header />
-            <main id="main-content" className="flex-1 w-full">
-              {children}
-            </main>
-            <Footer />
-          </WishlistProvider>
-        </CartProvider>
+        <OrganizationJsonLd />
+        <ToastProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <AnalyticsProvider />
+              <CartDrawer />
+              <WishlistModal />
+              <ToastContainer />
+              <AnnouncementBar />
+              <Header />
+              <main id="main-content" className="flex-1 w-full">
+                {children}
+              </main>
+              <Footer />
+            </WishlistProvider>
+          </CartProvider>
+        </ToastProvider>
       </body>
     </html>
   );

@@ -7,6 +7,7 @@ import { formatPrice } from "@/lib/format";
 import { ProductActions } from "@/components/product/product-actions";
 import { ProductCard } from "@/components/product/product-card";
 import { ProductViewTracker } from "@/components/product/product-view-tracker";
+import { ProductJsonLd } from "@/components/seo/json-ld";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -76,6 +77,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
   return (
     <div className="py-8 sm:py-14">
+      <ProductJsonLd product={product} />
       <ProductViewTracker product={product} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}

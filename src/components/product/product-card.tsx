@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Product } from "@/types/product";
 import { formatPrice } from "@/lib/format";
 import { useWishlist } from "@/lib/wishlist-context";
+import { useToast } from "@/lib/toast-context";
 
 type ProductCardProps = {
   product: Product;
@@ -12,6 +13,7 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { isInWishlist, toggleWishlist } = useWishlist();
+  const { showToast } = useToast();
   const isSaved = isInWishlist(product.id);
 
   const imageSrc =
@@ -59,6 +61,11 @@ export function ProductCard({ product }: ProductCardProps) {
             e.preventDefault();
             e.stopPropagation();
             toggleWishlist(product.id);
+            if (!isSaved) {
+              showToast(`Saved "${product.name}" to Wishlist`, "success");
+            } else {
+              showToast(`Removed "${product.name}" from Wishlist`, "info");
+            }
           }}
           aria-label={isSaved ? `Remove ${product.name} from saved items` : `Save ${product.name} to wishlist`}
           className={`absolute top-3 right-3 z-20 p-2 rounded-full transition-all duration-200 shadow-sm cursor-pointer ${

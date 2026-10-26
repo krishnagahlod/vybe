@@ -35,6 +35,9 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "Shop All Activewear", href: "/shop" },
+    { label: "Size & Fit Guide", href: "/size-guide" },
+    { label: "Help & FAQ", href: "/faq" },
+    { label: "Track Movement Order", href: "/track-order" },
     { label: "About VYBE", href: "/about" },
     { label: "Contact", href: "/contact" },
     { label: "Shipping & Returns", href: "/shipping-returns" },

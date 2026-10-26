@@ -10,13 +10,19 @@
 
 ## 1. What Was Built
 
-A responsive women's athleisure storefront prototype featuring a complete front-end shopping journey:
-- **Homepage (`/`)**: Editorial lifestyle hero, campaign city highlights (Mumbai, Pune, Delhi, Bangalore), movement collection grid, curated featured pieces, and brand philosophy block.
-- **Catalogue (`/shop`)**: Complete 12-piece concept collection with active category filtering (`Leggings`, `Sports Bras`, `Tops & Tanks`, `Shorts`, `Matching Sets`, `Layers & Joggers`).
-- **Product Detail (`/product/[slug]`)**: Dynamic routes for all 12 products with static pre-rendering, image gallery frame, size selection validation, quantity picker, and interactive add-to-bag feedback.
+A responsive, high-aesthetic women's athleisure storefront prototype featuring a complete front-end shopping journey:
+- **Homepage (`/`)**: Editorial lifestyle hero, campaign city highlights (Mumbai, Pune, Delhi, Bangalore), movement collection grid, curated featured pieces, brand philosophy block, technical fabric innovation ribbon, and interactive 3-step "Find Your Movement Vibe" style quiz.
+- **Catalogue (`/shop`)**: Complete 12-piece concept collection with live debounced search, sort dropdown (*Featured, Price: Low to High, Price: High to Low, Name A-Z*), colorway swatch filters (*Sage, Pale Peach, Soft Pink, Rose, Muted Mauve*), active filter count, and reset controls.
+- **Product Detail (`/product/[slug]`)**: Dynamic routes for all 12 products with static pre-rendering, image gallery frame, interactive "Fit Finder" sizing recommender modal, size selection validation, quantity picker, sticky mobile Add-to-Bag bar, curated "Complete the Look" pairing intelligence, and expandable accordions.
+- **Slide-Over Mini-Cart Drawer**: Smooth flyout drawer with complimentary delivery progress meter (₹1,500 threshold), live item quantity steppers, item removal, subtotal calculation, and direct checkout CTA.
+- **Wishlist & Saved Items**: Full client-side wishlist system persisted in `localStorage`, heart toggles on cards, header badge counter, and dedicated slide-over modal.
+- **Dedicated FAQ (`/faq`)**: Categorized accordions covering Sizing & Fit, Fabrics & Climate Care, Shipping & Campaign Cities, Exchanges, and Academic Transparency.
+- **Dedicated Size Guide (`/size-guide`)**: Anatomical measurement illustration, interactive Inches vs. Centimeters unit toggle, product-specific dimension tables, and international conversion table (IN / UK / US / EU).
+- **Simulated Order Tracker (`/track-order`)**: Order reference search (`VYBE-DEMO-XXXXXX`), simulated carrier details (Blue Dart Express), and 4-step milestone fulfillment timeline.
 - **Shopping Bag (`/cart`)**: LocalStorage-persisted cart state, dynamic subtotal calculation, item quantity controls, item removal, and empty bag state.
-- **Demo Checkout (`/checkout`)**: Fully simulated checkout flow with minimal non-sensitive contact fields, zero credit-card fields, in-line validation, and order confirmation summary.
-- **Supporting Pages**: Brand Story (`/about`), Simulated Inquiries (`/contact`), Academic Privacy Notice (`/privacy`), and Policy Guidelines (`/shipping-returns`).
+- **Demo Checkout (`/checkout`)**: Fully simulated checkout flow with minimal non-sensitive contact fields, zero credit-card fields, in-line validation, and order confirmation summary linking directly to order tracking.
+- **Supporting Pages**: Brand Story (`/about`), Simulated Inquiries (`/contact`), Academic Privacy Notice (`/privacy`), Policy Guidelines (`/shipping-returns`), branded 404 (`/not-found`), and branded Error Boundary (`/error`).
+- **SEO & Technical Infrastructure**: Schema.org JSON-LD (`Organization`, `Product`), dynamic sitemap (`sitemap.xml`), robots directives (`robots.txt`), OpenGraph and Twitter card previews, and PWA Web App Manifest (`manifest.webmanifest`).
 - **Analytics & Tracking**: 5-event taxonomy (`page_view`, `view_item`, `add_to_cart`, `begin_checkout`, `demo_checkout_complete`) via `window.dataLayer`, URL campaign UTM parameter capture, and zero commercial purchase event compliance.
 
 ---
