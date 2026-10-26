@@ -1,174 +1,88 @@
 import Link from "next/link";
 
+const COLUMNS = [
+  {
+    title: "Shop",
+    links: [
+      { label: "All pieces", href: "/shop" },
+      { label: "Leggings", href: "/shop?category=leggings" },
+      { label: "Sports Bras", href: "/shop?category=sports-bras" },
+      { label: "Tops", href: "/shop?category=tops" },
+      { label: "Shorts", href: "/shop?category=shorts" },
+      { label: "Matching Sets", href: "/shop?category=sets" },
+      { label: "Layers", href: "/shop?category=layers" },
+    ],
+  },
+  {
+    title: "Help",
+    links: [
+      { label: "Size & fit guide", href: "/size-guide" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Track an order", href: "/track-order" },
+      { label: "Delivery & exchanges", href: "/shipping-returns" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+  {
+    title: "VYBE",
+    links: [
+      { label: "Our story", href: "/about" },
+      { label: "Brand identity", href: "/about#brand-identity" },
+      { label: "About the project", href: "/about#project" },
+      { label: "Privacy", href: "/privacy" },
+    ],
+  },
+];
+
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] pt-16 pb-12 mt-auto text-[var(--color-text)] transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-[var(--color-border)]">
-          {/* Brand Column */}
-          <div className="md:col-span-2 space-y-4">
-            <Link href="/" className="inline-block">
-              <span className="font-serif text-3xl font-semibold tracking-[0.25em] text-[var(--color-text)]">
-                VYBE
-              </span>
+    <footer className="mt-auto bg-[var(--vybe-sage)] text-[var(--color-text)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-[var(--color-text)]/15">
+          <div className="lg:col-span-5 space-y-6">
+            <p className="font-serif text-4xl sm:text-5xl leading-[1.08]">
+              Made for your <span className="italic">kind</span> of movement.
+            </p>
+            <Link
+              href="/shop"
+              className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] pb-1 border-b border-current hover:text-[var(--vybe-mauve-ink)] transition-colors"
+            >
+              <span>Shop the collection</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </Link>
-            <p className="text-sm font-medium tracking-wide uppercase text-[var(--vybe-mauve-ink)]">
-              Made for your kind of movement
-            </p>
-            <p className="text-sm text-[var(--color-muted)] max-w-md leading-relaxed">
-              Thoughtfully designed athleisure concepts for studio sessions, mindful movement, and everyday rhythm. Celebrating personal expression without compromise.
-            </p>
           </div>
 
-          {/* Explore / Shop Column */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-4">
-              Explore Collection
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link
-                  href="/shop"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  All Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=leggings"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Leggings & Tights
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=sports-bras"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Sports Bras
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=tops"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Tops & Tanks
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=sets"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Matching Sets
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=shorts"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Shorts
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop?category=layers"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Layers &amp; Joggers
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Project & Support Column */}
-          <div>
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-4">
-              Care &amp; Guidance
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link
-                  href="/size-guide"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Size &amp; Fit Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Frequently Asked Questions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/track-order"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Track an Order
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Brand Story &amp; Vision
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shipping-returns"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Shipping &amp; Returns Notice
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/privacy"
-                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                >
-                  Privacy Policy &amp; Scope
-                </Link>
-              </li>
-            </ul>
+          <div className="lg:col-span-6 lg:col-start-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {COLUMNS.map((col) => (
+              <nav key={col.title} aria-label={col.title}>
+                <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] mb-5">{col.title}</h3>
+                <ul className="space-y-3 text-sm">
+                  {col.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-[var(--color-text)]/75 hover:text-[var(--color-text)] transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
           </div>
         </div>
 
-        {/* Academic / Concept Disclaimer Banner */}
-        <div className="mt-8 p-4 rounded-md bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
-          <p className="font-semibold text-[var(--color-text)] mb-1 uppercase tracking-wide">
-            Academic Concept Disclosure (ENT 625 — Digital Marketing)
+        <div className="pt-10 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          <p className="lg:col-span-4 font-serif text-5xl sm:text-6xl font-medium tracking-[0.35em] leading-none">
+            VYBE
           </p>
-          <p>
-            VYBE is a prototype brand and experimental storefront created solely for educational purposes. All product names, descriptions, prices, size options, and photographic imagery are simulated concepts. This platform does not process payments, collect banking or payment-card information, or fulfill physical merchandise orders.
+          <p className="lg:col-span-8 text-xs text-[var(--color-text)]/70 leading-relaxed lg:text-right">
+            VYBE is a concept brand and storefront created for ENT 625 Digital Marketing. Products, prices and imagery
+            are concepts; no payments are taken, no card details are collected, and no orders are fulfilled.
+            <br />
+            &copy; 2026 VYBE
           </p>
-        </div>
-
-        {/* Bottom copyright */}
-        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--color-muted)]">
-          <p>© 2026 VYBE. Academic Project Storefront Prototype.</p>
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:underline">
-              Privacy
-            </Link>
-            <span>•</span>
-            <Link href="/shipping-returns" className="hover:underline">
-              Policies
-            </Link>
-            <span>•</span>
-            <Link href="/contact" className="hover:underline">
-              Contact
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

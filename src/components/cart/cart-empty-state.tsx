@@ -1,79 +1,44 @@
 import React from "react";
 import Link from "next/link";
 
+const CATEGORIES = [
+  { label: "Leggings", href: "/shop?category=leggings" },
+  { label: "Sports Bras", href: "/shop?category=sports-bras" },
+  { label: "Tops", href: "/shop?category=tops" },
+  { label: "Matching Sets", href: "/shop?category=sets" },
+];
+
 export function CartEmptyState() {
   return (
-    <div className="text-center py-20 px-4 sm:px-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs max-w-2xl mx-auto my-8">
-      {/* Icon Frame */}
-      <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--vybe-peach)]/50 border border-[var(--vybe-peach)] flex items-center justify-center text-[var(--vybe-mauve-ink)]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-10 h-10"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={1.5}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-          />
-        </svg>
+    <div className="text-center py-16 sm:py-24 max-w-xl mx-auto space-y-8 animate-fade-up">
+      <div className="space-y-4">
+        <h2 className="font-serif text-4xl sm:text-5xl text-[var(--color-text)]">
+          Your bag is <span className="italic">empty.</span>
+        </h2>
+        <p className="text-base text-[var(--color-muted)] leading-relaxed">
+          Nothing here yet. Start with our studio essentials, or pick a category below.
+        </p>
       </div>
 
-      <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
-        Your Bag is Empty
-      </span>
-      <h2 className="font-serif text-3xl font-medium text-[var(--color-text)] mb-3">
-        Ready for Movement
-      </h2>
-      <p className="text-sm text-[var(--color-muted)] max-w-md mx-auto leading-relaxed mb-8">
-        You haven&apos;t added any athleisure concepts to your shopping bag yet. Explore our curated 12-piece edit to select your styles and test the simulated checkout.
-      </p>
+      <Link
+        href="/shop"
+        className="inline-flex items-center justify-center px-10 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+      >
+        Shop the collection
+      </Link>
 
-      {/* Primary CTA */}
-      <div className="mb-10">
-        <Link
-          href="/shop"
-          className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
-        >
-          Explore 12-Piece Collection &rarr;
-        </Link>
-      </div>
-
-      {/* Category Shortcuts */}
-      <div className="pt-8 border-t border-[var(--color-border)]">
-        <span className="text-xs text-[var(--color-muted)] block mb-3">
-          Or jump into a specific category:
-        </span>
-        <div className="flex flex-wrap justify-center gap-2 text-xs">
-          <Link
-            href="/shop?category=leggings"
-            className="px-3 py-1.5 rounded-sm bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
-          >
-            Studio Leggings
-          </Link>
-          <Link
-            href="/shop?category=sports-bras"
-            className="px-3 py-1.5 rounded-sm bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
-          >
-            Sports Bras
-          </Link>
-          <Link
-            href="/shop?category=tops"
-            className="px-3 py-1.5 rounded-sm bg-[var(--vybe-pink)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
-          >
-            Tops &amp; Tanks
-          </Link>
-          <Link
-            href="/shop?category=sets"
-            className="px-3 py-1.5 rounded-sm bg-[var(--vybe-rose)]/25 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
-          >
-            Matching Sets
-          </Link>
-        </div>
-      </div>
+      <ul className="flex flex-wrap justify-center gap-x-6 gap-y-3 pt-4">
+        {CATEGORIES.map((cat) => (
+          <li key={cat.href}>
+            <Link
+              href={cat.href}
+              className="font-serif text-xl text-[var(--color-text)] border-b border-transparent hover:border-current transition-colors"
+            >
+              {cat.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

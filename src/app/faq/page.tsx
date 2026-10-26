@@ -4,12 +4,12 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "Everything you need to know about VYBE activewear sizing, fabric architecture, Indian climate performance, shipping timelines, and our ENT 625 academic prototype.",
+    "Answers on VYBE sizing, fabric and care, delivery, exchanges, and the ENT 625 concept store.",
 };
 
 const FAQ_SECTIONS = [
   {
-    category: "Sizing & Fit",
+    category: "Sizing & fit",
     items: [
       {
         q: "How do VYBE activewear pieces fit?",
@@ -26,7 +26,7 @@ const FAQ_SECTIONS = [
     ],
   },
   {
-    category: "Fabrics & Climate",
+    category: "Fabric & care",
     items: [
       {
         q: "Are the Flow and Studio Sculpt leggings see-through?",
@@ -43,7 +43,7 @@ const FAQ_SECTIONS = [
     ],
   },
   {
-    category: "Shipping & Campaign Cities",
+    category: "Delivery",
     items: [
       {
         q: "Which cities are included in the delivery network?",
@@ -60,11 +60,11 @@ const FAQ_SECTIONS = [
     ],
   },
   {
-    category: "Exchanges & Orders",
+    category: "Exchanges & orders",
     items: [
       {
         q: "Can I exchange an item if the size doesn't fit?",
-        a: "Yes. We offer a simulated 14-day doorstep size exchange policy. In a live production setting, a courier pickup is scheduled to swap your piece for the correct size at no additional cost.",
+        a: "Yes. Size exchanges are free within 14 days: a courier collects your piece from your door and delivers the right size.",
       },
       {
         q: "How can I track my order status?",
@@ -73,7 +73,7 @@ const FAQ_SECTIONS = [
     ],
   },
   {
-    category: "Academic Project Transparency",
+    category: "About VYBE",
     items: [
       {
         q: "Is VYBE a real commercial brand?",
@@ -87,110 +87,73 @@ const FAQ_SECTIONS = [
   },
 ];
 
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z]+/g, "-");
+
 export default function FAQPage() {
   return (
-    <div className="py-12 sm:py-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Breadcrumb & Title */}
-        <div className="mb-12 text-center">
-          <nav aria-label="Breadcrumb" className="text-xs text-[var(--color-muted)] mb-3">
-            <ol className="flex items-center justify-center gap-2">
-              <li>
-                <Link href="/" className="hover:text-[var(--color-text)] transition-colors">
-                  Home
+    <div className="py-14 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+        {/* Intro & section index */}
+        <aside className="lg:col-span-4">
+          <div className="lg:sticky lg:top-28 space-y-8">
+            <div className="space-y-5 animate-fade-up">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">Help</p>
+              <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.05]">
+                Questions, <span className="italic">answered.</span>
+              </h1>
+              <p className="text-base text-[var(--color-muted)] leading-relaxed">
+                Fit, fabric, delivery and exchanges. Can&apos;t find what you need?{" "}
+                <Link href="/contact" className="text-[var(--color-text)] underline underline-offset-4 hover:text-[var(--vybe-mauve-ink)]">
+                  Get in touch
                 </Link>
-              </li>
-              <li aria-hidden="true">&bull;</li>
-              <li className="text-[var(--color-text)] font-medium" aria-current="page">
-                Help &amp; FAQ
-              </li>
-            </ol>
-          </nav>
-
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
-            Support Center
-          </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
-            Frequently Asked Questions
-          </h1>
-          <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
-            Everything you need to know about our activewear silhouettes, fabric care, campaign cities, and our academic research prototype.
-          </p>
-        </div>
-
-        {/* Quick Links Card */}
-        <div className="mb-12 p-5 rounded-md bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
-              Looking for Exact Measurements?
-            </h2>
-            <p className="text-xs text-[var(--color-muted)] mt-0.5">
-              Explore our comprehensive size chart and international conversion guide.
-            </p>
+                .
+              </p>
+            </div>
+            <nav aria-label="FAQ sections" className="hidden lg:block">
+              <ul className="space-y-2 text-sm">
+                {FAQ_SECTIONS.map((section) => (
+                  <li key={section.category}>
+                    <a
+                      href={`#${slug(section.category)}`}
+                      className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                    >
+                      {section.category}
+                    </a>
+                  </li>
+                ))}
+                <li className="pt-4">
+                  <Link href="/size-guide" className="text-[var(--color-text)] underline underline-offset-4 hover:text-[var(--vybe-mauve-ink)]">
+                    Size &amp; fit guide &rarr;
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </div>
-          <div className="flex items-center gap-3 shrink-0">
-            <Link
-              href="/size-guide"
-              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
-            >
-              View Size Guide &rarr;
-            </Link>
-            <Link
-              href="/track-order"
-              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
-            >
-              Track Order
-            </Link>
-          </div>
-        </div>
+        </aside>
 
-        {/* FAQ Categories & Accordions */}
-        <div className="space-y-10">
+        {/* Sections */}
+        <div className="lg:col-span-8 space-y-14">
           {FAQ_SECTIONS.map((section) => (
-            <div key={section.category} className="space-y-4">
-              <h2 className="font-serif text-xl sm:text-2xl font-semibold text-[var(--color-text)] border-b border-[var(--color-border)] pb-2 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[var(--vybe-rose)]" />
-                {section.category}
-              </h2>
-
-              <div className="space-y-3">
-                {section.items.map((item, idx) => (
-                  <details
-                    key={idx}
-                    className="group border border-[var(--color-border)] rounded-md p-4 sm:p-5 bg-[var(--color-surface)] transition-colors hover:border-[var(--vybe-mauve-ink)]"
-                  >
-                    <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text)] cursor-pointer list-none flex items-center justify-between gap-4">
+            <section key={section.category} id={slug(section.category)} className="scroll-mt-28">
+              <h2 className="font-serif text-3xl text-[var(--color-text)] mb-4">{section.category}</h2>
+              <div className="border-t border-[var(--color-border)]">
+                {section.items.map((item) => (
+                  <details key={item.q} className="group border-b border-[var(--color-border)]">
+                    <summary className="py-5 text-base text-[var(--color-text)] cursor-pointer list-none flex items-start justify-between gap-6 hover:text-[var(--vybe-mauve-ink)] transition-colors">
                       <span>{item.q}</span>
-                      <span className="transition-transform group-open:rotate-180 text-[var(--color-muted)] shrink-0 text-base">
-                        &darr;
+                      <span
+                        className="text-xl leading-none font-light text-[var(--color-muted)] transition-transform duration-300 group-open:rotate-45 shrink-0"
+                        aria-hidden="true"
+                      >
+                        +
                       </span>
                     </summary>
-                    <div className="pt-3 text-xs sm:text-sm text-[var(--color-muted)] leading-relaxed border-t border-[var(--color-border)]/60 mt-3">
-                      <p>{item.a}</p>
-                    </div>
+                    <p className="pb-6 pr-10 text-sm text-[var(--color-muted)] leading-relaxed">{item.a}</p>
                   </details>
                 ))}
               </div>
-            </div>
+            </section>
           ))}
-        </div>
-
-        {/* Still Have Questions CTA */}
-        <div className="mt-16 p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] text-center space-y-3">
-          <h3 className="font-serif text-xl font-medium text-[var(--color-text)]">
-            Still have questions?
-          </h3>
-          <p className="text-xs text-[var(--color-muted)] max-w-md mx-auto">
-            Our team is here to help with sizing questions, styling recommendations, or details on our academic project.
-          </p>
-          <div className="pt-2">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
-            >
-              Get in Touch with VYBE &rarr;
-            </Link>
-          </div>
         </div>
       </div>
     </div>
