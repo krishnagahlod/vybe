@@ -1,121 +1,134 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type CollectionCategory = {
   title: string;
   category: string;
+  subtitle: string;
   description: string;
-  bgColor: string;
-  borderColor: string;
-  accentColor: string;
+  index: string;
+  imageSrc: string;
   itemCount: string;
 };
 
 const collections: CollectionCategory[] = [
   {
-    title: "Leggings & Tights",
+    index: "01",
+    title: "Studio Leggings",
     category: "leggings",
-    description: "Contoured high-rise silhouettes tailored for studio practice and effortless walking.",
-    bgColor: "bg-[var(--vybe-sage)]/30",
-    borderColor: "border-[var(--vybe-sage)]",
-    accentColor: "bg-[var(--vybe-sage)]",
+    subtitle: "High-Rise Sculpt",
+    description: "Contoured silhouettes tailored for mindful studio practice, zero slip, and effortless walking.",
+    imageSrc: "/images/products/flow-high-rise-leggings-1.jpg",
     itemCount: "2 Concepts",
   },
   {
-    title: "Sports Bras",
+    index: "02",
+    title: "Sculpted Bras",
     category: "sports-bras",
-    description: "Balanced studio support with cross-back details and soft scoop necklines.",
-    bgColor: "bg-[var(--vybe-peach)]/40",
-    borderColor: "border-[var(--vybe-peach)]",
-    accentColor: "bg-[var(--vybe-peach)]",
+    subtitle: "Balanced Support",
+    description: "Cross-back geometric details and soft scoop necklines for training stability.",
+    imageSrc: "/images/products/soft-form-sports-bra-1.jpg",
     itemCount: "2 Concepts",
   },
   {
-    title: "Tops & Tanks",
+    index: "03",
+    title: "Movement Tops",
     category: "tops",
+    subtitle: "Air-Weave Breathable",
     description: "Breezy cropped layers, breathable racerbacks, and soft matte training tees.",
-    bgColor: "bg-[var(--vybe-pink)]/30",
-    borderColor: "border-[var(--vybe-pink)]",
-    accentColor: "bg-[var(--vybe-pink)]",
+    imageSrc: "/images/products/cloud-knit-crop-tank-1.jpg",
     itemCount: "3 Concepts",
   },
   {
-    title: "Matching Sets",
+    index: "04",
+    title: "Harmony Sets",
     category: "sets",
-    description: "Coordinated two-piece activewear pairings in calm, harmonious palettes.",
-    bgColor: "bg-[var(--vybe-rose)]/25",
-    borderColor: "border-[var(--vybe-rose)]/60",
-    accentColor: "bg-[var(--vybe-rose)]",
+    subtitle: "Coordinated Pairs",
+    description: "Two-piece studio sets in earthy palettes taking the guesswork out of movement dressing.",
+    imageSrc: "/images/products/harmony-monochrome-set-1.jpg",
     itemCount: "2 Concepts",
   },
 ];
 
 export function CollectionGrid() {
   return (
-    <section className="py-20 bg-[var(--color-bg)]">
+    <section className="py-20 sm:py-28 bg-[var(--color-bg)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-2 font-mono">
-              Category Discovery
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+          <div className="space-y-2">
+            <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve)] block">
+              Movement Architecture // Volume 01
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-medium text-[var(--color-text)]">
+            <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
               Curated by Movement
             </h2>
+            <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl font-light leading-relaxed">
+              Explore four dedicated studio silhouettes engineered for natural flexibility, mindful posture, and all-day ease.
+            </p>
           </div>
           <Link
             href="/shop"
-            className="text-sm font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors underline underline-offset-8 inline-flex items-center gap-1.5"
+            className="group text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors inline-flex items-center gap-2 self-start md:self-end pb-1 border-b border-[var(--color-text)] hover:border-[var(--vybe-mauve)]"
           >
-            <span>View All 12 Concepts</span>
-            <span>&rarr;</span>
+            <span>Explore All 12 Concepts</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
           </Link>
         </div>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {collections.map((col) => (
+        {/* 4-Card Luxury Editorial Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          {collections.map((item) => (
             <Link
-              key={col.category}
-              href={`/shop?category=${col.category}`}
-              className={`group flex flex-col justify-between p-7 rounded-2xl border ${col.borderColor} ${col.bgColor} transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]`}
+              key={item.category}
+              href={`/shop?category=${item.category}`}
+              className="group relative flex flex-col justify-end aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-1.5 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] bg-[var(--vybe-peach)]/20"
             >
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/80 border border-[var(--color-border)] text-[var(--color-text)]">
-                    {col.itemCount}
-                  </span>
-                  <div
-                    className={`w-7 h-7 rounded-full ${col.accentColor} flex items-center justify-center transition-transform group-hover:translate-x-1`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-3.5 h-3.5 text-[var(--color-text)]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                    </svg>
-                  </div>
-                </div>
+              {/* Background Editorial Image with smooth zoom */}
+              <Image
+                src={item.imageSrc}
+                alt={`${item.title} category preview`}
+                fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
+              />
 
-                <h3 className="font-serif text-xl sm:text-2xl font-medium text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors mb-2">
-                  {col.title}
-                </h3>
-                <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-                  {col.description}
-                </p>
+              {/* Gradient Vignette Scrim */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 transition-opacity duration-300 group-hover:opacity-90" />
+
+              {/* Top Index Badge */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 text-white">
+                <span className="font-mono text-xs font-bold tracking-widest px-2.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20">
+                  {item.index}
+                </span>
+                <span className="text-[10px] font-mono tracking-widest uppercase text-white/80">
+                  {item.itemCount}
+                </span>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-[var(--color-border)]/60 text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] flex items-center gap-1">
-                <span>Explore Pieces</span>
-                <span>&rarr;</span>
+              {/* Bottom Content Frame */}
+              <div className="relative z-10 p-6 text-white space-y-2">
+                <span className="block text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--vybe-rose)] font-semibold">
+                  {item.subtitle}
+                </span>
+                <h3 className="font-serif text-2xl font-normal tracking-tight text-white group-hover:text-[var(--vybe-peach)] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-white/80 line-clamp-2 leading-relaxed font-light">
+                  {item.description}
+                </p>
+
+                {/* Micro CTA */}
+                <div className="pt-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider text-white group-hover:text-[var(--vybe-peach)] transition-colors">
+                  <span>Explore Silhouette</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                </div>
               </div>
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   );
