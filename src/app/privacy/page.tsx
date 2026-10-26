@@ -27,10 +27,10 @@ export default function PrivacyPage() {
             </ol>
           </nav>
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
-            Academic Transparency
+            Privacy
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
-            Privacy &amp; Data Notice
+            How we handle your data
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed font-light max-w-2xl">
             This notice outlines how the VYBE academic prototype operates, handles client-side data, and adheres to privacy standards during marketing evaluation.

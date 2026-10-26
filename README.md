@@ -40,22 +40,31 @@ A responsive, high-aesthetic women's athleisure storefront prototype featuring a
 
 ## 3. Design Tokens & Visual System
 
+Defined in `src/app/globals.css`. The five brand colours are the exact values from `DESIGN_SYSTEM.md`; the "ink" shades are deeper versions used for text and buttons so they meet WCAG AA contrast.
+
 ```css
---vybe-sage:    #d8e2dc; /* Soft backgrounds and calm sections */
---vybe-peach:   #ffe5d9; /* Warm background accents & banner */
---vybe-pink:    #ffcad4; /* Subtle highlights and small cards */
---vybe-rose:    #f4acb7; /* Active accents and curated badges */
---vybe-mauve:   #9d8189; /* Primary brand accent */
---color-bg:     #fffdfb; /* Main background */
---color-surface:#ffffff; /* Panels and cards */
---color-text:   #292526; /* Accessible dark charcoal text */
---color-muted:  #6e6668; /* Accessible secondary copy */
---color-border: #e9e2e1; /* Subtle dividers */
+--vybe-sage:      #d8e2dc; /* Calm backgrounds and sections */
+--vybe-peach:     #ffe5d9; /* Warm accents and highlights */
+--vybe-pink:      #ffcad4; /* Small accents and cards */
+--vybe-rose:      #f4acb7; /* Selected and active states */
+--vybe-mauve:     #9d8189; /* Primary brand accent */
+--vybe-mauve-ink: #73585f; /* Accent text, button hover */
+--vybe-sage-ink:  #56695c; /* Positive states */
+--vybe-rose-ink:  #9a4b5a; /* Alerts and saves */
+--color-bg:       #fffdfb;
+--color-text:     #292526;
+--color-muted:    #6e6668;
+--color-border:   #e9e2e1;
 ```
 
 ### Typography
-- **Editorial Headings:** `Playfair_Display` (Google Font via `next/font/google`)
-- **Body & UI:** `Plus_Jakarta_Sans` (Google Font via `next/font/google`)
+- **Display (headlines, product names, wordmark):** Cormorant Garamond
+- **Text (body, labels, buttons, navigation):** Plus Jakarta Sans
+
+### Shape & layout
+- Buttons and chips: 4px corners; images and cards: 6px; circles only for icons and swatches
+- Classic full-width header with centred wordmark; sage footer
+- The brand identity is also presented on the site at `/about#brand-identity`
 
 ---
 

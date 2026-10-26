@@ -107,6 +107,17 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Scroll-driven section reveal: CSS only, so content is never hidden when unsupported or JS is slow */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: fade-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
 /* Interactive Hotspot Pulsing Rings */
 @keyframes pulse-ring {
   0% {

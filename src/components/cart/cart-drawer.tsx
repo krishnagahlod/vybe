@@ -7,8 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/lib/cart-context";
 import { products } from "@/data/products";
 import { formatPrice } from "@/lib/format";
+import { FREE_DELIVERY_THRESHOLD } from "@/lib/pricing";
 
-const FREE_SHIPPING_THRESHOLD = 1500;
 
 export function CartDrawer() {
   const {
@@ -50,8 +50,8 @@ export function CartDrawer() {
   });
 
   const subtotal = enrichedItems.reduce((sum, item) => sum + item.itemTotal, 0);
-  const progressPercent = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
-  const amountRemaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
+  const progressPercent = Math.min(100, Math.round((subtotal / FREE_DELIVERY_THRESHOLD) * 100));
+  const amountRemaining = Math.max(0, FREE_DELIVERY_THRESHOLD - subtotal);
 
   return (
     <AnimatePresence>
@@ -97,7 +97,7 @@ export function CartDrawer() {
               {enrichedItems.length > 0 && (
                 <div className="px-6 py-4 bg-[var(--vybe-peach)]/40 space-y-2.5">
                   <p className="text-sm text-[var(--color-text)]">
-                    {subtotal >= FREE_SHIPPING_THRESHOLD ? (
+                    {subtotal >= FREE_DELIVERY_THRESHOLD ? (
                       <>You&apos;ve unlocked complimentary delivery.</>
                     ) : (
                       <>
@@ -209,7 +209,7 @@ export function CartDrawer() {
                     <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text)]">Subtotal</span>
                     <span className="text-lg text-[var(--color-text)]">{formatPrice(subtotal)}</span>
                   </div>
-                  <p className="text-xs text-[var(--color-muted)]">Taxes and delivery calculated at checkout.</p>
+                  <p className="text-xs text-[var(--color-muted)]">Prices include GST. Delivery is calculated at checkout.</p>
                   <div className="grid grid-cols-2 gap-3">
                     <Link
                       href="/cart"

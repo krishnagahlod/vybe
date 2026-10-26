@@ -1,20 +1,16 @@
 "use client";
 
 import React, { useState, useMemo, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { getProductById } from "@/data/products";
 import { formatPrice } from "@/lib/format";
+import { getDeliveryFee } from "@/lib/pricing";
 import { CheckoutConfirmation, DemoOrderData } from "@/components/checkout/checkout-confirmation";
 import { trackBeginCheckout, trackDemoCheckoutComplete } from "@/lib/analytics";
 
-const CAMPAIGN_CITIES = [
-  "Mumbai",
-  "Pune",
-  "Delhi",
-  "Bangalore",
-  "Other (Academic Evaluation)",
-];
+const DELIVERY_CITIES = ["Mumbai", "Pune", "Delhi", "Bangalore"];
 
 export default function CheckoutPage() {
   const { items, totalCount, clearCart } = useCart();
@@ -52,6 +48,9 @@ export default function CheckoutPage() {
     return resolvedItems.reduce((acc, curr) => acc + curr.lineTotal, 0);
   }, [resolvedItems]);
 
+  const deliveryFee = getDeliveryFee(subtotal);
+  const total = subtotal + deliveryFee;
+
   const hasTrackedCheckoutRef = useRef(false);
   useEffect(() => {
     if (resolvedItems.length > 0 && !hasTrackedCheckoutRef.current) {
@@ -63,12 +62,12 @@ export default function CheckoutPage() {
   const validate = () => {
     const errs: { fullName?: string; email?: string } = {};
     if (!formData.fullName.trim()) {
-      errs.fullName = "Please enter your full name";
+      errs.fullName = "Please enter your name";
     }
     if (!formData.email.trim()) {
-      errs.email = "Please enter an email address";
+      errs.email = "Please enter your email";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errs.email = "Please enter a valid email format (e.g. name@example.com)";
+      errs.email = "That email doesn't look quite right";
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -91,6 +90,7 @@ export default function CheckoutPage() {
       city: formData.city,
       items: [...resolvedItems],
       subtotal,
+      deliveryFee,
       date: new Date().toLocaleDateString("en-IN", {
         day: "numeric",
         month: "short",
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
   // If order was confirmed, show the confirmation screen
   if (confirmedOrder) {
     return (
-      <div className="py-10 sm:py-16">
+      <div className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <CheckoutConfirmation order={confirmedOrder} />
         </div>
@@ -138,279 +138,213 @@ export default function CheckoutPage() {
   // If cart is empty and no confirmed order
   if (resolvedItems.length === 0) {
     return (
-      <div className="py-16 sm:py-24">
-        <div className="max-w-xl mx-auto px-4 text-center space-y-6 p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
-            Demo Checkout
-          </span>
-          <h1 className="font-serif text-3xl font-medium text-[var(--color-text)]">
-            Your Bag is Empty
+      <div className="py-24 sm:py-32">
+        <div className="max-w-xl mx-auto px-4 text-center space-y-6">
+          <h1 className="font-serif text-4xl sm:text-5xl text-[var(--color-text)]">
+            Nothing to check out <span className="italic">yet.</span>
           </h1>
-          <p className="text-sm text-[var(--color-muted)] leading-relaxed">
-            Please add at least one athleisure concept to your shopping bag before proceeding to the simulated checkout.
+          <p className="text-base text-[var(--color-muted)] leading-relaxed">
+            Add a piece or two to your bag first.
           </p>
-          <div>
-            <Link
-              href="/shop"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs"
-            >
-              Browse 12-Piece Collection &rarr;
-            </Link>
-          </div>
+          <Link
+            href="/shop"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+          >
+            Shop the collection
+          </Link>
         </div>
       </div>
     );
   }
 
+  const inputClass = (hasError?: boolean) =>
+    `w-full h-12 px-4 rounded-sm border bg-[var(--color-surface)] text-base text-[var(--color-text)] placeholder-[var(--color-muted)]/70 focus:outline-none focus:border-[var(--color-text)] transition-colors ${
+      hasError ? "border-[var(--vybe-rose-ink)]" : "border-[var(--color-border)]"
+    }`;
+  const labelClass = "block text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] mb-2";
+  const stepHeading = "font-serif text-2xl sm:text-3xl text-[var(--color-text)] flex items-baseline gap-3";
+  const stepNumber = "font-serif italic text-lg text-[var(--vybe-mauve-ink)]";
+
   return (
-    <div className="py-10 sm:py-16">
+    <div className="py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6 text-xs text-[var(--color-muted)]">
-          <ol className="flex items-center gap-2">
-            <li>
-              <Link href="/" className="hover:text-[var(--color-text)] transition-colors">
-                Home
-              </Link>
-            </li>
-            <li aria-hidden="true">&bull;</li>
-            <li>
-              <Link href="/cart" className="hover:text-[var(--color-text)] transition-colors">
-                Shopping Bag
-              </Link>
-            </li>
-            <li aria-hidden="true">&bull;</li>
-            <li className="text-[var(--color-text)] font-semibold" aria-current="page">
-              Demo Checkout
-            </li>
-          </ol>
-        </nav>
-
-        {/* Page Title */}
-        <div className="mb-8">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-1 font-mono">
-            Simulated Purchase Flow
-          </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
-            Demo Checkout
-          </h1>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-10 pb-6 border-b border-[var(--color-border)]">
+          <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">Checkout</h1>
+          <Link
+            href="/cart"
+            className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] underline underline-offset-4 transition-colors"
+          >
+            &larr; Back to bag
+          </Link>
         </div>
 
-        {/* Prominent Demo Notice Box */}
-        <div className="mb-10 p-5 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-1.5">
-          <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
-            Demonstration Store Notice (ENT 625 Project)
-          </p>
-          <p>
-            This is a mock checkout flow created for academic evaluation. <strong>No real payment, banking card information, or delivery will take place.</strong> Please do NOT enter sensitive personal or payment-card data.
-          </p>
-        </div>
-
-        {/* Checkout Main Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          {/* Left Column: Demo Shipping & Contact Form */}
-          <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="space-y-8" noValidate>
-              {/* Section 1: Customer Info */}
-              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
-                <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-3 border-b border-[var(--color-border)]">
-                  1. Contact Information
-                </h2>
-
-                <div className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="fullName"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-1.5"
-                    >
-                      Full Name <span className="text-[var(--vybe-mauve-ink)]">*</span>
-                    </label>
-                    <input
-                      id="fullName"
-                      type="text"
-                      value={formData.fullName}
-                      onChange={(e) => {
-                        setFormData({ ...formData, fullName: e.target.value });
-                        if (errors.fullName) setErrors({ ...errors, fullName: undefined });
-                      }}
-                      placeholder="e.g. Priya Sharma"
-                      className={`w-full px-4 py-3 rounded-md border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
-                        errors.fullName ? "border-red-400 bg-red-50/20" : "border-[var(--color-border)]"
-                      }`}
-                    />
-                    {errors.fullName && (
-                      <p className="mt-1 text-xs text-red-600">{errors.fullName}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-1.5"
-                    >
-                      Email Address <span className="text-[var(--vybe-mauve-ink)]">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => {
-                        setFormData({ ...formData, email: e.target.value });
-                        if (errors.email) setErrors({ ...errors, email: undefined });
-                      }}
-                      placeholder="e.g. priya@example.com"
-                      className={`w-full px-4 py-3 rounded-md border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
-                        errors.email ? "border-red-400 bg-red-50/20" : "border-[var(--color-border)]"
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-xs text-red-600">{errors.email}</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Section 2: Destination City */}
-              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
-                <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-3 border-b border-[var(--color-border)]">
-                  2. Campaign Delivery City
-                </h2>
-
-                <div className="space-y-4">
-                  <div>
-                    <label
-                      htmlFor="citySelect"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-1.5"
-                    >
-                      Target City (Campaign Focus)
-                    </label>
-                    <select
-                      id="citySelect"
-                      value={formData.city}
-                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
-                    >
-                      {CAMPAIGN_CITIES.map((c) => (
-                        <option key={c} value={c}>
-                          {c} {c !== "Other (Academic Evaluation)" ? "— Free Test Shipping" : ""}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="deliveryNote"
-                      className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-1.5"
-                    >
-                      Delivery Notes / Evaluation Comment (Optional)
-                    </label>
-                    <textarea
-                      id="deliveryNote"
-                      rows={2}
-                      value={formData.note}
-                      onChange={(e) => setFormData({ ...formData, note: e.target.value })}
-                      placeholder="e.g. Testing student funnel for ENT 625"
-                      className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Section 3: Simulated Payment Method */}
-              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]">
-                  <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
-                    3. Payment Simulation
-                  </h2>
-                  <span className="text-[11px] font-semibold text-[var(--vybe-sage-ink)] bg-[var(--vybe-sage)]/60 px-2.5 py-0.5 rounded-sm">
-                    No Charge • Demo Mode
-                  </span>
-                </div>
-
-                <div className="p-4 rounded-md bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/60 flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full bg-[var(--color-text)] text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
-                    &#10003;
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs font-semibold text-[var(--color-text)]">
-                      Simulated Order Validation (₹0 Payment)
-                    </p>
-                    <p className="text-xs text-[var(--color-muted)] leading-relaxed">
-                      In accordance with course guidelines, this storefront does not integrate payment gateways (Stripe, Razorpay, etc.) or collect payment cards. Completing this form validates the funnel cleanly.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Submit CTA */}
-              <div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 px-8 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
-                >
-                  {isSubmitting
-                    ? "Validating Simulated Order..."
-                    : `Complete Simulated Order • ${formatPrice(subtotal)}`}
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Right Column: Order Summary Preview */}
-          <div className="lg:col-span-5 sticky top-28">
-            <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
-              <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-4 border-b border-[var(--color-border)]">
-                Items in Demo Order ({totalCount})
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-12" noValidate>
+            <section className="space-y-6">
+              <h2 className={stepHeading}>
+                <span className={stepNumber}>01</span> Contact
               </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label htmlFor="fullName" className={labelClass}>
+                    Full name
+                  </label>
+                  <input
+                    id="fullName"
+                    type="text"
+                    autoComplete="name"
+                    value={formData.fullName}
+                    onChange={(e) => {
+                      setFormData({ ...formData, fullName: e.target.value });
+                      if (errors.fullName) setErrors({ ...errors, fullName: undefined });
+                    }}
+                    aria-invalid={!!errors.fullName}
+                    aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                    className={inputClass(!!errors.fullName)}
+                  />
+                  {errors.fullName && (
+                    <p id="fullName-error" className="mt-2 text-xs text-[var(--vybe-rose-ink)]">
+                      {errors.fullName}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <label htmlFor="email" className={labelClass}>
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    value={formData.email}
+                    onChange={(e) => {
+                      setFormData({ ...formData, email: e.target.value });
+                      if (errors.email) setErrors({ ...errors, email: undefined });
+                    }}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                    className={inputClass(!!errors.email)}
+                  />
+                  {errors.email && (
+                    <p id="email-error" className="mt-2 text-xs text-[var(--vybe-rose-ink)]">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </section>
 
-              <div className="max-h-72 overflow-y-auto divide-y divide-[var(--color-border)] pr-2">
-                {resolvedItems.map(({ item, product, lineTotal }) => (
-                  <div
-                    key={`${item.productId}-${item.size}`}
-                    className="py-3 flex items-center justify-between gap-3 text-xs"
-                  >
-                    <div>
-                      <h3 className="font-medium text-[var(--color-text)]">{product.name}</h3>
-                      <p className="text-[var(--color-muted)]">
-                        Size: {item.size} &bull; Qty: {item.quantity}
-                      </p>
-                    </div>
-                    <span className="font-semibold text-[var(--color-text)] font-sans">
-                      {formatPrice(lineTotal)}
+            <section className="space-y-6">
+              <h2 className={stepHeading}>
+                <span className={stepNumber}>02</span> Delivery
+              </h2>
+              <fieldset>
+                <legend className={labelClass}>City</legend>
+                <div className="flex flex-wrap gap-2">
+                  {DELIVERY_CITIES.map((c) => (
+                    <label
+                      key={c}
+                      className={`px-5 h-11 inline-flex items-center rounded-sm text-sm border cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--vybe-mauve-ink)] ${
+                        formData.city === c
+                          ? "bg-[var(--color-text)] text-white border-[var(--color-text)]"
+                          : "border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="city"
+                        value={c}
+                        checked={formData.city === c}
+                        onChange={() => setFormData({ ...formData, city: c })}
+                        className="sr-only"
+                      />
+                      {c}
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <div>
+                <label htmlFor="deliveryNote" className={labelClass}>
+                  Delivery note <span className="normal-case tracking-normal font-normal text-[var(--color-muted)]">(optional)</span>
+                </label>
+                <textarea
+                  id="deliveryNote"
+                  rows={2}
+                  value={formData.note}
+                  onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                  placeholder="Anything we should know?"
+                  className={`${inputClass()} h-auto py-3 resize-none`}
+                />
+              </div>
+            </section>
+
+            <section className="space-y-6">
+              <h2 className={stepHeading}>
+                <span className={stepNumber}>03</span> Payment
+              </h2>
+              <div className="p-5 sm:p-6 rounded-sm bg-[var(--vybe-peach)]/50 border border-[var(--vybe-rose)] space-y-2" role="note">
+                <p className="text-sm font-semibold text-[var(--color-text)]">This is a demo checkout. Nothing will be charged.</p>
+                <p className="text-sm text-[var(--color-muted)] leading-relaxed">
+                  VYBE is a concept store for ENT 625. There is no payment step, no card details are collected, and no
+                  order will be delivered. Please don&apos;t enter real payment information anywhere on this site.
+                </p>
+              </div>
+            </section>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-14 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+            >
+              {isSubmitting ? "Placing demo order…" : `Place demo order · ${formatPrice(total)}`}
+            </button>
+          </form>
+
+          {/* Order summary */}
+          <aside className="lg:col-span-5 lg:sticky lg:top-28 rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
+            <h2 className="font-serif text-2xl text-[var(--color-text)]">
+              Your order <span className="text-base text-[var(--color-muted)]">({totalCount})</span>
+            </h2>
+
+            <ul className="max-h-80 overflow-y-auto divide-y divide-[var(--color-text)]/10">
+              {resolvedItems.map(({ item, product, lineTotal }) => (
+                <li key={`${item.productId}-${item.size}`} className="py-4 flex items-center gap-4">
+                  <span className="relative w-14 aspect-[3/4] rounded-sm overflow-hidden bg-[var(--vybe-peach)] shrink-0">
+                    <Image
+                      src={product.images[0]?.src ?? "/images/products/concept-silhouette.svg"}
+                      alt=""
+                      fill
+                      sizes="56px"
+                      className="object-cover"
+                    />
+                  </span>
+                  <span className="flex-1 min-w-0">
+                    <span className="block font-serif text-lg text-[var(--color-text)] truncate">{product.name}</span>
+                    <span className="block text-xs text-[var(--color-muted)]">
+                      Size {item.size} &middot; Qty {item.quantity}
                     </span>
-                  </div>
-                ))}
-              </div>
+                  </span>
+                  <span className="text-sm text-[var(--color-text)]">{formatPrice(lineTotal)}</span>
+                </li>
+              ))}
+            </ul>
 
-              {/* Totals */}
-              <div className="pt-4 border-t border-[var(--color-border)] space-y-2 text-xs text-[var(--color-muted)]">
-                <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span className="font-semibold text-[var(--color-text)]">{formatPrice(subtotal)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Simulated Delivery</span>
-                  <span className="font-semibold text-[var(--vybe-sage-ink)]">₹0 (Free)</span>
-                </div>
-                <div className="flex justify-between text-base font-semibold text-[var(--color-text)] pt-2 border-t border-[var(--color-border)]">
-                  <span>Simulated Total</span>
-                  <span className="font-serif text-xl">{formatPrice(subtotal)}</span>
-                </div>
+            <dl className="pt-5 border-t border-[var(--color-text)]/10 space-y-2 text-sm">
+              <div className="flex justify-between">
+                <dt className="text-[var(--color-muted)]">Subtotal</dt>
+                <dd className="text-[var(--color-text)]">{formatPrice(subtotal)}</dd>
               </div>
-
-              <div className="pt-2 text-center">
-                <Link
-                  href="/cart"
-                  className="text-xs text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors underline underline-offset-4"
-                >
-                  &larr; Return to Shopping Bag to edit items
-                </Link>
+              <div className="flex justify-between">
+                <dt className="text-[var(--color-muted)]">Delivery to {formData.city}</dt>
+                <dd className="text-[var(--color-text)]">{deliveryFee === 0 ? "Complimentary" : formatPrice(deliveryFee)}</dd>
               </div>
-            </div>
-          </div>
+              <div className="flex justify-between items-baseline pt-3 mt-1 border-t border-[var(--color-text)]/10">
+                <dt className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text)]">Total</dt>
+                <dd className="text-2xl text-[var(--color-text)]">{formatPrice(total)}</dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </div>
     </div>

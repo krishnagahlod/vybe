@@ -28,13 +28,13 @@ export default function SizeGuidePage() {
           </nav>
 
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
-            Fit &amp; Sizing Intelligence
+            Size guide
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
-            Movement Sizing Guide
+            Find your fit
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
-            Engineered to move naturally with your silhouette. Use our body measurement charts and international conversions to find your ideal fit.
+            Measure once, then use the charts below to find your size across every VYBE piece, with international conversions.
           </p>
 
           {/* Unit Switcher */}
@@ -322,7 +322,7 @@ export default function SizeGuidePage() {
             href="/shop"
             className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg"
           >
-            Explore the 12-Piece Wardrobe &rarr;
+            Shop the collection
           </Link>
         </div>
       </div>

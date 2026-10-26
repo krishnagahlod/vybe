@@ -32,16 +32,22 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     };
   }, [isOpen, onClose]);
 
-  const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Shop All Activewear", href: "/shop" },
-    { label: "Size & Fit Guide", href: "/size-guide" },
-    { label: "Help & FAQ", href: "/faq" },
-    { label: "Track Movement Order", href: "/track-order" },
-    { label: "About VYBE", href: "/about" },
+  const shopLinks = [
+    { label: "Shop all", href: "/shop" },
+    { label: "Leggings", href: "/shop?category=leggings" },
+    { label: "Sports Bras", href: "/shop?category=sports-bras" },
+    { label: "Tops", href: "/shop?category=tops" },
+    { label: "Shorts", href: "/shop?category=shorts" },
+    { label: "Matching Sets", href: "/shop?category=sets" },
+    { label: "Layers", href: "/shop?category=layers" },
+  ];
+  const moreLinks = [
+    { label: "Fit & Fabric", href: "/#garment-anatomy" },
+    { label: "Our story", href: "/about" },
+    { label: "Size & fit guide", href: "/size-guide" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Track an order", href: "/track-order" },
     { label: "Contact", href: "/contact" },
-    { label: "Shipping & Returns", href: "/shipping-returns" },
-    { label: "Privacy Policy", href: "/privacy" },
   ];
 
   return (
@@ -55,104 +61,72 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/40 z-50 backdrop-blur-xs md:hidden"
+            className="fixed inset-0 bg-[var(--color-text)]/30 z-50 md:hidden"
             aria-hidden="true"
           />
 
-          {/* Drawer */}
+          {/* Drawer (slides from the left, where the menu button is) */}
           <motion.div
-            initial={{ x: "100%" }}
+            initial={{ x: "-100%" }}
             animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.25, ease: "easeOut" }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation menu"
-            className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-[var(--color-surface)] border-l border-[var(--color-border)] z-50 flex flex-col p-6 shadow-2xl md:hidden overflow-y-auto"
+            className="fixed top-0 left-0 bottom-0 w-[88%] max-w-sm bg-[var(--color-bg)] z-50 flex flex-col md:hidden overflow-y-auto"
           >
-            {/* Header in Drawer */}
-            <div className="flex items-center justify-between pb-6 border-b border-[var(--color-border)]">
-              <div>
-                <span className="font-serif text-2xl tracking-[0.25em] font-semibold text-[var(--color-text)]">
-                  VYBE
-                </span>
-                <p className="text-xs text-[var(--color-muted)] tracking-wider uppercase mt-0.5">
-                  Made for your movement
-                </p>
-              </div>
+            <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--color-border)]">
+              <span className="font-serif text-2xl font-medium tracking-[0.35em] text-[var(--color-text)]">VYBE</span>
               <button
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
-                className="p-2 rounded-full hover:bg-[var(--vybe-peach)] text-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+                className="w-10 h-10 -mr-2 inline-flex items-center justify-center rounded-full hover:bg-[var(--vybe-peach)]/60 text-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={1.5}
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* Cart Link inside Drawer */}
-            <div className="py-4 border-b border-[var(--color-border)]">
-              <Link
-                href="/cart"
-                onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-sm bg-[var(--vybe-peach)] text-[var(--color-text)] font-medium hover:bg-[var(--vybe-rose)]/40 transition-colors"
-              >
-                <span className="flex items-center gap-2">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={1.75}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                    />
-                  </svg>
-                  <span>Shopping Bag</span>
-                </span>
-                <span className="inline-flex items-center justify-center min-w-[1.5rem] h-6 px-2 text-xs font-semibold rounded-full bg-[var(--color-text)] text-white">
-                  {isLoaded ? totalCount : 0}
-                </span>
-              </Link>
-            </div>
-
-            {/* Nav list */}
-            <nav className="flex-1 py-4">
+            <nav className="flex-1 px-6 py-8 space-y-10" aria-label="Mobile navigation">
               <ul className="space-y-1">
-                {navLinks.map((link) => (
+                {shopLinks.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
                       onClick={onClose}
-                      className="block px-3 py-3 rounded-md text-base font-medium text-[var(--color-text)] hover:bg-[var(--vybe-sage)]/30 hover:text-[var(--vybe-mauve-ink)] transition-colors"
+                      className="block py-1.5 font-serif text-3xl text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors"
                     >
                       {link.label}
                     </Link>
                   </li>
                 ))}
               </ul>
+              <ul className="space-y-3 pt-8 border-t border-[var(--color-border)]">
+                {moreLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      onClick={onClose}
+                      className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link href="/cart" onClick={onClose} className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
+                    Bag ({isLoaded ? totalCount : 0})
+                  </Link>
+                </li>
+              </ul>
             </nav>
 
-            {/* Academic Notice in Mobile Menu */}
-            <div className="pt-4 border-t border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
-              <p className="font-semibold text-[var(--color-text)] mb-1">Concept Prototype Notice</p>
-              <p>
-                Created for ENT 625 Digital Marketing. Catalog and prices are simulated. Products cannot be purchased.
-              </p>
-            </div>
+            <p className="px-6 py-6 bg-[var(--vybe-sage)] font-serif text-xl text-[var(--color-text)]">
+              Made for your <span className="italic">kind</span> of movement.
+            </p>
           </motion.div>
         </>
       )}

@@ -10,10 +10,10 @@ export default function NotFound() {
 
         <div className="space-y-2">
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] font-mono">
-            Page Not Located
+            Page not found
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
-            A Moment Off Course
+            This page has wandered off.
           </h1>
           <p className="text-xs sm:text-sm text-[var(--color-muted)] max-w-md mx-auto leading-relaxed">
             The studio page or piece you are searching for might have moved, or the link may be out of date.
@@ -25,7 +25,7 @@ export default function NotFound() {
             href="/shop"
             className="w-full sm:w-auto px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md"
           >
-            Explore Activewear Edit &rarr;
+            Shop the collection
           </Link>
           <Link
             href="/"
@@ -38,7 +38,7 @@ export default function NotFound() {
         {/* Popular Shortcuts */}
         <div className="pt-8 border-t border-[var(--color-border)] space-y-3">
           <span className="text-[11px] uppercase tracking-wider text-[var(--color-muted)] font-mono block">
-            Popular Studio Categories
+            Or try
           </span>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {[

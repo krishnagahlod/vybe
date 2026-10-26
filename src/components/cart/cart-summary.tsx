@@ -3,8 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { formatPrice } from "@/lib/format";
-
-const FREE_DELIVERY_THRESHOLD = 1500;
+import { FREE_DELIVERY_THRESHOLD, getDeliveryFee } from "@/lib/pricing";
 
 type CartSummaryProps = {
   subtotal: number;
@@ -12,7 +11,8 @@ type CartSummaryProps = {
 };
 
 export function CartSummary({ subtotal, totalItems }: CartSummaryProps) {
-  const freeDelivery = subtotal >= FREE_DELIVERY_THRESHOLD;
+  const deliveryFee = getDeliveryFee(subtotal);
+  const freeDelivery = deliveryFee === 0;
 
   return (
     <div className="p-6 sm:p-8 rounded-md bg-[var(--vybe-peach)]/40 space-y-6">
@@ -27,18 +27,18 @@ export function CartSummary({ subtotal, totalItems }: CartSummaryProps) {
         </div>
         <div className="flex items-center justify-between">
           <dt className="text-[var(--color-muted)]">Delivery</dt>
-          <dd className="text-[var(--color-text)]">{freeDelivery ? "Complimentary" : "Calculated at checkout"}</dd>
+          <dd className="text-[var(--color-text)]">{freeDelivery ? "Complimentary" : formatPrice(deliveryFee)}</dd>
         </div>
-        {!freeDelivery && (
-          <p className="text-xs text-[var(--vybe-mauve-ink)]">
-            Add {formatPrice(FREE_DELIVERY_THRESHOLD - subtotal)} more for complimentary delivery.
-          </p>
-        )}
       </dl>
+      {!freeDelivery && (
+        <p className="-mt-3 text-xs text-[var(--vybe-mauve-ink)]">
+          Add {formatPrice(FREE_DELIVERY_THRESHOLD - subtotal)} more for complimentary delivery.
+        </p>
+      )}
 
       <div className="flex items-baseline justify-between pt-5 border-t border-[var(--color-text)]/10">
         <span className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text)]">Total</span>
-        <span className="text-2xl text-[var(--color-text)]">{formatPrice(subtotal)}</span>
+        <span className="text-2xl text-[var(--color-text)]">{formatPrice(subtotal + deliveryFee)}</span>
       </div>
       <p className="-mt-3 text-xs text-[var(--color-muted)]">Prices include GST.</p>
 

@@ -13,6 +13,7 @@ export type DemoOrderData = {
   city: string;
   items: { item: CartItem; product: Product; lineTotal: number }[];
   subtotal: number;
+  deliveryFee: number;
   date: string;
 };
 
@@ -21,113 +22,78 @@ type CheckoutConfirmationProps = {
 };
 
 export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
+  const firstName = order.customerName.split(" ")[0];
+  const total = order.subtotal + order.deliveryFee;
+
   return (
-    <div className="max-w-3xl mx-auto py-8 sm:py-12 space-y-8 animate-fade-up">
-      {/* Success Hero Card */}
-      <div className="p-8 sm:p-10 rounded-md bg-gradient-to-br from-[var(--vybe-peach)]/30 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-lg text-center space-y-4">
-        <div className="w-16 h-16 mx-auto rounded-full bg-[var(--vybe-sage)] border border-[var(--vybe-sage)] flex items-center justify-center text-[var(--color-text)]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-8 h-8"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-        </div>
-
-        <span className="inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-rose)] text-[var(--color-text)]">
-          Demo Flow Complete
-        </span>
-
-        <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
-          Simulated Order Confirmed
+    <div className="max-w-3xl mx-auto space-y-12 animate-fade-up">
+      <div className="text-center space-y-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
+          Demo order placed
+        </p>
+        <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.05]">
+          Thank you, <span className="italic">{firstName}.</span>
         </h1>
-
-        <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
-          Thank you, <strong className="text-[var(--color-text)]">{order.customerName}</strong>. Your test order reference is{" "}
-          <span className="font-mono font-semibold text-[var(--color-text)] bg-white px-2 py-0.5 rounded border border-[var(--color-border)]">
-            {order.orderId}
-          </span>.
+        <p className="text-base text-[var(--color-muted)]">
+          Order reference <span className="text-[var(--color-text)] font-semibold tracking-wide">{order.orderId}</span>
+          <span className="mx-2" aria-hidden="true">&middot;</span>
+          {order.date}
         </p>
       </div>
 
-      {/* Critical Academic & Demo Disclosure Banner */}
-      <div className="p-5 sm:p-6 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-2">
-        <p className="font-semibold uppercase tracking-wider flex items-center gap-2 text-[var(--color-text)]">
-          <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
-          Important Academic Evaluation Notice (ENT 625)
-        </p>
-        <p>
-          This was an entirely simulated checkout flow. <strong>No real financial charge was made</strong>, no payment-card data was transmitted, and <strong>no physical activewear will be shipped</strong>.
-        </p>
-        <p className="text-[var(--color-muted)]">
-          Simulated destination: <strong>{order.city}</strong> &bull; Notification simulated to: <strong>{order.email}</strong> &bull; Completed: {order.date}
+      <div className="p-5 sm:p-6 rounded-sm bg-[var(--vybe-peach)]/50 border border-[var(--vybe-rose)] text-sm leading-relaxed" role="note">
+        <p className="font-semibold text-[var(--color-text)]">This was a demonstration. Nothing was charged and nothing will ship.</p>
+        <p className="mt-1 text-[var(--color-muted)]">
+          VYBE is a concept store for ENT 625. No payment details were collected and no email has been sent to{" "}
+          {order.email}.
         </p>
       </div>
 
-      {/* Itemized Demo Order Summary */}
-      <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-6">
-        <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-4 border-b border-[var(--color-border)]">
-          Simulated Order Breakdown
-        </h2>
-
-        <div className="divide-y divide-[var(--color-border)]">
+      <div className="rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
+        <h2 className="font-serif text-2xl text-[var(--color-text)]">Order summary</h2>
+        <ul className="divide-y divide-[var(--color-text)]/10">
           {order.items.map(({ item, product, lineTotal }) => (
-            <div
-              key={`${item.productId}-${item.size}`}
-              className="py-3.5 flex items-center justify-between gap-4 text-sm"
-            >
-              <div className="space-y-0.5">
-                <h3 className="font-medium text-[var(--color-text)]">{product.name}</h3>
-                <p className="text-xs text-[var(--color-muted)]">
-                  Size: <strong className="text-[var(--color-text)]">{item.size}</strong> &bull; Qty: {item.quantity}
-                </p>
-              </div>
-              <span className="font-semibold text-[var(--color-text)] font-sans">
-                {formatPrice(lineTotal)}
+            <li key={`${item.productId}-${item.size}`} className="py-4 flex items-center justify-between gap-4">
+              <span>
+                <span className="block font-serif text-lg text-[var(--color-text)]">{product.name}</span>
+                <span className="block text-xs text-[var(--color-muted)]">
+                  Size {item.size} &middot; Qty {item.quantity}
+                </span>
               </span>
-            </div>
+              <span className="text-sm text-[var(--color-text)]">{formatPrice(lineTotal)}</span>
+            </li>
           ))}
-        </div>
-
-        <div className="pt-4 border-t border-[var(--color-border)] space-y-2 text-xs text-[var(--color-muted)]">
+        </ul>
+        <dl className="pt-5 border-t border-[var(--color-text)]/10 space-y-2 text-sm">
           <div className="flex justify-between">
-            <span>Subtotal</span>
-            <span className="font-medium text-[var(--color-text)]">{formatPrice(order.subtotal)}</span>
+            <dt className="text-[var(--color-muted)]">Subtotal</dt>
+            <dd className="text-[var(--color-text)]">{formatPrice(order.subtotal)}</dd>
           </div>
           <div className="flex justify-between">
-            <span>Shipping ({order.city})</span>
-            <span className="font-semibold text-[var(--vybe-sage-ink)]">₹0 (Free Test)</span>
+            <dt className="text-[var(--color-muted)]">Delivery to {order.city}</dt>
+            <dd className="text-[var(--color-text)]">
+              {order.deliveryFee === 0 ? "Complimentary" : formatPrice(order.deliveryFee)}
+            </dd>
           </div>
-          <div className="flex justify-between text-base font-semibold text-[var(--color-text)] pt-2 border-t border-[var(--color-border)]">
-            <span>Simulated Total</span>
-            <span className="font-serif text-xl">{formatPrice(order.subtotal)}</span>
+          <div className="flex justify-between items-baseline pt-3 mt-1 border-t border-[var(--color-text)]/10">
+            <dt className="text-[11px] uppercase tracking-[0.2em] font-semibold text-[var(--color-text)]">Total</dt>
+            <dd className="text-2xl text-[var(--color-text)]">{formatPrice(total)}</dd>
           </div>
-        </div>
+        </dl>
       </div>
 
-      {/* Return to Exploration CTAs */}
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
         <Link
           href={`/track-order?ref=${encodeURIComponent(order.orderId)}`}
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-sage)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
+          className="inline-flex items-center justify-center px-8 h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
-          Track Simulated Order &rarr;
+          Track this order
         </Link>
         <Link
           href="/shop"
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="inline-flex items-center justify-center px-8 h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
-          Browse Full Catalogue
-        </Link>
-        <Link
-          href="/"
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
-        >
-          Return Home
+          Keep shopping
         </Link>
       </div>
     </div>

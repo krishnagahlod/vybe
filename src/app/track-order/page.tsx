@@ -45,13 +45,13 @@ function TrackOrderContent() {
           </nav>
 
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
-            Fulfillment Intelligence
+            Order tracking
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
-            Track Your Movement Delivery
+            Where&apos;s my order?
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
-            Enter your demo confirmation code to check simulated logistics, transit hubs, and expected doorstep timelines.
+            Enter the order reference from your confirmation to see where your pieces are.
           </p>
         </div>
 
@@ -211,14 +211,6 @@ function TrackOrderContent() {
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Academic Simulation Notice Card */}
-              <div className="p-4 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex items-center gap-3">
-                <span className="text-base">ℹ️</span>
-                <p>
-                  <strong className="text-[var(--color-text)]">Demonstration Notice:</strong> This tracking readout is an interactive simulation demonstrating customer post-purchase journey tracking for the ENT 625 Digital Marketing project.
-                </p>
               </div>
             </motion.div>
           )}

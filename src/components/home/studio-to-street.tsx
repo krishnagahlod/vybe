@@ -10,7 +10,7 @@ const MOMENTS = [
 export function StudioToStreet() {
   return (
     <section id="studio-to-street" className="py-20 sm:py-28 bg-[var(--vybe-sage)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-5">
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0 rounded-md overflow-hidden bg-[var(--vybe-peach)]">
