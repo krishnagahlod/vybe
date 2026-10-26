@@ -27,7 +27,7 @@ export default function SizeGuidePage() {
             </ol>
           </nav>
 
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-2 font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
             Fit &amp; Sizing Intelligence
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
@@ -71,7 +71,7 @@ export default function SizeGuidePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve)] font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 1
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -83,7 +83,7 @@ export default function SizeGuidePage() {
             </div>
 
             <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve)] font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 2
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -95,7 +95,7 @@ export default function SizeGuidePage() {
             </div>
 
             <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve)] font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 3
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -107,7 +107,7 @@ export default function SizeGuidePage() {
             </div>
 
             <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve)] font-bold text-xs flex items-center justify-center">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 4
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -123,7 +123,7 @@ export default function SizeGuidePage() {
         {/* Measurement Tables */}
         <div className="space-y-12">
           {/* Bottoms Table */}
-          <div className="p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -191,7 +191,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* Sports Bras & Tops Table */}
-          <div className="p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -253,7 +253,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* International Size Conversions */}
-          <div className="p-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="border-b border-[var(--color-border)] pb-3">
               <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
                 International Size Conversions
@@ -320,7 +320,7 @@ export default function SizeGuidePage() {
         <div className="mt-16 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg"
           >
             Explore the 12-Piece Wardrobe &rarr;
           </Link>

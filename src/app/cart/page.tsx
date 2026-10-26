@@ -58,7 +58,7 @@ export default function CartPage() {
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-1 font-mono">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-1 font-mono">
               Review Selection
             </span>
             <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
@@ -80,7 +80,7 @@ export default function CartPage() {
             </strong>
             Items in this bag are for testing our academic storefront prototype. No actual payment, card collection, or fulfillment will take place.
           </p>
-          <span className="shrink-0 font-mono text-[11px] text-[var(--vybe-mauve)] font-medium">
+          <span className="shrink-0 font-mono text-[11px] text-[var(--vybe-mauve-ink)] font-medium">
             Saved to Local Storage
           </span>
         </div>
@@ -108,7 +108,7 @@ export default function CartPage() {
               <div className="pt-4 flex items-center justify-between">
                 <Link
                   href="/shop"
-                  className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors underline underline-offset-4 flex items-center gap-1.5"
+                  className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors underline underline-offset-4 flex items-center gap-1.5"
                 >
                   <span>&larr;</span>
                   <span>Continue Browsing Collection</span>

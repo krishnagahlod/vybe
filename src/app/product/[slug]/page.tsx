@@ -114,7 +114,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           {/* Left Column: Visual Presentation Frame */}
           <div className="lg:col-span-6 space-y-4">
-            <div className="relative aspect-[4/5] w-full rounded-3xl overflow-hidden bg-gradient-to-br from-[var(--vybe-peach)]/30 via-[var(--vybe-sage)]/20 to-[var(--color-bg)] border border-[var(--color-border)] shadow-md">
+            <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-[var(--vybe-peach)]/30 via-[var(--vybe-sage)]/20 to-[var(--color-bg)] border border-[var(--color-border)] shadow-md">
               <Image
                 src={imageSrc}
                 alt={imageAlt}
@@ -138,7 +138,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
               {/* Concept Notice Watermark */}
               <div className="absolute bottom-4 right-4 z-10">
-                <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-mono uppercase bg-white/90 backdrop-blur-xs text-[var(--vybe-mauve)] border border-[var(--color-border)]">
+                <span className="inline-block px-2.5 py-1 rounded-full text-[11px] font-mono uppercase bg-white/90 backdrop-blur-xs text-[var(--vybe-mauve-ink)] border border-[var(--color-border)]">
                   Simulated Prototype
                 </span>
               </div>
@@ -156,7 +156,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           {/* Right Column: Information, Pricing, & Interactive Actions */}
           <div className="lg:col-span-6 space-y-8">
             <div>
-              <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-2">
+              <span className="text-xs font-mono font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2">
                 VYBE Conceptual Catalog
               </span>
               <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] leading-tight mb-3">
@@ -232,17 +232,17 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
               <details className="group border border-[var(--color-border)] rounded-xl p-4 bg-[var(--color-surface)]">
                 <summary className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)] cursor-pointer list-none flex items-center justify-between">
-                  <span>Fabric Architecture &amp; Climate Care</span>
+                  <span>Fabric &amp; Care</span>
                   <span className="transition-transform group-open:rotate-180 text-[var(--color-muted)]">
                     &darr;
                   </span>
                 </summary>
                 <div className="pt-3 text-xs text-[var(--color-muted)] leading-relaxed space-y-2">
                   <p>
-                    <strong className="text-[var(--color-text)]">Composition:</strong> 78% Micro-Interlock Polyamide, 22% High-Recovery Elastane. Tested for 100% squat-proof opacity and zero slip.
+                    <strong className="text-[var(--color-text)]">Composition:</strong> 78% recycled polyamide, 22% elastane. A dense double-knit chosen for coverage and a waistband that stays put.
                   </p>
                   <p>
-                    <strong className="text-[var(--color-text)]">Climate Engineered:</strong> Air-permeable micro-channels dissipate heat in tropical and humid Indian conditions (Mumbai, Delhi summer, Pune, Bangalore).
+                    <strong className="text-[var(--color-text)]">Made for warm cities:</strong> A lightweight, breathable knit chosen with humid Indian summers in mind.
                   </p>
                   <p>
                     <strong className="text-[var(--color-text)]">Care:</strong> Cold machine wash at 30&deg;C. Line dry in shade. Avoid fabric softeners and high-heat tumble drying to protect bonded elastic trims.
@@ -288,7 +288,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
         <section className="mt-24 pt-16 border-t border-[var(--color-border)]">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-1 font-mono">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-1 font-mono">
                 Complete Your Look
               </span>
               <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[var(--color-text)]">
@@ -297,7 +297,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             </div>
             <Link
               href="/shop"
-              className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors underline underline-offset-4"
+              className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors underline underline-offset-4"
             >
               View Full Collection &rarr;
             </Link>

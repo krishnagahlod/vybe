@@ -6,6 +6,13 @@ import { useCart } from "@/lib/cart-context";
 import { useWishlist } from "@/lib/wishlist-context";
 import { MobileNav } from "./mobile-nav";
 
+const NAV_LINKS = [
+  { label: "Shop", href: "/shop" },
+  { label: "Fit & Fabric", href: "/#garment-anatomy" },
+  { label: "Our Story", href: "/about" },
+  { label: "Contact", href: "/contact" },
+];
+
 export function Header() {
   const { totalCount, isLoaded, openCartDrawer } = useCart();
   const { wishlistCount, openWishlistModal } = useWishlist();
@@ -23,7 +30,7 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(true)}
                 aria-expanded={mobileMenuOpen}
                 aria-label="Open main navigation menu"
-                className="p-2 -ml-1 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="p-2 -ml-1 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -42,55 +49,26 @@ export function Header() {
             <div className="flex items-center gap-3">
               <Link
                 href="/"
-                className="group flex flex-col items-start focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="group flex items-center focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
               >
-                <span className="font-serif text-xl sm:text-2xl font-normal tracking-[0.3em] text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors">
+                <span className="font-serif text-xl sm:text-2xl font-normal tracking-[0.3em] text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors">
                   VYBE
-                </span>
-                <span className="hidden sm:inline-block text-[8px] font-mono tracking-[0.25em] uppercase text-[var(--color-muted)] -mt-1">
-                  Movement Redefined
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden md:flex items-center gap-7 lg:gap-9" aria-label="Main navigation">
-              <Link
-                href="/shop"
-                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
-              >
-                <span>Collection</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
-              </Link>
-              <Link
-                href="/#garment-anatomy"
-                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
-              >
-                <span>Anatomy</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
-              </Link>
-              <Link
-                href="/#midnight-edit"
-                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group flex items-center gap-1.5"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#141211]" />
-                <span>Midnight Edit</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
-              </Link>
-              <Link
-                href="/about"
-                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
-              >
-                <span>Manifesto</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
-              </Link>
-              <Link
-                href="/contact"
-                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
-              >
-                <span>Contact</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
-              </Link>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors relative py-1 group"
+                >
+                  <span>{link.label}</span>
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve-ink)] transition-all duration-300 group-hover:w-full" />
+                </Link>
+              ))}
             </nav>
 
             {/* Action items: Wishlist & Cart Bag Triggers */}
@@ -100,7 +78,7 @@ export function Header() {
                 type="button"
                 onClick={openWishlistModal}
                 aria-label={`Open saved items list containing ${wishlistCount} items`}
-                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center cursor-pointer group"
+                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center cursor-pointer group"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +95,7 @@ export function Header() {
                   />
                 </svg>
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[1.1rem] h-4 px-1 text-[9px] font-bold rounded-full bg-[var(--vybe-rose)] text-white shadow-xs">
+                  <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[1.1rem] h-4 px-1 text-[11px] font-bold rounded-full bg-[var(--vybe-rose)] text-[var(--color-text)] shadow-xs">
                     {wishlistCount}
                   </span>
                 )}
@@ -128,7 +106,7 @@ export function Header() {
                 type="button"
                 onClick={openCartDrawer}
                 aria-label={`Open shopping bag drawer containing ${isLoaded ? totalCount : 0} items`}
-                className="relative flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all duration-300 shadow-sm cursor-pointer group focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="relative flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all duration-300 shadow-sm cursor-pointer group focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

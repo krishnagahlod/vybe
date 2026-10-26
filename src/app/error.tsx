@@ -18,12 +18,12 @@ export default function GlobalError({
   return (
     <div className="py-20 sm:py-32 flex items-center justify-center">
       <div className="max-w-md mx-auto px-4 text-center space-y-6">
-        <div className="w-16 h-16 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve)] mx-auto flex items-center justify-center text-2xl font-bold shadow-xs">
+        <div className="w-16 h-16 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center text-2xl font-bold shadow-xs">
           ⚠️
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] font-mono">
             System Notice
           </span>
           <h1 className="font-serif text-3xl font-medium text-[var(--color-text)]">
@@ -38,7 +38,7 @@ export default function GlobalError({
           <button
             type="button"
             onClick={() => reset()}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-colors shadow-xs cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs cursor-pointer"
           >
             Try Again
           </button>

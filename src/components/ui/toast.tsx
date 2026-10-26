@@ -7,7 +7,7 @@ import { useToast, ToastType } from "@/lib/toast-context";
 function ToastIcon({ type }: { type: ToastType }) {
   if (type === "warning") {
     return (
-      <span className="w-6 h-6 rounded-full bg-[var(--vybe-peach)]/50 text-[var(--vybe-mauve)] flex items-center justify-center shrink-0">
+      <span className="w-6 h-6 rounded-full bg-[var(--vybe-peach)]/50 text-[var(--vybe-mauve-ink)] flex items-center justify-center shrink-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-3.5 h-3.5"
@@ -45,7 +45,7 @@ function ToastIcon({ type }: { type: ToastType }) {
 
   // default: success
   return (
-    <span className="w-6 h-6 rounded-full bg-[var(--vybe-sage)] text-white flex items-center justify-center shrink-0">
+    <span className="w-6 h-6 rounded-full bg-[var(--vybe-sage)] text-[var(--color-text)] flex items-center justify-center shrink-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-3.5 h-3.5"

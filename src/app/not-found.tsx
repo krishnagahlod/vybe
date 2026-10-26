@@ -4,12 +4,12 @@ export default function NotFound() {
   return (
     <div className="py-20 sm:py-32 flex items-center justify-center">
       <div className="max-w-xl mx-auto px-4 sm:px-6 text-center space-y-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve)] mx-auto flex items-center justify-center font-serif text-3xl font-bold shadow-xs">
+        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center font-serif text-3xl font-bold shadow-xs">
           404
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] font-mono">
             Page Not Located
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md"
           >
             Explore Activewear Edit &rarr;
           </Link>
@@ -51,7 +51,7 @@ export default function NotFound() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-3 py-1.5 rounded-full text-xs bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve)] transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
               >
                 {link.label}
               </Link>

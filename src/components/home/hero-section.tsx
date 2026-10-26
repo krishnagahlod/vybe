@@ -1,191 +1,107 @@
-"use client";
-
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+
+const MARQUEE_ITEMS = [
+  "Made for your kind of movement",
+  "Studio to street",
+  "Soft, considered colour",
+  "Sizes XS to XL",
+  "Complimentary delivery over ₹1,500",
+];
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#f9f6f2] via-[var(--color-bg)] to-[var(--color-bg)] pt-6 pb-14 sm:pt-12 sm:pb-20 border-b border-[var(--color-border)]">
-      {/* Ambient background soft glow */}
+    <section className="relative overflow-hidden bg-[var(--color-bg)] pt-8 sm:pt-14">
+      {/* Single soft wash of brand peach behind the composition */}
       <div
-        className="absolute top-10 right-1/4 -mt-20 w-[32rem] h-[32rem] rounded-full bg-[var(--vybe-peach)]/40 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-[var(--vybe-sage)]/15 blur-3xl pointer-events-none"
+        className="absolute -top-24 right-0 w-[40rem] h-[40rem] rounded-full bg-[var(--vybe-peach)]/60 blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Main Editorial Narrative (Left Column) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-6 sm:space-y-8 text-left"
-          >
-            {/* Editorial Capsule Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[10px] font-mono font-semibold tracking-[0.2em] uppercase bg-white/95 backdrop-blur-md border border-[var(--color-border)] text-[var(--color-text)] shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[var(--vybe-sage)] animate-pulse" />
-              <span>SS26 Studio Capsule &bull; Volume 01</span>
-            </div>
-
-            {/* High-Fashion Magazine Title */}
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl xl:text-[5.2rem] font-normal tracking-tight text-[var(--color-text)] leading-[1.03]">
-              Made for your{" "}
-              <span className="italic font-normal text-[var(--vybe-mauve)] block sm:inline">
-                kind
-              </span>{" "}
-              of movement.
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-xl font-light">
-              Contemporary women&apos;s activewear crafted with 4-way cloud stretch and breathable air-weave fabric. Formulated for mindful studio practice, reformer flows, and the daily rhythm of Indian metro life.
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Editorial narrative */}
+          <div className="lg:col-span-5 space-y-6 sm:space-y-8 animate-fade-up">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
+              Volume 01 &middot; The Studio Collection
             </p>
 
-            {/* CTAs */}
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <h1 className="font-serif text-5xl sm:text-6xl xl:text-7xl font-normal tracking-tight text-[var(--color-text)] leading-[1.04]">
+              Made for your <span className="italic text-[var(--vybe-mauve-ink)]">kind</span> of movement.
+            </h1>
+
+            <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-md">
+              Contemporary women&apos;s activewear in soft, considered colour. Cut for studio flows, gym
+              sessions, and the walk home afterwards.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/shop"
-                className="group inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md hover:shadow-xl focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
               >
-                <span>Explore The Collection</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <span>Shop the collection</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+                  &rarr;
+                </span>
               </Link>
               <Link
-                href="#garment-anatomy"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-white/90 backdrop-blur-xs border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 transition-colors shadow-xs focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                href="#style-quiz"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase border border-[var(--color-text)]/20 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
               >
-                Inspect Garment Anatomy &darr;
+                Find your fit
               </Link>
             </div>
+          </div>
 
-            {/* Metro Launch Spotlight Banner */}
-            <div className="pt-6 border-t border-[var(--color-border)]/80 flex flex-wrap items-center gap-2.5 text-xs text-[var(--color-muted)]">
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-widest text-[var(--color-text)]">
-                Metro Hubs:
-              </span>
-              {["Mumbai", "Pune", "Delhi", "Bangalore"].map((city) => (
-                <span
-                  key={city}
-                  className="px-3 py-1 rounded-full bg-white/90 border border-[var(--color-border)] text-[10px] font-mono text-[var(--color-text)] shadow-2xs"
-                >
-                  {city}
-                </span>
-              ))}
-              <span className="text-[10px] font-mono text-[var(--vybe-mauve)] font-medium ml-1">
-                &bull; Climate Engineered
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Full-Bleed Editorial Campaign Visual (Right Column) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative"
-          >
-            {/* Visual Frame */}
-            <div className="relative rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden aspect-[4/5] w-full shadow-2xl border border-white/90 bg-[var(--vybe-sage)]/20 group">
+          {/* Campaign image: landscape source shown in a landscape frame so the full pose is kept */}
+          <div className="lg:col-span-7 animate-fade-up [animation-delay:120ms]">
+            <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-[var(--vybe-sage)]">
               <Image
                 src="/images/lifestyle/hero-editorial-movement.jpg"
-                alt="VYBE mindful movement campaign — model in matching sage activewear in sunlit limestone studio"
+                alt="Woman holding a standing balance pose in sage VYBE leggings and bra in a sunlit limestone studio"
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover object-[45%_center]"
               />
 
-              {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/10 pointer-events-none" />
-
-              {/* Floating Top Badge */}
-              <div className="absolute top-5 left-5 z-10">
-                <div className="px-3.5 py-2 rounded-2xl bg-black/60 backdrop-blur-md border border-white/20 text-white shadow-lg">
-                  <span className="block text-[8px] font-mono uppercase tracking-[0.25em] text-[var(--vybe-peach)]">
-                    Micro-Weave Innovation
+              <Link
+                href="/product/flow-high-rise-leggings"
+                className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 flex items-center gap-3 p-2.5 pr-5 rounded-xl bg-white/95 backdrop-blur-md shadow-lg hover:bg-white transition-colors"
+              >
+                <span className="relative w-11 h-11 rounded-lg overflow-hidden bg-[var(--vybe-sage)] shrink-0">
+                  <Image
+                    src="/images/products/flow-high-rise-leggings-1.jpg"
+                    alt=""
+                    fill
+                    sizes="44px"
+                    className="object-cover"
+                  />
+                </span>
+                <span>
+                  <span className="block font-serif text-sm text-[var(--color-text)] leading-tight">
+                    Flow High-Rise Leggings
                   </span>
-                  <span className="text-xs font-semibold tracking-wide">
-                    4-Way Cloud Stretch &bull; 100% Opaque
-                  </span>
-                </div>
-              </div>
-
-              {/* Floating Bottom Quick-Shop Card */}
-              <div className="absolute bottom-5 right-5 left-5 z-10">
-                <Link
-                  href="/product/flow-high-rise-leggings"
-                  className="block p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-white/80 shadow-xl transition-all duration-300 hover:bg-white hover:scale-[1.02] text-[var(--color-text)]"
-                >
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-[var(--vybe-sage)]/30 overflow-hidden relative shrink-0">
-                        <Image
-                          src="/images/products/flow-high-rise-leggings-1.jpg"
-                          alt="Flow High-Rise Leggings preview"
-                          fill
-                          sizes="44px"
-                          className="object-cover"
-                        />
-                      </div>
-                      <div>
-                        <span className="block text-[9px] font-mono uppercase tracking-widest text-[var(--vybe-mauve)]">
-                          Featured Studio Piece
-                        </span>
-                        <p className="font-serif text-sm font-semibold leading-tight text-[var(--color-text)]">
-                          Flow High-Rise Leggings
-                        </p>
-                        <span className="text-xs font-medium text-[var(--color-muted)]">
-                          ₹1,799 &bull; Sage Green
-                        </span>
-                      </div>
-                    </div>
-                    <span className="px-3 py-1.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[var(--color-text)] text-white shrink-0">
-                      View &rarr;
-                    </span>
-                  </div>
-                </Link>
-              </div>
+                  <span className="text-xs text-[var(--color-muted)]">Worn here in Sage &middot; Shop &rarr;</span>
+                </span>
+              </Link>
             </div>
-          </motion.div>
-
+          </div>
         </div>
       </div>
 
-      {/* Infinite Luxury Marquee Strip */}
-      <div className="mt-14 sm:mt-20 pt-4 pb-4 bg-white/80 backdrop-blur-xs border-y border-[var(--color-border)] overflow-hidden">
-        <div className="flex whitespace-nowrap gap-8 text-[11px] font-mono uppercase tracking-[0.25em] text-[var(--color-muted)]">
+      {/* Brand ticker */}
+      <div className="mt-14 sm:mt-20 py-4 border-y border-[var(--color-border)] overflow-hidden" aria-hidden="true">
+        <div className="flex whitespace-nowrap text-[11px] uppercase tracking-[0.25em] text-[var(--color-muted)]">
           {[1, 2].map((iter) => (
-            <div key={iter} className="flex shrink-0 items-center gap-8 animate-marquee">
-              <span>Mindful Compression</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
-              <span>Formulated For Indian Metro Climates</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
-              <span>100% Squat-Proof Blackout Opacity</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
-              <span>Zero-Slip Waistband Architecture</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
-              <span>Plastic-Free Eco Packaging</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
-              <span>Made For Your Kind Of Movement</span>
-              <span className="text-[var(--vybe-rose)] font-bold">✦</span>
+            <div key={iter} className="flex shrink-0 items-center gap-8 pr-8 animate-marquee">
+              {MARQUEE_ITEMS.map((item) => (
+                <span key={item} className="flex items-center gap-8">
+                  <span>{item}</span>
+                  <span className="text-[var(--vybe-rose)]">&#10022;</span>
+                </span>
+              ))}
             </div>
           ))}
         </div>

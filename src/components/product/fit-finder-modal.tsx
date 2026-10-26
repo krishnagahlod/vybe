@@ -121,12 +121,12 @@ export function FitFinderModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-3xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
+            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
           >
             {/* Header */}
             <div className="p-6 border-b border-[var(--color-border)] bg-[var(--color-surface)]/70 flex items-center justify-between">
               <div>
-                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--vybe-mauve)]">
+                <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[var(--vybe-mauve-ink)]">
                   VYBE Sizing Intelligence
                 </span>
                 <h3 id={titleId} className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -185,7 +185,7 @@ export function FitFinderModal({
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs">
                       <span className="font-semibold text-[var(--color-text)]">Bust Measurement</span>
-                      <span className="font-mono font-bold text-[var(--vybe-mauve)]">
+                      <span className="font-mono font-bold text-[var(--vybe-mauve-ink)]">
                         {unit === "in" ? `${bustIn}"` : `${Math.round(bustIn * 2.54)} cm`}
                       </span>
                     </div>
@@ -196,7 +196,7 @@ export function FitFinderModal({
                       step={0.5}
                       value={bustIn}
                       onChange={(e) => setBustIn(parseFloat(e.target.value))}
-                      className="w-full accent-[var(--vybe-mauve)] cursor-pointer"
+                      className="w-full accent-[var(--vybe-mauve-ink)] cursor-pointer"
                     />
                   </div>
                 )}
@@ -206,7 +206,7 @@ export function FitFinderModal({
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs">
                       <span className="font-semibold text-[var(--color-text)]">Natural Waist</span>
-                      <span className="font-mono font-bold text-[var(--vybe-mauve)]">
+                      <span className="font-mono font-bold text-[var(--vybe-mauve-ink)]">
                         {unit === "in" ? `${waistIn}"` : `${Math.round(waistIn * 2.54)} cm`}
                       </span>
                     </div>
@@ -217,7 +217,7 @@ export function FitFinderModal({
                       step={0.5}
                       value={waistIn}
                       onChange={(e) => setWaistIn(parseFloat(e.target.value))}
-                      className="w-full accent-[var(--vybe-mauve)] cursor-pointer"
+                      className="w-full accent-[var(--vybe-mauve-ink)] cursor-pointer"
                     />
                   </div>
                 )}
@@ -227,7 +227,7 @@ export function FitFinderModal({
                   <div className="space-y-1.5">
                     <div className="flex justify-between text-xs">
                       <span className="font-semibold text-[var(--color-text)]">Fullest Hip</span>
-                      <span className="font-mono font-bold text-[var(--vybe-mauve)]">
+                      <span className="font-mono font-bold text-[var(--vybe-mauve-ink)]">
                         {unit === "in" ? `${hipsIn}"` : `${Math.round(hipsIn * 2.54)} cm`}
                       </span>
                     </div>
@@ -238,7 +238,7 @@ export function FitFinderModal({
                       step={0.5}
                       value={hipsIn}
                       onChange={(e) => setHipsIn(parseFloat(e.target.value))}
-                      className="w-full accent-[var(--vybe-mauve)] cursor-pointer"
+                      className="w-full accent-[var(--vybe-mauve-ink)] cursor-pointer"
                     />
                   </div>
                 )}
@@ -255,12 +255,12 @@ export function FitFinderModal({
                     onClick={() => setFitPref("snug")}
                     className={`p-2.5 rounded-xl border text-center transition-all ${
                       fitPref === "snug"
-                        ? "border-[var(--vybe-mauve)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
                     <div className="text-xs">Sculpt / Snug</div>
-                    <div className="text-[10px] opacity-75 mt-0.5">High Hold</div>
+                    <div className="text-[11px] opacity-75 mt-0.5">High Hold</div>
                   </button>
 
                   <button
@@ -268,12 +268,12 @@ export function FitFinderModal({
                     onClick={() => setFitPref("true")}
                     className={`p-2.5 rounded-xl border text-center transition-all ${
                       fitPref === "true"
-                        ? "border-[var(--vybe-mauve)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
                     <div className="text-xs">True to Size</div>
-                    <div className="text-[10px] opacity-75 mt-0.5">Studio Standard</div>
+                    <div className="text-[11px] opacity-75 mt-0.5">Studio Standard</div>
                   </button>
 
                   <button
@@ -281,12 +281,12 @@ export function FitFinderModal({
                     onClick={() => setFitPref("relaxed")}
                     className={`p-2.5 rounded-xl border text-center transition-all ${
                       fitPref === "relaxed"
-                        ? "border-[var(--vybe-mauve)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
                     <div className="text-xs">Relaxed</div>
-                    <div className="text-[10px] opacity-75 mt-0.5">Zero Pinch</div>
+                    <div className="text-[11px] opacity-75 mt-0.5">Zero Pinch</div>
                   </button>
                 </div>
               </div>
@@ -328,7 +328,7 @@ export function FitFinderModal({
                   onSelectSize(recommendedSize);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
+                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
               >
                 Apply Size {recommendedSize} &amp; Close
               </button>

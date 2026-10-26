@@ -44,7 +44,7 @@ function TrackOrderContent() {
             </ol>
           </nav>
 
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-2 font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
             Fulfillment Intelligence
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
@@ -56,7 +56,7 @@ function TrackOrderContent() {
         </div>
 
         {/* Input Form Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs mb-10">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs mb-10">
           <form onSubmit={handleSearch} className="space-y-4">
             <div>
               <label htmlFor="order-ref" className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-2">
@@ -72,11 +72,11 @@ function TrackOrderContent() {
                     if (error) setError("");
                   }}
                   placeholder="e.g. VYBE-DEMO-482915"
-                  className="flex-1 py-3 px-4 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-sm font-mono text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--vybe-mauve)] transition-colors uppercase"
+                  className="flex-1 py-3 px-4 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-sm font-mono text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--vybe-mauve-ink)] transition-colors uppercase"
                 />
                 <button
                   type="submit"
-                  className="py-3 px-8 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve)] transition-all shadow-xs shrink-0 cursor-pointer"
+                  className="py-3 px-8 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs shrink-0 cursor-pointer"
                 >
                   Lookup Status
                 </button>
@@ -85,7 +85,7 @@ function TrackOrderContent() {
             </div>
 
             <p className="text-[11px] text-[var(--color-muted)]">
-              Tip: A sample order reference (<code className="font-mono text-[var(--vybe-mauve)]">VYBE-DEMO-482915</code>) is loaded above for immediate demonstration.
+              Tip: A sample order reference (<code className="font-mono text-[var(--vybe-mauve-ink)]">VYBE-DEMO-482915</code>) is loaded above for immediate demonstration.
             </p>
           </form>
         </div>
@@ -102,9 +102,9 @@ function TrackOrderContent() {
               className="space-y-8"
             >
               {/* Order Status Summary Banner */}
-              <div className="p-6 rounded-3xl bg-linear-to-br from-[var(--vybe-sage)]/35 via-[var(--vybe-peach)]/35 to-transparent border border-[var(--vybe-rose)]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="p-6 rounded-2xl bg-linear-to-br from-[var(--vybe-sage)]/35 via-[var(--vybe-peach)]/35 to-transparent border border-[var(--vybe-rose)]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--vybe-mauve)] block">
+                  <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--vybe-mauve-ink)] block">
                     Simulated Tracking ID: {searchedRef}
                   </span>
                   <h3 className="font-serif text-2xl font-semibold text-[var(--color-text)] mt-1">
@@ -115,25 +115,25 @@ function TrackOrderContent() {
                   </p>
                 </div>
                 <div className="px-4 py-2 rounded-2xl bg-white/80 border border-[var(--color-border)] text-center shrink-0 shadow-xs">
-                  <span className="block text-[10px] uppercase tracking-wider text-[var(--color-muted)]">
+                  <span className="block text-[11px] uppercase tracking-wider text-[var(--color-muted)]">
                     Estimated Doorstep
                   </span>
-                  <span className="font-semibold text-xs text-emerald-800">
+                  <span className="font-semibold text-xs text-[var(--vybe-sage-ink)]">
                     Next 24&ndash;48 Hours
                   </span>
                 </div>
               </div>
 
               {/* Progress Milestones */}
-              <div className="p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
+              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
                 <h4 className="font-serif text-lg font-semibold text-[var(--color-text)] mb-6">
                   Fulfillment Milestones
                 </h4>
 
-                <div className="relative pl-8 space-y-8 before:content-[''] before:absolute before:left-3.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[var(--vybe-mauve)]/30">
+                <div className="relative pl-8 space-y-8 before:content-[''] before:absolute before:left-3.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-[var(--vybe-mauve-ink)]/30">
                   {/* Step 1 */}
                   <div className="relative">
-                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">
+                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-[var(--vybe-sage-ink)] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                       ✓
                     </span>
                     <div>
@@ -141,7 +141,7 @@ function TrackOrderContent() {
                         <h5 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
                           Demo Order Confirmed
                         </h5>
-                        <span className="text-[10px] font-mono text-[var(--color-muted)]">
+                        <span className="text-[11px] font-mono text-[var(--color-muted)]">
                           Today, 10:14 AM
                         </span>
                       </div>
@@ -153,7 +153,7 @@ function TrackOrderContent() {
 
                   {/* Step 2 */}
                   <div className="relative">
-                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-xs">
+                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-[var(--vybe-sage-ink)] text-white flex items-center justify-center text-xs font-bold shadow-xs">
                       ✓
                     </span>
                     <div>
@@ -161,7 +161,7 @@ function TrackOrderContent() {
                         <h5 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
                           Quality Inspected &amp; Packed
                         </h5>
-                        <span className="text-[10px] font-mono text-[var(--color-muted)]">
+                        <span className="text-[11px] font-mono text-[var(--color-muted)]">
                           Today, 11:30 AM
                         </span>
                       </div>
@@ -173,7 +173,7 @@ function TrackOrderContent() {
 
                   {/* Step 3 */}
                   <div className="relative">
-                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-[var(--vybe-mauve)] text-white flex items-center justify-center text-xs font-bold shadow-xs ring-4 ring-[var(--vybe-peach)]">
+                    <span className="absolute -left-8 top-0.5 w-7 h-7 rounded-full bg-[var(--vybe-mauve-ink)] text-white flex items-center justify-center text-xs font-bold shadow-xs ring-4 ring-[var(--vybe-peach)]">
                       ✈
                     </span>
                     <div>
@@ -181,7 +181,7 @@ function TrackOrderContent() {
                         <h5 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
                           Dispatched via Express Air Delivery
                         </h5>
-                        <span className="text-[10px] font-mono text-emerald-700 font-semibold">
+                        <span className="text-[11px] font-mono text-[var(--vybe-sage-ink)] font-semibold">
                           Active &bull; In Transit
                         </span>
                       </div>
@@ -201,7 +201,7 @@ function TrackOrderContent() {
                         <h5 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
                           Out for Doorstep Delivery
                         </h5>
-                        <span className="text-[10px] font-mono text-[var(--color-muted)]">
+                        <span className="text-[11px] font-mono text-[var(--color-muted)]">
                           Pending Dispatch
                         </span>
                       </div>

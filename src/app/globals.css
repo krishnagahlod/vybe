@@ -1,41 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --vybe-sage: #5b6e5b;
-  --vybe-sage-light: #e4ebe2;
-  --vybe-peach: #f5ebe1;
-  --vybe-pink: #f2ddd6;
-  --vybe-rose: #b87a66;
-  --vybe-mauve: #7a6369;
-  --vybe-bronze: #c5a072;
-  --color-bg: #faf8f5;
+  /* Brand palette — exact values from DESIGN_SYSTEM.md. Used for surfaces, swatches, and accents. */
+  --vybe-sage: #d8e2dc;
+  --vybe-peach: #ffe5d9;
+  --vybe-pink: #ffcad4;
+  --vybe-rose: #f4acb7;
+  --vybe-mauve: #9d8189;
+
+  /* Ink variants — deeper shades of the palette for text, icons, and filled buttons (WCAG AA on --color-bg). */
+  --vybe-sage-ink: #56695c;
+  --vybe-rose-ink: #9a4b5a;
+  --vybe-mauve-ink: #73585f;
+
+  --color-bg: #fffdfb;
   --color-surface: #ffffff;
-  --color-text: #141211;
-  --color-muted: #736e6b;
-  --color-border: #e8e3dc;
-  --vybe-dark-bg: #121110;
-  --vybe-dark-surface: #1c1a18;
-  --vybe-dark-border: rgba(255, 255, 255, 0.12);
+  --color-text: #292526;
+  --color-muted: #6e6668;
+  --color-border: #e9e2e1;
 }
 
 @theme inline {
   --color-vybe-sage: var(--vybe-sage);
-  --color-vybe-sage-light: var(--vybe-sage-light);
   --color-vybe-peach: var(--vybe-peach);
   --color-vybe-pink: var(--vybe-pink);
   --color-vybe-rose: var(--vybe-rose);
   --color-vybe-mauve: var(--vybe-mauve);
-  --color-vybe-bronze: var(--vybe-bronze);
+  --color-vybe-sage-ink: var(--vybe-sage-ink);
+  --color-vybe-rose-ink: var(--vybe-rose-ink);
+  --color-vybe-mauve-ink: var(--vybe-mauve-ink);
   --color-vybe-bg: var(--color-bg);
   --color-vybe-surface: var(--color-surface);
   --color-vybe-text: var(--color-text);
   --color-vybe-muted: var(--color-muted);
   --color-vybe-border: var(--color-border);
-  --color-vybe-dark-bg: var(--vybe-dark-bg);
-  --color-vybe-dark-surface: var(--vybe-dark-surface);
-  --color-vybe-dark-border: var(--vybe-dark-border);
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-jakarta);
+  /* Labels previously fell back to the OS monospace; keep them in the brand sans. */
+  --font-mono: var(--font-jakarta);
 }
 
 body {
@@ -87,6 +89,22 @@ body {
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* Load-in reveal that runs without JavaScript (content stays visible if JS is slow or fails) */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Interactive Hotspot Pulsing Rings */

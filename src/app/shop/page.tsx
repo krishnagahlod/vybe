@@ -63,7 +63,7 @@ export default function ShopPage({
 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-1 font-mono">
+              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-1 font-mono">
                 The Activewear Edit
               </span>
               <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
@@ -84,7 +84,7 @@ export default function ShopPage({
             </strong>
             All products, sizes, and prices are conceptual drafts for the ENT 625 Digital Marketing project.
           </p>
-          <span className="shrink-0 text-[11px] font-mono text-[var(--vybe-mauve)] font-medium">
+          <span className="shrink-0 text-[11px] font-mono text-[var(--vybe-mauve-ink)] font-medium">
             Draft Prices in INR
           </span>
         </div>

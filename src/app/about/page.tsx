@@ -26,7 +26,7 @@ export default function AboutPage() {
               </li>
             </ol>
           </nav>
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
             Our Story &amp; Movement Philosophy
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] leading-tight">
@@ -38,7 +38,7 @@ export default function AboutPage() {
         </div>
 
         {/* Brand Mission Statement */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[var(--vybe-peach)]/35 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-xs space-y-6">
+        <section className="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-[var(--vybe-peach)]/35 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-xs space-y-6">
           <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[var(--color-text)]">
             Movement on Your Own Terms
           </h2>
@@ -101,8 +101,8 @@ export default function AboutPage() {
         </section>
 
         {/* Academic Project Context */}
-        <section className="p-8 rounded-3xl bg-[var(--vybe-sage)]/25 border border-[var(--color-border)] space-y-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[var(--vybe-mauve)] block font-mono">
+        <section className="p-8 rounded-2xl bg-[var(--vybe-sage)]/25 border border-[var(--color-border)] space-y-4">
+          <span className="text-xs font-semibold uppercase tracking-wider text-[var(--vybe-mauve-ink)] block font-mono">
             Academic Project Transparency
           </span>
           <h2 className="font-serif text-2xl font-medium text-[var(--color-text)]">
@@ -120,7 +120,7 @@ export default function AboutPage() {
           <div className="pt-4 flex flex-wrap gap-4">
             <Link
               href="/shop"
-              className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-colors shadow-xs"
+              className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Explore Collection &rarr;
             </Link>

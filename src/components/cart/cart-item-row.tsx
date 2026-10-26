@@ -32,7 +32,7 @@ export function CartItemRow({
       <div className="flex items-center gap-4 w-full sm:w-auto">
         <Link
           href={`/product/${product.slug}`}
-          className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden bg-[var(--vybe-peach)]/25 border border-[var(--color-border)] shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+          className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden bg-[var(--vybe-peach)]/25 border border-[var(--color-border)] shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           <Image
             src={imageSrc}
@@ -44,13 +44,13 @@ export function CartItemRow({
         </Link>
 
         <div className="flex-1 min-w-0 space-y-1">
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--vybe-mauve)] block">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--vybe-mauve-ink)] block">
             {product.category.replace("-", " ")}
           </span>
           <h3 className="font-serif text-base sm:text-lg font-medium text-[var(--color-text)] truncate">
             <Link
               href={`/product/${product.slug}`}
-              className="hover:text-[var(--vybe-mauve)] transition-colors focus-visible:outline-hidden"
+              className="hover:text-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-hidden"
             >
               {product.name}
             </Link>
@@ -103,7 +103,7 @@ export function CartItemRow({
           <span className="block font-semibold text-base text-[var(--color-text)] font-sans">
             {formatPrice(lineTotal)}
           </span>
-          <span className="hidden sm:block text-[10px] text-[var(--color-muted)] font-mono">
+          <span className="hidden sm:block text-[11px] text-[var(--color-muted)] font-mono">
             {formatPrice(product.price)} &times; {item.quantity}
           </span>
         </div>

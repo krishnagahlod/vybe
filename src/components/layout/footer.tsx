@@ -12,31 +12,12 @@ export function Footer() {
                 VYBE
               </span>
             </Link>
-            <p className="text-sm font-medium tracking-wide uppercase text-[var(--vybe-mauve)]">
+            <p className="text-sm font-medium tracking-wide uppercase text-[var(--vybe-mauve-ink)]">
               Made for your kind of movement
             </p>
             <p className="text-sm text-[var(--color-muted)] max-w-md leading-relaxed">
               Thoughtfully designed athleisure concepts for studio sessions, mindful movement, and everyday rhythm. Celebrating personal expression without compromise.
             </p>
-            <div className="pt-2">
-              <p className="text-xs uppercase tracking-wider text-[var(--color-muted)] mb-1">
-                Campaign Focus Cities:
-              </p>
-              <div className="flex flex-wrap gap-2 text-xs font-medium text-[var(--color-text)]">
-                <span className="px-2.5 py-1 rounded bg-[var(--vybe-peach)]/60 border border-[var(--color-border)]">
-                  Mumbai
-                </span>
-                <span className="px-2.5 py-1 rounded bg-[var(--vybe-peach)]/60 border border-[var(--color-border)]">
-                  Pune
-                </span>
-                <span className="px-2.5 py-1 rounded bg-[var(--vybe-peach)]/60 border border-[var(--color-border)]">
-                  Delhi
-                </span>
-                <span className="px-2.5 py-1 rounded bg-[var(--vybe-peach)]/60 border border-[var(--color-border)]">
-                  Bangalore
-                </span>
-              </div>
-            </div>
           </div>
 
           {/* Explore / Shop Column */}
@@ -85,6 +66,22 @@ export function Footer() {
                   Matching Sets
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/shop?category=shorts"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                >
+                  Shorts
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/shop?category=layers"
+                  className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
+                >
+                  Layers &amp; Joggers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -115,7 +112,7 @@ export function Footer() {
                   href="/track-order"
                   className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
                 >
-                  Track Movement Order
+                  Track an Order
                 </Link>
               </li>
               <li>

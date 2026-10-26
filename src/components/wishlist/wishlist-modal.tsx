@@ -46,12 +46,12 @@ export function WishlistModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-2xl bg-[var(--color-bg)] rounded-3xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10 flex flex-col max-h-[85vh]"
+            className="relative w-full max-w-2xl bg-[var(--color-bg)] rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10 flex flex-col max-h-[85vh]"
           >
             {/* Header */}
             <div className="p-6 border-b border-[var(--color-border)] bg-[var(--color-surface)]/70 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[var(--vybe-pink)]/40 flex items-center justify-center text-[var(--vybe-mauve)]">
+                <div className="w-8 h-8 rounded-full bg-[var(--vybe-pink)]/40 flex items-center justify-center text-[var(--vybe-mauve-ink)]">
                   <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                   </svg>
@@ -82,7 +82,7 @@ export function WishlistModal() {
             <div className="p-6 overflow-y-auto flex-1 divide-y divide-[var(--color-border)]">
               {savedProducts.length === 0 ? (
                 <div className="text-center py-12 space-y-3">
-                  <div className="w-14 h-14 rounded-full bg-[var(--vybe-peach)]/50 mx-auto flex items-center justify-center text-[var(--vybe-mauve)]">
+                  <div className="w-14 h-14 rounded-full bg-[var(--vybe-peach)]/50 mx-auto flex items-center justify-center text-[var(--vybe-mauve-ink)]">
                     <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
@@ -94,7 +94,7 @@ export function WishlistModal() {
                   <button
                     type="button"
                     onClick={closeWishlistModal}
-                    className="mt-2 inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-colors shadow-xs"
+                    className="mt-2 inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
                   >
                     <Link href="/shop" onClick={closeWishlistModal}>
                       Explore Collection
@@ -124,7 +124,7 @@ export function WishlistModal() {
                             <Link
                               href={`/product/${p.slug}`}
                               onClick={closeWishlistModal}
-                              className="text-[11px] font-semibold text-[var(--vybe-mauve)] hover:underline"
+                              className="text-[11px] font-semibold text-[var(--vybe-mauve-ink)] hover:underline"
                             >
                               View Style &rarr;
                             </Link>
@@ -152,7 +152,7 @@ export function WishlistModal() {
                 <Link
                   href="/shop"
                   onClick={closeWishlistModal}
-                  className="font-semibold text-[var(--color-text)] hover:text-[var(--vybe-mauve)]"
+                  className="font-semibold text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)]"
                 >
                   Continue Shopping &rarr;
                 </Link>

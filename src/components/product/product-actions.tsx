@@ -68,10 +68,10 @@ export function ProductActions({ product }: ProductActionsProps) {
             <div className="flex items-center gap-2">
               <label className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
                 <span>Select Size</span>
-                <span className="text-[var(--vybe-mauve)]">*</span>
+                <span className="text-[var(--vybe-mauve-ink)]">*</span>
               </label>
               {selectedSize && (
-                <span className="text-xs font-medium text-[var(--vybe-mauve)]">
+                <span className="text-xs font-medium text-[var(--vybe-mauve-ink)]">
                   Selected: <strong className="text-[var(--color-text)]">{selectedSize}</strong>
                 </span>
               )}
@@ -81,9 +81,9 @@ export function ProductActions({ product }: ProductActionsProps) {
             <button
               type="button"
               onClick={() => setIsFitFinderOpen(true)}
-              className="text-xs font-semibold text-[var(--vybe-mauve)] hover:text-[var(--color-text)] flex items-center gap-1.5 underline underline-offset-4 transition-colors cursor-pointer"
+              className="text-xs font-semibold text-[var(--vybe-mauve-ink)] hover:text-[var(--color-text)] flex items-center gap-1.5 underline underline-offset-4 transition-colors cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[var(--vybe-rose)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[var(--vybe-rose-ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <span>Fit Finder</span>
@@ -104,10 +104,10 @@ export function ProductActions({ product }: ProductActionsProps) {
                   role="radio"
                   aria-checked={isSelected}
                   onClick={() => handleSelectSize(size)}
-                  className={`w-12 h-11 rounded-xl text-xs font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] ${
+                  className={`w-12 h-11 rounded-xl text-xs font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
                     isSelected
                       ? "bg-[var(--color-text)] text-white shadow-sm ring-2 ring-[var(--color-text)]"
-                      : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve)] hover:bg-[var(--vybe-peach)]/30"
+                      : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] hover:bg-[var(--vybe-peach)]/30"
                   }`}
                 >
                   {size}
@@ -173,7 +173,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             {/* Primary Add to Cart Button */}
             <button
               type="submit"
-              className="flex-1 py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center gap-2"
+              className="flex-1 py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@ export function ProductActions({ product }: ProductActionsProps) {
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-5 h-5 rounded-full bg-[var(--vybe-mauve)] text-white flex items-center justify-center text-xs font-bold">
+              <span className="w-5 h-5 rounded-full bg-[var(--vybe-mauve-ink)] text-white flex items-center justify-center text-xs font-bold">
                 &#10003;
               </span>
               <span className="text-xs font-semibold tracking-wide uppercase">
@@ -223,7 +223,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           <div className="flex items-center gap-3 pt-1">
             <Link
               href="/cart"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-colors"
+              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
             >
               View Shopping Bag &rarr;
             </Link>
@@ -259,7 +259,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             <button
               type="button"
               onClick={() => handleAddToCart()}
-              className="h-10 px-4 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve)] transition-colors shadow-xs"
+              className="h-10 px-4 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Add to Bag
             </button>

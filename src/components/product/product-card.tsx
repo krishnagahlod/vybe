@@ -16,12 +16,12 @@ type ProductCardProps = {
 
 // Map colorway names to CSS colors for swatch preview
 const COLOR_SWATCH_MAP: Record<string, string> = {
-  "Sage": "#5b6e5b",
-  "Muted Mauve": "#7a6369",
-  "Pale Peach": "#f5ebe1",
-  "Rose": "#b87a66",
-  "Soft Pink": "#f2ddd6",
-  "Sage / Rose": "linear-gradient(135deg, #5b6e5b 50%, #b87a66 50%)",
+  "Sage": "#d8e2dc",
+  "Muted Mauve": "#9d8189",
+  "Pale Peach": "#ffe5d9",
+  "Rose": "#f4acb7",
+  "Soft Pink": "#ffcad4",
+  "Sage / Rose": "linear-gradient(135deg, #d8e2dc 50%, #f4acb7 50%)",
 };
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -41,7 +41,7 @@ export function ProductCard({ product }: ProductCardProps) {
       ? product.images[0].alt
       : `${product.name} luxury activewear preview`;
 
-  const swatchColor = product.colorName ? COLOR_SWATCH_MAP[product.colorName] || "#7a6369" : "#7a6369";
+  const swatchColor = product.colorName ? COLOR_SWATCH_MAP[product.colorName] || "#9d8189" : "#9d8189";
 
   const handleQuickAdd = (size: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -60,10 +60,10 @@ export function ProductCard({ product }: ProductCardProps) {
   return (
     <article className="group flex flex-col h-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_16px_40px_rgba(20,18,17,0.08)] hover:-translate-y-1 relative">
       {/* Product Image Frame */}
-      <div className="relative block aspect-[3/4] w-full overflow-hidden bg-[#f0ebe5]/60">
+      <div className="relative block aspect-[3/4] w-full overflow-hidden bg-[var(--vybe-peach)]/40">
         <Link
           href={`/product/${product.slug}`}
-          className="absolute inset-0 z-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+          className="absolute inset-0 z-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
           aria-label={`View details for ${product.name}`}
         >
           <Image
@@ -78,17 +78,11 @@ export function ProductCard({ product }: ProductCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </Link>
 
-        {/* Category & Curated Badges */}
-        <div className="absolute top-3.5 left-3.5 flex flex-col gap-1.5 z-10 pointer-events-none">
-          <span className="inline-block px-2.5 py-1 rounded-full text-[9px] font-mono font-semibold uppercase tracking-[0.2em] bg-white/95 backdrop-blur-md text-[var(--color-text)] border border-black/5 shadow-2xs">
-            {product.category.replace("-", " ")}
+        {product.featured && (
+          <span className="absolute top-3.5 left-3.5 z-10 pointer-events-none px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.15em] bg-[var(--vybe-peach)] text-[var(--color-text)]">
+            Studio Edit
           </span>
-          {product.featured && (
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-mono uppercase tracking-widest bg-[var(--vybe-rose)] text-white shadow-xs">
-              Studio Edit
-            </span>
-          )}
-        </div>
+        )}
 
         {/* Wishlist Heart Toggle Button */}
         <button
@@ -104,10 +98,10 @@ export function ProductCard({ product }: ProductCardProps) {
             }
           }}
           aria-label={isSaved ? `Remove ${product.name} from saved items` : `Save ${product.name} to wishlist`}
-          className={`absolute top-3.5 right-3.5 z-20 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm cursor-pointer ${
+          className={`absolute top-3 right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm cursor-pointer ${
             isSaved
-              ? "bg-[var(--vybe-rose)] text-white scale-105"
-              : "bg-white/90 backdrop-blur-md text-[var(--color-muted)] hover:text-[var(--vybe-mauve)] hover:bg-white"
+              ? "bg-[var(--vybe-rose)] text-[var(--color-text)] scale-105"
+              : "bg-white/90 backdrop-blur-md text-[var(--color-muted)] hover:text-[var(--vybe-mauve-ink)] hover:bg-white"
           }`}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -115,21 +109,13 @@ export function ProductCard({ product }: ProductCardProps) {
           </svg>
         </button>
 
-        {/* 1-Tap Quick-Size Bar (Slides up on Hover) */}
-        <div className="absolute bottom-3 right-3 left-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-3 group-hover:translate-y-0">
-          <div className="p-2 rounded-xl bg-white/95 backdrop-blur-md border border-white/80 shadow-xl flex flex-col gap-1.5">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-[var(--color-muted)]">
-                1-Tap Add Size
-              </span>
-              <Link
-                href={`/product/${product.slug}`}
-                className="text-[9px] font-mono tracking-wider uppercase text-[var(--vybe-mauve)] hover:underline inline-flex items-center gap-0.5"
-              >
-                <span>Details</span>
-                <span>&rarr;</span>
-              </Link>
-            </div>
+        {/* Quick-add sizes: revealed on hover (pointer devices) or keyboard focus. Hidden bars ignore taps,
+            so touch users can't add an item by accident when tapping the image. */}
+        <div className="absolute bottom-3 right-3 left-3 z-20 opacity-0 translate-y-3 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
+          <div className="p-2 rounded-xl bg-white/95 backdrop-blur-md shadow-lg flex flex-col gap-1.5">
+            <span className="px-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]">
+              Quick add
+            </span>
             <div className="flex items-center gap-1 justify-between">
               {product.sizes.map((size) => (
                 <button
@@ -137,9 +123,9 @@ export function ProductCard({ product }: ProductCardProps) {
                   type="button"
                   onClick={(e) => handleQuickAdd(size, e)}
                   aria-label={`Quick add size ${size} to bag`}
-                  className={`flex-1 py-1.5 rounded-lg text-[10px] font-mono font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5 rounded-lg text-[11px] font-mono font-semibold transition-all cursor-pointer ${
                     justAddedSize === size
-                      ? "bg-emerald-600 text-white scale-105"
+                      ? "bg-[var(--vybe-sage-ink)] text-white scale-105"
                       : "bg-[var(--color-bg)] hover:bg-[var(--color-text)] hover:text-white text-[var(--color-text)] border border-[var(--color-border)]"
                   }`}
                 >
@@ -152,55 +138,26 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Details Section */}
-      <div className="flex flex-col flex-1 p-5 space-y-2.5">
-        {/* Colorway & Swatch Row */}
-        {product.colorName && (
-          <div className="flex items-center gap-2">
-            <span
-              className="w-2.5 h-2.5 rounded-full border border-black/10 shrink-0 shadow-2xs"
-              style={{
-                background: swatchColor.includes("linear-gradient")
-                  ? swatchColor
-                  : swatchColor,
-              }}
-              title={product.colorName}
-            />
-            <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--color-muted)]">
+      <div className="flex flex-col flex-1 p-5 gap-2">
+        <h3 className="font-serif text-lg font-normal tracking-tight text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors leading-snug">
+          <Link href={`/product/${product.slug}`} className="focus-visible:outline-hidden">
+            {product.name}
+          </Link>
+        </h3>
+        <p className="flex-1 text-sm text-[var(--color-muted)] line-clamp-2 leading-relaxed">
+          {product.shortDescription}
+        </p>
+        <div className="pt-3 flex items-center justify-between gap-2">
+          <span className="text-base font-medium text-[var(--color-text)]">{formatPrice(product.price)}</span>
+          {product.colorName && (
+            <span className="flex items-center gap-2 text-xs text-[var(--color-muted)]">
+              <span
+                className="w-3 h-3 rounded-full border border-black/10 shrink-0"
+                style={{ background: swatchColor }}
+              />
               {product.colorName}
             </span>
-          </div>
-        )}
-
-        {/* Title */}
-        <div className="flex-1">
-          <h3 className="font-serif text-lg font-normal tracking-tight text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors leading-snug">
-            <Link href={`/product/${product.slug}`} className="focus-visible:outline-hidden">
-              {product.name}
-            </Link>
-          </h3>
-          <p className="text-xs text-[var(--color-muted)] line-clamp-2 leading-relaxed font-light mt-1">
-            {product.shortDescription}
-          </p>
-        </div>
-
-        {/* Price & Sizes Row */}
-        <div className="pt-3 border-t border-[var(--color-border)]/80 flex items-center justify-between gap-2">
-          <div>
-            <span className="text-base font-medium text-[var(--color-text)] font-sans">
-              {formatPrice(product.price)}
-            </span>
-            <span className="block text-[8px] font-mono uppercase tracking-widest text-[var(--color-muted)]">
-              Conceptual Price
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1 text-[9px] text-[var(--color-muted)] font-mono">
-            {product.sizes.slice(0, 4).map((size) => (
-              <span key={size} className="text-stone-400">
-                {size}
-              </span>
-            ))}
-          </div>
+          )}
         </div>
       </div>
     </article>

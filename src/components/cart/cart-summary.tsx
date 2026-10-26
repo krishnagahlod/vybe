@@ -16,7 +16,7 @@ export function CartSummary({
   onClearCart,
 }: CartSummaryProps) {
   return (
-    <div className="p-6 sm:p-8 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
+    <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
       <h2 className="font-serif text-xl sm:text-2xl font-medium text-[var(--color-text)]">
         Order Summary
       </h2>
@@ -33,11 +33,11 @@ export function CartSummary({
         <div className="flex items-center justify-between text-[var(--color-muted)]">
           <div>
             <span>Estimated Shipping</span>
-            <span className="block text-[11px] text-[var(--vybe-mauve)]">
+            <span className="block text-[11px] text-[var(--vybe-mauve-ink)]">
               Mumbai, Pune, Delhi, Bangalore
             </span>
           </div>
-          <span className="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-xs">
+          <span className="font-semibold text-[var(--vybe-sage-ink)] bg-[var(--vybe-sage)]/60 px-2 py-0.5 rounded text-xs">
             Free (Test)
           </span>
         </div>
@@ -54,7 +54,7 @@ export function CartSummary({
           <span className="text-base font-semibold text-[var(--color-text)] block">
             Estimated Total
           </span>
-          <span className="text-[10px] uppercase tracking-wider text-[var(--color-muted)] font-mono">
+          <span className="text-[11px] uppercase tracking-wider text-[var(--color-muted)] font-mono">
             Conceptual INR Amount
           </span>
         </div>
@@ -77,13 +77,13 @@ export function CartSummary({
       <div className="space-y-3 pt-2">
         <Link
           href="/checkout"
-          className="block w-full text-center py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+          className="block w-full text-center py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Proceed to Demo Checkout &rarr;
         </Link>
         <Link
           href="/shop"
-          className="block w-full text-center py-3.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+          className="block w-full text-center py-3.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Continue Shopping
         </Link>

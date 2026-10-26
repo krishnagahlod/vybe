@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export function CartEmptyState() {
   return (
-    <div className="text-center py-20 px-4 sm:px-6 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs max-w-2xl mx-auto my-8">
+    <div className="text-center py-20 px-4 sm:px-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs max-w-2xl mx-auto my-8">
       {/* Icon Frame */}
-      <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--vybe-peach)]/50 border border-[var(--vybe-peach)] flex items-center justify-center text-[var(--vybe-mauve)]">
+      <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-[var(--vybe-peach)]/50 border border-[var(--vybe-peach)] flex items-center justify-center text-[var(--vybe-mauve-ink)]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-10 h-10"
@@ -22,7 +22,7 @@ export function CartEmptyState() {
         </svg>
       </div>
 
-      <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block mb-2 font-mono">
+      <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
         Your Bag is Empty
       </span>
       <h2 className="font-serif text-3xl font-medium text-[var(--color-text)] mb-3">
@@ -36,7 +36,7 @@ export function CartEmptyState() {
       <div className="mb-10">
         <Link
           href="/shop"
-          className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+          className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Explore 12-Piece Collection &rarr;
         </Link>
@@ -50,25 +50,25 @@ export function CartEmptyState() {
         <div className="flex flex-wrap justify-center gap-2 text-xs">
           <Link
             href="/shop?category=leggings"
-            className="px-3 py-1.5 rounded-full bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve)] transition-colors"
+            className="px-3 py-1.5 rounded-full bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
           >
             Studio Leggings
           </Link>
           <Link
             href="/shop?category=sports-bras"
-            className="px-3 py-1.5 rounded-full bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve)] transition-colors"
+            className="px-3 py-1.5 rounded-full bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
           >
             Sports Bras
           </Link>
           <Link
             href="/shop?category=tops"
-            className="px-3 py-1.5 rounded-full bg-[var(--vybe-pink)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve)] transition-colors"
+            className="px-3 py-1.5 rounded-full bg-[var(--vybe-pink)]/30 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
           >
             Tops &amp; Tanks
           </Link>
           <Link
             href="/shop?category=sets"
-            className="px-3 py-1.5 rounded-full bg-[var(--vybe-rose)]/25 border border-[var(--color-border)] hover:border-[var(--vybe-mauve)] transition-colors"
+            className="px-3 py-1.5 rounded-full bg-[var(--vybe-rose)]/25 border border-[var(--color-border)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
           >
             Matching Sets
           </Link>

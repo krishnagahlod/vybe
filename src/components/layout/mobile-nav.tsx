@@ -84,7 +84,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
-                className="p-2 rounded-full hover:bg-[var(--vybe-peach)] text-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="p-2 rounded-full hover:bg-[var(--vybe-peach)] text-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +137,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                     <Link
                       href={link.href}
                       onClick={onClose}
-                      className="block px-3 py-3 rounded-md text-base font-medium text-[var(--color-text)] hover:bg-[var(--vybe-sage)]/30 hover:text-[var(--vybe-mauve)] transition-colors"
+                      className="block px-3 py-3 rounded-md text-base font-medium text-[var(--color-text)] hover:bg-[var(--vybe-sage)]/30 hover:text-[var(--vybe-mauve-ink)] transition-colors"
                     >
                       {link.label}
                     </Link>

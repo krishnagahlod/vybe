@@ -26,7 +26,7 @@ export default function ShippingReturnsPage() {
               </li>
             </ol>
           </nav>
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve)] block font-mono">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
             Concept Policies
           </span>
           <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
@@ -40,7 +40,7 @@ export default function ShippingReturnsPage() {
         {/* Academic Prototype Notice */}
         <div className="p-6 rounded-2xl bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve)]" />
+            <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Academic Evaluation Disclaimer
           </p>
           <p>
@@ -49,7 +49,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Policies Content */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
           {/* Section 1: Campaign Delivery Focus */}
           <section className="space-y-4">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
@@ -105,7 +105,7 @@ export default function ShippingReturnsPage() {
         <div className="pt-2 text-center">
           <Link
             href="/shop"
-            className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors underline underline-offset-4"
+            className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors underline underline-offset-4"
           >
             &larr; Return to Shopping Collection
           </Link>

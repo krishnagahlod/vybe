@@ -11,21 +11,21 @@ export function FeaturedProducts() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3">
-            <span className="text-[11px] font-mono font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve)] block">
-              Curated Edit // Spring 2026
+            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block">
+              The Studio Edit
             </span>
             <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
               Studio Essentials
             </h2>
-            <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl font-light leading-relaxed">
-              Tactile compression prototypes engineered with 1-tap quick size selection. Designed to mix, match, and transition seamlessly beyond studio doors.
+            <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl leading-relaxed">
+              Four pieces we&apos;d build a week of movement around. Mix them, match them, and wear them well beyond the studio.
             </p>
           </div>
           <Link
             href="/shop"
-            className="group text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors inline-flex items-center gap-2 self-start md:self-end pb-1 border-b border-[var(--color-text)] hover:border-[var(--vybe-mauve)]"
+            className="group text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors inline-flex items-center gap-2 self-start md:self-end pb-1 border-b border-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)]"
           >
-            <span>View Full 12-Piece Catalog</span>
+            <span>Shop the full collection</span>
             <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
           </Link>
         </div>
