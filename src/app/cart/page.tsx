@@ -73,7 +73,7 @@ export default function CartPage() {
         </div>
 
         {/* Academic Prototype Notice */}
-        <div className="mb-8 p-4 rounded-2xl bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="mb-8 p-4 rounded-md bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
           <p>
             <strong className="text-[var(--color-text)] uppercase font-semibold mr-1.5">
               Simulated Demo Bag:

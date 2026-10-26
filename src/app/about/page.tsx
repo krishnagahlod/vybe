@@ -38,7 +38,7 @@ export default function AboutPage() {
         </div>
 
         {/* Brand Mission Statement */}
-        <section className="p-8 sm:p-12 rounded-2xl bg-gradient-to-br from-[var(--vybe-peach)]/35 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-xs space-y-6">
+        <section className="p-8 sm:p-12 rounded-md bg-gradient-to-br from-[var(--vybe-peach)]/35 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-xs space-y-6">
           <h2 className="font-serif text-2xl sm:text-3xl font-medium text-[var(--color-text)]">
             Movement on Your Own Terms
           </h2>
@@ -62,7 +62,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
+            <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
               <div className="w-10 h-10 rounded-full bg-[var(--vybe-sage)] flex items-center justify-center font-serif text-sm font-bold text-[var(--color-text)]">
                 01
               </div>
@@ -74,7 +74,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
+            <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
               <div className="w-10 h-10 rounded-full bg-[var(--vybe-peach)] flex items-center justify-center font-serif text-sm font-bold text-[var(--color-text)]">
                 02
               </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
+            <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-3">
               <div className="w-10 h-10 rounded-full bg-[var(--vybe-pink)] flex items-center justify-center font-serif text-sm font-bold text-[var(--color-text)]">
                 03
               </div>
@@ -101,7 +101,7 @@ export default function AboutPage() {
         </section>
 
         {/* Academic Project Context */}
-        <section className="p-8 rounded-2xl bg-[var(--vybe-sage)]/25 border border-[var(--color-border)] space-y-4">
+        <section className="p-8 rounded-md bg-[var(--vybe-sage)]/25 border border-[var(--color-border)] space-y-4">
           <span className="text-xs font-semibold uppercase tracking-wider text-[var(--vybe-mauve-ink)] block font-mono">
             Academic Project Transparency
           </span>
@@ -120,13 +120,13 @@ export default function AboutPage() {
           <div className="pt-4 flex flex-wrap gap-4">
             <Link
               href="/shop"
-              className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+              className="px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Explore Collection &rarr;
             </Link>
             <Link
               href="/contact"
-              className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
+              className="px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
             >
               Contact Team
             </Link>

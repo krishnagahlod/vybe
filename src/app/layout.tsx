@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { WishlistProvider } from "@/lib/wishlist-context";
@@ -20,9 +20,10 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const playfairDisplay = Playfair_Display({
-  variable: "--font-playfair",
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -75,7 +76,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#d8e2dc",
+  themeColor: "#fffdfb",
 };
 
 export default function RootLayout({
@@ -86,7 +87,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${playfairDisplay.variable} h-full scroll-smooth`}
+      className={`${jakartaSans.variable} ${cormorantGaramond.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
         <OrganizationJsonLd />

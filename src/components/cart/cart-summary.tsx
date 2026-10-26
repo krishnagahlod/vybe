@@ -16,7 +16,7 @@ export function CartSummary({
   onClearCart,
 }: CartSummaryProps) {
   return (
-    <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
+    <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
       <h2 className="font-serif text-xl sm:text-2xl font-medium text-[var(--color-text)]">
         Order Summary
       </h2>
@@ -64,7 +64,7 @@ export function CartSummary({
       </div>
 
       {/* Demo Notice Callout */}
-      <div className="p-3.5 rounded-xl bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
+      <div className="p-3.5 rounded-md bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
         <p className="font-semibold text-[var(--color-text)] mb-0.5">
           Academic Prototype Notice
         </p>
@@ -77,13 +77,13 @@ export function CartSummary({
       <div className="space-y-3 pt-2">
         <Link
           href="/checkout"
-          className="block w-full text-center py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="block w-full text-center py-4 px-6 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Proceed to Demo Checkout &rarr;
         </Link>
         <Link
           href="/shop"
-          className="block w-full text-center py-3.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="block w-full text-center py-3.5 px-6 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Continue Shopping
         </Link>

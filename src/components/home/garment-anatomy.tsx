@@ -83,7 +83,7 @@ export function GarmentAnatomy() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* Product image with hotspots */}
           <div className="lg:col-span-6">
-            <div className="relative w-full max-w-md mx-auto lg:mx-0 aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--vybe-sage)]">
+            <div className="relative w-full max-w-md mx-auto lg:mx-0 aspect-[3/4] rounded-md overflow-hidden bg-[var(--vybe-sage)]">
               <Image
                 src="/images/products/flow-high-rise-leggings-1.jpg"
                 alt="Flow High-Rise Leggings in sage, worn standing, with three numbered construction points"
@@ -132,7 +132,7 @@ export function GarmentAnatomy() {
                   type="button"
                   onClick={() => setActiveHotspot(hotspot)}
                   aria-pressed={activeHotspot.id === hotspot.id}
-                  className={`text-xs font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-full transition-colors cursor-pointer ${
+                  className={`text-xs font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-sm transition-colors cursor-pointer ${
                     activeHotspot.id === hotspot.id
                       ? "bg-[var(--color-text)] text-white"
                       : "text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60"
@@ -158,7 +158,7 @@ export function GarmentAnatomy() {
                 <p className="text-base text-[var(--color-muted)] leading-relaxed max-w-lg">
                   {activeHotspot.description}
                 </p>
-                <div className="inline-flex items-baseline gap-3 px-5 py-3 rounded-xl bg-[var(--vybe-sage)]/60">
+                <div className="inline-flex items-baseline gap-3 px-5 py-3 rounded-md bg-[var(--vybe-sage)]/60">
                   <span className="font-serif text-2xl text-[var(--color-text)]">{activeHotspot.detail}</span>
                   <span className="text-sm text-[var(--vybe-sage-ink)]">{activeHotspot.detailLabel}</span>
                 </div>
@@ -176,7 +176,7 @@ export function GarmentAnatomy() {
 
             <Link
               href="/product/flow-high-rise-leggings"
-              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
             >
               <span>Shop the Flow Legging</span>
               <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">

@@ -104,10 +104,10 @@ export function ProductActions({ product }: ProductActionsProps) {
                   role="radio"
                   aria-checked={isSelected}
                   onClick={() => handleSelectSize(size)}
-                  className={`w-12 h-11 rounded-xl text-xs font-semibold transition-all focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
+                  className={`min-w-12 h-12 px-3 rounded-sm text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
                     isSelected
-                      ? "bg-[var(--color-text)] text-white shadow-sm ring-2 ring-[var(--color-text)]"
-                      : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] hover:bg-[var(--vybe-peach)]/30"
+                      ? "bg-[var(--color-text)] text-white border border-[var(--color-text)]"
+                      : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
                   }`}
                 >
                   {size}
@@ -120,11 +120,11 @@ export function ProductActions({ product }: ProductActionsProps) {
           {sizeError && (
             <div
               role="alert"
-              className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2 animate-fade-in"
+              className="p-3 rounded-sm bg-[var(--vybe-pink)]/40 border border-[var(--vybe-rose)] text-[var(--vybe-rose-ink)] text-xs flex items-center gap-2 animate-fade-up"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4 text-red-600 shrink-0"
+                className="w-4 h-4 shrink-0"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -143,13 +143,13 @@ export function ProductActions({ product }: ProductActionsProps) {
         <div className="space-y-4">
           <div className="flex items-center gap-4">
             {/* Quantity Selector */}
-            <div className="flex items-center border border-[var(--color-border)] rounded-full bg-[var(--color-surface)] p-1">
+            <div className="flex items-center h-12 border border-[var(--color-border)] rounded-sm bg-[var(--color-surface)] px-1">
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 disabled={quantity <= 1}
                 aria-label="Decrease quantity"
-                className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="w-8 h-8 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 &minus;
               </button>
@@ -164,7 +164,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                 onClick={() => setQuantity((q) => Math.min(10, q + 1))}
                 disabled={quantity >= 10}
                 aria-label="Increase quantity"
-                className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="w-8 h-8 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 &#43;
               </button>
@@ -173,7 +173,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             {/* Primary Add to Cart Button */}
             <button
               type="submit"
-              className="flex-1 py-4 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
+              className="flex-1 h-12 px-6 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +189,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                 />
               </svg>
-              <span>Add to Shopping Bag &bull; {formatPrice(product.price * quantity)}</span>
+              <span>Add to bag &middot; {formatPrice(product.price * quantity)}</span>
             </button>
           </div>
         </div>
@@ -200,7 +200,7 @@ export function ProductActions({ product }: ProductActionsProps) {
         <div
           role="status"
           aria-live="polite"
-          className="p-4 rounded-2xl bg-[var(--vybe-sage)]/35 border border-[var(--vybe-sage)] text-[var(--color-text)] space-y-3 animate-fade-in shadow-xs"
+          className="p-4 rounded-md bg-[var(--vybe-sage)]/35 border border-[var(--vybe-sage)] text-[var(--color-text)] space-y-3 animate-fade-up shadow-xs"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -208,7 +208,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                 &#10003;
               </span>
               <span className="text-xs font-semibold tracking-wide uppercase">
-                Added to your bag!
+                Added to your bag
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-muted)]">
@@ -223,15 +223,15 @@ export function ProductActions({ product }: ProductActionsProps) {
           <div className="flex items-center gap-3 pt-1">
             <Link
               href="/cart"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
             >
-              View Shopping Bag &rarr;
+              View bag
             </Link>
             <Link
               href="/shop"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
+              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
             >
-              Continue Browsing
+              Keep browsing
             </Link>
           </div>
         </div>
@@ -239,17 +239,17 @@ export function ProductActions({ product }: ProductActionsProps) {
 
       {/* Sticky Mobile Add to Bag Bar */}
       {showStickyBar && (
-        <div className="fixed bottom-0 left-0 right-0 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md border-t border-[var(--color-border)] p-3 md:hidden shadow-xl animate-fade-in flex items-center justify-between gap-3">
+        <div className="fixed bottom-0 left-0 right-0 z-40 bg-[var(--color-bg)]/95 backdrop-blur-md border-t border-[var(--color-border)] p-3 md:hidden shadow-xl animate-fade-up flex items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-xs font-medium text-[var(--color-text)] truncate">{product.name}</p>
-            <p className="font-serif text-sm font-bold text-[var(--color-text)]">{formatPrice(product.price)}</p>
+            <p className="text-sm font-semibold text-[var(--color-text)]">{formatPrice(product.price)}</p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <select
               value={selectedSize}
               onChange={(e) => handleSelectSize(e.target.value)}
               aria-label="Select size"
-              className="h-10 px-2.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold text-[var(--color-text)]"
+              className="h-10 px-2.5 rounded-sm border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold text-[var(--color-text)]"
             >
               <option value="">Size</option>
               {product.sizes.map((s) => (
@@ -259,7 +259,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             <button
               type="button"
               onClick={() => handleAddToCart()}
-              className="h-10 px-4 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+              className="h-10 px-4 rounded-sm bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Add to Bag
             </button>

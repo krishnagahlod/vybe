@@ -119,7 +119,7 @@ export default function FAQPage() {
         </div>
 
         {/* Quick Links Card */}
-        <div className="mb-12 p-5 rounded-2xl bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mb-12 p-5 rounded-md bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
             <h2 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
               Looking for Exact Measurements?
@@ -131,13 +131,13 @@ export default function FAQPage() {
           <div className="flex items-center gap-3 shrink-0">
             <Link
               href="/size-guide"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               View Size Guide &rarr;
             </Link>
             <Link
               href="/track-order"
-              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
+              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
             >
               Track Order
             </Link>
@@ -157,7 +157,7 @@ export default function FAQPage() {
                 {section.items.map((item, idx) => (
                   <details
                     key={idx}
-                    className="group border border-[var(--color-border)] rounded-2xl p-4 sm:p-5 bg-[var(--color-surface)] transition-colors hover:border-[var(--vybe-mauve-ink)]"
+                    className="group border border-[var(--color-border)] rounded-md p-4 sm:p-5 bg-[var(--color-surface)] transition-colors hover:border-[var(--vybe-mauve-ink)]"
                   >
                     <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text)] cursor-pointer list-none flex items-center justify-between gap-4">
                       <span>{item.q}</span>
@@ -176,7 +176,7 @@ export default function FAQPage() {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="mt-16 p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] text-center space-y-3">
+        <div className="mt-16 p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] text-center space-y-3">
           <h3 className="font-serif text-xl font-medium text-[var(--color-text)]">
             Still have questions?
           </h3>
@@ -186,7 +186,7 @@ export default function FAQPage() {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Get in Touch with VYBE &rarr;
             </Link>

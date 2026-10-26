@@ -27,12 +27,12 @@ export function CartItemRow({
       : "/images/products/concept-silhouette.svg";
 
   return (
-    <article className="p-4 sm:p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors">
+    <article className="p-4 sm:p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 transition-colors">
       {/* Product Image & Title */}
       <div className="flex items-center gap-4 w-full sm:w-auto">
         <Link
           href={`/product/${product.slug}`}
-          className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-xl overflow-hidden bg-[var(--vybe-peach)]/25 border border-[var(--color-border)] shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="relative w-20 h-24 sm:w-24 sm:h-28 rounded-md overflow-hidden bg-[var(--vybe-peach)]/25 border border-[var(--color-border)] shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           <Image
             src={imageSrc}
@@ -72,12 +72,12 @@ export function CartItemRow({
       {/* Controls & Price Block */}
       <div className="flex items-center justify-between sm:justify-end gap-6 w-full sm:w-auto pt-3 sm:pt-0 border-t sm:border-t-0 border-[var(--color-border)]/60">
         {/* Quantity Controls */}
-        <div className="flex items-center border border-[var(--color-border)] rounded-full bg-[var(--color-bg)] p-1">
+        <div className="flex items-center border border-[var(--color-border)] rounded-sm bg-[var(--color-bg)] p-1">
           <button
             type="button"
             onClick={() => onUpdateQuantity(item.productId, item.size, item.quantity - 1)}
             aria-label={`Decrease quantity for ${product.name}`}
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors"
+            className="w-7 h-7 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors"
           >
             &minus;
           </button>
@@ -92,7 +92,7 @@ export function CartItemRow({
             onClick={() => onUpdateQuantity(item.productId, item.size, item.quantity + 1)}
             disabled={item.quantity >= 10}
             aria-label={`Increase quantity for ${product.name}`}
-            className="w-7 h-7 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+            className="w-7 h-7 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
           >
             &#43;
           </button>
@@ -113,7 +113,7 @@ export function CartItemRow({
           type="button"
           onClick={() => onRemove(item.productId, item.size)}
           aria-label={`Remove ${product.name} (size ${item.size}) from bag`}
-          className="p-2 text-[var(--color-muted)] hover:text-red-600 transition-colors rounded-lg hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-500"
+          className="p-2 text-[var(--color-muted)] hover:text-red-600 transition-colors rounded-sm hover:bg-red-50 focus-visible:outline-2 focus-visible:outline-red-500"
           title="Remove item"
         >
           <svg

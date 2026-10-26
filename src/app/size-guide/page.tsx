@@ -38,11 +38,11 @@ export default function SizeGuidePage() {
           </p>
 
           {/* Unit Switcher */}
-          <div className="mt-6 inline-flex rounded-xl bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)] shadow-xs">
+          <div className="mt-6 inline-flex rounded-md bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)] shadow-xs">
             <button
               type="button"
               onClick={() => setUnit("in")}
-              className={`px-5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "in"
                   ? "bg-[var(--color-text)] text-white shadow-xs"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -53,7 +53,7 @@ export default function SizeGuidePage() {
             <button
               type="button"
               onClick={() => setUnit("cm")}
-              className={`px-5 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "cm"
                   ? "bg-[var(--color-text)] text-white shadow-xs"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -70,7 +70,7 @@ export default function SizeGuidePage() {
             How to Take Your Measurements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
               <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 1
               </span>
@@ -82,7 +82,7 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
               <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 2
               </span>
@@ -94,7 +94,7 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
               <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 3
               </span>
@@ -106,7 +106,7 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
               <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 4
               </span>
@@ -123,7 +123,7 @@ export default function SizeGuidePage() {
         {/* Measurement Tables */}
         <div className="space-y-12">
           {/* Bottoms Table */}
-          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -133,7 +133,7 @@ export default function SizeGuidePage() {
                   Engineered with an ergonomic high-rise contoured waistband.
                 </p>
               </div>
-              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--vybe-sage)]/40 text-[var(--color-text)]">
+              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-sm bg-[var(--vybe-sage)]/40 text-[var(--color-text)]">
                 {unit === "in" ? "Values in Inches" : "Values in Centimeters"}
               </span>
             </div>
@@ -191,7 +191,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* Sports Bras & Tops Table */}
-          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -201,7 +201,7 @@ export default function SizeGuidePage() {
                   Medium-to-high support with removable soft-form padding.
                 </p>
               </div>
-              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--vybe-peach)]/50 text-[var(--color-text)]">
+              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-sm bg-[var(--vybe-peach)]/50 text-[var(--color-text)]">
                 {unit === "in" ? "Values in Inches" : "Values in Centimeters"}
               </span>
             </div>
@@ -253,7 +253,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* International Size Conversions */}
-          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
             <div className="border-b border-[var(--color-border)] pb-3">
               <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
                 International Size Conversions
@@ -320,7 +320,7 @@ export default function SizeGuidePage() {
         <div className="mt-16 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg"
           >
             Explore the 12-Piece Wardrobe &rarr;
           </Link>

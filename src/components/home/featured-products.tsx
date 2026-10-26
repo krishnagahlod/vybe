@@ -6,7 +6,7 @@ export function FeaturedProducts() {
   const featured = getFeaturedProducts();
 
   return (
-    <section className="py-24 sm:py-32 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+    <section className="py-20 sm:py-28 bg-[var(--color-bg)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -31,7 +31,7 @@ export function FeaturedProducts() {
         </div>
 
         {/* Product Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6">
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

@@ -79,7 +79,7 @@ export function ToastContainer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto bg-[var(--color-surface)]/95 backdrop-blur-md border border-[var(--color-border)] shadow-xl rounded-2xl p-3.5 flex items-center gap-3 text-xs text-[var(--color-text)]"
+            className="pointer-events-auto bg-[var(--color-surface)]/95 backdrop-blur-md border border-[var(--color-border)] shadow-xl rounded-md p-3.5 flex items-center gap-3 text-xs text-[var(--color-text)]"
           >
             <ToastIcon type={toast.type} />
             <div className="flex-1 font-medium leading-snug">{toast.message}</div>

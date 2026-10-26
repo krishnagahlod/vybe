@@ -38,7 +38,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Academic Prototype Notice */}
-        <div className="p-6 rounded-2xl bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
+        <div className="p-6 rounded-md bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Academic Evaluation Disclaimer
@@ -49,7 +49,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Policies Content */}
-        <div className="p-8 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
           {/* Section 1: Campaign Delivery Focus */}
           <section className="space-y-4">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
@@ -59,7 +59,7 @@ export default function ShippingReturnsPage() {
               Our initial digital marketing rollout focuses on activewear enthusiasts across four primary metropolitan centers in India:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-xl bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/50">
+              <div className="p-4 rounded-md bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/50">
                 <h3 className="font-semibold text-xs text-[var(--color-text)] uppercase mb-1">
                   Mumbai &amp; Pune
                 </h3>
@@ -67,7 +67,7 @@ export default function ShippingReturnsPage() {
                   Simulated 2-3 business day standard delivery. Complimentary test shipping on all bag sizes.
                 </p>
               </div>
-              <div className="p-4 rounded-xl bg-[var(--vybe-peach)]/25 border border-[var(--vybe-peach)]/50">
+              <div className="p-4 rounded-md bg-[var(--vybe-peach)]/25 border border-[var(--vybe-peach)]/50">
                 <h3 className="font-semibold text-xs text-[var(--color-text)] uppercase mb-1">
                   Delhi &amp; Bangalore
                 </h3>

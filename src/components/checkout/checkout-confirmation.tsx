@@ -22,9 +22,9 @@ type CheckoutConfirmationProps = {
 
 export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
   return (
-    <div className="max-w-3xl mx-auto py-8 sm:py-12 space-y-8 animate-fade-in">
+    <div className="max-w-3xl mx-auto py-8 sm:py-12 space-y-8 animate-fade-up">
       {/* Success Hero Card */}
-      <div className="p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-[var(--vybe-peach)]/30 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-lg text-center space-y-4">
+      <div className="p-8 sm:p-10 rounded-md bg-gradient-to-br from-[var(--vybe-peach)]/30 via-white to-[var(--vybe-sage)]/25 border border-[var(--color-border)] shadow-lg text-center space-y-4">
         <div className="w-16 h-16 mx-auto rounded-full bg-[var(--vybe-sage)] border border-[var(--vybe-sage)] flex items-center justify-center text-[var(--color-text)]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +38,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
           </svg>
         </div>
 
-        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-rose)] text-[var(--color-text)]">
+        <span className="inline-block px-3 py-1 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-rose)] text-[var(--color-text)]">
           Demo Flow Complete
         </span>
 
@@ -55,7 +55,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       </div>
 
       {/* Critical Academic & Demo Disclosure Banner */}
-      <div className="p-5 sm:p-6 rounded-2xl bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-2">
+      <div className="p-5 sm:p-6 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-2">
         <p className="font-semibold uppercase tracking-wider flex items-center gap-2 text-[var(--color-text)]">
           <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
           Important Academic Evaluation Notice (ENT 625)
@@ -69,7 +69,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       </div>
 
       {/* Itemized Demo Order Summary */}
-      <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-6">
+      <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-6">
         <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-4 border-b border-[var(--color-border)]">
           Simulated Order Breakdown
         </h2>
@@ -113,19 +113,19 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
         <Link
           href={`/track-order?ref=${encodeURIComponent(order.orderId)}`}
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-sage)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
+          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--vybe-sage)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
         >
           Track Simulated Order &rarr;
         </Link>
         <Link
           href="/shop"
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Browse Full Catalogue
         </Link>
         <Link
           href="/"
-          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="w-full sm:w-auto text-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Return Home
         </Link>

@@ -23,13 +23,13 @@ export default function NotFound() {
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md"
           >
             Explore Activewear Edit &rarr;
           </Link>
           <Link
             href="/"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
           >
             Back to Homepage
           </Link>
@@ -51,7 +51,7 @@ export default function NotFound() {
               <Link
                 key={link.label}
                 href={link.href}
-                className="px-3 py-1.5 rounded-full text-xs bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
+                className="px-3 py-1.5 rounded-sm text-xs bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] transition-colors"
               >
                 {link.label}
               </Link>

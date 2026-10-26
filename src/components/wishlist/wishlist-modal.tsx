@@ -46,7 +46,7 @@ export function WishlistModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-2xl bg-[var(--color-bg)] rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10 flex flex-col max-h-[85vh]"
+            className="relative w-full max-w-2xl bg-[var(--color-bg)] rounded-md shadow-2xl border border-[var(--color-border)] overflow-hidden z-10 flex flex-col max-h-[85vh]"
           >
             {/* Header */}
             <div className="p-6 border-b border-[var(--color-border)] bg-[var(--color-surface)]/70 flex items-center justify-between">
@@ -94,7 +94,7 @@ export function WishlistModal() {
                   <button
                     type="button"
                     onClick={closeWishlistModal}
-                    className="mt-2 inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+                    className="mt-2 inline-flex items-center justify-center px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
                   >
                     <Link href="/shop" onClick={closeWishlistModal}>
                       Explore Collection
@@ -112,9 +112,9 @@ export function WishlistModal() {
                     return (
                       <div
                         key={p.id}
-                        className="p-3 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] flex gap-3.5 items-center justify-between"
+                        className="p-3 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] flex gap-3.5 items-center justify-between"
                       >
-                        <div className="relative w-16 h-20 rounded-xl overflow-hidden bg-[var(--color-bg)] border border-[var(--color-border)] shrink-0">
+                        <div className="relative w-16 h-20 rounded-md overflow-hidden bg-[var(--color-bg)] border border-[var(--color-border)] shrink-0">
                           <Image src={imageSrc} alt={p.name} fill className="object-cover" sizes="64px" />
                         </div>
                         <div className="flex-1 min-w-0">

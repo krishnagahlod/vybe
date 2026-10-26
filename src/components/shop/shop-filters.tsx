@@ -10,17 +10,16 @@ type ShopFiltersProps = {
 };
 
 const CATEGORIES = [
-  { id: "all", label: "All Movement" },
-  { id: "leggings", label: "Leggings & Tights" },
+  { id: "all", label: "All" },
+  { id: "leggings", label: "Leggings" },
   { id: "sports-bras", label: "Sports Bras" },
-  { id: "tops", label: "Tops & Tanks" },
+  { id: "tops", label: "Tops" },
   { id: "shorts", label: "Shorts" },
-  { id: "sets", label: "Matching Sets" },
-  { id: "layers", label: "Layers & Joggers" },
+  { id: "sets", label: "Sets" },
+  { id: "layers", label: "Layers" },
 ];
 
 const COLORS = [
-  { name: "All Colors", value: "all", hex: null },
   { name: "Sage", value: "Sage", hex: "#d8e2dc" },
   { name: "Pale Peach", value: "Pale Peach", hex: "#ffe5d9" },
   { name: "Soft Pink", value: "Soft Pink", hex: "#ffcad4" },
@@ -47,8 +46,9 @@ export function ShopFilters({ initialProducts, initialCategory = "all" }: ShopFi
 
     // Color filter
     if (selectedColor && selectedColor !== "all") {
-      result = result.filter(
-        (p) => p.colorName && p.colorName.toLowerCase() === selectedColor.toLowerCase()
+      // Multi-colour pieces ("Sage / Rose") match each of their colours
+      result = result.filter((p) =>
+        p.colorName?.split(" / ").some((c) => c.toLowerCase() === selectedColor.toLowerCase())
       );
     }
 
@@ -95,127 +95,112 @@ export function ShopFilters({ initialProducts, initialCategory = "all" }: ShopFi
   };
 
   return (
-    <div className="space-y-8">
-      {/* Search & Sort Controls Toolbar */}
-      <div className="flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between p-4 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)]">
-        {/* Search Input */}
-        <div className="relative flex-1 max-w-md">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-          <input
-            type="text"
-            placeholder="Search by silhouette, style, or color..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-9 py-2.5 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-xs text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--vybe-mauve-ink)] transition-colors"
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => setSearchQuery("")}
-              aria-label="Clear search"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-muted)] hover:text-[var(--color-text)] text-xs font-bold"
-            >
-              ✕
-            </button>
-          )}
+    <div className="space-y-10">
+      <div className="space-y-6">
+        {/* Category tabs */}
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex items-center gap-6 sm:gap-8 min-w-max border-b border-[var(--color-border)]" role="tablist" aria-label="Product categories">
+            {CATEGORIES.map((cat) => {
+              const isActive = selectedCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`relative -mb-px pb-3 text-[11px] font-semibold uppercase tracking-[0.2em] transition-colors cursor-pointer border-b ${
+                    isActive
+                      ? "text-[var(--color-text)] border-[var(--color-text)]"
+                      : "text-[var(--color-muted)] border-transparent hover:text-[var(--color-text)]"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Sort Select */}
-        <div className="flex items-center gap-3 shrink-0">
-          <label htmlFor="shop-sort" className="text-xs font-medium text-[var(--color-muted)] whitespace-nowrap">
-            Sort by:
-          </label>
-          <select
-            id="shop-sort"
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="py-2.5 px-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-xs font-medium text-[var(--color-text)] focus:outline-none focus:border-[var(--vybe-mauve-ink)] cursor-pointer"
-          >
-            <option value="featured">Curated &amp; Featured</option>
-            <option value="price-asc">Price: Low to High</option>
-            <option value="price-desc">Price: High to Low</option>
-            <option value="name-asc">Product Name (A-Z)</option>
-          </select>
-        </div>
-      </div>
+        {/* Colour, search, sort */}
+        <div className="flex flex-col lg:flex-row lg:items-center gap-5 lg:gap-8 justify-between">
+          <div className="flex items-center gap-3" role="group" aria-label="Filter by colour">
+            <span className="text-xs text-[var(--color-muted)]">Colour</span>
+            <div className="flex items-center gap-2">
+              {COLORS.map((col) => {
+                const isSelected = selectedColor === col.value;
+                return (
+                  <button
+                    key={col.value}
+                    type="button"
+                    onClick={() => setSelectedColor(isSelected ? "all" : col.value)}
+                    aria-pressed={isSelected}
+                    aria-label={col.name}
+                    title={col.name}
+                    className={`w-7 h-7 rounded-full border transition-shadow cursor-pointer ${
+                      isSelected
+                        ? "border-white ring-2 ring-[var(--color-text)]"
+                        : "border-black/10 hover:ring-2 hover:ring-[var(--color-border)]"
+                    }`}
+                    style={{ backgroundColor: col.hex }}
+                  />
+                );
+              })}
+            </div>
+          </div>
 
-      {/* Category Tabs */}
-      <div className="overflow-x-auto pb-1 scrollbar-none">
-        <div className="flex items-center gap-2 min-w-max">
-          {CATEGORIES.map((cat) => {
-            const isActive = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                  isActive
-                    ? "bg-[var(--color-text)] text-white shadow-xs"
-                    : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-muted)] hover:text-[var(--color-text)] hover:border-[var(--vybe-mauve-ink)] hover:bg-[var(--vybe-peach)]/25"
-                }`}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 lg:flex-1 lg:justify-end">
+            <div className="relative sm:w-64">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 absolute left-0 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={1.5}
               >
-                {cat.label}
-              </button>
-            );
-          })}
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="search"
+                aria-label="Search the collection"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-7 pr-2 py-2 bg-transparent border-b border-[var(--color-border)] text-sm text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--color-text)] transition-colors"
+              />
+            </div>
+
+            <div className="flex items-center gap-2">
+              <label htmlFor="shop-sort" className="text-xs text-[var(--color-muted)] whitespace-nowrap">
+                Sort
+              </label>
+              <select
+                id="shop-sort"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                className="py-2 pr-1 bg-transparent text-sm text-[var(--color-text)] focus:outline-none cursor-pointer"
+              >
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: low to high</option>
+                <option value="price-desc">Price: high to low</option>
+                <option value="name-asc">Name A–Z</option>
+              </select>
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Color Swatch Filter Pills */}
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-xs font-medium text-[var(--color-muted)] mr-1">Color Palette:</span>
-        {COLORS.map((col) => {
-          const isSelected = selectedColor === col.value;
-          return (
-            <button
-              key={col.value}
-              type="button"
-              onClick={() => setSelectedColor(col.value)}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-all cursor-pointer border ${
-                isSelected
-                  ? "bg-[var(--color-text)] text-white border-[var(--color-text)] shadow-xs"
-                  : "bg-[var(--color-surface)] text-[var(--color-text)] border-[var(--color-border)] hover:border-gray-400"
-              }`}
-            >
-              {col.hex && (
-                <span
-                  className="w-3 h-3 rounded-full border border-black/10 shrink-0"
-                  style={{ backgroundColor: col.hex }}
-                />
-              )}
-              <span>{col.name}</span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Active Filter Badges & Results Counter */}
-      <div className="flex items-center justify-between text-xs pt-1">
-        <div className="flex items-center gap-2 flex-wrap">
-          <span className="font-semibold text-[var(--color-text)]">
-            Showing {filteredProducts.length} of {initialProducts.length} styles
+        <div className="flex items-center gap-4 text-xs text-[var(--color-muted)]">
+          <span>
+            {filteredProducts.length} {filteredProducts.length === 1 ? "piece" : "pieces"}
           </span>
           {hasActiveFilters && (
             <button
               type="button"
               onClick={handleResetFilters}
-              className="text-[11px] font-semibold text-[var(--vybe-mauve-ink)] hover:underline ml-2"
+              className="text-[var(--color-text)] underline underline-offset-4 hover:text-[var(--vybe-mauve-ink)] cursor-pointer"
             >
-              Reset all filters ✕
+              Clear filters
             </button>
           )}
         </div>
@@ -223,30 +208,23 @@ export function ShopFilters({ initialProducts, initialCategory = "all" }: ShopFi
 
       {/* Products Grid */}
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6 sm:gap-y-14">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       ) : (
-        <div className="text-center py-20 border border-dashed border-[var(--color-border)] rounded-2xl bg-[var(--color-surface)] p-8">
-          <div className="w-14 h-14 rounded-full bg-[var(--vybe-peach)]/50 mx-auto flex items-center justify-center text-[var(--vybe-mauve-ink)] mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          <h2 className="font-serif text-2xl font-medium text-[var(--color-text)] mb-2">
-            No matching concept styles found
-          </h2>
-          <p className="text-xs text-[var(--color-muted)] max-w-sm mx-auto mb-6">
-            Try adjusting your search query, selecting another color palette, or resetting category filters.
+        <div className="text-center py-24 border-y border-[var(--color-border)]">
+          <h2 className="font-serif text-3xl text-[var(--color-text)] mb-2">Nothing matches just yet</h2>
+          <p className="text-sm text-[var(--color-muted)] max-w-sm mx-auto mb-6">
+            Try a different search, colour or category.
           </p>
           <button
             type="button"
             onClick={handleResetFilters}
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
           >
-            Show All 12 Concepts
+            Show everything
           </button>
         </div>
       )}

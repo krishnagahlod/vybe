@@ -47,7 +47,7 @@ export default function ContactPage() {
         </div>
 
         {/* Academic Disclosure Box */}
-        <div className="p-5 rounded-2xl bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-1.5">
+        <div className="p-5 rounded-md bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-1.5">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Academic Evaluation Notice
@@ -60,9 +60,9 @@ export default function ContactPage() {
         {/* Main Content Layout */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
           {/* Contact Form */}
-          <div className="md:col-span-7 p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
+          <div className="md:col-span-7 p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
             {submitted ? (
-              <div className="py-12 text-center space-y-4 animate-fade-in">
+              <div className="py-12 text-center space-y-4 animate-fade-up">
                 <div className="w-12 h-12 mx-auto rounded-full bg-[var(--vybe-sage)] flex items-center justify-center text-[var(--color-text)] font-bold text-lg">
                   &#10003;
                 </div>
@@ -79,7 +79,7 @@ export default function ContactPage() {
                       setSubmitted(false);
                       setFormData({ name: "", email: "", subject: "", message: "" });
                     }}
-                    className="px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+                    className="px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
                   >
                     Send Another Note
                   </button>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Ananya Sen"
-                    className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
+                    className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
                   />
                 </div>
 
@@ -119,7 +119,7 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="e.g. ananya@example.com"
-                    className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
+                    className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
                   />
                 </div>
 
@@ -137,7 +137,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     placeholder="e.g. Project feedback / Activewear inquiry"
-                    className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
+                    className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
                   />
                 </div>
 
@@ -155,13 +155,13 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder="Your message or feedback..."
-                    className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
+                    className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)]"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+                  className="w-full py-3.5 px-6 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
                 >
                   Send Simulated Message &rarr;
                 </button>
@@ -171,7 +171,7 @@ export default function ContactPage() {
 
           {/* Project Details Sidebar */}
           <div className="md:col-span-5 space-y-6">
-            <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+            <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
               <h3 className="font-serif text-lg font-medium text-[var(--color-text)]">
                 Campaign Information
               </h3>
@@ -194,7 +194,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-2">
+            <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-2">
               <h3 className="font-serif text-lg font-medium text-[var(--color-text)]">
                 Academic Inquiries
               </h3>

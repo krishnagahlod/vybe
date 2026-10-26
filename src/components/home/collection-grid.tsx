@@ -47,9 +47,9 @@ export function CollectionGrid() {
               <Link
                 key={item.category}
                 href={`/shop?category=${item.category}`}
-                className="group block focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] rounded-xl"
+                className="group block focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] rounded-md"
               >
-                <div className="relative aspect-[3/4] rounded-xl overflow-hidden bg-[var(--vybe-peach)]/40">
+                <div className="relative aspect-[3/4] rounded-md overflow-hidden bg-[var(--vybe-peach)]/40">
                   <Image
                     src={item.imageSrc}
                     alt=""

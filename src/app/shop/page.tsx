@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { Suspense } from "react";
 import { products } from "@/data/products";
 import { ShopFilters } from "@/components/shop/shop-filters";
@@ -25,12 +24,12 @@ function ShopSkeleton() {
     <div className="space-y-12 animate-pulse">
       <div className="flex gap-2">
         {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="h-8 w-24 rounded-full bg-[var(--vybe-peach)]/40" />
+          <div key={i} className="h-9 w-24 rounded-sm bg-[var(--vybe-peach)]/40" />
         ))}
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-          <div key={i} className="aspect-[4/5] rounded-2xl bg-[var(--vybe-sage)]/30" />
+          <div key={i} className="aspect-[3/4] rounded-md bg-[var(--vybe-sage)]/30" />
         ))}
       </div>
     </div>
@@ -43,50 +42,19 @@ export default function ShopPage({
   searchParams: Promise<{ category?: string }>;
 }) {
   return (
-    <div className="py-10 sm:py-16">
+    <div className="py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Breadcrumb & Title */}
-        <div className="mb-10 text-center sm:text-left">
-          <nav aria-label="Breadcrumb" className="text-xs text-[var(--color-muted)] mb-3">
-            <ol className="flex items-center justify-center sm:justify-start gap-2">
-              <li>
-                <Link href="/" className="hover:text-[var(--color-text)] transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true">&bull;</li>
-              <li className="text-[var(--color-text)] font-medium" aria-current="page">
-                Shop Collection
-              </li>
-            </ol>
-          </nav>
-
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-1 font-mono">
-                The Activewear Edit
-              </span>
-              <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
-                Movement Collection
-              </h1>
-            </div>
-            <p className="text-xs sm:text-sm text-[var(--color-muted)]">
-              Showing all <span className="font-semibold text-[var(--color-text)]">{products.length}</span> conceptual styles
-            </p>
-          </div>
-        </div>
-
-        {/* Academic / Concept Notice */}
-        <div className="mb-8 p-4 rounded-xl bg-[var(--vybe-peach)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
-          <p>
-            <strong className="text-[var(--color-text)] uppercase font-semibold mr-1.5">
-              Simulated Catalogue:
-            </strong>
-            All products, sizes, and prices are conceptual drafts for the ENT 625 Digital Marketing project.
+        {/* Page title */}
+        <div className="mb-10 sm:mb-14 space-y-3">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
+            Volume 01 &middot; The Studio Collection
           </p>
-          <span className="shrink-0 text-[11px] font-mono text-[var(--vybe-mauve-ink)] font-medium">
-            Draft Prices in INR
-          </span>
+          <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">
+            Shop the collection
+          </h1>
+          <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl">
+            {products.length} pieces in sage, peach, pink, rose and mauve, made to mix and match.
+          </p>
         </div>
 
         {/* Dynamic Catalog inside Suspense boundary */}

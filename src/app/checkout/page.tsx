@@ -139,7 +139,7 @@ export default function CheckoutPage() {
   if (resolvedItems.length === 0) {
     return (
       <div className="py-16 sm:py-24">
-        <div className="max-w-xl mx-auto px-4 text-center space-y-6 p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
+        <div className="max-w-xl mx-auto px-4 text-center space-y-6 p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
             Demo Checkout
           </span>
@@ -152,7 +152,7 @@ export default function CheckoutPage() {
           <div>
             <Link
               href="/shop"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs"
+              className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs"
             >
               Browse 12-Piece Collection &rarr;
             </Link>
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
         </div>
 
         {/* Prominent Demo Notice Box */}
-        <div className="mb-10 p-5 rounded-2xl bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-1.5">
+        <div className="mb-10 p-5 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 text-xs text-[var(--color-text)] leading-relaxed space-y-1.5">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Demonstration Store Notice (ENT 625 Project)
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
           <div className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="space-y-8" noValidate>
               {/* Section 1: Customer Info */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
+              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
                 <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-3 border-b border-[var(--color-border)]">
                   1. Contact Information
                 </h2>
@@ -235,7 +235,7 @@ export default function CheckoutPage() {
                         if (errors.fullName) setErrors({ ...errors, fullName: undefined });
                       }}
                       placeholder="e.g. Priya Sharma"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
+                      className={`w-full px-4 py-3 rounded-md border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
                         errors.fullName ? "border-red-400 bg-red-50/20" : "border-[var(--color-border)]"
                       }`}
                     />
@@ -260,7 +260,7 @@ export default function CheckoutPage() {
                         if (errors.email) setErrors({ ...errors, email: undefined });
                       }}
                       placeholder="e.g. priya@example.com"
-                      className={`w-full px-4 py-3 rounded-xl border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
+                      className={`w-full px-4 py-3 rounded-md border text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all ${
                         errors.email ? "border-red-400 bg-red-50/20" : "border-[var(--color-border)]"
                       }`}
                     />
@@ -272,7 +272,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Section 2: Destination City */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
+              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-5">
                 <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-3 border-b border-[var(--color-border)]">
                   2. Campaign Delivery City
                 </h2>
@@ -289,7 +289,7 @@ export default function CheckoutPage() {
                       id="citySelect"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
+                      className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
                     >
                       {CAMPAIGN_CITIES.map((c) => (
                         <option key={c} value={c}>
@@ -312,24 +312,24 @@ export default function CheckoutPage() {
                       value={formData.note}
                       onChange={(e) => setFormData({ ...formData, note: e.target.value })}
                       placeholder="e.g. Testing student funnel for ENT 625"
-                      className="w-full px-4 py-3 rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
+                      className="w-full px-4 py-3 rounded-md border border-[var(--color-border)] text-sm text-[var(--color-text)] bg-[var(--color-bg)] focus:outline-hidden focus:ring-2 focus:ring-[var(--vybe-mauve-ink)] transition-all"
                     />
                   </div>
                 </div>
               </div>
 
               {/* Section 3: Simulated Payment Method */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]">
                   <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
                     3. Payment Simulation
                   </h2>
-                  <span className="text-[11px] font-semibold text-[var(--vybe-sage-ink)] bg-[var(--vybe-sage)]/60 px-2.5 py-0.5 rounded-full">
+                  <span className="text-[11px] font-semibold text-[var(--vybe-sage-ink)] bg-[var(--vybe-sage)]/60 px-2.5 py-0.5 rounded-sm">
                     No Charge • Demo Mode
                   </span>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/60 flex items-start gap-3">
+                <div className="p-4 rounded-md bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/60 flex items-start gap-3">
                   <div className="w-5 h-5 rounded-full bg-[var(--color-text)] text-white flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">
                     &#10003;
                   </div>
@@ -349,7 +349,7 @@ export default function CheckoutPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 px-8 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+                  className="w-full py-4 px-8 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
                 >
                   {isSubmitting
                     ? "Validating Simulated Order..."
@@ -361,7 +361,7 @@ export default function CheckoutPage() {
 
           {/* Right Column: Order Summary Preview */}
           <div className="lg:col-span-5 sticky top-28">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
+            <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-md space-y-6">
               <h2 className="font-serif text-xl font-medium text-[var(--color-text)] pb-4 border-b border-[var(--color-border)]">
                 Items in Demo Order ({totalCount})
               </h2>

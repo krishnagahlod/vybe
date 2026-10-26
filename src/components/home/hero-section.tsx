@@ -38,7 +38,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/shop"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
               >
                 <span>Shop the collection</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
@@ -47,7 +47,7 @@ export function HeroSection() {
               </Link>
               <Link
                 href="#style-quiz"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase border border-[var(--color-text)]/20 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase border border-[var(--color-text)]/20 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
               >
                 Find your fit
               </Link>
@@ -56,7 +56,7 @@ export function HeroSection() {
 
           {/* Campaign image: landscape source shown in a landscape frame so the full pose is kept */}
           <div className="lg:col-span-7 animate-fade-up [animation-delay:120ms]">
-            <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-[var(--vybe-sage)]">
+            <div className="relative aspect-[4/3] w-full rounded-md overflow-hidden bg-[var(--vybe-sage)]">
               <Image
                 src="/images/lifestyle/hero-editorial-movement.jpg"
                 alt="Woman holding a standing balance pose in sage VYBE leggings and bra in a sunlit limestone studio"
@@ -68,9 +68,9 @@ export function HeroSection() {
 
               <Link
                 href="/product/flow-high-rise-leggings"
-                className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 flex items-center gap-3 p-2.5 pr-5 rounded-xl bg-white/95 backdrop-blur-md shadow-lg hover:bg-white transition-colors"
+                className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5 flex items-center gap-3 p-2.5 pr-5 rounded-md bg-white/95 backdrop-blur-md shadow-lg hover:bg-white transition-colors"
               >
-                <span className="relative w-11 h-11 rounded-lg overflow-hidden bg-[var(--vybe-sage)] shrink-0">
+                <span className="relative w-11 h-11 rounded-sm overflow-hidden bg-[var(--vybe-sage)] shrink-0">
                   <Image
                     src="/images/products/flow-high-rise-leggings-1.jpg"
                     alt=""

@@ -13,7 +13,7 @@ export function StudioToStreet() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-5">
-            <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-[var(--vybe-peach)]">
+            <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0 rounded-md overflow-hidden bg-[var(--vybe-peach)]">
               <Image
                 src="/images/products/studio-zip-jacket-1.jpg"
                 alt="Woman in a mauve and pink zip jacket over matching leggings in a light-filled studio"
@@ -38,7 +38,7 @@ export function StudioToStreet() {
               </p>
             </div>
 
-            <ol className="grid grid-cols-1 sm:grid-cols-3 gap-px rounded-2xl overflow-hidden bg-[var(--color-text)]/10">
+            <ol className="grid grid-cols-1 sm:grid-cols-3 gap-px rounded-md overflow-hidden bg-[var(--color-text)]/10">
               {MOMENTS.map((moment) => (
                 <li key={moment.time} className="bg-[var(--vybe-sage)] p-5 space-y-1">
                   <span className="block text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-sage-ink)]">
@@ -53,13 +53,13 @@ export function StudioToStreet() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
               <Link
                 href="/shop?category=layers"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
               >
                 Shop layers
               </Link>
               <Link
                 href="/shop?category=sets"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold tracking-[0.15em] uppercase border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
               >
                 Shop matching sets
               </Link>

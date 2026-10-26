@@ -51,7 +51,7 @@ export function BrandStory() {
           </div>
 
           <figure className="lg:col-span-5">
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-[var(--vybe-pink)]">
+            <div className="relative rounded-md overflow-hidden aspect-[4/5] bg-[var(--vybe-pink)]">
               <Image
                 src="/images/products/harmony-monochrome-set-1.jpg"
                 alt="Woman standing relaxed in a matching pink VYBE set in a sunlit studio"

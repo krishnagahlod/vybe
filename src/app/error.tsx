@@ -38,13 +38,13 @@ export default function GlobalError({
           <button
             type="button"
             onClick={() => reset()}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs cursor-pointer"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs cursor-pointer"
           >
             Try Again
           </button>
           <Link
             href="/shop"
-            className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
           >
             Go to Collection
           </Link>

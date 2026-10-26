@@ -82,7 +82,7 @@ export function CartDrawer() {
                   <h2 id="slide-over-title" className="font-serif text-lg md:text-xl font-semibold text-[var(--color-text)]">
                     Your Shopping Bag
                   </h2>
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)]">
+                  <span className="text-xs font-bold px-2 py-0.5 rounded-sm bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)]">
                     {totalCount} {totalCount === 1 ? "item" : "items"}
                   </span>
                 </div>
@@ -143,7 +143,7 @@ export function CartDrawer() {
                     <button
                       type="button"
                       onClick={closeCartDrawer}
-                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+                      className="inline-flex items-center justify-center px-5 py-2.5 rounded-sm text-xs font-semibold tracking-wider uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
                     >
                       <Link href="/shop" onClick={closeCartDrawer}>
                         Browse Collection
@@ -161,7 +161,7 @@ export function CartDrawer() {
                     return (
                       <div key={`${item.productId}-${item.size}`} className="py-4 flex gap-4 items-start">
                         {/* Thumbnail */}
-                        <div className="relative w-18 h-22 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden shrink-0">
+                        <div className="relative w-18 h-22 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden shrink-0">
                           <Image
                             src={imageSrc}
                             alt={product?.name ?? "VYBE product"}
@@ -196,7 +196,7 @@ export function CartDrawer() {
 
                           {/* Stepper & Remove */}
                           <div className="flex items-center justify-between mt-3">
-                            <div className="flex items-center border border-[var(--color-border)] rounded-lg bg-[var(--color-surface)] overflow-hidden">
+                            <div className="flex items-center border border-[var(--color-border)] rounded-sm bg-[var(--color-surface)] overflow-hidden">
                               <button
                                 type="button"
                                 onClick={() => updateQuantity(item.productId, item.size, item.quantity - 1)}
@@ -257,7 +257,7 @@ export function CartDrawer() {
                     <Link
                       href="/checkout"
                       onClick={closeCartDrawer}
-                      className="w-full flex items-center justify-center py-3.5 px-6 rounded-full text-xs font-bold tracking-wider uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+                      className="w-full flex items-center justify-center py-3.5 px-6 rounded-sm text-xs font-bold tracking-wider uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-sm focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
                     >
                       Proceed to Demo Checkout
                     </Link>
@@ -265,7 +265,7 @@ export function CartDrawer() {
                     <Link
                       href="/cart"
                       onClick={closeCartDrawer}
-                      className="w-full flex items-center justify-center py-2.5 px-4 rounded-full text-xs font-medium text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
+                      className="w-full flex items-center justify-center py-2.5 px-4 rounded-sm text-xs font-medium text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
                     >
                       View Full Bag Details →
                     </Link>

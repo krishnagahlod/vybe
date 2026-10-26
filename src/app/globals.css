@@ -34,7 +34,7 @@
   --color-vybe-text: var(--color-text);
   --color-vybe-muted: var(--color-muted);
   --color-vybe-border: var(--color-border);
-  --font-serif: var(--font-playfair);
+  --font-serif: var(--font-display);
   --font-sans: var(--font-jakarta);
   /* Labels previously fell back to the OS monospace; keep them in the brand sans. */
   --font-mono: var(--font-jakarta);

@@ -121,7 +121,7 @@ export function FitFinderModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
+            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-md shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
           >
             {/* Header */}
             <div className="p-6 border-b border-[var(--color-border)] bg-[var(--color-surface)]/70 flex items-center justify-between">
@@ -152,7 +152,7 @@ export function FitFinderModal({
                 <p id={descId} className="text-xs text-[var(--color-muted)]">
                   Adjust measurements to find your optimal movement fit.
                 </p>
-                <div className="inline-flex rounded-lg bg-[var(--color-surface)] p-1 border border-[var(--color-border)]">
+                <div className="inline-flex rounded-sm bg-[var(--color-surface)] p-1 border border-[var(--color-border)]">
                   <button
                     type="button"
                     onClick={() => setUnit("in")}
@@ -253,7 +253,7 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("snug")}
-                    className={`p-2.5 rounded-xl border text-center transition-all ${
+                    className={`p-2.5 rounded-md border text-center transition-all ${
                       fitPref === "snug"
                         ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
@@ -266,7 +266,7 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("true")}
-                    className={`p-2.5 rounded-xl border text-center transition-all ${
+                    className={`p-2.5 rounded-md border text-center transition-all ${
                       fitPref === "true"
                         ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
@@ -279,7 +279,7 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("relaxed")}
-                    className={`p-2.5 rounded-xl border text-center transition-all ${
+                    className={`p-2.5 rounded-md border text-center transition-all ${
                       fitPref === "relaxed"
                         ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
@@ -292,12 +292,12 @@ export function FitFinderModal({
               </div>
 
               {/* Recommendation Result Card */}
-              <div className="p-4 rounded-2xl bg-linear-to-br from-[var(--vybe-sage)]/40 to-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 space-y-2">
+              <div className="p-4 rounded-md bg-linear-to-br from-[var(--vybe-sage)]/40 to-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">
                     Recommended Size
                   </span>
-                  <span className="font-serif text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-xl bg-white/80 shadow-xs border border-[var(--color-border)]">
+                  <span className="font-serif text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-md bg-white/80 shadow-xs border border-[var(--color-border)]">
                     {recommendedSize}
                   </span>
                 </div>
@@ -317,7 +317,7 @@ export function FitFinderModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
+                className="px-5 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
               >
                 Cancel
               </button>
@@ -328,7 +328,7 @@ export function FitFinderModal({
                   onSelectSize(recommendedSize);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
+                className="px-6 py-2.5 rounded-sm text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
               >
                 Apply Size {recommendedSize} &amp; Close
               </button>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product";
 import { formatPrice } from "@/lib/format";
+import { getSwatch } from "@/lib/colors";
 import { useWishlist } from "@/lib/wishlist-context";
 import { useCart } from "@/lib/cart-context";
 import { useToast } from "@/lib/toast-context";
@@ -12,16 +13,6 @@ import { trackAddToCart } from "@/lib/analytics";
 
 type ProductCardProps = {
   product: Product;
-};
-
-// Map colorway names to CSS colors for swatch preview
-const COLOR_SWATCH_MAP: Record<string, string> = {
-  "Sage": "#d8e2dc",
-  "Muted Mauve": "#9d8189",
-  "Pale Peach": "#ffe5d9",
-  "Rose": "#f4acb7",
-  "Soft Pink": "#ffcad4",
-  "Sage / Rose": "linear-gradient(135deg, #d8e2dc 50%, #f4acb7 50%)",
 };
 
 export function ProductCard({ product }: ProductCardProps) {
@@ -41,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
       ? product.images[0].alt
       : `${product.name} luxury activewear preview`;
 
-  const swatchColor = product.colorName ? COLOR_SWATCH_MAP[product.colorName] || "#9d8189" : "#9d8189";
+  const swatchColor = getSwatch(product.colorName);
 
   const handleQuickAdd = (size: string, e: React.MouseEvent) => {
     e.preventDefault();
@@ -58,9 +49,9 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <article className="group flex flex-col h-full bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-[0_16px_40px_rgba(20,18,17,0.08)] hover:-translate-y-1 relative">
+    <article className="group relative flex flex-col h-full">
       {/* Product Image Frame */}
-      <div className="relative block aspect-[3/4] w-full overflow-hidden bg-[var(--vybe-peach)]/40">
+      <div className="relative block aspect-[3/4] w-full rounded-md overflow-hidden bg-[var(--vybe-peach)]/40">
         <Link
           href={`/product/${product.slug}`}
           className="absolute inset-0 z-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
@@ -70,16 +61,13 @@ export function ProductCard({ product }: ProductCardProps) {
             src={imageSrc}
             alt={imageAlt}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            sizes="(max-width: 1024px) 50vw, 25vw"
             className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           />
-
-          {/* Subtle Dark Vignette on Hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
         </Link>
 
         {product.featured && (
-          <span className="absolute top-3.5 left-3.5 z-10 pointer-events-none px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.15em] bg-[var(--vybe-peach)] text-[var(--color-text)]">
+          <span className="absolute top-3 left-3 z-10 pointer-events-none px-2.5 py-1 rounded-sm text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] bg-[var(--color-bg)] text-[var(--color-text)]">
             Studio Edit
           </span>
         )}
@@ -98,10 +86,10 @@ export function ProductCard({ product }: ProductCardProps) {
             }
           }}
           aria-label={isSaved ? `Remove ${product.name} from saved items` : `Save ${product.name} to wishlist`}
-          className={`absolute top-3 right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 shadow-sm cursor-pointer ${
+          className={`absolute top-3 right-3 z-20 w-9 h-9 rounded-full flex items-center justify-center transition-colors duration-300 cursor-pointer ${
             isSaved
-              ? "bg-[var(--vybe-rose)] text-[var(--color-text)] scale-105"
-              : "bg-white/90 backdrop-blur-md text-[var(--color-muted)] hover:text-[var(--vybe-mauve-ink)] hover:bg-white"
+              ? "bg-[var(--color-bg)] text-[var(--vybe-rose-ink)]"
+              : "bg-[var(--color-bg)]/80 backdrop-blur-md text-[var(--color-muted)] hover:text-[var(--vybe-rose-ink)]"
           }`}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
@@ -112,7 +100,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Quick-add sizes: revealed on hover (pointer devices) or keyboard focus. Hidden bars ignore taps,
             so touch users can't add an item by accident when tapping the image. */}
         <div className="absolute bottom-3 right-3 left-3 z-20 opacity-0 translate-y-3 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
-          <div className="p-2 rounded-xl bg-white/95 backdrop-blur-md shadow-lg flex flex-col gap-1.5">
+          <div className="p-2 rounded-sm bg-[var(--color-bg)]/95 backdrop-blur-md flex flex-col gap-1.5">
             <span className="px-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]">
               Quick add
             </span>
@@ -123,10 +111,10 @@ export function ProductCard({ product }: ProductCardProps) {
                   type="button"
                   onClick={(e) => handleQuickAdd(size, e)}
                   aria-label={`Quick add size ${size} to bag`}
-                  className={`flex-1 py-1.5 rounded-lg text-[11px] font-mono font-semibold transition-all cursor-pointer ${
+                  className={`flex-1 py-1.5 rounded-sm text-[11px] font-semibold transition-colors cursor-pointer ${
                     justAddedSize === size
-                      ? "bg-[var(--vybe-sage-ink)] text-white scale-105"
-                      : "bg-[var(--color-bg)] hover:bg-[var(--color-text)] hover:text-white text-[var(--color-text)] border border-[var(--color-border)]"
+                      ? "bg-[var(--vybe-sage-ink)] text-white"
+                      : "hover:bg-[var(--color-text)] hover:text-white text-[var(--color-text)] border border-[var(--color-border)]"
                   }`}
                 >
                   {justAddedSize === size ? "✓" : size}
@@ -138,17 +126,14 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Details Section */}
-      <div className="flex flex-col flex-1 p-5 gap-2">
-        <h3 className="font-serif text-lg font-normal tracking-tight text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors leading-snug">
+      <div className="flex flex-col flex-1 pt-4 gap-1">
+        <h3 className="font-serif text-lg sm:text-xl font-medium tracking-tight text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors leading-snug">
           <Link href={`/product/${product.slug}`} className="focus-visible:outline-hidden">
             {product.name}
           </Link>
         </h3>
-        <p className="flex-1 text-sm text-[var(--color-muted)] line-clamp-2 leading-relaxed">
-          {product.shortDescription}
-        </p>
-        <div className="pt-3 flex items-center justify-between gap-2">
-          <span className="text-base font-medium text-[var(--color-text)]">{formatPrice(product.price)}</span>
+                <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+          <span className="text-sm text-[var(--color-text)]">{formatPrice(product.price)}</span>
           {product.colorName && (
             <span className="flex items-center gap-2 text-xs text-[var(--color-muted)]">
               <span

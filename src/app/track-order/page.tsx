@@ -56,7 +56,7 @@ function TrackOrderContent() {
         </div>
 
         {/* Input Form Card */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs mb-10">
+        <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs mb-10">
           <form onSubmit={handleSearch} className="space-y-4">
             <div>
               <label htmlFor="order-ref" className="block text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] mb-2">
@@ -72,11 +72,11 @@ function TrackOrderContent() {
                     if (error) setError("");
                   }}
                   placeholder="e.g. VYBE-DEMO-482915"
-                  className="flex-1 py-3 px-4 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] text-sm font-mono text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--vybe-mauve-ink)] transition-colors uppercase"
+                  className="flex-1 py-3 px-4 rounded-md bg-[var(--color-bg)] border border-[var(--color-border)] text-sm font-mono text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:border-[var(--vybe-mauve-ink)] transition-colors uppercase"
                 />
                 <button
                   type="submit"
-                  className="py-3 px-8 rounded-xl bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs shrink-0 cursor-pointer"
+                  className="py-3 px-8 rounded-md bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs shrink-0 cursor-pointer"
                 >
                   Lookup Status
                 </button>
@@ -102,7 +102,7 @@ function TrackOrderContent() {
               className="space-y-8"
             >
               {/* Order Status Summary Banner */}
-              <div className="p-6 rounded-2xl bg-linear-to-br from-[var(--vybe-sage)]/35 via-[var(--vybe-peach)]/35 to-transparent border border-[var(--vybe-rose)]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="p-6 rounded-md bg-linear-to-br from-[var(--vybe-sage)]/35 via-[var(--vybe-peach)]/35 to-transparent border border-[var(--vybe-rose)]/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--vybe-mauve-ink)] block">
                     Simulated Tracking ID: {searchedRef}
@@ -114,7 +114,7 @@ function TrackOrderContent() {
                     Carrier: Blue Dart Air Express (Simulated) &bull; AWB: 749201842
                   </p>
                 </div>
-                <div className="px-4 py-2 rounded-2xl bg-white/80 border border-[var(--color-border)] text-center shrink-0 shadow-xs">
+                <div className="px-4 py-2 rounded-md bg-white/80 border border-[var(--color-border)] text-center shrink-0 shadow-xs">
                   <span className="block text-[11px] uppercase tracking-wider text-[var(--color-muted)]">
                     Estimated Doorstep
                   </span>
@@ -125,7 +125,7 @@ function TrackOrderContent() {
               </div>
 
               {/* Progress Milestones */}
-              <div className="p-6 sm:p-8 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
+              <div className="p-6 sm:p-8 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs">
                 <h4 className="font-serif text-lg font-semibold text-[var(--color-text)] mb-6">
                   Fulfillment Milestones
                 </h4>
@@ -214,7 +214,7 @@ function TrackOrderContent() {
               </div>
 
               {/* Academic Simulation Notice Card */}
-              <div className="p-4 rounded-2xl bg-[var(--vybe-peach)]/40 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex items-center gap-3">
+              <div className="p-4 rounded-md bg-[var(--vybe-peach)]/40 border border-[var(--color-border)] text-xs text-[var(--color-muted)] flex items-center gap-3">
                 <span className="text-base">ℹ️</span>
                 <p>
                   <strong className="text-[var(--color-text)]">Demonstration Notice:</strong> This tracking readout is an interactive simulation demonstrating customer post-purchase journey tracking for the ENT 625 Digital Marketing project.

@@ -104,7 +104,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               <Link
                 href="/cart"
                 onClick={onClose}
-                className="flex items-center justify-between p-3 rounded-lg bg-[var(--vybe-peach)] text-[var(--color-text)] font-medium hover:bg-[var(--vybe-rose)]/40 transition-colors"
+                className="flex items-center justify-between p-3 rounded-sm bg-[var(--vybe-peach)] text-[var(--color-text)] font-medium hover:bg-[var(--vybe-rose)]/40 transition-colors"
               >
                 <span className="flex items-center gap-2">
                   <svg

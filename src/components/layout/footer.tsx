@@ -144,7 +144,7 @@ export function Footer() {
         </div>
 
         {/* Academic / Concept Disclaimer Banner */}
-        <div className="mt-8 p-4 rounded-xl bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
+        <div className="mt-8 p-4 rounded-md bg-[var(--vybe-sage)]/30 border border-[var(--color-border)] text-xs text-[var(--color-muted)] leading-relaxed">
           <p className="font-semibold text-[var(--color-text)] mb-1 uppercase tracking-wide">
             Academic Concept Disclosure (ENT 625 — Digital Marketing)
           </p>
