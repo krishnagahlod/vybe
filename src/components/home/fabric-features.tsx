@@ -41,19 +41,25 @@ const FEATURES = [
 
 export function FabricFeatures() {
   return (
-    <section className="py-12 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
+    <section className="py-14 sm:py-16 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {FEATURES.map((feat, idx) => (
-            <div key={idx} className="flex items-start gap-4">
-              <div className="p-3 rounded-2xl bg-[var(--vybe-peach)]/50 text-[var(--vybe-mauve)] shrink-0 shadow-xs">
+            <div
+              key={idx}
+              className="flex items-start gap-4 p-5 rounded-2xl bg-[var(--color-bg)]/60 border border-[var(--color-border)]/70 hover:border-[var(--vybe-mauve)]/40 hover:bg-[var(--color-bg)] transition-all duration-300 group"
+            >
+              <div className="p-3 rounded-xl bg-white text-[var(--vybe-mauve)] shrink-0 shadow-xs border border-[var(--color-border)] group-hover:scale-105 transition-transform">
                 {feat.icon}
               </div>
               <div className="space-y-1">
+                <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--vybe-rose)] font-semibold block">
+                  0{idx + 1} &bull; TECH INNOVATION
+                </span>
                 <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
                   {feat.title}
                 </h3>
-                <p className="text-xs text-[var(--color-muted)] leading-relaxed">
+                <p className="text-xs text-[var(--color-muted)] leading-relaxed font-light">
                   {feat.description}
                 </p>
               </div>

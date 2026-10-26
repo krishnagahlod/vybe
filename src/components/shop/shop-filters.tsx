@@ -21,11 +21,11 @@ const CATEGORIES = [
 
 const COLORS = [
   { name: "All Colors", value: "all", hex: null },
-  { name: "Sage", value: "Sage", hex: "#d8e2dc" },
-  { name: "Pale Peach", value: "Pale Peach", hex: "#ffe5d9" },
-  { name: "Soft Pink", value: "Soft Pink", hex: "#ffcad4" },
-  { name: "Rose", value: "Rose", hex: "#f4acb7" },
-  { name: "Muted Mauve", value: "Muted Mauve", hex: "#9d8189" },
+  { name: "Sage", value: "Sage", hex: "#5b6e5b" },
+  { name: "Pale Peach", value: "Pale Peach", hex: "#f5ebe1" },
+  { name: "Soft Pink", value: "Soft Pink", hex: "#f2ddd6" },
+  { name: "Rose", value: "Rose", hex: "#b87a66" },
+  { name: "Muted Mauve", value: "Muted Mauve", hex: "#7a6369" },
 ];
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";

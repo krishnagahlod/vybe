@@ -13,9 +13,9 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-[var(--color-bg)]/90 backdrop-blur-md border-b border-[var(--color-border)] transition-colors">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
+      <div className="sticky top-3 z-40 px-3 sm:px-6 w-full pointer-events-none transition-all">
+        <header className="pointer-events-auto max-w-6xl mx-auto rounded-full bg-[var(--color-bg)]/85 backdrop-blur-2xl border border-[var(--color-border)] shadow-[0_8px_30px_rgba(20,18,17,0.06)] px-4 sm:px-7 py-2.5 sm:py-3.5 transition-all">
+          <div className="flex items-center justify-between">
             {/* Mobile menu button */}
             <div className="flex items-center md:hidden">
               <button
@@ -23,11 +23,11 @@ export function Header() {
                 onClick={() => setMobileMenuOpen(true)}
                 aria-expanded={mobileMenuOpen}
                 aria-label="Open main navigation menu"
-                className="p-2 -ml-2 rounded-md text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
+                className="p-2 -ml-1 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -38,40 +38,58 @@ export function Header() {
               </button>
             </div>
 
-            {/* Brand Wordmark & Tagline */}
+            {/* Brand Wordmark */}
             <div className="flex items-center gap-3">
               <Link
                 href="/"
                 className="group flex flex-col items-start focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
               >
-                <span className="font-serif text-2xl md:text-3xl font-semibold tracking-[0.25em] text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors">
+                <span className="font-serif text-xl sm:text-2xl font-normal tracking-[0.3em] text-[var(--color-text)] group-hover:text-[var(--vybe-mauve)] transition-colors">
                   VYBE
                 </span>
-                <span className="hidden sm:inline-block text-[10px] tracking-[0.2em] uppercase text-[var(--color-muted)] -mt-1 font-sans">
+                <span className="hidden sm:inline-block text-[8px] font-mono tracking-[0.25em] uppercase text-[var(--color-muted)] -mt-1">
                   Movement Redefined
                 </span>
               </Link>
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+            <nav className="hidden md:flex items-center gap-7 lg:gap-9" aria-label="Main navigation">
               <Link
                 href="/shop"
-                className="text-sm font-medium tracking-wide uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[var(--vybe-mauve)] hover:after:w-full after:transition-all"
+                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
               >
-                Shop Collection
+                <span>Collection</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
+              </Link>
+              <Link
+                href="/#garment-anatomy"
+                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
+              >
+                <span>Anatomy</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
+              </Link>
+              <Link
+                href="/#midnight-edit"
+                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-[#141211]" />
+                <span>Midnight Edit</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
               </Link>
               <Link
                 href="/about"
-                className="text-sm font-medium tracking-wide uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[var(--vybe-mauve)] hover:after:w-full after:transition-all"
+                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
               >
-                Brand Story
+                <span>Manifesto</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
               </Link>
               <Link
                 href="/contact"
-                className="text-sm font-medium tracking-wide uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors py-1 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[var(--vybe-mauve)] hover:after:w-full after:transition-all"
+                className="text-xs font-semibold tracking-[0.15em] uppercase text-[var(--color-text)] hover:text-[var(--vybe-mauve)] transition-colors relative py-1 group"
               >
-                Contact
+                <span>Contact</span>
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--vybe-mauve)] transition-all duration-300 group-hover:w-full" />
               </Link>
             </nav>
 
@@ -82,11 +100,11 @@ export function Header() {
                 type="button"
                 onClick={openWishlistModal}
                 aria-label={`Open saved items list containing ${wishlistCount} items`}
-                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center cursor-pointer group"
+                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-black/5 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center cursor-pointer group"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 group-hover:scale-105 transition-transform"
+                  className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -99,22 +117,22 @@ export function Header() {
                   />
                 </svg>
                 {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[1.2rem] h-4.5 px-1 text-[10px] font-bold rounded-full bg-[var(--vybe-rose)] text-white shadow-xs">
+                  <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[1.1rem] h-4 px-1 text-[9px] font-bold rounded-full bg-[var(--vybe-rose)] text-white shadow-xs">
                     {wishlistCount}
                   </span>
                 )}
               </button>
 
-              {/* Cart Bag Trigger */}
+              {/* Cart Bag Trigger Capsule */}
               <button
                 type="button"
                 onClick={openCartDrawer}
                 aria-label={`Open shopping bag drawer containing ${isLoaded ? totalCount : 0} items`}
-                className="relative p-2.5 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)] flex items-center justify-center group cursor-pointer"
+                className="relative flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve)] transition-all duration-300 shadow-sm cursor-pointer group focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve)]"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-5 h-5 md:w-6 md:h-6 group-hover:scale-105 transition-transform"
+                  className="w-4 h-4 group-hover:scale-105 transition-transform"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -126,19 +144,14 @@ export function Header() {
                     d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                   />
                 </svg>
-                {/* Cart badge */}
-                <span
-                  className={`absolute -top-1 -right-1 flex items-center justify-center min-w-[1.25rem] h-5 px-1.5 text-[11px] font-bold rounded-full bg-[var(--vybe-mauve)] text-white shadow-xs transition-transform ${
-                    isLoaded && totalCount > 0 ? "scale-100" : "scale-90 opacity-80"
-                  }`}
-                >
-                  {isLoaded ? totalCount : 0}
+                <span className="text-[11px] font-semibold tracking-wider uppercase font-mono">
+                  Bag ({isLoaded ? totalCount : 0})
                 </span>
               </button>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
+      </div>
 
       {/* Responsive mobile navigation drawer */}
       <MobileNav isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />

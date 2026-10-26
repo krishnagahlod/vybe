@@ -1,7 +1,9 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { FabricFeatures } from "@/components/home/fabric-features";
 import { CollectionGrid } from "@/components/home/collection-grid";
+import { GarmentAnatomy } from "@/components/home/garment-anatomy";
 import { FeaturedProducts } from "@/components/home/featured-products";
+import { MidnightEdit } from "@/components/home/midnight-edit";
 import { StyleQuiz } from "@/components/home/style-quiz";
 import { BrandStory } from "@/components/home/brand-story";
 import { CitySpotlight } from "@/components/home/city-spotlight";
@@ -18,16 +20,22 @@ export default function Home() {
       {/* 3. Clear Collection Discovery by Movement / Category */}
       <CollectionGrid />
 
-      {/* 4. Featured 4 Curated Products with ProductCards */}
+      {/* 4. Interactive Garment Anatomy with Pulsating Hotspots */}
+      <GarmentAnatomy />
+
+      {/* 5. Featured Curated Products with 1-Tap Quick-Size Selector */}
       <FeaturedProducts />
 
-      {/* 5. Interactive "Find Your Vibe" Style Quiz */}
+      {/* 6. Cinematic Obsidian Dark-Mode Section (The Midnight Capsule) */}
+      <MidnightEdit />
+
+      {/* 7. Interactive "Find Your Vibe" Style Quiz */}
       <StyleQuiz />
 
-      {/* 6. Brand Philosophy & Editorial Tone */}
+      {/* 8. Brand Philosophy & Editorial Tone */}
       <BrandStory />
 
-      {/* 7. Campaign Cities Spotlight & Academic Demo Notice */}
+      {/* 9. Campaign Cities Spotlight & Academic Demo Notice */}
       <CitySpotlight />
     </div>
   );
