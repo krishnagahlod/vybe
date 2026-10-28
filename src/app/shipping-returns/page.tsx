@@ -11,25 +11,11 @@ export default function ShippingReturnsPage() {
   return (
     <div className="py-12 sm:py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        {/* Header Breadcrumb & Title */}
         <div className="space-y-4 text-center sm:text-left">
-          <nav aria-label="Breadcrumb" className="text-xs text-[var(--color-muted)]">
-            <ol className="flex items-center justify-center sm:justify-start gap-2">
-              <li>
-                <Link href="/" className="hover:text-[var(--color-text)] transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true">&bull;</li>
-              <li className="text-[var(--color-text)] font-medium" aria-current="page">
-                Shipping &amp; Returns
-              </li>
-            </ol>
-          </nav>
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block font-mono">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block">
             Concept Policies
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
+          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)]">
             Delivery &amp; Trial Notice
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed font-light max-w-2xl">
@@ -49,7 +35,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Policies Content */}
-        <div className="p-8 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
           {/* Section 1: Campaign Delivery Focus */}
           <section className="space-y-4">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">

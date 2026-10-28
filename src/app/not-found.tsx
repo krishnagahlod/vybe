@@ -4,15 +4,15 @@ export default function NotFound() {
   return (
     <div className="py-20 sm:py-32 flex items-center justify-center">
       <div className="max-w-xl mx-auto px-4 sm:px-6 text-center space-y-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center font-serif text-3xl font-bold shadow-xs">
+        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center font-serif text-3xl font-bold">
           404
         </div>
 
         <div className="space-y-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] font-mono">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
             Page not found
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)]">
+          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)]">
             This page has wandered off.
           </h1>
           <p className="text-xs sm:text-sm text-[var(--color-muted)] max-w-md mx-auto leading-relaxed">
@@ -23,7 +23,7 @@ export default function NotFound() {
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/shop"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all"
           >
             Shop the collection
           </Link>

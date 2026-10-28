@@ -11,26 +11,12 @@ export default function SizeGuidePage() {
   return (
     <div className="py-12 sm:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header Breadcrumb & Title */}
         <div className="mb-12 text-center">
-          <nav aria-label="Breadcrumb" className="text-xs text-[var(--color-muted)] mb-3">
-            <ol className="flex items-center justify-center gap-2">
-              <li>
-                <Link href="/" className="hover:text-[var(--color-text)] transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden="true">&bull;</li>
-              <li className="text-[var(--color-text)] font-medium" aria-current="page">
-                Size Guide
-              </li>
-            </ol>
-          </nav>
 
-          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] block mb-2 font-mono">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block mb-3">
             Size guide
           </span>
-          <h1 className="font-serif text-3xl sm:text-5xl font-medium text-[var(--color-text)] mb-4">
+          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)] mb-4">
             Find your fit
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
@@ -38,13 +24,13 @@ export default function SizeGuidePage() {
           </p>
 
           {/* Unit Switcher */}
-          <div className="mt-6 inline-flex rounded-md bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)] shadow-xs">
+          <div className="mt-6 inline-flex rounded-md bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)]">
             <button
               type="button"
               onClick={() => setUnit("in")}
               className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "in"
-                  ? "bg-[var(--color-text)] text-white shadow-xs"
+                  ? "bg-[var(--color-text)] text-white"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
               }`}
             >
@@ -55,7 +41,7 @@ export default function SizeGuidePage() {
               onClick={() => setUnit("cm")}
               className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "cm"
-                  ? "bg-[var(--color-text)] text-white shadow-xs"
+                  ? "bg-[var(--color-text)] text-white"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
               }`}
             >
@@ -123,7 +109,7 @@ export default function SizeGuidePage() {
         {/* Measurement Tables */}
         <div className="space-y-12">
           {/* Bottoms Table */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -191,7 +177,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* Sports Bras & Tops Table */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -253,7 +239,7 @@ export default function SizeGuidePage() {
           </div>
 
           {/* International Size Conversions */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-4">
+          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="border-b border-[var(--color-border)] pb-3">
               <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
                 International Size Conversions
@@ -320,7 +306,7 @@ export default function SizeGuidePage() {
         <div className="mt-16 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all"
           >
             Shop the collection
           </Link>
