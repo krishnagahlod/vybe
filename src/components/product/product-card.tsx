@@ -10,6 +10,7 @@ import { useWishlist } from "@/lib/wishlist-context";
 import { useCart } from "@/lib/cart-context";
 import { useToast } from "@/lib/toast-context";
 import { trackAddToCart } from "@/lib/analytics";
+import { sizeWithLength } from "@/lib/catalog";
 
 type ProductCardProps = {
   product: Product;
@@ -38,14 +39,16 @@ export function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
 
-    addItem(product.id, size, 1);
+    // Pieces with leg lengths are quick-added in Regular; other lengths are chosen on the product page
+    const line = sizeWithLength(size, product.lengths ? "Regular" : undefined);
+    addItem(product.id, line, 1);
     setJustAddedSize(size);
     setTimeout(() => setJustAddedSize(null), 1500);
 
     // Track analytics using canonical trackAddToCart
-    trackAddToCart(product, 1, size);
+    trackAddToCart(product, 1, line);
 
-    showToast(`Added ${product.name} (${size}) to Bag`, "success");
+    showToast(`Added ${product.name} (${line}) to Bag`, "success");
   };
 
   return (
@@ -76,9 +79,13 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </Link>
 
-        {product.featured && (
-          <span className="absolute top-3 left-3 z-10 pointer-events-none px-2.5 py-1 rounded-sm text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] bg-[var(--color-bg)] text-[var(--color-text)]">
-            Studio Edit
+        {(product.isNew || product.featured) && (
+          <span
+            className={`absolute top-3 left-3 z-10 pointer-events-none px-2.5 py-1 rounded-sm text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] ${
+              product.isNew ? "bg-[var(--color-text)] text-white" : "bg-[var(--color-bg)] text-[var(--color-text)]"
+            }`}
+          >
+            {product.isNew ? "New" : "Founder’s pick"}
           </span>
         )}
 
@@ -112,7 +119,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="absolute bottom-3 right-3 left-3 z-20 opacity-0 translate-y-3 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
           <div className="p-2 rounded-sm bg-[var(--color-bg)]/95 backdrop-blur-md flex flex-col gap-1.5">
             <span className="px-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]">
-              Quick add
+              Quick add{product.lengths && " · Regular length"}
             </span>
             <div className="flex items-center gap-1 justify-between">
               {product.sizes.map((size) => (

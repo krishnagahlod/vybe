@@ -1,7 +1,7 @@
 import { Product } from "@/types/product";
 
 /**
- * 12 Conceptual Products for the VYBE Storefront Prototype.
+ * 15 Conceptual Products for the VYBE Storefront Prototype.
  * As defined in PRODUCT_CATALOG.md:
  * All names, descriptions, and INR prices are conceptual draft content
  * for an academic digital marketing experiment (ENT 625).
@@ -28,6 +28,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     colorName: "Sage",
+    fabric: "cloudflex",
+    activities: ["yoga-pilates", "strength", "everyday"],
+    lengths: ["Petite", "Regular", "Tall"],
+    features: [
+      "Deep side pockets that hold a phone",
+      "Wide, no-dig double-layer waistband",
+      "Available in three leg lengths",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -51,6 +59,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Muted Mauve",
+    fabric: "cloudflex",
+    activities: ["strength", "yoga-pilates"],
+    lengths: ["Petite", "Regular", "Tall"],
+    features: [
+      "Deep side pockets that hold a phone",
+      "Contouring panel seams",
+      "Available in three leg lengths",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -74,6 +90,13 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Pale Peach",
+    fabric: "airdry",
+    activities: ["strength", "walk-run"],
+    features: [
+      "Deep side pockets that hold a phone",
+      "Biker length that stays put",
+      "Rapid-dry, never heavy",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -97,6 +120,13 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     colorName: "Rose",
+    fabric: "cloudflex",
+    activities: ["yoga-pilates"],
+    features: [
+      "Light-to-medium support",
+      "Removable cups",
+      "Wide, soft straps",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -120,6 +150,13 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Sage",
+    fabric: "cloudflex",
+    activities: ["strength", "walk-run"],
+    features: [
+      "Medium support",
+      "Cross-back straps",
+      "Removable cups",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -143,6 +180,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Soft Pink",
+    isNew: true,
+    fabric: "airdry",
+    activities: ["everyday", "yoga-pilates"],
+    features: [
+      "Relaxed cropped fit",
+      "Rapid-dry jersey",
+      "Sits just above a high-rise waistband",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -166,6 +211,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Muted Mauve",
+    isNew: true,
+    fabric: "airdry",
+    activities: ["strength", "walk-run"],
+    features: [
+      "Racerback keeps shoulders free",
+      "Longer curved hem",
+      "Rapid-dry knit",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -189,6 +242,13 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Pale Peach",
+    fabric: "airdry",
+    activities: ["walk-run", "strength"],
+    features: [
+      "Raglan sleeves for easy reach",
+      "Rapid-dry knit",
+      "Relaxed, easy fit",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -212,6 +272,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     colorName: "Sage / Rose",
+    fabric: "cloudflex",
+    activities: ["yoga-pilates"],
+    lengths: ["Petite", "Regular", "Tall"],
+    features: [
+      "Deep side pockets on the leggings",
+      "Contrast rose piping",
+      "Bra and leggings together",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -235,6 +303,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Muted Mauve",
+    fabric: "cloudflex",
+    activities: ["yoga-pilates", "strength"],
+    lengths: ["Petite", "Regular", "Tall"],
+    features: [
+      "Deep side pockets on the leggings",
+      "Sculpted bra with removable cups",
+      "Bra and leggings together",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -258,6 +334,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Sage",
+    fabric: "flowweave",
+    activities: ["everyday", "walk-run"],
+    lengths: ["Petite", "Regular", "Tall"],
+    features: [
+      "Deep side pockets and a zip back pocket",
+      "Drawcord waist",
+      "Tapered, cuffed ankle",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -281,6 +365,13 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
     colorName: "Rose",
+    fabric: "airdry",
+    activities: ["everyday", "walk-run"],
+    features: [
+      "Thumbholes keep sleeves in place",
+      "High stand collar",
+      "Zip pockets",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -304,6 +395,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Chalk",
+    isNew: true,
+    fabric: "airdry",
+    activities: ["court"],
+    features: [
+      "Built-in shorts with a ball pocket",
+      "Knife pleats that move with you",
+      "Contrast piped waistband",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -327,6 +426,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Aubergine",
+    isNew: true,
+    fabric: "airdry",
+    activities: ["court"],
+    features: [
+      "Inner shorts with a ball pocket",
+      "Wrap front with side split",
+      "Flat, stay-put waistband",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
   {
@@ -350,6 +457,14 @@ export const products: Product[] = [
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
     colorName: "Sage",
+    isNew: true,
+    fabric: "airdry",
+    activities: ["court"],
+    features: [
+      "Built-in shelf bra",
+      "Open racerback",
+      "Lined shorts with a ball pocket",
+    ],
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   }
 ];

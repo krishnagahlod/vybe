@@ -6,28 +6,38 @@ import { ShopFilters } from "@/components/shop/shop-filters";
 export const metadata: Metadata = {
   title: "Shop Athleisure Collection",
   description:
-    "Browse our complete 12-piece concept catalogue of women's activewear. Studio leggings, sports bras, breathable tops, matching sets, and transitional layers.",
+    "Browse VYBE's concept catalogue of women's activewear: leggings in three lengths, sports bras, tops, matching sets, jackets and the Court line.",
 };
 
-async function ShopCatalog({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
-  const { category = "all" } = await searchParams;
+type ShopSearchParams = Promise<{ category?: string; activity?: string; fabric?: string; size?: string; q?: string }>;
 
-  return <ShopFilters initialProducts={products} initialCategory={category} />;
+async function ShopCatalog({ searchParams }: { searchParams: ShopSearchParams }) {
+  const params = await searchParams;
+  // Empty or missing values mean "no filter"
+  const category = params.category || "all";
+  const activity = params.activity || "all";
+  const fabric = params.fabric || "all";
+  const size = params.size || "all";
+  const q = params.q || "";
+
+  return (
+    <ShopFilters
+      // Remount when the menu links to a different filter, so the view always matches the URL
+      key={[category, activity, fabric, size, q].join("|")}
+      initialProducts={products}
+      initial={{ collection: category, activity, fabric, size, query: q }}
+    />
+  );
 }
 
 function ShopSkeleton() {
   return (
     <div className="space-y-12 animate-pulse">
-      <div className="flex gap-2">
-        {[1, 2, 3, 4, 5].map((i) => (
-          <div key={i} className="h-9 w-24 rounded-sm bg-[var(--vybe-peach)]/40" />
-        ))}
+      <div className="space-y-3">
+        <div className="h-3 w-40 rounded-sm bg-[var(--vybe-peach)]/60" />
+        <div className="h-12 w-80 rounded-sm bg-[var(--vybe-peach)]/60" />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
           <div key={i} className="aspect-[3/4] rounded-md bg-[var(--vybe-sage)]/30" />
         ))}
@@ -36,28 +46,10 @@ function ShopSkeleton() {
   );
 }
 
-export default function ShopPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ category?: string }>;
-}) {
+export default function ShopPage({ searchParams }: { searchParams: ShopSearchParams }) {
   return (
-    <div className="py-12 sm:py-20">
+    <div className="py-12 sm:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Page title */}
-        <div className="mb-10 sm:mb-14 space-y-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
-            Volume 01 &middot; The Studio Collection
-          </p>
-          <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">
-            Shop the collection
-          </h1>
-          <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl">
-            {products.length} pieces in chalk, sage, aubergine and soft pastels, made to mix and match.
-          </p>
-        </div>
-
-        {/* Dynamic Catalog inside Suspense boundary */}
         <Suspense fallback={<ShopSkeleton />}>
           <ShopCatalog searchParams={searchParams} />
         </Suspense>

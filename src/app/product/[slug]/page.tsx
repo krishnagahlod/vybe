@@ -9,9 +9,11 @@ import { ProductActions } from "@/components/product/product-actions";
 import { ProductCard } from "@/components/product/product-card";
 import { ProductViewTracker } from "@/components/product/product-view-tracker";
 import { ProductJsonLd } from "@/components/seo/json-ld";
+import { FABRICS } from "@/lib/catalog";
 
 const CATEGORY_LABELS: Record<string, string> = {
   leggings: "Leggings",
+  flared: "Flared Bottoms",
   "sports-bras": "Sports Bras",
   tops: "Tops",
   shorts: "Shorts",
@@ -145,7 +147,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     layers: ["leggings", "sports-bras", "shorts"],
     sets: ["layers", "sports-bras", "tops"],
     court: ["court", "layers"],
+    flared: ["sports-bras", "tops", "layers"],
   };
+
+  const fabric = FABRICS[product.fabric];
 
   const targetCategories = complementaryCategories[product.category] || ["leggings", "sports-bras"];
   const relatedProducts = Array.from(
@@ -228,7 +233,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
 
           {/* Right Column: Information, pricing, and actions */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 space-y-8">
+          <div className="lg:col-span-5 lg:sticky lg:top-36 space-y-8">
             <div className="space-y-4">
               <Link
                 href={`/shop?category=${product.category}`}
@@ -236,6 +241,11 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               >
                 {CATEGORY_LABELS[product.category]}
               </Link>
+              {product.isNew && (
+                <span className="ml-3 align-middle px-2 py-0.5 rounded-sm text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white">
+                  New
+                </span>
+              )}
               <h1 className="font-serif text-4xl sm:text-5xl font-normal text-[var(--color-text)] leading-[1.05]">
                 {product.name}
               </h1>
@@ -258,8 +268,38 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               )}
             </div>
 
+            <ul className="space-y-2.5">
+              {product.features.map((feature) => (
+                <li key={feature} className="flex items-start gap-3 text-sm text-[var(--color-text)]">
+                  <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[var(--vybe-sage-ink)] shrink-0" aria-hidden="true" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
             {/* Interactive Size Selector & Add to Bag Actions */}
             <ProductActions product={product} />
+
+            {/* Core fabric */}
+            <Link
+              href={`/shop?fabric=${product.fabric}`}
+              className="group block p-5 rounded-md bg-[var(--vybe-sage)]/45 hover:bg-[var(--vybe-sage)]/70 transition-colors"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-sage-ink)]">Core fabric</p>
+              <p className="mt-1 font-serif text-2xl text-[var(--color-text)]">
+                {fabric.name} <span className="text-base italic text-[var(--color-muted)]">&middot; {fabric.tagline}</span>
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {fabric.properties.map((prop) => (
+                  <li key={prop} className="px-3 py-1 rounded-full bg-[var(--color-bg)] text-xs text-[var(--color-text)]">
+                    {prop}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-xs text-[var(--color-muted)]">
+                Cut for Indian bodies &middot; <span className="underline underline-offset-4 group-hover:text-[var(--color-text)]">Shop all {fabric.name}</span>
+              </p>
+            </Link>
 
             {/* Details accordions */}
             <div className="border-t border-[var(--color-border)]">

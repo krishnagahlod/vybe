@@ -1,136 +1,172 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { useCart } from "@/lib/cart-context";
+import { SideDrawer } from "@/components/ui/side-drawer";
+import { InstagramIcon } from "@/components/ui/icons";
+import {
+  ACTIVITIES,
+  COLLECTIONS,
+  FABRICS,
+  FABRIC_IDS,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
+  SIZES,
+  shopHref,
+} from "@/lib/catalog";
 
 type MobileNavProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
+const rowClass =
+  "flex items-center justify-between py-4 text-[12px] font-semibold uppercase tracking-[0.18em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors";
+
+function Chevron() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-4 h-4 text-[var(--color-muted)] transition-transform duration-300 group-open:rotate-180"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      aria-hidden="true"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    </svg>
+  );
+}
+
+function Group({ title, children, open = false }: { title: string; children: React.ReactNode; open?: boolean }) {
+  return (
+    <details className="group border-b border-[var(--color-border)]" open={open}>
+      <summary className={`${rowClass} cursor-pointer list-none [&::-webkit-details-marker]:hidden`}>
+        <span>{title}</span>
+        <Chevron />
+      </summary>
+      <div className="pb-5">{children}</div>
+    </details>
+  );
+}
+
+/** Site menu: opens from the menu button on the left of the header, on every screen size. */
 export function MobileNav({ isOpen, onClose }: MobileNavProps) {
-  const { totalCount, isLoaded } = useCart();
-
-  // Handle escape key to close menu
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isOpen) {
-        onClose();
-      }
-    };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
-
-  const shopLinks = [
-    { label: "Shop all", href: "/shop" },
-    { label: "Leggings", href: "/shop?category=leggings" },
-    { label: "Sports Bras", href: "/shop?category=sports-bras" },
-    { label: "Tops", href: "/shop?category=tops" },
-    { label: "Shorts", href: "/shop?category=shorts" },
-    { label: "Matching Sets", href: "/shop?category=sets" },
-    { label: "Layers", href: "/shop?category=layers" },
-    { label: "Court", href: "/shop?category=court" },
-  ];
-  const moreLinks = [
-    { label: "Fit & Fabric", href: "/#garment-anatomy" },
-    { label: "Our story", href: "/about" },
-    { label: "Size & fit guide", href: "/size-guide" },
-    { label: "FAQ", href: "/faq" },
-    { label: "Track an order", href: "/track-order" },
-    { label: "Contact", href: "/contact" },
-  ];
+  const subLink = "block py-2 text-[15px] text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors";
 
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-[var(--color-text)]/30 z-50 md:hidden"
-            aria-hidden="true"
-          />
-
-          {/* Drawer (slides from the left, where the menu button is) */}
-          <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "tween", duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site navigation menu"
-            className="fixed top-0 left-0 bottom-0 w-[88%] max-w-sm bg-[var(--color-bg)] z-50 flex flex-col md:hidden overflow-y-auto"
-          >
-            <div className="flex items-center justify-between px-6 h-16 border-b border-[var(--color-border)]">
-              <span className="font-serif text-2xl font-medium tracking-[0.35em] text-[var(--color-text)]">VYBE</span>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label="Close menu"
-                className="w-10 h-10 -mr-2 inline-flex items-center justify-center rounded-full hover:bg-[var(--vybe-peach)]/60 text-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-
-            <nav className="flex-1 px-6 py-8 space-y-10" aria-label="Mobile navigation">
-              <ul className="space-y-1">
-                {shopLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={onClose}
-                      className="block py-1.5 font-serif text-3xl text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="space-y-3 pt-8 border-t border-[var(--color-border)]">
-                {moreLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={onClose}
-                      className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-                <li>
-                  <Link href="/cart" onClick={onClose} className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
-                    Bag ({isLoaded ? totalCount : 0})
+    <SideDrawer
+      isOpen={isOpen}
+      onClose={onClose}
+      side="left"
+      titleId="site-menu-title"
+      title={<span className="tracking-[0.35em] font-medium">VYBE</span>}
+      footer={() => (
+        <p className="px-6 py-5 bg-[var(--vybe-sage)] font-serif text-xl text-[var(--color-text)]">
+          Made for your <span className="italic">kind</span> of movement.
+        </p>
+      )}
+    >
+      {() => (
+        <nav aria-label="Site menu" className="px-6 pt-2 pb-8">
+          <Group title="Shop" open>
+            <ul>
+              <li>
+                <Link href="/shop" onClick={onClose} className={subLink}>
+                  Shop all
+                </Link>
+              </li>
+              {COLLECTIONS.map((c) => (
+                <li key={c.id}>
+                  <Link href={shopHref({ category: c.id })} onClick={onClose} className={subLink}>
+                    {c.label}
                   </Link>
                 </li>
-              </ul>
-            </nav>
+              ))}
+            </ul>
+          </Group>
 
-            <p className="px-6 py-6 bg-[var(--vybe-sage)] font-serif text-xl text-[var(--color-text)]">
-              Made for your <span className="italic">kind</span> of movement.
-            </p>
-          </motion.div>
-        </>
+          <Group title="Shop by activity">
+            <ul>
+              {ACTIVITIES.map((a) => (
+                <li key={a.id}>
+                  <Link href={shopHref({ activity: a.id })} onClick={onClose} className={subLink}>
+                    {a.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Group>
+
+          <Group title="Core fabrics">
+            <ul className="space-y-1">
+              {FABRIC_IDS.map((id) => (
+                <li key={id}>
+                  <Link href={shopHref({ fabric: id })} onClick={onClose} className="block py-2 group/fabric">
+                    <span className="block text-[15px] text-[var(--color-text)] group-hover/fabric:text-[var(--vybe-mauve-ink)] transition-colors">
+                      {FABRICS[id].name}
+                    </span>
+                    <span className="block text-xs text-[var(--color-muted)]">{FABRICS[id].tagline}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Group>
+
+          <Group title="Shop by size">
+            <div className="grid grid-cols-5 gap-2">
+              {SIZES.map((size) => (
+                <Link
+                  key={size}
+                  href={shopHref({ size })}
+                  onClick={onClose}
+                  className="h-11 flex items-center justify-center rounded-sm bg-[var(--vybe-sage)] text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-white transition-colors"
+                >
+                  {size}
+                </Link>
+              ))}
+            </div>
+            <Link href="/size-guide" onClick={onClose} className="inline-block mt-3 text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--color-text)]">
+              Size &amp; length guide
+            </Link>
+          </Group>
+
+          <Link href="/#garment-anatomy" onClick={onClose} className={`${rowClass} border-b border-[var(--color-border)]`}>
+            Fit &amp; fabric
+          </Link>
+          <Link href="/about" onClick={onClose} className={`${rowClass} border-b border-[var(--color-border)]`}>
+            Our story
+          </Link>
+          <Link href="/faq" onClick={onClose} className={`${rowClass} border-b border-[var(--color-border)]`}>
+            FAQ
+          </Link>
+
+          <p className="pt-6 text-[11px] uppercase tracking-[0.15em] text-[var(--color-muted)] flex flex-wrap gap-x-3 gap-y-2">
+            <Link href="/track-order" onClick={onClose} className="hover:text-[var(--color-text)]">
+              Track your order
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/shipping-returns" onClick={onClose} className="hover:text-[var(--color-text)]">
+              Delivery &amp; exchanges
+            </Link>
+            <span aria-hidden="true">|</span>
+            <Link href="/contact" onClick={onClose} className="hover:text-[var(--color-text)]">
+              Contact
+            </Link>
+          </p>
+
+          <div className="pt-8 text-center space-y-3">
+            <p className="text-[11px] uppercase tracking-[0.25em] text-[var(--color-muted)]">&mdash; Show us love &mdash;</p>
+            <a
+              href={INSTAGRAM_URL}
+              className="inline-flex items-center gap-2 text-sm text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors"
+            >
+              <InstagramIcon className="w-5 h-5" />@{INSTAGRAM_HANDLE}
+            </a>
+          </div>
+        </nav>
       )}
-    </AnimatePresence>
+    </SideDrawer>
   );
 }

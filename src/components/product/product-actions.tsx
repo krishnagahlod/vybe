@@ -6,6 +6,7 @@ import { Product } from "@/types/product";
 import { useCart } from "@/lib/cart-context";
 import { formatPrice } from "@/lib/format";
 import { trackAddToCart } from "@/lib/analytics";
+import { LENGTHS, sizeWithLength } from "@/lib/catalog";
 
 import { FitFinderModal } from "./fit-finder-modal";
 
@@ -14,8 +15,11 @@ type ProductActionsProps = {
 };
 
 export function ProductActions({ product }: ProductActionsProps) {
-  const { addItem } = useCart();
+  const { addItem, openCartDrawer } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [selectedLength, setSelectedLength] = useState<string>("");
+  const [lengthError, setLengthError] = useState<boolean>(false);
+  const lengthOptions = LENGTHS.filter((l) => product.lengths?.includes(l.id));
   const [quantity, setQuantity] = useState<number>(1);
   const [sizeError, setSizeError] = useState<boolean>(false);
   const [isAdded, setIsAdded] = useState<boolean>(false);
@@ -44,14 +48,17 @@ export function ProductActions({ product }: ProductActionsProps) {
   const handleAddToCart = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
 
-    // Size selection validation required
-    if (!selectedSize) {
-      setSizeError(true);
+    // Size (and leg length, where offered) must be chosen first
+    const missingLength = lengthOptions.length > 0 && !selectedLength;
+    if (!selectedSize || missingLength) {
+      setSizeError(!selectedSize);
+      setLengthError(missingLength);
       return;
     }
 
-    addItem(product.id, selectedSize, quantity);
-    trackAddToCart(product, quantity, selectedSize);
+    const line = sizeWithLength(selectedSize, selectedLength || undefined);
+    addItem(product.id, line, quantity);
+    trackAddToCart(product, quantity, line);
     setIsAdded(true);
 
     setTimeout(() => {
@@ -139,6 +146,50 @@ export function ProductActions({ product }: ProductActionsProps) {
           )}
         </div>
 
+        {/* Leg length (bottoms) */}
+        {lengthOptions.length > 0 && (
+          <div className="space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
+                Leg length <span className="text-[var(--vybe-mauve-ink)]">*</span>
+              </span>
+              <Link href="/size-guide#lengths" className="text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--color-text)]">
+                Which length?
+              </Link>
+            </div>
+            <div role="radiogroup" aria-label="Leg length" className="grid grid-cols-3 gap-2.5">
+              {lengthOptions.map((l) => {
+                const isSelected = selectedLength === l.id;
+                return (
+                  <button
+                    key={l.id}
+                    type="button"
+                    role="radio"
+                    aria-checked={isSelected}
+                    onClick={() => {
+                      setSelectedLength(l.id);
+                      setLengthError(false);
+                    }}
+                    className={`px-2 py-3 rounded-sm text-center transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
+                      isSelected
+                        ? "bg-[var(--color-text)] text-white border border-[var(--color-text)]"
+                        : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
+                    }`}
+                  >
+                    <span className="block text-xs font-semibold uppercase tracking-[0.12em]">{l.id}</span>
+                    <span className={`block mt-1 text-[11px] ${isSelected ? "text-white/80" : "text-[var(--color-muted)]"}`}>{l.height}</span>
+                  </button>
+                );
+              })}
+            </div>
+            {lengthError && (
+              <p role="alert" className="text-xs text-[var(--vybe-rose-ink)]">
+                Please choose a leg length.
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Quantity & Add to Cart Row */}
         <div className="space-y-4">
           <div className="flex items-center gap-4">
@@ -212,7 +263,7 @@ export function ProductActions({ product }: ProductActionsProps) {
               </span>
             </div>
             <span className="text-xs font-mono text-[var(--color-muted)]">
-              Size {selectedSize} &times; {quantity}
+              Size {sizeWithLength(selectedSize, selectedLength || undefined)} &times; {quantity}
             </span>
           </div>
 
@@ -221,12 +272,13 @@ export function ProductActions({ product }: ProductActionsProps) {
           </p>
 
           <div className="flex items-center gap-3 pt-1">
-            <Link
-              href="/cart"
-              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+            <button
+              type="button"
+              onClick={openCartDrawer}
+              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
             >
               View bag
-            </Link>
+            </button>
             <Link
               href="/shop"
               className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
@@ -258,7 +310,15 @@ export function ProductActions({ product }: ProductActionsProps) {
             </select>
             <button
               type="button"
-              onClick={() => handleAddToCart()}
+              onClick={() => {
+                // The sticky bar has no length picker, so send the shopper back up to choose one
+                if (lengthOptions.length > 0 && !selectedLength) {
+                  setLengthError(true);
+                  formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                  return;
+                }
+                handleAddToCart();
+              }}
               className="h-10 px-4 rounded-sm bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Add to Bag

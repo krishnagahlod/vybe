@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { LengthGuide } from "@/components/product/length-guide";
 
 type Unit = "in" | "cm";
 
@@ -49,6 +50,19 @@ export default function SizeGuidePage() {
             </button>
           </div>
         </div>
+
+        {/* Leg lengths */}
+        <section id="lengths" className="mb-16 scroll-mt-40 p-6 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="text-center mb-8 space-y-2">
+            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--color-text)]">
+              Petite, Regular or <span className="italic">Tall?</span>
+            </h2>
+            <p className="text-sm text-[var(--color-muted)] max-w-lg mx-auto">
+              Every VYBE legging, jogger and flare comes in three leg lengths, so the hem lands at your ankle, not on the floor.
+            </p>
+          </div>
+          <LengthGuide />
+        </section>
 
         {/* How to Measure Cards */}
         <div className="mb-16">
