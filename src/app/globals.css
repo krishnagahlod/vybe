@@ -113,6 +113,22 @@ body {
   animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Slow settle on the hero photo, for a quiet editorial entrance */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-hero-zoom {
+    animation: hero-zoom 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
 /* Scroll-driven section reveal: CSS only, so content is never hidden when unsupported or JS is slow */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {

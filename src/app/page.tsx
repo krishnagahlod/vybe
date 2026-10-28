@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { ShopByActivity } from "@/components/home/shop-by-activity";
 import { FeaturedProducts } from "@/components/home/featured-products";
+import { FlareEdit } from "@/components/home/flare-edit";
 import { MadeForYou } from "@/components/home/made-for-you";
 import { GarmentAnatomy } from "@/components/home/garment-anatomy";
 import { StudioToStreet } from "@/components/home/studio-to-street";
@@ -8,6 +9,7 @@ import { ShopBySize } from "@/components/home/shop-by-size";
 import { StyleQuiz } from "@/components/home/style-quiz";
 import { BrandStory } from "@/components/home/brand-story";
 import { CitySpotlight } from "@/components/home/city-spotlight";
+import { InstagramMosaic } from "@/components/home/instagram-mosaic";
 
 export default function Home() {
   return (
@@ -20,6 +22,9 @@ export default function Home() {
 
       {/* 3. Founder's favourites with quick-add */}
       <FeaturedProducts />
+
+      {/* 3b. New launch: the Flare Edit */}
+      <FlareEdit />
 
       {/* 4. Fit for Indian bodies: leg lengths and core fabrics */}
       <MadeForYou />
@@ -41,6 +46,9 @@ export default function Home() {
 
       {/* 10. Launch cities */}
       <CitySpotlight />
+
+      {/* 11. Instagram */}
+      <InstagramMosaic />
     </div>
   );
 }
