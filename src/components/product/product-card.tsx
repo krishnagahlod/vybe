@@ -64,6 +64,16 @@ export function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 1024px) 50vw, 25vw"
             className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           />
+          {/* Second angle fades in on hover (pointer devices only) */}
+          {product.images?.[1] && (
+            <Image
+              src={product.images[1].src}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="object-cover object-center opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            />
+          )}
         </Link>
 
         {product.featured && (

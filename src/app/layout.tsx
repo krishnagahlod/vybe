@@ -56,10 +56,10 @@ export const metadata: Metadata = {
       "Contemporary women's athleisure designed for mindful movement and daily rhythm in Indian metro climates.",
     images: [
       {
-        url: "/images/hero-athleisure.webp",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "VYBE Movement Collection",
+        alt: "VYBE — Made for your kind of movement",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "VYBE — Made for your kind of movement",
     description:
       "Contemporary women's athleisure designed for mindful movement and daily rhythm in Indian metro climates.",
-    images: ["/images/hero-athleisure.webp"],
+    images: ["/og-image.jpg"],
   },
 };
 

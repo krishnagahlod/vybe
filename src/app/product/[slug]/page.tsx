@@ -113,8 +113,12 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     title: product.name,
     description: product.shortDescription,
     openGraph: {
-      title: `${product.name} | VYBE Movement`,
+      title: `${product.name} | VYBE`,
       description: product.shortDescription,
+      // Share the product photo; placeholder SVGs fall back to the site-wide image.
+      ...(product.images[0] && !product.images[0].src.endsWith(".svg")
+        ? { images: [{ url: product.images[0].src, alt: product.images[0].alt }] }
+        : {}),
     },
   };
 }
@@ -127,15 +131,10 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     notFound();
   }
 
-  const imageSrc =
+  const gallery =
     product.images && product.images.length > 0
-      ? product.images[0].src
-      : "/images/products/concept-silhouette.svg";
-
-  const imageAlt =
-    product.images && product.images.length > 0
-      ? product.images[0].alt
-      : `${product.name} concept product preview`;
+      ? product.images
+      : [{ src: "/images/products/concept-silhouette.svg", alt: `${product.name} concept product preview` }];
 
   // Intelligent styling pairing for "Complete the Look"
   const complementaryCategories: Record<string, string[]> = {
@@ -193,18 +192,37 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
         {/* Product Detail Container */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-          {/* Left Column: Product image (photos are 3:4, so the frame matches and nothing is cropped) */}
-          <div className="lg:col-span-7">
-            <div className="relative aspect-[3/4] w-full rounded-md overflow-hidden bg-[var(--vybe-peach)]/40">
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover object-center"
-              />
+          {/* Left Column: Gallery. Photos are 3:4 so frames never crop them. Phones swipe sideways
+              (the next photo peeks in); desktop stacks them while the details column stays in view. */}
+          <div className="lg:col-span-7 -mx-4 sm:mx-0">
+            <div
+              className={`flex lg:flex-col gap-3 lg:gap-4 overflow-x-auto lg:overflow-visible snap-x snap-mandatory px-4 sm:px-0 [scrollbar-width:none] ${
+                gallery.length > 1 ? "" : "justify-center"
+              }`}
+            >
+              {gallery.map((image, index) => (
+                <div
+                  key={image.src}
+                  className={`relative aspect-[3/4] shrink-0 snap-center rounded-md overflow-hidden bg-[var(--vybe-peach)]/40 ${
+                    gallery.length > 1 ? "w-[86%] sm:w-[70%] lg:w-full" : "w-full"
+                  }`}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    priority={index === 0}
+                    sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
+                    className="object-cover object-center"
+                  />
+                </div>
+              ))}
             </div>
+            {gallery.length > 1 && (
+              <p className="mt-3 px-4 sm:px-0 text-xs text-[var(--color-muted)] lg:hidden">
+                {gallery.length} photos &middot; swipe to see more
+              </p>
+            )}
           </div>
 
           {/* Right Column: Information, pricing, and actions */}
