@@ -15,11 +15,11 @@ export function StudioToStreet() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0 rounded-md overflow-hidden bg-[var(--vybe-peach)]">
               <Image
-                src="/images/products/studio-zip-jacket-1.jpg"
-                alt="Woman in a mauve and pink zip jacket over matching leggings in a light-filled studio"
+                src="/images/lifestyle/lifestyle-studio-to-street.jpg"
+                alt="Woman stepping out of a limestone studio onto a leafy street in a sage set and mauve zip jacket, coffee in hand"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center"
+                className="object-cover object-[50%_center]"
               />
             </div>
           </div>

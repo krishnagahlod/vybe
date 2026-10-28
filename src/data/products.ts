@@ -36,8 +36,8 @@ export const products: Product[] = [
     description: "The Studio Sculpt Leggings bring a clean, modern aesthetic with targeted panelling and a secure stay-put waistband for higher tempo workouts and everyday active rhythm.",
     images: [
       {
-        src: "/images/products/studio-sculpt-leggings-1.jpg",
-        alt: "Studio Sculpt Leggings in Sage on athletic model",
+        src: "/images/products/studio-sculpt-leggings-mauve-1.jpg",
+        alt: "Studio Sculpt Leggings in Muted Mauve, front view on a model in a sunlit limestone courtyard",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -55,8 +55,8 @@ export const products: Product[] = [
     description: "A warm-weather essential designed to stay put without pinching. Perfect for outdoor runs, cycling, or casual layering under an oversized jacket.",
     images: [
       {
-        src: "/images/products/air-glide-biker-shorts-1.jpg",
-        alt: "Everyday Move Biker Shorts in Blush Rose",
+        src: "/images/products/everyday-move-shorts-1.jpg",
+        alt: "Everyday Move Shorts in Pale Peach worn with a chalk sports bra in a sunlit courtyard",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -93,8 +93,8 @@ export const products: Product[] = [
     description: "Engineered for training flow, the Studio Support Bra provides enhanced stability and aesthetic strap geometry that layers gracefully under open-back tops.",
     images: [
       {
-        src: "/images/products/core-power-cross-back-bra-1.jpg",
-        alt: "Studio Support Bra with cross-back details",
+        src: "/images/products/studio-support-bra-1.jpg",
+        alt: "Back view of the Studio Support Bra in Sage showing the cross-back straps",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -131,8 +131,8 @@ export const products: Product[] = [
     description: "Designed for free shoulder rotation, the Motion Racerback Tank sits flush against the body with breathable armholes and subtle flatlock stitching.",
     images: [
       {
-        src: "/images/products/harmony-monochrome-set-1.jpg",
-        alt: "Motion Racerback Tank in Rose",
+        src: "/images/products/motion-racerback-tank-1.jpg",
+        alt: "Motion Racerback Tank in Muted Mauve with a curved hem, worn over chalk leggings",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -150,8 +150,8 @@ export const products: Product[] = [
     description: "An effortless core tee with an easy regular fit, side vent details, and a soft matte surface texture suited for both training and street casual styling.",
     images: [
       {
-        src: "/images/products/breathable-motion-tee-1.jpg",
-        alt: "Cloudline Training Tee in lightweight moisture-wicking weave",
+        src: "/images/products/cloudline-training-tee-1.jpg",
+        alt: "Cloudline Training Tee in Pale Peach worn with sage leggings",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -169,8 +169,8 @@ export const products: Product[] = [
     description: "The signature VYBE coordinated set in harmonious earth tones. Designed to take the guesswork out of workout dressing with complementary fits.",
     images: [
       {
-        src: "/images/products/harmony-monochrome-set-1.jpg",
-        alt: "Flow Matching Coordinated Studio Set",
+        src: "/images/products/flow-matching-set-1.jpg",
+        alt: "Flow Matching Set in Sage with rose piping, model in a low lunge stretch",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -188,8 +188,8 @@ export const products: Product[] = [
     description: "Pairs the Studio Support Bra with Studio Sculpt Leggings for a cohesive silhouette with balanced compression and sophisticated tone-on-tone styling.",
     images: [
       {
-        src: "/images/products/tempo-contour-ribbed-set-1.jpg",
-        alt: "Studio Matching Sculpted Two-Piece Set",
+        src: "/images/products/studio-matching-set-1.jpg",
+        alt: "Studio Matching Set in Muted Mauve, model seated on a limestone step",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -207,8 +207,8 @@ export const products: Product[] = [
     description: "Tailored with a neat cuff and generous pocketing, the Everyday Joggers combine cozy lounge comfort with elevated street aesthetics for city transit.",
     images: [
       {
-        src: "/images/products/flow-high-rise-leggings-1.jpg",
-        alt: "Everyday Joggers in Sage",
+        src: "/images/products/everyday-joggers-1.jpg",
+        alt: "Everyday Joggers in Sage with a drawcord waist, worn with a chalk tee",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -245,8 +245,8 @@ export const products: Product[] = [
     description: "Knife pleats that swing as you move, a smooth high-rise waistband with contrast piping, and lined shorts with a ball pocket underneath. Made for the court, easy to wear off it.",
     images: [
       {
-        src: "/images/products/court-coming-soon.svg",
-        alt: "Rally Pleated Skirt in Warm Chalk, product photography coming soon",
+        src: "/images/products/rally-pleated-skirt-1.jpg",
+        alt: "Rally Pleated Skirt in Warm Chalk with aubergine piping, model walking on a tennis court",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -264,8 +264,8 @@ export const products: Product[] = [
     description: "A clean A-line skort with an overlapping front panel, comfortable inner shorts and a flat waistband that stays put through serves, sprints and everything after.",
     images: [
       {
-        src: "/images/products/court-coming-soon.svg",
-        alt: "Baseline Skort in Deep Aubergine, product photography coming soon",
+        src: "/images/products/baseline-skort-1.jpg",
+        alt: "Baseline Skort in Deep Aubergine with a chalk crop top, model holding a racket on court",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -283,8 +283,8 @@ export const products: Product[] = [
     description: "One piece, ready to play: a supportive built-in shelf bra, an open racerback for movement, and a softly flared skirt over lined shorts. Finished with tonal piping.",
     images: [
       {
-        src: "/images/products/court-coming-soon.svg",
-        alt: "Match Point Tennis Dress in Motion Sage, product photography coming soon",
+        src: "/images/products/match-point-tennis-dress-1.jpg",
+        alt: "Match Point Tennis Dress in Motion Sage, model with a racket on her shoulder on court",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
