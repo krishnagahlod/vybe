@@ -144,7 +144,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     tops: ["leggings", "shorts", "layers"],
     layers: ["leggings", "sports-bras", "shorts"],
     sets: ["layers", "sports-bras", "tops"],
-    court: ["sports-bras", "tops", "layers"],
+    court: ["court", "layers"],
   };
 
   const targetCategories = complementaryCategories[product.category] || ["leggings", "sports-bras"];

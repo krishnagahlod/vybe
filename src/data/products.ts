@@ -22,7 +22,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -41,7 +41,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Muted Mauve",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -79,7 +79,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Rose",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -98,7 +98,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -117,7 +117,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Soft Pink",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -212,7 +212,7 @@ export const products: Product[] = [
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
