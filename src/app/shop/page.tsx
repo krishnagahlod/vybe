@@ -53,7 +53,7 @@ export default function ShopPage({
             Shop the collection
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl">
-            {products.length} pieces in sage, peach, pink, rose and mauve, made to mix and match.
+            {products.length} pieces in chalk, sage, aubergine and soft pastels, made to mix and match.
           </p>
         </div>
 

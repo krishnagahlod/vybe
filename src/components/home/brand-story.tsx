@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const VALUES = [
-  { title: "Gentle colour", text: "Sage, peach and mauve instead of hyper-saturated neon." },
+  { title: "Gentle colour", text: "Chalk, sage and aubergine instead of hyper-saturated neon." },
   { title: "Freedom to move", text: "Cuts that move with your body rather than binding it." },
   { title: "Beyond the studio", text: "Pieces you can keep wearing once the class is over." },
 ];

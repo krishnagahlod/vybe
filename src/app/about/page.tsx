@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const PRINCIPLES = [
   {
     title: "A restorative palette",
-    text: "Sage, peach, pink, rose and mauve: colours that feel calm on the body and easy to combine.",
+    text: "Chalk, sage and aubergine, with soft peach and rose: colours that feel calm on the body and easy to combine.",
   },
   {
     title: "Freedom to move",
@@ -24,18 +24,23 @@ const PRINCIPLES = [
 ];
 
 const PALETTE = [
-  { name: "Sage", hex: "#d8e2dc", role: "Calm backgrounds and sections" },
-  { name: "Pale Peach", hex: "#ffe5d9", role: "Warm accents and highlights" },
-  { name: "Soft Pink", hex: "#ffcad4", role: "Small accents and cards" },
-  { name: "Rose", hex: "#f4acb7", role: "Selected and active states" },
-  { name: "Muted Mauve", hex: "#9d8189", role: "Primary brand accent" },
+  { name: "Warm Chalk", hex: "#F6F1EA", role: "Main background" },
+  { name: "Motion Sage", hex: "#C8D5C8", role: "Signature green" },
+  { name: "Deep Aubergine", hex: "#452B3A", role: "Logo, headings and text" },
+];
+
+const ACCENTS = [
+  { name: "Pale Peach", hex: "#FFE5D9" },
+  { name: "Soft Pink", hex: "#FFCAD4" },
+  { name: "Rose", hex: "#F4ACB7" },
+  { name: "Muted Mauve", hex: "#9D8189" },
 ];
 
 const INKS = [
-  { name: "Charcoal", hex: "#292526", role: "Text" },
-  { name: "Mauve Ink", hex: "#73585f", role: "Accent text" },
-  { name: "Sage Ink", hex: "#56695c", role: "Positive states" },
-  { name: "Rose Ink", hex: "#9a4b5a", role: "Alerts and saves" },
+  { name: "Sage Ink", hex: "#3F5242", role: "Green text on light backgrounds" },
+  { name: "Plum", hex: "#7A5866", role: "Accent text and hover" },
+  { name: "Muted", hex: "#5F4F57", role: "Secondary text" },
+  { name: "Rose Ink", hex: "#9A4B5A", role: "Alerts and saves" },
 ];
 
 const VOICE = [
@@ -127,18 +132,29 @@ export default function AboutPage() {
           {/* Palette */}
           <div className="space-y-8">
             <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Palette</h3>
-            <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {PALETTE.map((c) => (
                 <li key={c.hex} className="space-y-3">
-                  <div className="aspect-[3/4] rounded-md border border-black/5" style={{ backgroundColor: c.hex }} />
+                  <div className="aspect-[4/3] sm:aspect-[3/4] rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
                   <div>
-                    <p className="font-serif text-xl text-[var(--color-text)]">{c.name}</p>
+                    <p className="font-serif text-2xl text-[var(--color-text)]">{c.name}</p>
                     <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">{c.hex}</p>
                     <p className="mt-1 text-sm text-[var(--color-muted)]">{c.role}</p>
                   </div>
                 </li>
               ))}
             </ul>
+            <div className="space-y-3">
+              <p className="text-sm text-[var(--color-muted)]">Soft accents, used sparingly for highlights and colourways</p>
+              <ul className="flex flex-wrap gap-x-6 gap-y-3">
+                {ACCENTS.map((c) => (
+                  <li key={c.hex} className="flex items-center gap-2 text-sm text-[var(--color-text)]">
+                    <span className="w-6 h-6 rounded-full border border-black/10" style={{ backgroundColor: c.hex }} />
+                    {c.name} <span className="text-[var(--color-muted)]">{c.hex}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {INKS.map((c) => (
                 <li key={c.hex} className="flex items-center gap-3">

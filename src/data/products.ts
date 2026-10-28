@@ -234,6 +234,63 @@ export const products: Product[] = [
     featured: false,
     colorName: "Rose",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
+  },
+  {
+    id: "vybe-013",
+    slug: "rally-pleated-skirt",
+    name: "Rally Pleated Skirt",
+    category: "court",
+    price: 1699,
+    shortDescription: "A crisp pleated tennis skirt with built-in shorts and a contrast piped waistband.",
+    description: "Knife pleats that swing as you move, a smooth high-rise waistband with contrast piping, and lined shorts with a ball pocket underneath. Made for the court, easy to wear off it.",
+    images: [
+      {
+        src: "/images/products/court-coming-soon.svg",
+        alt: "Rally Pleated Skirt in Warm Chalk, product photography coming soon",
+      },
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    featured: false,
+    colorName: "Chalk",
+    conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
+  },
+  {
+    id: "vybe-014",
+    slug: "baseline-skort",
+    name: "Baseline Skort",
+    category: "court",
+    price: 1499,
+    shortDescription: "A wrap-front skort with inner shorts, side split and aubergine piping.",
+    description: "A clean A-line skort with an overlapping front panel, comfortable inner shorts and a flat waistband that stays put through serves, sprints and everything after.",
+    images: [
+      {
+        src: "/images/products/court-coming-soon.svg",
+        alt: "Baseline Skort in Deep Aubergine, product photography coming soon",
+      },
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    featured: false,
+    colorName: "Aubergine",
+    conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
+  },
+  {
+    id: "vybe-015",
+    slug: "match-point-tennis-dress",
+    name: "Match Point Tennis Dress",
+    category: "court",
+    price: 2499,
+    shortDescription: "A racerback tennis dress with a built-in bra, flared skirt and inner shorts.",
+    description: "One piece, ready to play: a supportive built-in shelf bra, an open racerback for movement, and a softly flared skirt over lined shorts. Finished with tonal piping.",
+    images: [
+      {
+        src: "/images/products/court-coming-soon.svg",
+        alt: "Match Point Tennis Dress in Motion Sage, product photography coming soon",
+      },
+    ],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    featured: false,
+    colorName: "Sage",
+    conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   }
 ];
 

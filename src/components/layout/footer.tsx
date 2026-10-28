@@ -11,6 +11,7 @@ const COLUMNS = [
       { label: "Shorts", href: "/shop?category=shorts" },
       { label: "Matching Sets", href: "/shop?category=sets" },
       { label: "Layers", href: "/shop?category=layers" },
+      { label: "Court", href: "/shop?category=court" },
     ],
   },
   {

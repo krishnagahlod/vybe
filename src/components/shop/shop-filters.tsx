@@ -17,14 +17,17 @@ const CATEGORIES = [
   { id: "shorts", label: "Shorts" },
   { id: "sets", label: "Sets" },
   { id: "layers", label: "Layers" },
+  { id: "court", label: "Court" },
 ];
 
 const COLORS = [
-  { name: "Sage", value: "Sage", hex: "#d8e2dc" },
+  { name: "Sage", value: "Sage", hex: "#c8d5c8" },
+  { name: "Chalk", value: "Chalk", hex: "#f6f1ea" },
   { name: "Pale Peach", value: "Pale Peach", hex: "#ffe5d9" },
   { name: "Soft Pink", value: "Soft Pink", hex: "#ffcad4" },
   { name: "Rose", value: "Rose", hex: "#f4acb7" },
   { name: "Muted Mauve", value: "Muted Mauve", hex: "#9d8189" },
+  { name: "Aubergine", value: "Aubergine", hex: "#452b3a" },
 ];
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";

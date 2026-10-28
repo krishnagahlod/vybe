@@ -26,7 +26,7 @@ const FEEL_OPTIONS: { id: Feel; title: string; desc: string }[] = [
 ];
 
 const PALETTE_OPTIONS: { id: Palette; title: string; desc: string; hex: string }[] = [
-  { id: "sage", title: "Sage", desc: "Calm and grounded", hex: "#d8e2dc" },
+  { id: "sage", title: "Sage", desc: "Calm and grounded", hex: "#c8d5c8" },
   { id: "peach", title: "Peach & Pink", desc: "Warm and bright", hex: "#ffe5d9" },
   { id: "mauve", title: "Mauve & Rose", desc: "Deep and polished", hex: "#9d8189" },
 ];
@@ -35,8 +35,8 @@ const PALETTE_OPTIONS: { id: Palette; title: string; desc: string; hex: string }
 const RHYTHM_WEIGHTS: Record<Rhythm, Partial<Record<ProductCategory, number>>> = {
   yoga: { leggings: 3, sets: 3, "sports-bras": 2, tops: 1 },
   strength: { "sports-bras": 3, leggings: 3, shorts: 2, tops: 1 },
-  running: { shorts: 3, "sports-bras": 2, tops: 2 },
-  casual: { layers: 3, sets: 2, tops: 2, leggings: 1 },
+  running: { shorts: 3, "sports-bras": 2, tops: 2, court: 1 },
+  casual: { layers: 3, sets: 2, tops: 2, court: 1, leggings: 1 },
 };
 
 const FEEL_WEIGHTS: Record<Feel, Partial<Record<ProductCategory, number>>> = {
@@ -48,7 +48,7 @@ const FEEL_WEIGHTS: Record<Feel, Partial<Record<ProductCategory, number>>> = {
 const PALETTE_COLORS: Record<Palette, string[]> = {
   sage: ["Sage", "Sage / Rose"],
   peach: ["Pale Peach", "Soft Pink"],
-  mauve: ["Muted Mauve", "Rose", "Sage / Rose"],
+  mauve: ["Muted Mauve", "Rose", "Sage / Rose", "Aubergine"],
 };
 
 function getRecommendations(rhythm: Rhythm, feel: Feel, palette: Palette): Product[] {

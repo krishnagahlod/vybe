@@ -8,8 +8,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Contemporary women's athleisure designed for mindful movement, studio sessions, and daily rhythm in Indian metro climates.",
     start_url: "/",
     display: "standalone",
-    background_color: "#fffdfb",
-    theme_color: "#d8e2dc",
+    background_color: "#f6f1ea",
+    theme_color: "#452b3a",
     icons: [
       {
         src: "/favicon.ico",

@@ -1,27 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand palette — exact values from DESIGN_SYSTEM.md. Used for surfaces, swatches, and accents. */
-  --vybe-sage: #d8e2dc;
+  /* Core brand palette: Warm Chalk (background), Motion Sage (signature green), Deep Aubergine (logo, headings, ink). */
+  --vybe-chalk: #f6f1ea;
+  --vybe-sage: #c8d5c8;
+  --vybe-aubergine: #452b3a;
+
+  /* Soft accents from the original palette, used sparingly for highlights and colour swatches. */
   --vybe-peach: #ffe5d9;
   --vybe-pink: #ffcad4;
   --vybe-rose: #f4acb7;
   --vybe-mauve: #9d8189;
 
-  /* Ink variants — deeper shades of the palette for text, icons, and filled buttons (WCAG AA on --color-bg). */
-  --vybe-sage-ink: #56695c;
+  /* Ink variants — deeper shades for text, icons, and hover states (WCAG AA on chalk). */
+  --vybe-sage-ink: #3f5242;
   --vybe-rose-ink: #9a4b5a;
-  --vybe-mauve-ink: #73585f;
+  --vybe-mauve-ink: #7a5866;
 
-  --color-bg: #fffdfb;
-  --color-surface: #ffffff;
-  --color-text: #292526;
-  --color-muted: #6e6668;
-  --color-border: #e9e2e1;
+  --color-bg: var(--vybe-chalk);
+  --color-surface: #fcfaf6;
+  --color-text: var(--vybe-aubergine);
+  --color-muted: #5f4f57;
+  --color-border: #e4dcd0;
 }
 
 @theme inline {
+  --color-vybe-chalk: var(--vybe-chalk);
   --color-vybe-sage: var(--vybe-sage);
+  --color-vybe-aubergine: var(--vybe-aubergine);
   --color-vybe-peach: var(--vybe-peach);
   --color-vybe-pink: var(--vybe-pink);
   --color-vybe-rose: var(--vybe-rose);
@@ -58,7 +64,7 @@ body {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #d4cdc5;
+  background: #d6cdc1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {

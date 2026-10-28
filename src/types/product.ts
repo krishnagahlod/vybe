@@ -4,7 +4,8 @@ export type ProductCategory =
   | "tops"
   | "shorts"
   | "sets"
-  | "layers";
+  | "layers"
+  | "court";
 
 export type ProductImage = {
   src: string;

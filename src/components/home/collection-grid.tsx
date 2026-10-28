@@ -15,6 +15,7 @@ const collections: CollectionCategory[] = [
   { title: "Shorts", category: "shorts", imageSrc: "/images/products/air-glide-biker-shorts-1.jpg" },
   { title: "Matching Sets", category: "sets", imageSrc: "/images/products/harmony-monochrome-set-1.jpg" },
   { title: "Layers", category: "layers", imageSrc: "/images/products/studio-zip-jacket-1.jpg" },
+  { title: "Court", category: "court", imageSrc: "/images/products/court-coming-soon.svg" },
 ];
 
 export function CollectionGrid() {
@@ -40,7 +41,7 @@ export function CollectionGrid() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-4 gap-y-8 lg:gap-x-5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-x-4 gap-y-8 lg:gap-x-5">
           {collections.map((item) => {
             const count = products.filter((p) => p.category === item.category).length;
             return (
@@ -54,7 +55,7 @@ export function CollectionGrid() {
                     src={item.imageSrc}
                     alt=""
                     fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 15vw"
                     className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>

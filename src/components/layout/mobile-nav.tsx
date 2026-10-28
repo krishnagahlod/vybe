@@ -40,6 +40,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     { label: "Shorts", href: "/shop?category=shorts" },
     { label: "Matching Sets", href: "/shop?category=sets" },
     { label: "Layers", href: "/shop?category=layers" },
+    { label: "Court", href: "/shop?category=court" },
   ];
   const moreLinks = [
     { label: "Fit & Fabric", href: "/#garment-anatomy" },
