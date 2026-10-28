@@ -58,12 +58,12 @@ export function HeroSection() {
           <div className="lg:col-span-7 animate-fade-up [animation-delay:120ms]">
             <div className="relative aspect-[4/3] w-full rounded-md overflow-hidden bg-[var(--vybe-sage)]">
               <Image
-                src="/images/lifestyle/hero-editorial-movement.jpg"
-                alt="Woman holding a standing balance pose in sage VYBE leggings and bra in a sunlit limestone studio"
+                src="/images/lifestyle/hero-sage-studio.jpg"
+                alt="Woman adjusting the high-rise waistband of sage VYBE leggings in a sunlit limestone courtyard"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 58vw"
-                className="object-cover object-[45%_center]"
+                className="object-cover object-center"
               />
 
               <Link
@@ -72,7 +72,7 @@ export function HeroSection() {
               >
                 <span className="relative w-11 h-11 rounded-sm overflow-hidden bg-[var(--vybe-sage)] shrink-0">
                   <Image
-                    src="/images/products/flow-high-rise-leggings-1.jpg"
+                    src="/images/products/flow-high-rise-leggings-sage-1.jpg"
                     alt=""
                     fill
                     sizes="44px"

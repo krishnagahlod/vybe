@@ -150,7 +150,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   const targetCategories = complementaryCategories[product.category] || ["leggings", "sports-bras"];
   const relatedProducts = Array.from(
     new Set([
-      ...products.filter((p) => p.id !== product.id && targetCategories.includes(p.category)),
+      ...targetCategories.flatMap((category) =>
+        products.filter((p) => p.id !== product.id && p.category === category)
+      ),
       ...products.filter((p) => p.id !== product.id),
     ])
   ).slice(0, 3);

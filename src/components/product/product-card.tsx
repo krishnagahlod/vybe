@@ -25,7 +25,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const imageSrc =
     product.images && product.images.length > 0
       ? product.images[0].src
-      : "/images/products/flow-high-rise-leggings-1.jpg";
+      : "/images/products/flow-high-rise-leggings-sage-1.jpg";
 
   const imageAlt =
     product.images && product.images.length > 0

@@ -9,12 +9,12 @@ type CollectionCategory = {
 };
 
 const collections: CollectionCategory[] = [
-  { title: "Leggings", category: "leggings", imageSrc: "/images/products/flow-high-rise-leggings-1.jpg" },
-  { title: "Sports Bras", category: "sports-bras", imageSrc: "/images/products/soft-form-sports-bra-1.jpg" },
-  { title: "Tops", category: "tops", imageSrc: "/images/products/cloud-knit-crop-tank-1.jpg" },
+  { title: "Leggings", category: "leggings", imageSrc: "/images/products/flow-high-rise-leggings-sage-1.jpg" },
+  { title: "Sports Bras", category: "sports-bras", imageSrc: "/images/products/soft-form-sports-bra-rose-1.jpg" },
+  { title: "Tops", category: "tops", imageSrc: "/images/products/ease-crop-top-1.jpg" },
   { title: "Shorts", category: "shorts", imageSrc: "/images/products/everyday-move-shorts-1.jpg" },
   { title: "Matching Sets", category: "sets", imageSrc: "/images/products/flow-matching-set-1.jpg" },
-  { title: "Layers", category: "layers", imageSrc: "/images/products/studio-zip-jacket-1.jpg" },
+  { title: "Layers", category: "layers", imageSrc: "/images/products/light-layer-zip-jacket-1.jpg" },
   { title: "Court", category: "court", imageSrc: "/images/products/match-point-tennis-dress-1.jpg" },
 ];
 

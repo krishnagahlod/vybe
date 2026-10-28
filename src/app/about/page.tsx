@@ -68,12 +68,12 @@ export default function AboutPage() {
         </div>
         <div className="relative aspect-[4/3] sm:aspect-[16/9] w-full rounded-md overflow-hidden bg-[var(--vybe-sage)]">
           <Image
-            src="/images/lifestyle/hero-editorial-movement.jpg"
-            alt="Woman holding a standing balance pose in sage VYBE activewear in a sunlit limestone studio"
+            src="/images/lifestyle/lifestyle-court-wide.jpg"
+            alt="Two friends laughing as they walk off a tennis court in VYBE chalk and sage"
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1216px"
-            className="object-cover object-[45%_center]"
+            className="object-cover object-center"
           />
         </div>
       </section>

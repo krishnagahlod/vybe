@@ -23,8 +23,8 @@ const HOTSPOTS: Hotspot[] = [
     number: "01",
     label: "Waistband",
     title: "A high-rise band that stays put",
-    x: "44%",
-    y: "13%",
+    x: "50%",
+    y: "12%",
     description:
       "A wide, double-layer waistband designed to sit flat through forward folds and squats, so you're not hitching it up between sets.",
     detail: "Double-layer",
@@ -35,8 +35,8 @@ const HOTSPOTS: Hotspot[] = [
     number: "02",
     label: "Fabric",
     title: "Soft, matte stretch knit",
-    x: "40%",
-    y: "40%",
+    x: "38%",
+    y: "38%",
     description:
       "A smooth, brushed-feel knit with four-way stretch, chosen to move with you and stay comfortable through warm city days.",
     detail: "4-way stretch",
@@ -47,8 +47,8 @@ const HOTSPOTS: Hotspot[] = [
     number: "03",
     label: "Seams",
     title: "Flat seams, cleaner line",
-    x: "67%",
-    y: "72%",
+    x: "60%",
+    y: "55%",
     description:
       "Flatlock seams along the inner leg reduce bulk where fabric meets skin, for a smoother silhouette and less rubbing.",
     detail: "Flatlock",
@@ -85,7 +85,7 @@ export function GarmentAnatomy() {
           <div className="lg:col-span-6">
             <div className="relative w-full max-w-md mx-auto lg:mx-0 aspect-[3/4] rounded-md overflow-hidden bg-[var(--vybe-sage)]">
               <Image
-                src="/images/products/flow-high-rise-leggings-1.jpg"
+                src="/images/products/flow-high-rise-leggings-sage-1.jpg"
                 alt="Flow High-Rise Leggings in sage, worn standing, with three numbered construction points"
                 fill
                 sizes="(max-width: 1024px) 100vw, 448px"

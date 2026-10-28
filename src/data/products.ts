@@ -17,12 +17,16 @@ export const products: Product[] = [
     description: "Designed with a wide contoured waistband and gentle ankle compression, the Flow High-Rise Leggings offer an unrestrictive silhouette that adapts naturally across yoga, pilates, and urban strolls.",
     images: [
       {
-        src: "/images/products/flow-high-rise-leggings-1.jpg",
-        alt: "Flow High-Rise Leggings in Sage Green on model in architectural studio",
+        src: "/images/products/flow-high-rise-leggings-sage-1.jpg",
+        alt: "Flow High-Rise Leggings in Sage, front view on a model in a sunlit limestone courtyard",
+      },
+      {
+        src: "/images/products/flow-high-rise-leggings-2.jpg",
+        alt: "Back view of the Flow High-Rise Leggings in Sage showing the smooth waistband",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -39,9 +43,13 @@ export const products: Product[] = [
         src: "/images/products/studio-sculpt-leggings-mauve-1.jpg",
         alt: "Studio Sculpt Leggings in Muted Mauve, front view on a model in a sunlit limestone courtyard",
       },
+      {
+        src: "/images/products/studio-sculpt-leggings-2.jpg",
+        alt: "Studio Sculpt Leggings in Muted Mauve in a low lunge, side view",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Muted Mauve",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -57,6 +65,10 @@ export const products: Product[] = [
       {
         src: "/images/products/everyday-move-shorts-1.jpg",
         alt: "Everyday Move Shorts in Pale Peach worn with a chalk sports bra in a sunlit courtyard",
+      },
+      {
+        src: "/images/products/everyday-move-shorts-2.jpg",
+        alt: "Back view of the Everyday Move Shorts in Pale Peach",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -74,12 +86,16 @@ export const products: Product[] = [
     description: "An understated studio piece crafted for comfortable daily wear and low-impact movement. Features clean bonded trims and removable cup inserts.",
     images: [
       {
-        src: "/images/products/soft-form-sports-bra-1.jpg",
-        alt: "Soft Form Sports Bra in Pale Peach on model with cross-back straps",
+        src: "/images/products/soft-form-sports-bra-rose-1.jpg",
+        alt: "Soft Form Sports Bra in Rose with an open scoop neckline, worn with matching rose leggings",
+      },
+      {
+        src: "/images/products/soft-form-sports-bra-2.jpg",
+        alt: "Back view of the Soft Form Sports Bra in Rose showing the wide straps",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Rose",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -96,9 +112,13 @@ export const products: Product[] = [
         src: "/images/products/studio-support-bra-1.jpg",
         alt: "Back view of the Studio Support Bra in Sage showing the cross-back straps",
       },
+      {
+        src: "/images/products/studio-support-bra-2.jpg",
+        alt: "Front view of the Studio Support Bra in Sage",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -112,8 +132,12 @@ export const products: Product[] = [
     description: "Cut with a relaxed drape and dropped shoulders, the Ease Crop Top offers breezy comfort whether cooling down after practice or pairing with high-waisted bottoms.",
     images: [
       {
-        src: "/images/products/cloud-knit-crop-tank-1.jpg",
-        alt: "Ease Crop Top in soft ribbed knit",
+        src: "/images/products/ease-crop-top-1.jpg",
+        alt: "Ease Crop Top in Soft Pink worn with chalk high-rise leggings in a sunlit courtyard",
+      },
+      {
+        src: "/images/products/ease-crop-top-2.jpg",
+        alt: "Side view of the Ease Crop Top in Soft Pink, arms raised",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -134,6 +158,10 @@ export const products: Product[] = [
         src: "/images/products/motion-racerback-tank-1.jpg",
         alt: "Motion Racerback Tank in Muted Mauve with a curved hem, worn over chalk leggings",
       },
+      {
+        src: "/images/products/motion-racerback-tank-2.jpg",
+        alt: "Back view of the Motion Racerback Tank in Muted Mauve showing the racerback and curved hem",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
@@ -152,6 +180,10 @@ export const products: Product[] = [
       {
         src: "/images/products/cloudline-training-tee-1.jpg",
         alt: "Cloudline Training Tee in Pale Peach worn with sage leggings",
+      },
+      {
+        src: "/images/products/cloudline-training-tee-2.jpg",
+        alt: "Cloudline Training Tee in Pale Peach, model walking towards the camera",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -172,6 +204,10 @@ export const products: Product[] = [
         src: "/images/products/flow-matching-set-1.jpg",
         alt: "Flow Matching Set in Sage with rose piping, model in a low lunge stretch",
       },
+      {
+        src: "/images/products/flow-matching-set-2.jpg",
+        alt: "Flow Matching Set in Sage with rose piping, full-length front view",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: true,
@@ -190,6 +226,10 @@ export const products: Product[] = [
       {
         src: "/images/products/studio-matching-set-1.jpg",
         alt: "Studio Matching Set in Muted Mauve, model seated on a limestone step",
+      },
+      {
+        src: "/images/products/studio-matching-set-2.jpg",
+        alt: "Back view of the Studio Matching Set in Muted Mauve",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -210,9 +250,13 @@ export const products: Product[] = [
         src: "/images/products/everyday-joggers-1.jpg",
         alt: "Everyday Joggers in Sage with a drawcord waist, worn with a chalk tee",
       },
+      {
+        src: "/images/products/everyday-joggers-2.jpg",
+        alt: "Everyday Joggers in Sage, model seated on a limestone step",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: true,
+    featured: false,
     colorName: "Sage",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -226,12 +270,16 @@ export const products: Product[] = [
     description: "A sleek transitional layer for breezy morning commutes or post-workout transitions, featuring a two-way zip, secure seam pockets, and streamlined cuffs.",
     images: [
       {
-        src: "/images/products/studio-zip-jacket-1.jpg",
-        alt: "Light Layer Zip Jacket in Mauve and Soft Rose on model",
+        src: "/images/products/light-layer-zip-jacket-1.jpg",
+        alt: "Light Layer Zip Jacket in Rose, half-zipped over a muted mauve sports bra and leggings",
+      },
+      {
+        src: "/images/products/light-layer-zip-jacket-2.jpg",
+        alt: "Close-up of the Light Layer Zip Jacket in Rose showing the stand collar and thumbholes",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
-    featured: false,
+    featured: true,
     colorName: "Rose",
     conceptNote: "Conceptual draft product for ENT 625 digital marketing project."
   },
@@ -247,6 +295,10 @@ export const products: Product[] = [
       {
         src: "/images/products/rally-pleated-skirt-1.jpg",
         alt: "Rally Pleated Skirt in Warm Chalk with aubergine piping, model walking on a tennis court",
+      },
+      {
+        src: "/images/products/rally-pleated-skirt-2.jpg",
+        alt: "Back view of the Rally Pleated Skirt in Warm Chalk, pleats swinging mid-stride",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
@@ -267,6 +319,10 @@ export const products: Product[] = [
         src: "/images/products/baseline-skort-1.jpg",
         alt: "Baseline Skort in Deep Aubergine with a chalk crop top, model holding a racket on court",
       },
+      {
+        src: "/images/products/baseline-skort-2.jpg",
+        alt: "Baseline Skort in Deep Aubergine in a ready stance, showing the side split",
+      },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     featured: false,
@@ -285,6 +341,10 @@ export const products: Product[] = [
       {
         src: "/images/products/match-point-tennis-dress-1.jpg",
         alt: "Match Point Tennis Dress in Motion Sage, model with a racket on her shoulder on court",
+      },
+      {
+        src: "/images/products/match-point-tennis-dress-2.jpg",
+        alt: "Back view of the Match Point Tennis Dress in Motion Sage showing the open racerback",
       },
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
