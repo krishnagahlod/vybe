@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { ViewTransition } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -214,14 +215,26 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     gallery.length > 1 ? "w-[86%] sm:w-[70%] lg:w-full" : "w-full"
                   }`}
                 >
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
-                    className="object-cover object-center"
-                  />
+                  {index === 0 ? (
+                    <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        priority
+                        sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
+                        className="object-cover object-center"
+                      />
+                    </ViewTransition>
+                  ) : (
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
+                      className="object-cover object-center"
+                    />
+                  )}
                 </div>
               ))}
             </div>
@@ -246,7 +259,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   New
                 </span>
               )}
-              <h1 className="font-serif text-4xl sm:text-5xl font-normal text-[var(--color-text)] leading-[1.05]">
+              <h1 className="font-headline text-4xl sm:text-5xl font-normal text-[var(--color-text)] leading-[1.05]">
                 {product.name}
               </h1>
               <p className="text-xl text-[var(--color-text)]">{formatPrice(product.price)}</p>

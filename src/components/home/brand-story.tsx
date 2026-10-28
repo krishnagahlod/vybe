@@ -10,14 +10,11 @@ const VALUES = [
 export function BrandStory() {
   return (
     <section id="brand-story" className="py-20 sm:py-28 bg-[var(--vybe-peach)]/50">
-      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
-                Our philosophy
-              </p>
-              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.08]">
+              <h2 className="font-headline text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.08]">
                 Activewear that honours your pace, not someone else&apos;s metrics.
               </h2>
             </div>
@@ -46,7 +43,6 @@ export function BrandStory() {
               className="group text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors inline-flex items-center gap-2 pb-1 border-b border-current"
             >
               <span>Read our story</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </Link>
           </div>
 

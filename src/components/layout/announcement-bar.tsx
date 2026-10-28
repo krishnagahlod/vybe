@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 const MESSAGES = [
-  { text: "Concept storefront for ENT 625 · No real orders or payments are taken", href: "/about#project", cta: "About the project" },
+  { text: "Concept storefront for ENT 625. No real orders or payments are taken", href: "/about#project", cta: "About the project" },
   { text: "Complimentary delivery on orders over ₹1,500", href: "/shipping-returns", cta: "Details" },
   { text: "Leggings in three leg lengths: Petite, Regular and Tall", href: "/shop?category=leggings", cta: "Find yours" },
   { text: "Designed for Indian bodies, in fabrics made for Indian weather", href: "/#made-for-you", cta: "See how" },

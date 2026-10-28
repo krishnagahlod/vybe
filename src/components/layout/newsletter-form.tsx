@@ -11,7 +11,7 @@ export function NewsletterForm() {
     return (
       <p role="status" className="text-sm text-[var(--color-text)] leading-relaxed">
         <span className="font-serif text-2xl block mb-1">
-          You&apos;re on the <span className="italic">list.</span>
+          You&apos;re on the list.
         </span>
         VYBE is a concept store, so we haven&apos;t saved your email and won&apos;t send anything.
       </p>
@@ -43,7 +43,7 @@ export function NewsletterForm() {
         type="submit"
         className="shrink-0 py-3 pl-4 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
       >
-        Sign up &rarr;
+        Sign up
       </button>
     </form>
   );

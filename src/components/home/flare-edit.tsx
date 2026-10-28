@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getProductBySlug } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { shopHref } from "@/lib/catalog";
+import { ImageTrail } from "@/components/ui/image-trail";
 
 const SUPPORTING = ["movement-flare-jumpsuit", "studio-flare-pants"];
 
@@ -13,8 +14,11 @@ export function FlareEdit() {
   if (!lead) return null;
 
   return (
-    <section className="bg-[var(--vybe-aubergine)] text-[var(--vybe-chalk)] py-20 sm:py-28 overflow-hidden">
-      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <ImageTrail
+      images={[lead, ...supporting].flatMap((p) => p.images.map((img) => img.src))}
+      className="bg-[var(--vybe-aubergine)] text-[var(--vybe-chalk)] py-20 sm:py-28 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <Link href={`/product/${lead.slug}`} className="group lg:col-span-6 block">
           <div className="relative aspect-[4/5] rounded-md overflow-hidden">
             <Image
@@ -22,7 +26,7 @@ export function FlareEdit() {
               alt={lead.images[0].alt}
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+              className="object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.02]"
             />
             {lead.images[1] && (
               <Image
@@ -42,9 +46,11 @@ export function FlareEdit() {
 
         <div className="lg:col-span-6 space-y-10">
           <div className="space-y-5">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--vybe-rose)]">New &middot; The Flare Edit</p>
-            <h2 className="font-serif text-4xl sm:text-6xl font-normal leading-[1.02] tracking-tight">
-              Fitted to the knee. <span className="italic text-[var(--vybe-pink)]">Free</span> below it.
+            <span className="inline-block px-3 py-1 rounded-full border border-[var(--vybe-rose)]/60 text-xs text-[var(--vybe-pink)]">
+              New this month
+            </span>
+            <h2 className="font-headline text-4xl sm:text-6xl font-normal leading-[1.02] tracking-tight">
+              Fitted to the knee. Free below it.
             </h2>
             <p className="text-base text-[var(--vybe-chalk)]/75 leading-relaxed max-w-md">
               Our first flares: a crossover-waist legging, a wide yoga pant and a one-piece jumpsuit. Each comes in three
@@ -72,15 +78,12 @@ export function FlareEdit() {
 
           <Link
             href={shopHref({ category: "flared" })}
-            className="group inline-flex items-center gap-2 px-9 py-4 rounded-sm text-xs font-semibold tracking-[0.18em] uppercase bg-[var(--vybe-chalk)] text-[var(--vybe-aubergine)] hover:bg-[var(--vybe-pink)] transition-colors"
+            className="inline-flex items-center px-9 py-4 rounded-sm text-xs font-semibold tracking-[0.18em] uppercase bg-[var(--vybe-chalk)] text-[var(--vybe-aubergine)] hover:bg-[var(--vybe-pink)] transition-colors"
           >
             Shop the Flare Edit
-            <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
-              &rarr;
-            </span>
           </Link>
         </div>
       </div>
-    </section>
+    </ImageTrail>
   );
 }

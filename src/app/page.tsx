@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/home/hero-section";
 import { ShopByActivity } from "@/components/home/shop-by-activity";
 import { FeaturedProducts } from "@/components/home/featured-products";
 import { FlareEdit } from "@/components/home/flare-edit";
+import { StatementMarquee } from "@/components/home/statement-marquee";
 import { MadeForYou } from "@/components/home/made-for-you";
 import { GarmentAnatomy } from "@/components/home/garment-anatomy";
 import { StudioToStreet } from "@/components/home/studio-to-street";
@@ -22,6 +23,9 @@ export default function Home() {
 
       {/* 3. Founder's favourites with quick-add */}
       <FeaturedProducts />
+
+      {/* 3a. Statement band */}
+      <StatementMarquee />
 
       {/* 3b. New launch: the Flare Edit */}
       <FlareEdit />

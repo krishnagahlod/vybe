@@ -41,6 +41,8 @@
   --color-vybe-muted: var(--color-muted);
   --color-vybe-border: var(--color-border);
   --font-serif: var(--font-display);
+  /* High-contrast Didone for large headlines only; it turns spindly at product-name sizes */
+  --font-headline: var(--font-bodoni);
   --font-sans: var(--font-jakarta);
   /* Labels previously fell back to the OS monospace; keep them in the brand sans. */
   --font-mono: var(--font-jakarta);
@@ -169,5 +171,110 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Cross-fade between pages (React <ViewTransition> around the page content) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 320ms;
+}
+::view-transition-group(.morph) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* Hero entrance: photo uncovered left to right, then the headline rises line by line, then the rest */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em; /* keep italic descenders inside the mask */
+}
+.hero-line > span {
+  display: block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .hero-curtain {
+    animation: hero-curtain 1.5s cubic-bezier(0.76, 0, 0.24, 1) both;
+  }
+  .hero-line > span {
+    animation: hero-line 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(700ms + var(--i, 0) * 130ms);
+  }
+  .hero-after {
+    animation: hero-after 0.9s ease-out 1.25s both;
+  }
+}
+@keyframes hero-curtain {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes hero-line {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes hero-after {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Image trail: each photo pops in at the cursor, then shrinks and fades */
+.image-trail-item {
+  transform: translate(-50%, -50%) rotate(var(--tilt, 0deg));
+  animation: image-trail 950ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes image-trail {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(0.6);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(1);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--tilt, 0deg)) scale(0.85);
+  }
+}
+
+/* Outlined statement type for the marquee band */
+.statement-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--vybe-aubergine);
+}
+@keyframes marquee-slow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .animate-marquee-slow {
+    animation: marquee-slow 70s linear infinite;
   }
 }

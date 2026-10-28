@@ -106,9 +106,9 @@ export const LENGTHS = [
   { id: "Tall", height: "5′7″ and above", inseam: "29″ inseam" },
 ];
 
-/** Cart lines store size and length together, e.g. "M · Regular". */
+/** Cart lines store size and length together, e.g. "M, Regular". */
 export function sizeWithLength(size: string, length?: string) {
-  return length ? `${size} · ${length}` : size;
+  return length ? `${size}, ${length}` : size;
 }
 
 export type ShopFilterState = {

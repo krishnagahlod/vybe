@@ -4,12 +4,11 @@ import { SIZES, shopHref } from "@/lib/catalog";
 export function ShopBySize() {
   return (
     <section className="py-20 sm:py-24">
-      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div className="space-y-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">Shop by size</p>
-            <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
-              Start with your <span className="italic">size</span>
+            <h2 className="font-headline text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
+              Start with your size
             </h2>
           </div>
           <Link

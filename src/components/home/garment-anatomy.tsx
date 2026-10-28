@@ -67,12 +67,9 @@ export function GarmentAnatomy() {
 
   return (
     <section id="garment-anatomy" className="py-20 sm:py-28 bg-[var(--color-bg)] scroll-mt-24">
-      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 space-y-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
-            Fit &amp; Fabric
-          </p>
-          <h2 className="font-serif text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)] leading-tight">
+          <h2 className="font-headline text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)] leading-tight">
             A closer look at the Flow Legging
           </h2>
           <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed">
@@ -179,9 +176,6 @@ export function GarmentAnatomy() {
               className="group inline-flex items-center gap-2 px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
             >
               <span>Shop the Flow Legging</span>
-              <span className="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
-                &rarr;
-              </span>
             </Link>
           </div>
         </div>

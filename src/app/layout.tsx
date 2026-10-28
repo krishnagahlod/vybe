@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
+import { Plus_Jakarta_Sans, Cormorant_Garamond, Bodoni_Moda } from "next/font/google";
+import { ViewTransition } from "react";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { WishlistProvider } from "@/lib/wishlist-context";
@@ -17,6 +18,13 @@ import { ToastContainer } from "@/components/ui/toast";
 const jakartaSans = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const bodoniModa = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -87,7 +95,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${cormorantGaramond.variable} h-full scroll-smooth`}
+      className={`${jakartaSans.variable} ${cormorantGaramond.variable} ${bodoniModa.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
         <OrganizationJsonLd />
@@ -101,7 +109,7 @@ export default function RootLayout({
               <AnnouncementBar />
               <Header />
               <main id="main-content" className="flex-1 w-full">
-                {children}
+                <ViewTransition>{children}</ViewTransition>
               </main>
               <Footer />
             </WishlistProvider>

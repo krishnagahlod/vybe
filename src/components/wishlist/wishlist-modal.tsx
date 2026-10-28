@@ -34,7 +34,7 @@ export function WishlistModal() {
               onClick={closeWishlistModal}
               className="font-semibold uppercase tracking-[0.15em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)]"
             >
-              Keep shopping &rarr;
+              Keep shopping
             </Link>
           </div>
         ) : null
@@ -44,7 +44,7 @@ export function WishlistModal() {
         savedProducts.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center px-6 py-16 space-y-4">
             <p className="font-serif text-3xl text-[var(--color-text)]">
-              Nothing saved <span className="italic">yet.</span>
+              Nothing saved yet.
             </p>
             <p className="text-sm text-[var(--color-muted)] max-w-xs">
               Tap the heart on any piece to keep it here while you explore.

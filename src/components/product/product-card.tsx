@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, ViewTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product";
@@ -60,13 +60,16 @@ export function ProductCard({ product }: ProductCardProps) {
           className="absolute inset-0 z-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
           aria-label={`View details for ${product.name}`}
         >
-          <Image
-            src={imageSrc}
-            alt={imageAlt}
-            fill
-            sizes="(max-width: 1024px) 50vw, 25vw"
-            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-          />
+          {/* Shares a name with the product page's first photo, so it morphs into place on navigation */}
+          <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              fill
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="object-cover object-center"
+            />
+          </ViewTransition>
           {/* Second angle fades in on hover (pointer devices only) */}
           {product.images?.[1] && (
             <Image
@@ -119,7 +122,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <div className="absolute bottom-3 right-3 left-3 z-20 opacity-0 translate-y-3 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto group-focus-within:opacity-100 group-focus-within:translate-y-0 group-focus-within:pointer-events-auto">
           <div className="p-2 rounded-sm bg-[var(--color-bg)]/95 backdrop-blur-md flex flex-col gap-1.5">
             <span className="px-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-[var(--color-muted)]">
-              Quick add{product.lengths && " · Regular length"}
+              Quick add{product.lengths && ", regular length"}
             </span>
             <div className="flex items-center gap-1 justify-between">
               {product.sizes.map((size) => (

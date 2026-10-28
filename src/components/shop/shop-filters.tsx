@@ -93,7 +93,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
     <div className="space-y-10">
       <div className="space-y-3 animate-fade-up">
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">{heading.eyebrow}</p>
-        <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">{heading.title}</h1>
+        <h1 className="font-headline text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">{heading.title}</h1>
         <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl">{heading.text}</p>
       </div>
 

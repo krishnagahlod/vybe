@@ -39,8 +39,8 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-14 border-b border-[var(--color-text)]/15">
           <div className="lg:col-span-6 space-y-5">
             <h2 className={heading}>Sign up and save</h2>
-            <p className="font-serif text-3xl sm:text-4xl leading-[1.1] max-w-md">
-              First look at new drops, studio stories and <span className="italic">members-only</span> offers.
+            <p className="font-headline text-3xl sm:text-4xl leading-[1.12] max-w-md">
+              First look at new drops, studio stories and members-only offers.
             </p>
             <div className="max-w-md">
               <NewsletterForm />

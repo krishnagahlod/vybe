@@ -10,7 +10,7 @@ const MOMENTS = [
 export function StudioToStreet() {
   return (
     <section id="studio-to-street" className="py-20 sm:py-28 bg-[var(--vybe-sage)]">
-      <div className="reveal max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-5">
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto lg:mx-0 rounded-md overflow-hidden bg-[var(--vybe-peach)]">
@@ -26,11 +26,8 @@ export function StudioToStreet() {
 
           <div className="lg:col-span-7 space-y-8">
             <div className="space-y-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-sage-ink)]">
-                Studio to Street
-              </p>
-              <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.06]">
-                From the morning flow to the <span className="italic">evening plan.</span>
+              <h2 className="font-headline text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.06]">
+                From the morning flow to the evening plan.
               </h2>
               <p className="text-base sm:text-lg text-[var(--color-text)]/75 leading-relaxed max-w-xl">
                 Every VYBE piece is cut in the same soft palette, so sets, layers and separates work together.

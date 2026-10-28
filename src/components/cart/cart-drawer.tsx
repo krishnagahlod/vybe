@@ -144,7 +144,7 @@ export function CartDrawer() {
   const emptyState = (
     <div className="h-full flex flex-col items-center justify-center text-center px-6 py-16 space-y-4">
       <p className="font-serif text-3xl text-[var(--color-text)]">
-        Your bag is <span className="italic">empty.</span>
+        Your bag is empty.
       </p>
       <p className="text-sm text-[var(--color-muted)] max-w-xs">Start with our founder&apos;s favourites and build from there.</p>
       <Link href="/shop?category=favourites" onClick={closeCartDrawer} className={`${primaryButton} px-8 mt-2`}>

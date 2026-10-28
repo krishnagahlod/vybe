@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import { useWishlist } from "@/lib/wishlist-context";
@@ -34,9 +35,40 @@ export function Header() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
   const closeSearch = useCallback(() => setSearchOpen(false), []);
 
+  // On the homepage the header floats over the hero photo until the visitor scrolls
+  const pathname = usePathname();
+  const headerRef = useRef<HTMLElement>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const overlay = pathname === "/" && !scrolled;
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Publish the header height so the hero can slide underneath it
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const update = () => document.documentElement.style.setProperty("--header-h", `${el.offsetHeight}px`);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[var(--color-bg)]/95 backdrop-blur-md border-b border-[var(--color-border)]">
+      <header
+        ref={headerRef}
+        className={`sticky top-0 z-40 w-full border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
+          overlay
+            ? "bg-transparent border-transparent"
+            : "bg-[var(--color-bg)]/95 backdrop-blur-md border-[var(--color-border)]"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-[4.5rem] grid grid-cols-[1fr_auto_1fr] items-center">
           {/* Left: menu */}
           <div className="flex items-center">
@@ -88,7 +120,10 @@ export function Header() {
         </div>
 
         {/* Collection row: scrolls sideways on phones */}
-        <nav aria-label="Collections" className="border-t border-[var(--color-border)]/70">
+        <nav
+          aria-label="Collections"
+          className={`border-t transition-colors duration-500 ${overlay ? "border-[var(--color-text)]/10" : "border-[var(--color-border)]/70"}`}
+        >
           <ul className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-6 sm:gap-8 lg:justify-center overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {HEADER_COLLECTIONS.map((c) => (
               <li key={c.id} className="shrink-0">
