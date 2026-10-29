@@ -126,6 +126,40 @@ body {
   }
 }
 
+/* Slow drift on hero photos */
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-out infinite alternate;
+  }
+}
+
+/* Large images settle from a slight zoom as they scroll into view */
+@keyframes settle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-settle {
+      animation: settle linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 50%;
+    }
+  }
+}
+
 /* Interactive Hotspot Pulsing Rings */
 @keyframes pulse-ring {
   0% {

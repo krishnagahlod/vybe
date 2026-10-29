@@ -4,7 +4,7 @@ export function AnnouncementBar() {
   return (
     <aside aria-label="Store promises" className="bg-[var(--color-text)] text-white text-[11px] sm:text-xs px-4 py-2.5 text-center">
       <Link href="/shipping-returns" className="hover:text-[var(--vybe-pastel-pink)] transition-colors">
-        Free size exchanges · Every piece under ₹3,000 · Built for Indian bodies
+        Free size exchanges · Three leg lengths · Built for Indian bodies
       </Link>
     </aside>
   );

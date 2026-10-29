@@ -30,7 +30,7 @@ export function InstagramMosaic() {
                 aria-label={`${alt}. See VYBE on Instagram @${INSTAGRAM_HANDLE}`}
                 className="group relative block aspect-square overflow-hidden rounded-2xl bg-[var(--vybe-alabaster)]"
               >
-                <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 33vw, 16vw" className="object-cover object-top" />
+                <Image src={src} alt={alt} fill sizes="(max-width: 1024px) 33vw, 16vw" className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.06]" />
                 <span className="absolute inset-0 flex items-center justify-center bg-[var(--color-text)]/0 group-hover:bg-[var(--color-text)]/35 transition-colors duration-300">
                   <InstagramIcon className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </span>

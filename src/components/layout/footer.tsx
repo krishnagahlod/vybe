@@ -39,7 +39,7 @@ export function Footer() {
           <div className="lg:col-span-6 space-y-5">
             <h2 className={heading}>Sign up and save</h2>
             <p className="font-headline text-3xl sm:text-4xl leading-[1.12] max-w-md font-semibold">
-              Get first access to new prints.
+              Get first access to new drops.
             </p>
             <div className="max-w-md">
               <NewsletterForm />
@@ -84,7 +84,7 @@ export function Footer() {
           <div>
             <h3 className={heading}>Made for you</h3>
             <p className="text-sm text-[var(--color-text)]/75 leading-relaxed">
-              Built-in support, no lines, cut for Indian bodies in XS to 2XL. Every piece under ₹3,000.
+              Built-in support, no lines, cut for Indian bodies and made for Indian heat.
             </p>
           </div>
         </div>

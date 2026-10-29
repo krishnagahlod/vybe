@@ -11,7 +11,7 @@ export function BrandStory() {
             alt="A woman walking out of class with a coffee and tote bag, wearing a sage sports bra, matching leggings and a mauve zip jacket"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover object-[45%_center]"
+            className="object-cover object-[45%_center] scroll-settle"
           />
         </div>
         <div className="px-5 sm:px-10 py-12 lg:py-0 max-w-xl">

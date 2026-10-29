@@ -6,7 +6,7 @@ import { ActivityId, FabricId, Product } from "@/types/product";
  * so every entry point lands on the same filtered view.
  */
 
-export const SIZES = ["XS", "S", "M", "L", "XL", "2XL"];
+export const SIZES = ["XS", "S", "M", "L", "XL"];
 
 export const INSTAGRAM_HANDLE = "vybe.athleisure";
 export const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
@@ -51,37 +51,37 @@ export const ACTIVITIES: {
     id: "dance",
     label: "Dance",
     blurb: "For Bollywood class, Zumba and the wedding sangeet rehearsal.",
-    image: "/images/products/new/zebra-seamless-set-1.jpg",
+    image: "/images/products/ease-crop-top-2.jpg",
   },
   {
     id: "court",
     label: "Court",
     blurb: "Sunday badminton, pickleball, tennis. Skorts with liners built in.",
-    image: "/images/products/new/retro-stripe-set-1.jpg",
+    image: "/images/products/baseline-skort-2.jpg",
   },
   {
     id: "strength",
     label: "Gym",
     blurb: "Squats, sets and selfies with the girls. Held, never squeezed.",
-    image: "/images/products/new/sunshine-tank-set-1.jpg",
+    image: "/images/products/new/motion-racerback-tank-cobalt-1.jpg",
   },
   {
     id: "yoga-pilates",
     label: "Yoga & Pilates",
     blurb: "The 6 a.m. class. Nothing rides up, nothing shows through.",
-    image: "/images/products/new/no-lines-legging-cobalt-bloom.jpg",
+    image: "/images/products/studio-sculpt-leggings-2.jpg",
   },
   {
     id: "walk-run",
     label: "Walk & Run",
     blurb: "Marine Drive laps and park rounds. Cool when it gets hot.",
-    image: "/images/products/new/ombre-run-shorts-1.jpg",
+    image: "/images/products/everyday-joggers-1.jpg",
   },
   {
     id: "everyday",
     label: "Coffee After Class",
     blurb: "Straight from class to brunch. Nobody needs to know.",
-    image: "/images/products/new/side-stripe-track-pants-1.jpg",
+    image: "/images/lifestyle/lifestyle-studio-to-street.jpg",
     imagePosition: "48% center",
   },
 ];

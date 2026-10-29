@@ -185,13 +185,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
                     <td className="py-3 px-3">{unit === "in" ? "9\"" : "23 cm"}</td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "36 - 39\"" : "91 - 99 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "46 - 49\"" : "117 - 124 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "9\"" : "23 cm"}</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -254,12 +247,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "34 - 37\"" : "86 - 94 cm"}</td>
                     <td className="py-3 px-3">38C, 38D, 40C</td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "42 - 45\"" : "107 - 114 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "37 - 40\"" : "94 - 102 cm"}</td>
-                    <td className="py-3 px-3">40D, 42C, 42D</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -321,13 +308,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">UK 14</td>
                     <td className="py-3 px-3">US 10</td>
                     <td className="py-3 px-3">EU 42</td>
-                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
-                    <td className="py-3 px-3">UK 16</td>
-                    <td className="py-3 px-3">US 12</td>
-                    <td className="py-3 px-3">EU 44</td>
                     <td className="py-3 px-3 font-sans">Relaxed Movement</td>
                   </tr>
                 </tbody>

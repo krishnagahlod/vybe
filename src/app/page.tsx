@@ -30,13 +30,28 @@ export default function Home() {
     <div className="w-full">
       <HeroSection />
       <MarqueeStrip />
-      <ProductRow title="Fit, built in" products={heroProducts} viewAllHref="/shop" />
-      <StyleQuiz />
-      <ProductRow title="The new drop" products={newDrop} viewAllHref="/shop?category=new" />
-      <ShopByActivity />
-      <ShopBySize />
-      <BrandStory />
-      <InstagramMosaic />
+      {/* Each section eases up as it scrolls into view (CSS only; content stays visible without support) */}
+      <div className="reveal">
+        <ProductRow title="Fit, built in" products={heroProducts} viewAllHref="/shop" />
+      </div>
+      <div className="reveal">
+        <StyleQuiz />
+      </div>
+      <div className="reveal">
+        <ProductRow title="The new drop" products={newDrop} viewAllHref="/shop?category=new" autoPlay />
+      </div>
+      <div className="reveal">
+        <ShopByActivity />
+      </div>
+      <div className="reveal">
+        <ShopBySize />
+      </div>
+      <div className="reveal">
+        <BrandStory />
+      </div>
+      <div className="reveal">
+        <InstagramMosaic />
+      </div>
     </div>
   );
 }

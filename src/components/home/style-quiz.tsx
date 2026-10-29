@@ -275,7 +275,7 @@ export function StyleQuiz() {
 
                 <div className="text-center space-y-3 max-w-2xl mx-auto">
                   <p className="font-headline font-bold text-lg text-[var(--color-text)]">
-                    Your outfit: {formatPrice(total)} · every piece under ₹3,000
+                    Your outfit: {formatPrice(total)}
                   </p>
                   <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed">
                     <span className="font-semibold text-[var(--color-text)]">Why these: </span>

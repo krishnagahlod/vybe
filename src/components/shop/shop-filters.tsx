@@ -68,7 +68,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
   const heading = filters.query.trim()
     ? { eyebrow: "Search", title: `“${filters.query.trim()}”`, text: "Pieces that match your search." }
     : collection
-      ? { eyebrow: "Collection", title: collection.label, text: "Cut for Indian bodies. Every piece under ₹3,000." }
+      ? { eyebrow: "Collection", title: collection.label, text: "Built-in support, no lines, cut for Indian bodies." }
       : activity
         ? { eyebrow: "Shop by movement", title: activity.label, text: activity.blurb }
         : fabric
@@ -78,7 +78,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
             : {
                 eyebrow: "All pieces",
                 title: "Shop the collection",
-                text: `${initialProducts.length} pieces, every one under ₹3,000, in sizes XS to 2XL.`,
+                text: `${initialProducts.length} pieces, cut for Indian bodies and made for Indian heat.`,
               };
 
   const activeChips = [

@@ -13,8 +13,17 @@ export function HeroSection() {
       {/* Three looks side by side on desktop; the first one alone on phones */}
       <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-3">
         {HERO_IMAGES.map((img, i) => (
-          <div key={img.src} className={`relative ${i > 0 ? "hidden lg:block" : ""}`}>
-            <Image src={img.src} alt={img.alt} fill priority={i === 0} sizes="(max-width: 1024px) 100vw, 34vw" className="object-cover object-top" />
+          <div key={img.src} className={`relative overflow-hidden ${i > 0 ? "hidden lg:block" : ""}`}>
+            {/* Offset delays so the three panels never drift in step */}
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              priority={i === 0}
+              sizes="(max-width: 1024px) 100vw, 34vw"
+              className="object-cover object-top animate-ken-burns"
+              style={{ animationDelay: `${i * -6}s` }}
+            />
           </div>
         ))}
       </div>
@@ -22,13 +31,13 @@ export function HeroSection() {
       <div className="absolute inset-0 flex items-end">
         <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 pb-10 lg:pb-16">
           <div className="max-w-2xl lg:max-w-4xl text-white">
-            <h1 className="font-headline font-extrabold text-[2rem] sm:text-6xl leading-[0.98] tracking-[-0.02em]">
+            <h1 className="animate-fade-up font-headline font-extrabold text-[2rem] sm:text-6xl leading-[0.98] tracking-[-0.02em]">
               The best hour of your day deserves the best thing in your wardrobe.
             </h1>
-            <p className="mt-5 text-base sm:text-lg text-white/90 max-w-lg">
-              Built-in support. No lines. Cut for Indian bodies. Every piece under ₹3,000.
+            <p className="animate-fade-up mt-5 text-base sm:text-lg text-white/90 max-w-lg" style={{ animationDelay: "150ms" }}>
+              Built-in support. No lines. Cut for Indian bodies, made for Indian heat.
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="animate-fade-up mt-7 flex flex-wrap gap-3" style={{ animationDelay: "300ms" }}>
               <Link
                 href="#style-quiz"
                 className="inline-flex items-center px-7 py-3.5 rounded-full text-sm font-semibold bg-white text-[var(--vybe-ink)] hover:bg-[var(--vybe-pastel-pink)] transition-colors"

@@ -70,7 +70,7 @@ export default function ShippingReturnsPage() {
               2. Free Size Exchange Within 14 Days
             </h2>
             <p>
-              Wrong size? Exchange it free within 14 days of delivery for any other size from XS to 2XL. Unworn, tags on, and we cover pickup and the new delivery.
+              Wrong size? Exchange it free within 14 days of delivery for any other size from XS to XL. Unworn, tags on, and we cover pickup and the new delivery.
             </p>
             <p className="text-xs text-[var(--color-muted)] italic">
               Note: Because this storefront is an educational prototype, simulated demo orders cannot be returned or refunded.

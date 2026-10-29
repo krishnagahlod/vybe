@@ -19,7 +19,7 @@ export function ShopBySize() {
           </Link>
         </div>
 
-        <ul className="grid grid-cols-3 sm:grid-cols-6 gap-2 sm:gap-3">
+        <ul className="grid grid-cols-3 sm:grid-cols-5 gap-2 sm:gap-3">
           {SIZES.map((size) => (
             <li key={size}>
               <Link

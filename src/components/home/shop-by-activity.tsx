@@ -41,7 +41,7 @@ export function ShopByActivity() {
                   alt=""
                   fill
                   sizes="(max-width: 640px) 72vw, (max-width: 1024px) 40vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   style={{ objectPosition: activity.imagePosition ?? "center" }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2a1a23]/75 via-[#2a1a23]/5 to-transparent" />
