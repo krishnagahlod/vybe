@@ -37,8 +37,8 @@ export default function ContactPage() {
         <div className="lg:col-span-5 space-y-10">
           <div className="space-y-5 animate-fade-up">
             <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">Contact</p>
-            <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.05]">
-              We&apos;d love to <span className="italic">hear from you.</span>
+            <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--color-text)] leading-[1.05]">
+              We&apos;d love to hear from you.
             </h1>
             <p className="text-base text-[var(--color-muted)] leading-relaxed max-w-md">
               Questions about fit, an order, or what to wear to your next class? Send us a note.
@@ -70,7 +70,7 @@ export default function ContactPage() {
           <div className="rounded-md bg-[var(--vybe-peach)]/40 p-6 sm:p-12">
             {submitted ? (
               <div className="py-16 text-center space-y-4 animate-fade-up" role="status">
-                <p className="font-serif text-4xl text-[var(--color-text)]">
+                <p className="font-headline text-4xl text-[var(--color-text)] font-semibold">
                   Thank you{formData.name ? `, ${formData.name.split(" ")[0]}` : ""}.
                 </p>
                 <p className="text-sm text-[var(--color-muted)] leading-relaxed max-w-sm mx-auto">

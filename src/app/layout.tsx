@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Cormorant_Garamond, Bodoni_Moda } from "next/font/google";
+import { Plus_Jakarta_Sans, Syne } from "next/font/google";
 import { ViewTransition } from "react";
 import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
@@ -21,17 +21,10 @@ const jakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const bodoniModa = Bodoni_Moda({
-  variable: "--font-bodoni",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -95,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${cormorantGaramond.variable} ${bodoniModa.variable} h-full scroll-smooth`}
+      className={`${jakartaSans.variable} ${syne.variable} h-full scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
         <OrganizationJsonLd />

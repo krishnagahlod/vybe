@@ -31,8 +31,8 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
           Demo order placed
         </p>
-        <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.05]">
-          Thank you, <span className="italic">{firstName}.</span>
+        <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--color-text)] leading-[1.05]">
+          Thank you, {firstName}.
         </h1>
         <p className="text-base text-[var(--color-muted)]">
           Order reference <span className="text-[var(--color-text)] font-semibold tracking-wide">{order.orderId}</span>
@@ -50,7 +50,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       </div>
 
       <div className="rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
-        <h2 className="font-serif text-2xl text-[var(--color-text)]">Order summary</h2>
+        <h2 className="font-headline text-2xl text-[var(--color-text)] font-semibold">Order summary</h2>
         <ul className="divide-y divide-[var(--color-text)]/10">
           {order.items.map(({ item, product, lineTotal }) => (
             <li key={`${item.productId}-${item.size}`} className="py-4 flex items-center justify-between gap-4">

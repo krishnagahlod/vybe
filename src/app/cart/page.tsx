@@ -36,7 +36,7 @@ export default function CartPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-10 pb-6 border-b border-[var(--color-border)]">
-          <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">Your bag</h1>
+          <h1 className="font-headline text-4xl sm:text-6xl font-semibold tracking-tight text-[var(--color-text)]">Your bag</h1>
           {isLoaded && resolvedItems.length > 0 && (
             <p className="text-sm text-[var(--color-muted)]">
               {totalCount} {totalCount === 1 ? "piece" : "pieces"}

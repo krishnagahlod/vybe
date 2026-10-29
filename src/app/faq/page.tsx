@@ -98,8 +98,8 @@ export default function FAQPage() {
           <div className="lg:sticky lg:top-28 space-y-8">
             <div className="space-y-5 animate-fade-up">
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">Help</p>
-              <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.05]">
-                Questions, <span className="italic">answered.</span>
+              <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight text-[var(--color-text)] leading-[1.05]">
+                Questions, answered.
               </h1>
               <p className="text-base text-[var(--color-muted)] leading-relaxed">
                 Fit, fabric, delivery and exchanges. Can&apos;t find what you need?{" "}
@@ -135,7 +135,7 @@ export default function FAQPage() {
         <div className="lg:col-span-8 space-y-14">
           {FAQ_SECTIONS.map((section) => (
             <section key={section.category} id={slug(section.category)} className="scroll-mt-28">
-              <h2 className="font-serif text-3xl text-[var(--color-text)] mb-4">{section.category}</h2>
+              <h2 className="font-headline text-3xl text-[var(--color-text)] mb-4 font-semibold">{section.category}</h2>
               <div className="border-t border-[var(--color-border)]">
                 {section.items.map((item) => (
                   <details key={item.q} className="group border-b border-[var(--color-border)]">

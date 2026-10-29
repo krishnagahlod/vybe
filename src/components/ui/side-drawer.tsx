@@ -81,7 +81,7 @@ export function SideDrawer({
             }`}
           >
             <div className="shrink-0 px-5 sm:px-6 h-16 sm:h-[4.5rem] border-b border-[var(--color-border)] flex items-center justify-between gap-3">
-              <h2 id={titleId} className="font-serif text-2xl text-[var(--color-text)] truncate">
+              <h2 id={titleId} className="font-headline text-2xl text-[var(--color-text)] truncate font-semibold">
                 {title}
               </h2>
               <div className="flex items-center -mr-2">

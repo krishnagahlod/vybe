@@ -84,7 +84,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Search for leggings, sets, tennis…"
                   aria-label="Search for products"
-                  className="flex-1 min-w-0 py-4 sm:py-5 bg-transparent font-serif text-2xl sm:text-4xl text-[var(--color-text)] placeholder:text-[var(--color-muted)]/70 focus:outline-none [&::-webkit-search-cancel-button]:hidden"
+                  className="flex-1 min-w-0 py-4 sm:py-5 bg-transparent font-headline text-2xl sm:text-4xl text-[var(--color-text)] placeholder:text-[var(--color-muted)]/70 focus:outline-none [&::-webkit-search-cancel-button]:hidden font-semibold"
                 />
                 <button
                   type="button"
@@ -110,10 +110,10 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
               </div>
 
               <div className="mt-10 flex items-end justify-between gap-4">
-                <h2 className="font-serif text-2xl sm:text-3xl text-[var(--color-text)]">
+                <h2 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">
                   {trimmed ? (
                     <>
-                      {results.length} {results.length === 1 ? "result" : "results"} for <span className="italic">“{trimmed}”</span>
+                      {results.length} {results.length === 1 ? "result" : "results"} for “{trimmed}”
                     </>
                   ) : (
                     "Popular choices"

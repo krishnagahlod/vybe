@@ -58,8 +58,8 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 space-y-12">
         <div className="max-w-3xl space-y-5 animate-fade-up">
           <p className={eyebrow}>Our story</p>
-          <h1 className="font-serif text-5xl sm:text-7xl font-normal tracking-tight text-[var(--color-text)] leading-[1.02]">
-            Made for your <span className="italic text-[var(--vybe-mauve-ink)]">kind</span> of movement.
+          <h1 className="font-headline text-5xl sm:text-7xl font-semibold tracking-tight text-[var(--color-text)] leading-[1.02]">
+            Made for your kind of movement.
           </h1>
           <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-xl">
             VYBE is women&apos;s activewear for movement that feels restorative rather than punishing, and for days
@@ -82,8 +82,8 @@ export default function AboutPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-5">
           <p className={eyebrow}>Why VYBE</p>
-          <p className="mt-4 font-serif text-4xl sm:text-5xl text-[var(--color-text)] leading-[1.1]">
-            Movement belongs to <span className="italic">you.</span>
+          <p className="mt-4 font-headline text-4xl sm:text-5xl text-[var(--color-text)] leading-[1.1] font-semibold">
+            Movement belongs to you.
           </p>
         </div>
         <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[var(--color-muted)] leading-relaxed">
@@ -107,8 +107,8 @@ export default function AboutPage() {
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
           {PRINCIPLES.map((p, i) => (
             <li key={p.title} className="border-t border-[var(--color-text)]/15 pt-6 space-y-3">
-              <span className="font-serif text-lg italic text-[var(--vybe-mauve-ink)]">0{i + 1}</span>
-              <h2 className="font-serif text-2xl text-[var(--color-text)]">{p.title}</h2>
+              <span className="font-semibold text-lg text-[var(--vybe-mauve-ink)]">0{i + 1}</span>
+              <h2 className="font-headline text-2xl text-[var(--color-text)] font-semibold">{p.title}</h2>
               <p className="text-sm text-[var(--color-muted)] leading-relaxed">{p.text}</p>
             </li>
           ))}
@@ -120,7 +120,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
           <div className="max-w-2xl space-y-4">
             <p className={eyebrow}>Brand identity</p>
-            <h2 className="font-serif text-4xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
+            <h2 className="font-headline text-4xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)]">
               The system behind VYBE
             </h2>
             <p className="text-base text-[var(--color-muted)] leading-relaxed">
@@ -137,7 +137,7 @@ export default function AboutPage() {
                 <li key={c.hex} className="space-y-3">
                   <div className="aspect-[4/3] sm:aspect-[3/4] rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
                   <div>
-                    <p className="font-serif text-2xl text-[var(--color-text)]">{c.name}</p>
+                    <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">{c.name}</p>
                     <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">{c.hex}</p>
                     <p className="mt-1 text-sm text-[var(--color-muted)]">{c.role}</p>
                   </div>
@@ -175,7 +175,7 @@ export default function AboutPage() {
             <div className="lg:col-span-1 rounded-md bg-[var(--color-bg)] p-8 flex flex-col justify-between gap-10 min-h-64">
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Wordmark</h3>
               <div className="space-y-3 text-center">
-                <p className="font-serif text-6xl font-medium tracking-[0.35em] pl-[0.35em] text-[var(--color-text)]">VYBE</p>
+                <p className="font-headline text-6xl font-bold tracking-[0.16em] pl-[0.16em] text-[var(--color-text)]">VYBE</p>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
                   Made for your kind of movement
                 </p>
@@ -183,12 +183,12 @@ export default function AboutPage() {
             </div>
             <div className="rounded-md bg-[var(--color-bg)] p-8 space-y-6">
               <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Display</h3>
-              <p className="font-serif text-8xl leading-none text-[var(--color-text)]">
-                Aa<span className="italic text-[var(--vybe-mauve-ink)]">a</span>
+              <p className="font-headline text-8xl leading-none text-[var(--color-text)] font-semibold">
+                Aa
               </p>
               <div>
-                <p className="font-serif text-2xl text-[var(--color-text)]">Cormorant Garamond</p>
-                <p className="text-sm text-[var(--color-muted)]">Headlines, product names and the wordmark</p>
+                <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">Syne</p>
+                <p className="text-sm text-[var(--color-muted)]">Headlines, campaign banners and the wordmark</p>
               </div>
             </div>
             <div className="rounded-md bg-[var(--color-bg)] p-8 space-y-6">
@@ -196,7 +196,7 @@ export default function AboutPage() {
               <p className="text-8xl leading-none font-light text-[var(--color-text)]">Aa</p>
               <div>
                 <p className="text-xl text-[var(--color-text)]">Plus Jakarta Sans</p>
-                <p className="text-sm text-[var(--color-muted)]">Body copy, labels, buttons and navigation</p>
+                <p className="text-sm text-[var(--color-muted)]">Body copy, product names, buttons and navigation</p>
               </div>
             </div>
           </div>
@@ -207,7 +207,7 @@ export default function AboutPage() {
             <ul className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {VOICE.map((v) => (
                 <li key={v.trait} className="border-t border-[var(--color-text)]/15 pt-5 space-y-3">
-                  <p className="font-serif text-2xl text-[var(--color-text)]">{v.trait}</p>
+                  <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">{v.trait}</p>
                   <p className="text-sm italic text-[var(--color-muted)] leading-relaxed">{v.example}</p>
                 </li>
               ))}
@@ -221,7 +221,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 border-t border-[var(--color-border)] pt-12">
           <div className="lg:col-span-5 space-y-3">
             <p className={eyebrow}>About the project</p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--color-text)]">
+            <h2 className="font-headline text-3xl sm:text-4xl text-[var(--color-text)] font-semibold">
               A concept brand for ENT 625
             </h2>
           </div>

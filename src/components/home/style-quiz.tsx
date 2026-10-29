@@ -87,7 +87,7 @@ function StepHeading({ n, children }: { n: number; children: React.ReactNode }) 
       <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">
         Question {n} of 3
       </span>
-      <h3 className="font-serif text-2xl sm:text-3xl text-[var(--color-text)]">{children}</h3>
+      <h3 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">{children}</h3>
     </div>
   );
 }
@@ -119,7 +119,7 @@ export function StyleQuiz() {
     <section id="style-quiz" className="py-20 sm:py-28 bg-[var(--color-bg)] scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 space-y-3">
-          <h2 className="font-headline text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
+          <h2 className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)]">
             Three questions, one outfit
           </h2>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-md mx-auto">
@@ -224,7 +224,7 @@ export function StyleQuiz() {
                   <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">
                     Your pairing
                   </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-[var(--color-text)]">Here&apos;s what we&apos;d pick</h3>
+                  <h3 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">Here&apos;s what we&apos;d pick</h3>
                   <p className="text-sm text-[var(--color-muted)] max-w-md mx-auto">
                     For {rhythmLabel?.toLowerCase()}, a {feelLabel?.toLowerCase()} fit, in {paletteLabel?.toLowerCase()} tones.
                   </p>

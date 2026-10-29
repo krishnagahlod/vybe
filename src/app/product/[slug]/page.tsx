@@ -259,7 +259,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   New
                 </span>
               )}
-              <h1 className="font-headline text-4xl sm:text-5xl font-normal text-[var(--color-text)] leading-[1.05]">
+              <h1 className="font-headline text-4xl sm:text-5xl font-semibold text-[var(--color-text)] leading-[1.05]">
                 {product.name}
               </h1>
               <p className="text-xl text-[var(--color-text)]">{formatPrice(product.price)}</p>
@@ -299,8 +299,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               className="group block p-5 rounded-md bg-[var(--vybe-sage)]/45 hover:bg-[var(--vybe-sage)]/70 transition-colors"
             >
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-sage-ink)]">Core fabric</p>
-              <p className="mt-1 font-serif text-2xl text-[var(--color-text)]">
-                {fabric.name} <span className="text-base italic text-[var(--color-muted)]">&middot; {fabric.tagline}</span>
+              <p className="mt-1 font-headline text-2xl text-[var(--color-text)] font-semibold">
+                {fabric.name} <span className="block mt-1 text-sm font-normal text-[var(--color-muted)]">{fabric.tagline}</span>
               </p>
               <ul className="mt-3 flex flex-wrap gap-2">
                 {fabric.properties.map((prop) => (
@@ -343,7 +343,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
                 Complete the look
               </p>
-              <h2 className="font-serif text-3xl sm:text-4xl font-normal text-[var(--color-text)]">
+              <h2 className="font-headline text-3xl sm:text-4xl font-semibold text-[var(--color-text)]">
                 Pairs well with
               </h2>
             </div>

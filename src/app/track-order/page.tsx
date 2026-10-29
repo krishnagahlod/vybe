@@ -32,7 +32,7 @@ function TrackOrderContent() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block mb-3">
             Order tracking
           </span>
-          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)] mb-4">
+          <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-text)] mb-4">
             Where&apos;s my order?
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-lg mx-auto leading-relaxed">
@@ -92,7 +92,7 @@ function TrackOrderContent() {
                   <span className="text-[11px] font-mono uppercase tracking-widest text-[var(--vybe-mauve-ink)] block">
                     Simulated Tracking ID: {searchedRef}
                   </span>
-                  <h3 className="font-serif text-2xl font-semibold text-[var(--color-text)] mt-1">
+                  <h3 className="font-headline text-2xl font-semibold text-[var(--color-text)] mt-1">
                     In Transit &bull; On Schedule
                   </h3>
                   <p className="text-xs text-[var(--color-muted)] mt-0.5">

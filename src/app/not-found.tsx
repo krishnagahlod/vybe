@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="py-20 sm:py-32 flex items-center justify-center">
       <div className="max-w-xl mx-auto px-4 sm:px-6 text-center space-y-6">
-        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center font-serif text-3xl font-bold">
+        <div className="w-20 h-20 rounded-full bg-[var(--vybe-peach)]/60 text-[var(--vybe-mauve-ink)] mx-auto flex items-center justify-center font-headline text-3xl font-bold">
           404
         </div>
 
@@ -12,7 +12,7 @@ export default function NotFound() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
             Page not found
           </span>
-          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)]">
+          <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-text)]">
             This page has wandered off.
           </h1>
           <p className="text-xs sm:text-sm text-[var(--color-muted)] max-w-md mx-auto leading-relaxed">

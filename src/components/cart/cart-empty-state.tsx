@@ -12,8 +12,8 @@ export function CartEmptyState() {
   return (
     <div className="text-center py-16 sm:py-24 max-w-xl mx-auto space-y-8 animate-fade-up">
       <div className="space-y-4">
-        <h2 className="font-serif text-4xl sm:text-5xl text-[var(--color-text)]">
-          Your bag is <span className="italic">empty.</span>
+        <h2 className="font-headline text-4xl sm:text-5xl text-[var(--color-text)] font-semibold">
+          Your bag is empty.
         </h2>
         <p className="text-base text-[var(--color-muted)] leading-relaxed">
           Nothing here yet. Start with our studio essentials, or pick a category below.

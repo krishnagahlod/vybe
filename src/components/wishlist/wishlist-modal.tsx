@@ -43,7 +43,7 @@ export function WishlistModal() {
       {({ maximised }) =>
         savedProducts.length === 0 ? (
           <div className="h-full flex flex-col items-center justify-center text-center px-6 py-16 space-y-4">
-            <p className="font-serif text-3xl text-[var(--color-text)]">
+            <p className="font-headline text-3xl text-[var(--color-text)] font-semibold">
               Nothing saved yet.
             </p>
             <p className="text-sm text-[var(--color-muted)] max-w-xs">

@@ -143,7 +143,7 @@ export function CartDrawer() {
 
   const emptyState = (
     <div className="h-full flex flex-col items-center justify-center text-center px-6 py-16 space-y-4">
-      <p className="font-serif text-3xl text-[var(--color-text)]">
+      <p className="font-headline text-3xl text-[var(--color-text)] font-semibold">
         Your bag is empty.
       </p>
       <p className="text-sm text-[var(--color-muted)] max-w-xs">Start with our founder&apos;s favourites and build from there.</p>
@@ -184,7 +184,7 @@ export function CartDrawer() {
             </div>
             {suggestions.length > 0 && (
               <section className="space-y-6">
-                <h3 className="font-serif text-3xl text-[var(--color-text)]">You might also like</h3>
+                <h3 className="font-headline text-3xl text-[var(--color-text)] font-semibold">You might also like</h3>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 sm:gap-x-6">
                   {suggestions.map((p) => (
                     <ProductCard key={p.id} product={p} />

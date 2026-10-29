@@ -1,66 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const VALUES = [
-  { title: "Gentle colour", text: "Chalk, sage and aubergine instead of hyper-saturated neon." },
-  { title: "Freedom to move", text: "Cuts that move with your body rather than binding it." },
-  { title: "Beyond the studio", text: "Pieces you can keep wearing once the class is over." },
-];
-
+/** One full-width brand banner (like CAVA's "The plot behind the brand"). */
 export function BrandStory() {
   return (
-    <section id="brand-story" className="py-20 sm:py-28 bg-[var(--vybe-peach)]/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7 space-y-8">
-            <div className="space-y-4">
-              <h2 className="font-headline text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-[var(--color-text)] leading-[1.08]">
-                Activewear that honours your pace, not someone else&apos;s metrics.
-              </h2>
-            </div>
-            <div className="space-y-4 text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-2xl">
-              <p>
-                Too much activewear is built around punishment and urgency. VYBE starts from a different place:
-                movement should feel restorative, joyful, and personal.
-              </p>
-              <p>
-                Whether it&apos;s a sunrise yoga class in Pune, an evening run along Marine Drive, or the walk to
-                your favourite café in Bangalore, our pieces pair calm colour with soft, unrestrictive cuts.
-              </p>
-            </div>
-
-            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-[var(--color-text)]/10">
-              {VALUES.map((value) => (
-                <li key={value.title} className="space-y-1.5">
-                  <h3 className="font-serif text-lg text-[var(--color-text)]">{value.title}</h3>
-                  <p className="text-sm text-[var(--color-muted)] leading-relaxed">{value.text}</p>
-                </li>
-              ))}
-            </ul>
-
+    <section id="brand-story" className="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[min(72vh,640px)] overflow-hidden">
+      <Image
+        src="/images/lifestyle/lifestyle-studio-to-street.jpg"
+        alt="Woman stepping out of a limestone studio onto a leafy street in a sage VYBE set and mauve zip jacket, coffee in hand"
+        fill
+        sizes="100vw"
+        className="object-cover object-[40%_center]"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t sm:bg-gradient-to-l from-[#2a1a23]/80 via-[#2a1a23]/35 to-transparent" />
+      <div className="absolute inset-0 flex items-end sm:items-center">
+        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 pb-10 sm:pb-0 flex sm:justify-end">
+          <div className="max-w-md text-white">
+            <h2 className="font-headline font-bold uppercase text-3xl sm:text-5xl leading-[1] tracking-[-0.01em]">
+              The story behind VYBE
+            </h2>
+            <p className="mt-5 text-base sm:text-lg text-white/90 leading-relaxed">
+              We make activewear for movement that feels good, not punishing: cut for Indian bodies, in fabrics that stay
+              light through a humid day, in colours that work together from the studio to the street.
+            </p>
             <Link
               href="/about"
-              className="group text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)] transition-colors inline-flex items-center gap-2 pb-1 border-b border-current"
+              className="mt-7 inline-flex items-center px-7 py-3.5 rounded-full text-sm font-semibold border border-white/80 text-white hover:bg-white hover:text-[var(--color-text)] transition-colors"
             >
-              <span>Read our story</span>
+              Our story
             </Link>
           </div>
-
-          <figure className="lg:col-span-5">
-            <div className="relative rounded-md overflow-hidden aspect-[4/5] bg-[var(--vybe-pink)]">
-              <Image
-                src="/images/products/studio-matching-set-1.jpg"
-                alt="Woman seated on a limestone step in a muted mauve VYBE matching set"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover object-center"
-              />
-            </div>
-            <figcaption className="mt-5 font-serif text-xl italic text-[var(--color-text)] leading-snug">
-              &ldquo;Movement isn&apos;t about burning calories or hitting personal bests. It&apos;s about returning to
-              yourself.&rdquo;
-            </figcaption>
-          </figure>
         </div>
       </div>
     </section>

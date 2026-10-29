@@ -16,7 +16,7 @@ export function CartSummary({ subtotal, totalItems }: CartSummaryProps) {
 
   return (
     <div className="p-6 sm:p-8 rounded-md bg-[var(--vybe-peach)]/40 space-y-6">
-      <h2 className="font-serif text-2xl sm:text-3xl text-[var(--color-text)]">Summary</h2>
+      <h2 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">Summary</h2>
 
       <dl className="space-y-3 text-sm">
         <div className="flex items-center justify-between">

@@ -69,7 +69,7 @@ export function GarmentAnatomy() {
     <section id="garment-anatomy" className="py-20 sm:py-28 bg-[var(--color-bg)] scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mb-12 space-y-3">
-          <h2 className="font-headline text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)] leading-tight">
+          <h2 className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)] leading-tight">
             A closer look at the Flow Legging
           </h2>
           <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed">
@@ -149,14 +149,14 @@ export function GarmentAnatomy() {
                 transition={{ duration: 0.25, ease: "easeOut" }}
                 className="space-y-5 min-h-[13rem]"
               >
-                <h3 className="font-serif text-3xl sm:text-4xl font-normal text-[var(--color-text)]">
+                <h3 className="font-headline text-3xl sm:text-4xl font-semibold text-[var(--color-text)]">
                   {activeHotspot.title}
                 </h3>
                 <p className="text-base text-[var(--color-muted)] leading-relaxed max-w-lg">
                   {activeHotspot.description}
                 </p>
                 <div className="inline-flex items-baseline gap-3 px-5 py-3 rounded-md bg-[var(--vybe-sage)]/60">
-                  <span className="font-serif text-2xl text-[var(--color-text)]">{activeHotspot.detail}</span>
+                  <span className="font-headline text-2xl text-[var(--color-text)] font-semibold">{activeHotspot.detail}</span>
                   <span className="text-sm text-[var(--vybe-sage-ink)]">{activeHotspot.detailLabel}</span>
                 </div>
               </motion.div>

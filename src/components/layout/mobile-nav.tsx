@@ -61,10 +61,10 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       onClose={onClose}
       side="left"
       titleId="site-menu-title"
-      title={<span className="tracking-[0.35em] font-medium">VYBE</span>}
+      title={<span className="font-headline font-bold tracking-[0.16em]">VYBE</span>}
       footer={() => (
         <p className="px-6 py-5 bg-[var(--vybe-sage)] font-serif text-xl text-[var(--color-text)]">
-          Made for your <span className="italic">kind</span> of movement.
+          Made for your kind of movement.
         </p>
       )}
     >

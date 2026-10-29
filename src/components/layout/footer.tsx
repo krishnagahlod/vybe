@@ -39,7 +39,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-14 border-b border-[var(--color-text)]/15">
           <div className="lg:col-span-6 space-y-5">
             <h2 className={heading}>Sign up and save</h2>
-            <p className="font-headline text-3xl sm:text-4xl leading-[1.12] max-w-md">
+            <p className="font-headline text-3xl sm:text-4xl leading-[1.12] max-w-md font-semibold">
               First look at new drops, studio stories and members-only offers.
             </p>
             <div className="max-w-md">
@@ -51,7 +51,7 @@ export function Footer() {
             <h2 className={heading}>Reach us at</h2>
             <a
               href={INSTAGRAM_URL}
-              className="group inline-flex items-center gap-3 font-serif text-2xl sm:text-3xl hover:text-[var(--vybe-mauve-ink)] transition-colors"
+              className="group inline-flex items-center gap-3 font-headline text-2xl sm:text-3xl hover:text-[var(--vybe-mauve-ink)] transition-colors font-semibold"
             >
               <InstagramIcon className="w-6 h-6" />
               <span>@{INSTAGRAM_HANDLE}</span>
@@ -91,7 +91,7 @@ export function Footer() {
         </div>
 
         <div className="pt-10 border-t border-[var(--color-text)]/15 grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-          <p className="lg:col-span-4 font-serif text-5xl sm:text-6xl font-medium tracking-[0.35em] leading-none">VYBE</p>
+          <p className="lg:col-span-4 font-headline text-5xl sm:text-6xl font-bold tracking-[0.16em] leading-none">VYBE</p>
           <p className="lg:col-span-8 text-xs text-[var(--color-text)]/70 leading-relaxed lg:text-right">
             VYBE is a concept brand and storefront created for ENT 625 Digital Marketing. Products, prices and imagery
             are concepts; no payments are taken, no card details are collected, and no orders are fulfilled.

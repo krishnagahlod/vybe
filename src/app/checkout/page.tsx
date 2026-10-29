@@ -140,8 +140,8 @@ export default function CheckoutPage() {
     return (
       <div className="py-24 sm:py-32">
         <div className="max-w-xl mx-auto px-4 text-center space-y-6">
-          <h1 className="font-serif text-4xl sm:text-5xl text-[var(--color-text)]">
-            Nothing to check out <span className="italic">yet.</span>
+          <h1 className="font-headline text-4xl sm:text-5xl text-[var(--color-text)] font-semibold">
+            Nothing to check out yet.
           </h1>
           <p className="text-base text-[var(--color-muted)] leading-relaxed">
             Add a piece or two to your bag first.
@@ -163,13 +163,13 @@ export default function CheckoutPage() {
     }`;
   const labelClass = "block text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] mb-2";
   const stepHeading = "font-serif text-2xl sm:text-3xl text-[var(--color-text)] flex items-baseline gap-3";
-  const stepNumber = "font-serif italic text-lg text-[var(--vybe-mauve-ink)]";
+  const stepNumber = "font-semibold text-lg text-[var(--vybe-mauve-ink)]";
 
   return (
     <div className="py-12 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-10 pb-6 border-b border-[var(--color-border)]">
-          <h1 className="font-serif text-4xl sm:text-6xl font-normal tracking-tight text-[var(--color-text)]">Checkout</h1>
+          <h1 className="font-headline text-4xl sm:text-6xl font-semibold tracking-tight text-[var(--color-text)]">Checkout</h1>
           <Link
             href="/cart"
             className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] underline underline-offset-4 transition-colors"
@@ -303,7 +303,7 @@ export default function CheckoutPage() {
 
           {/* Order summary */}
           <aside className="lg:col-span-5 lg:sticky lg:top-28 rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
-            <h2 className="font-serif text-2xl text-[var(--color-text)]">
+            <h2 className="font-headline text-2xl text-[var(--color-text)] font-semibold">
               Your order <span className="text-base text-[var(--color-muted)]">({totalCount})</span>
             </h2>
 

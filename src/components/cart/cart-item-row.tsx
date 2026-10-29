@@ -33,7 +33,7 @@ export function CartItemRow({ item, product, onUpdateQuantity, onRemove }: CartI
       <div className="flex-1 min-w-0 flex flex-col justify-between gap-4">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0 space-y-1">
-            <h3 className="font-serif text-xl sm:text-2xl text-[var(--color-text)] leading-snug">
+            <h3 className="font-headline text-xl sm:text-2xl text-[var(--color-text)] leading-snug font-semibold">
               <Link
                 href={`/product/${product.slug}`}
                 className="hover:text-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-hidden"

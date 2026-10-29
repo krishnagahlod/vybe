@@ -17,7 +17,7 @@ export default function SizeGuidePage() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block mb-3">
             Size guide
           </span>
-          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)] mb-4">
+          <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-text)] mb-4">
             Find your fit
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
@@ -54,8 +54,8 @@ export default function SizeGuidePage() {
         {/* Leg lengths */}
         <section id="lengths" className="mb-16 scroll-mt-40 p-6 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)]">
           <div className="text-center mb-8 space-y-2">
-            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--color-text)]">
-              Petite, Regular or <span className="italic">Tall?</span>
+            <h2 className="font-headline text-3xl sm:text-4xl text-[var(--color-text)] font-semibold">
+              Petite, Regular or Tall?
             </h2>
             <p className="text-sm text-[var(--color-muted)] max-w-lg mx-auto">
               Every VYBE legging, jogger and flare comes in three leg lengths, so the hem lands at your ankle, not on the floor.
@@ -66,7 +66,7 @@ export default function SizeGuidePage() {
 
         {/* How to Measure Cards */}
         <div className="mb-16">
-          <h2 className="font-serif text-2xl font-semibold text-[var(--color-text)] mb-6 text-center sm:text-left">
+          <h2 className="font-headline text-2xl font-semibold text-[var(--color-text)] mb-6 text-center sm:text-left">
             How to Take Your Measurements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

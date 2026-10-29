@@ -150,7 +150,7 @@ export function filterProducts(list: Product[], f: ShopFilterState) {
   });
 }
 
-export function shopHref(params: Partial<Record<"category" | "activity" | "fabric" | "size" | "q", string>>) {
+export function shopHref(params: Partial<Record<"category" | "activity" | "fabric" | "size" | "color" | "q", string>>) {
   const search = new URLSearchParams(Object.entries(params).filter(([, v]) => v) as [string, string][]);
   const qs = search.toString();
   return qs ? `/shop?${qs}` : "/shop";

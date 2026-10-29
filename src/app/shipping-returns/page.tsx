@@ -15,7 +15,7 @@ export default function ShippingReturnsPage() {
           <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)] block">
             Concept Policies
           </span>
-          <h1 className="font-serif text-5xl sm:text-6xl font-normal tracking-tight leading-[1.05] text-[var(--color-text)]">
+          <h1 className="font-headline text-5xl sm:text-6xl font-semibold tracking-tight leading-[1.05] text-[var(--color-text)]">
             Delivery &amp; Trial Notice
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed font-light max-w-2xl">

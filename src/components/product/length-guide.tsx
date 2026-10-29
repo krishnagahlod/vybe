@@ -29,7 +29,7 @@ export function LengthGuide() {
             <LeggingsSketch legLength={legLengths[i]} />
           </div>
           <p className="mt-5 text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text)]">{l.id}</p>
-          <p className="mt-1 font-serif italic text-base sm:text-lg text-[var(--color-text)]">{l.height}</p>
+          <p className="mt-1 text-sm sm:text-base font-medium text-[var(--color-text)]">{l.height}</p>
           <p className="text-xs text-[var(--color-muted)]">{l.inseam}</p>
         </div>
       ))}

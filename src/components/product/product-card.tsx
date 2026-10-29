@@ -146,8 +146,8 @@ export function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Product Details Section */}
-      <div className="flex flex-col flex-1 pt-4 gap-1">
-        <h3 className="font-serif text-lg sm:text-xl font-medium tracking-tight text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors leading-snug">
+      <div className="flex flex-col flex-1 pt-3 gap-1">
+        <h3 className="text-sm sm:text-[15px] font-medium text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors leading-snug">
           <Link href={`/product/${product.slug}`} className="focus-visible:outline-hidden">
             {product.name}
           </Link>
@@ -164,6 +164,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           )}
         </div>
+        {product.lengths && <p className="text-xs text-[var(--vybe-sage-ink)]">Available in {product.lengths.length} leg lengths</p>}
       </div>
     </article>
   );

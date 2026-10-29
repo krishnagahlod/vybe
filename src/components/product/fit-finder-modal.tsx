@@ -297,7 +297,7 @@ export function FitFinderModal({
                   <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">
                     Recommended Size
                   </span>
-                  <span className="font-serif text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-md bg-white/80 shadow-xs border border-[var(--color-border)]">
+                  <span className="font-headline text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-md bg-white/80 shadow-xs border border-[var(--color-border)]">
                     {recommendedSize}
                   </span>
                 </div>

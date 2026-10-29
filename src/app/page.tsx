@@ -1,57 +1,34 @@
+import { products } from "@/data/products";
+import { CategoryTiles } from "@/components/home/category-tiles";
 import { HeroSection } from "@/components/home/hero-section";
+import { ProductRow } from "@/components/home/product-row";
+import { PromiseStrip } from "@/components/home/promise-strip";
 import { ShopByActivity } from "@/components/home/shop-by-activity";
-import { FeaturedProducts } from "@/components/home/featured-products";
-import { FlareEdit } from "@/components/home/flare-edit";
-import { StatementMarquee } from "@/components/home/statement-marquee";
-import { MadeForYou } from "@/components/home/made-for-you";
+import { ShopYourShade } from "@/components/home/shop-your-shade";
 import { GarmentAnatomy } from "@/components/home/garment-anatomy";
-import { StudioToStreet } from "@/components/home/studio-to-street";
 import { ShopBySize } from "@/components/home/shop-by-size";
-import { StyleQuiz } from "@/components/home/style-quiz";
 import { BrandStory } from "@/components/home/brand-story";
-import { CitySpotlight } from "@/components/home/city-spotlight";
+import { StyleQuiz } from "@/components/home/style-quiz";
 import { InstagramMosaic } from "@/components/home/instagram-mosaic";
+
+// Founder's picks first, then the rest of the studio line, so the row is never short
+const favourites = [...products.filter((p) => p.featured), ...products.filter((p) => !p.featured && !p.isNew)].slice(0, 8);
+const newIn = products.filter((p) => p.isNew);
 
 export default function Home() {
   return (
     <div className="w-full">
-      {/* 1. Hero with lifestyle proposition & primary CTA */}
+      <CategoryTiles />
       <HeroSection />
-
-      {/* 2. Discovery by activity */}
+      <ProductRow title="Founder's Favourites" products={favourites} viewAllHref="/shop?category=favourites" />
+      <PromiseStrip />
       <ShopByActivity />
-
-      {/* 3. Founder's favourites with quick-add */}
-      <FeaturedProducts />
-
-      {/* 3a. Statement band */}
-      <StatementMarquee />
-
-      {/* 3b. New launch: the Flare Edit */}
-      <FlareEdit />
-
-      {/* 4. Fit for Indian bodies: leg lengths and core fabrics */}
-      <MadeForYou />
-
-      {/* 5. Interactive fit & fabric close-up */}
+      <ProductRow title="New in" products={newIn} viewAllHref="/shop?category=new" />
+      <ShopYourShade />
       <GarmentAnatomy />
-
-      {/* 6. Studio-to-street lifestyle band */}
-      <StudioToStreet />
-
-      {/* 7. Shop by size */}
       <ShopBySize />
-
-      {/* 8. "Find your fit" style quiz */}
-      <StyleQuiz />
-
-      {/* 9. Brand philosophy */}
       <BrandStory />
-
-      {/* 10. Launch cities */}
-      <CitySpotlight />
-
-      {/* 11. Instagram */}
+      <StyleQuiz />
       <InstagramMosaic />
     </div>
   );

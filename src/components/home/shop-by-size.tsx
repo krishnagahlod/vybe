@@ -7,7 +7,7 @@ export function ShopBySize() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div className="space-y-3">
-            <h2 className="font-headline text-3xl sm:text-5xl font-normal tracking-tight text-[var(--color-text)]">
+            <h2 className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)]">
               Start with your size
             </h2>
           </div>
@@ -27,7 +27,7 @@ export function ShopBySize() {
                 className="group relative flex items-center justify-center aspect-[3/4] sm:aspect-[4/3] rounded-md overflow-hidden bg-gradient-to-b from-[var(--vybe-sage)] to-[#a9bcab] text-[var(--color-text)] transition-colors"
               >
                 <span className="absolute inset-0 bg-[var(--color-text)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true" />
-                <span className="relative font-serif text-3xl sm:text-5xl group-hover:text-white transition-colors duration-500">{size}</span>
+                <span className="relative font-headline text-3xl sm:text-5xl group-hover:text-white transition-colors duration-500 font-semibold">{size}</span>
               </Link>
             </li>
           ))}

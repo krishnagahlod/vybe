@@ -26,7 +26,7 @@ export default function GlobalError({
           <span className="text-xs font-semibold uppercase tracking-widest text-[var(--vybe-mauve-ink)] font-mono">
             System Notice
           </span>
-          <h1 className="font-serif text-3xl font-medium text-[var(--color-text)]">
+          <h1 className="font-headline text-3xl font-semibold text-[var(--color-text)]">
             Something Paused Our Rhythm
           </h1>
           <p className="text-xs text-[var(--color-muted)] max-w-sm mx-auto leading-relaxed">

@@ -10,7 +10,7 @@ export function NewsletterForm() {
   if (done) {
     return (
       <p role="status" className="text-sm text-[var(--color-text)] leading-relaxed">
-        <span className="font-serif text-2xl block mb-1">
+        <span className="font-headline text-2xl block mb-1 font-semibold">
           You&apos;re on the list.
         </span>
         VYBE is a concept store, so we haven&apos;t saved your email and won&apos;t send anything.
