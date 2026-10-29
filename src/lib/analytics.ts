@@ -195,6 +195,19 @@ export function trackBeginCheckout(itemCount: number, subtotal: number) {
   }
 }
 
+/** Style quiz finished: every answer plus the result name, for the learnings page. */
+export function trackQuizComplete(answers: Record<string, string>, result: string) {
+  pushToDataLayer({ event: "quiz_complete", ...answers, result });
+
+  if (typeof window !== "undefined" && window.gtag && GA4_ID) {
+    window.gtag("event", "quiz_complete", { ...answers, result });
+  }
+
+  if (typeof window !== "undefined" && window.fbq && META_PIXEL_ID) {
+    window.fbq("trackCustom", "QuizComplete", { activity: answers.activity, pain: answers.pain, result });
+  }
+}
+
 /**
  * 5. Demo Checkout Complete Event
  * GA4: demo_checkout_complete (NOT purchase)

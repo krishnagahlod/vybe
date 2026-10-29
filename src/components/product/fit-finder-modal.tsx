@@ -48,7 +48,7 @@ export function FitFinderModal({
 
   // Size calculation algorithm
   const calculateRecommendedSize = (): { size: string; reason: string } => {
-    let rawScore = 0; // index into sizeOrder: 0 = XS … 8 = 5XL
+    let rawScore = 0; // index into sizeOrder: 0 = XS … 5 = 2XL
 
     if (isBottoms) {
       // Base on waist & hips
@@ -57,20 +57,14 @@ export function FitFinderModal({
       else if (waistIn < 31 && hipsIn < 41) rawScore = 2; // M
       else if (waistIn < 34 && hipsIn < 44) rawScore = 3; // L
       else if (waistIn < 36 && hipsIn < 46) rawScore = 4; // XL
-      else if (waistIn < 38 && hipsIn < 48) rawScore = 5; // 2XL
-      else if (waistIn < 40 && hipsIn < 50) rawScore = 6; // 3XL
-      else if (waistIn < 42 && hipsIn < 52) rawScore = 7; // 4XL
-      else rawScore = 8; // 5XL
+      else rawScore = 5; // 2XL
     } else if (isTops) {
       if (bustIn < 32) rawScore = 0; // XS
       else if (bustIn < 35) rawScore = 1; // S
       else if (bustIn < 38) rawScore = 2; // M
       else if (bustIn < 41) rawScore = 3; // L
       else if (bustIn < 43) rawScore = 4; // XL
-      else if (bustIn < 45) rawScore = 5; // 2XL
-      else if (bustIn < 47) rawScore = 6; // 3XL
-      else if (bustIn < 49) rawScore = 7; // 4XL
-      else rawScore = 8; // 5XL
+      else rawScore = 5; // 2XL
     } else {
       // General layers
       const avg = (waistIn + bustIn) / 2;
@@ -79,16 +73,13 @@ export function FitFinderModal({
       else if (avg < 35) rawScore = 2;
       else if (avg < 38) rawScore = 3;
       else if (avg < 40) rawScore = 4;
-      else if (avg < 42) rawScore = 5;
-      else if (avg < 44) rawScore = 6;
-      else if (avg < 46) rawScore = 7;
-      else rawScore = 8;
+      else rawScore = 5;
     }
 
     // Apply fit preference modifier
     if (fitPref === "snug" && rawScore > 0) {
       rawScore -= 0.5;
-    } else if (fitPref === "relaxed" && rawScore < 8) {
+    } else if (fitPref === "relaxed" && rawScore < 5) {
       rawScore += 0.5;
     }
 
@@ -205,7 +196,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={30}
-                      max={52}
+                      max={48}
                       step={0.5}
                       value={bustIn}
                       onChange={(e) => setBustIn(parseFloat(e.target.value))}
@@ -226,7 +217,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={23}
-                      max={46}
+                      max={42}
                       step={0.5}
                       value={waistIn}
                       onChange={(e) => setWaistIn(parseFloat(e.target.value))}
@@ -247,7 +238,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={33}
-                      max={56}
+                      max={52}
                       step={0.5}
                       value={hipsIn}
                       onChange={(e) => setHipsIn(parseFloat(e.target.value))}

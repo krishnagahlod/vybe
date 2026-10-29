@@ -1,22 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const HERO_IMAGES = [
+  { src: "/images/products/new/built-in-bra-tank-1.jpg", alt: "A woman in the cream Built-In Bra Tank and maroon side-stripe track pants, holding a ball" },
+  { src: "/images/products/new/zebra-seamless-set-1.jpg", alt: "A woman in the cobalt Zebra Seamless Set" },
+  { src: "/images/products/new/retro-stripe-set-1.jpg", alt: "A woman in the Retro Stripe Set spinning a basketball" },
+];
+
 export function HeroSection() {
   return (
     <section className="relative w-full aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-[min(82vh,780px)] overflow-hidden bg-[var(--vybe-petal)]">
-      <Image
-        src="/images/lifestyle/lifestyle-court-wide.jpg"
-        alt="Two friends laughing as they walk off a tennis court together, rackets in hand, one in a pleated skirt and crop top, one in a tennis dress"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[58%_center]"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[var(--vybe-ink)]/80 via-[var(--vybe-ink)]/30 to-transparent" />
-      <div className="absolute inset-0 flex items-end lg:items-center">
-        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 pb-10 lg:pb-0">
-          <div className="max-w-2xl text-white">
-            <h1 className="font-headline font-extrabold text-[2.3rem] sm:text-6xl lg:text-7xl leading-[0.98] tracking-[-0.02em]">
+      {/* Three looks side by side on desktop; the first one alone on phones */}
+      <div className="absolute inset-0 grid grid-cols-1 lg:grid-cols-3">
+        {HERO_IMAGES.map((img, i) => (
+          <div key={img.src} className={`relative ${i > 0 ? "hidden lg:block" : ""}`}>
+            <Image src={img.src} alt={img.alt} fill priority={i === 0} sizes="(max-width: 1024px) 100vw, 34vw" className="object-cover object-top" />
+          </div>
+        ))}
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--vybe-ink)]/90 via-[var(--vybe-ink)]/50 to-[var(--vybe-ink)]/10 lg:via-[var(--vybe-ink)]/25 lg:to-transparent" />
+      <div className="absolute inset-0 flex items-end">
+        <div className="max-w-7xl w-full mx-auto px-5 sm:px-8 pb-10 lg:pb-16">
+          <div className="max-w-2xl lg:max-w-4xl text-white">
+            <h1 className="font-headline font-extrabold text-[2rem] sm:text-6xl leading-[0.98] tracking-[-0.02em]">
               The best hour of your day deserves the best thing in your wardrobe.
             </h1>
             <p className="mt-5 text-base sm:text-lg text-white/90 max-w-lg">
@@ -33,7 +39,7 @@ export function HeroSection() {
                 href="/shop?category=new"
                 className="inline-flex items-center px-7 py-3.5 rounded-full text-sm font-semibold border border-white/80 text-white hover:bg-white hover:text-[var(--vybe-ink)] transition-colors"
               >
-                Shop new prints
+                Shop the new drop
               </Link>
             </div>
           </div>

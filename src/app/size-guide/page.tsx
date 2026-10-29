@@ -192,27 +192,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
                     <td className="py-3 px-3">{unit === "in" ? "9\"" : "23 cm"}</td>
                   </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "39 - 42\"" : "99 - 107 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "49 - 52\"" : "124 - 132 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "9.5\"" : "24 cm"}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "42 - 45\"" : "107 - 114 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "52 - 55\"" : "132 - 140 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "9.5\"" : "24 cm"}</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "45 - 48\"" : "114 - 122 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "55 - 58\"" : "140 - 147 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "10\"" : "25 cm"}</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -280,24 +259,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "42 - 45\"" : "107 - 114 cm"}</td>
                     <td className="py-3 px-3">{unit === "in" ? "37 - 40\"" : "94 - 102 cm"}</td>
                     <td className="py-3 px-3">40D, 42C, 42D</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "45 - 48\"" : "114 - 122 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "40 - 43\"" : "102 - 109 cm"}</td>
-                    <td className="py-3 px-3">42DD, 44C, 44D</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "48 - 51\"" : "122 - 130 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "43 - 46\"" : "109 - 117 cm"}</td>
-                    <td className="py-3 px-3">44DD, 46C, 46D</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
-                    <td className="py-3 px-3">{unit === "in" ? "51 - 54\"" : "130 - 137 cm"}</td>
-                    <td className="py-3 px-3">{unit === "in" ? "46 - 49\"" : "117 - 124 cm"}</td>
-                    <td className="py-3 px-3">46DD, 48C, 48D</td>
                   </tr>
                 </tbody>
               </table>
@@ -367,27 +328,6 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">UK 16</td>
                     <td className="py-3 px-3">US 12</td>
                     <td className="py-3 px-3">EU 44</td>
-                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
-                    <td className="py-3 px-3">UK 18</td>
-                    <td className="py-3 px-3">US 14</td>
-                    <td className="py-3 px-3">EU 46</td>
-                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
-                    <td className="py-3 px-3">UK 20</td>
-                    <td className="py-3 px-3">US 16</td>
-                    <td className="py-3 px-3">EU 48</td>
-                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
-                    <td className="py-3 px-3">UK 22</td>
-                    <td className="py-3 px-3">US 18</td>
-                    <td className="py-3 px-3">EU 50</td>
                     <td className="py-3 px-3 font-sans">Relaxed Movement</td>
                   </tr>
                 </tbody>

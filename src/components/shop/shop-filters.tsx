@@ -8,7 +8,6 @@ import {
   COLLECTIONS,
   FABRICS,
   FABRIC_IDS,
-  PRINTS,
   SIZES,
   ShopFilterState,
   filterProducts,
@@ -28,11 +27,17 @@ const COLORS = [
   { name: "Rose", hex: "#f4acb7" },
   { name: "Muted Mauve", hex: "#9d8189" },
   { name: "Aubergine", hex: "#452b3a" },
+  { name: "Cream", hex: "#f3ead8" },
+  { name: "Mint", hex: "#cfeee0" },
+  { name: "Cobalt", hex: "#3d5afe" },
+  { name: "Navy", hex: "#1f2a4d" },
+  { name: "Maroon", hex: "#6b1e24" },
+  { name: "Black", hex: "#1a1a1a" },
 ];
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
 
-const DEFAULTS: ShopFilterState = { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", print: "all", query: "" };
+const DEFAULTS: ShopFilterState = { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", query: "" };
 
 const selectClass =
   "h-10 pl-3 pr-8 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-text)] hover:border-[var(--color-text)] focus:outline-none focus:border-[var(--color-text)] cursor-pointer transition-colors";
@@ -52,7 +57,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
       case "name-asc":
         return result.sort((a, b) => a.name.localeCompare(b.name));
       default:
-        return result.sort((a, b) => Number(b.featured) - Number(a.featured));
+        return result;
     }
   }, [initialProducts, filters, sortBy]);
 
@@ -60,15 +65,12 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
   const collection = getCollection(filters.collection);
   const activity = ACTIVITIES.find((a) => a.id === filters.activity);
   const fabric = filters.fabric !== "all" ? FABRICS[filters.fabric as keyof typeof FABRICS] : undefined;
-  const print = PRINTS.find((p) => p.id === filters.print);
   const heading = filters.query.trim()
     ? { eyebrow: "Search", title: `“${filters.query.trim()}”`, text: "Pieces that match your search." }
     : collection
       ? { eyebrow: "Collection", title: collection.label, text: "Cut for Indian bodies. Every piece under ₹3,000." }
       : activity
         ? { eyebrow: "Shop by movement", title: activity.label, text: activity.blurb }
-        : print
-          ? { eyebrow: "Shop by print", title: print.label, text: print.line }
         : fabric
           ? { eyebrow: "Core fabric", title: fabric.name, text: `${fabric.tagline}: ${fabric.properties.join(" · ").toLowerCase()}.` }
           : filters.size !== "all"
@@ -76,13 +78,12 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
             : {
                 eyebrow: "All pieces",
                 title: "Shop the collection",
-                text: `${initialProducts.length} pieces, every one under ₹3,000, in sizes XS to 5XL.`,
+                text: `${initialProducts.length} pieces, every one under ₹3,000, in sizes XS to 2XL.`,
               };
 
   const activeChips = [
     filters.activity !== "all" && { label: activity?.label ?? filters.activity, clear: { activity: "all" } },
     filters.fabric !== "all" && { label: fabric?.name ?? filters.fabric, clear: { fabric: "all" } },
-    filters.print !== "all" && { label: print?.label ?? filters.print, clear: { print: "all" } },
     filters.size !== "all" && { label: `Size ${filters.size}`, clear: { size: "all" } },
     filters.color !== "all" && { label: filters.color, clear: { color: "all" } },
     filters.query.trim() && { label: `“${filters.query.trim()}”`, clear: { query: "" } },
@@ -144,14 +145,6 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
               {FABRIC_IDS.map((id) => (
                 <option key={id} value={id}>
                   {FABRICS[id].name}
-                </option>
-              ))}
-            </select>
-            <select aria-label="Print" value={filters.print} onChange={(e) => set({ print: e.target.value })} className={selectClass}>
-              <option value="all">Print</option>
-              {PRINTS.map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.label}
                 </option>
               ))}
             </select>

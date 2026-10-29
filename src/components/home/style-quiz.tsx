@@ -4,75 +4,83 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { products } from "@/data/products";
+import { getProductBySlug } from "@/data/products";
 import { formatPrice } from "@/lib/format";
-import type { Product, ProductCategory } from "@/types/product";
+import { trackQuizComplete } from "@/lib/analytics";
+import { type Answers, recommend } from "@/lib/quiz";
 
-type Rhythm = "yoga" | "strength" | "running" | "casual";
-type Feel = "sculpt" | "soft" | "relaxed";
-type Palette = "sage" | "peach" | "mauve";
+type Question = { key: keyof Answers; title: string; options: { id: string; label: string; hint?: string }[] };
 
-const RHYTHM_OPTIONS: { id: Rhythm; title: string; desc: string }[] = [
-  { id: "yoga", title: "Yoga & Pilates", desc: "Mat, reformer, and slow studio flows" },
-  { id: "strength", title: "Gym & Strength", desc: "Weights, conditioning, and HIIT" },
-  { id: "running", title: "Running & Cardio", desc: "Morning runs, cycling, and intervals" },
-  { id: "casual", title: "Everyday Active", desc: "Errands, travel, and coffee runs" },
+const QUESTIONS: Question[] = [
+  {
+    key: "activity",
+    title: "Where do you feel most like yourself?",
+    options: [
+      { id: "dance", label: "Dance class" },
+      { id: "court", label: "On the court", hint: "Badminton, tennis, pickleball" },
+      { id: "gym", label: "Lifting at the gym" },
+      { id: "yoga", label: "On the mat", hint: "Yoga, Pilates" },
+      { id: "walk", label: "Walks and runs" },
+    ],
+  },
+  {
+    key: "pain",
+    title: "What ruins a good session for you?",
+    options: [
+      { id: "lines", label: "Underwear lines or see-through fabric" },
+      { id: "rideup", label: "Top riding up or a bra that doesn't hold" },
+      { id: "heat", label: "Feeling hot and sweaty" },
+      { id: "shorts", label: "Shorts riding up" },
+      { id: "waistband", label: "Waistband rolling down" },
+    ],
+  },
+  {
+    key: "style",
+    title: "Pick the look you'd wear on your best day.",
+    options: [
+      { id: "prints", label: "Bold prints" },
+      { id: "brights", label: "Bright colour pops" },
+      { id: "pastels", label: "Soft pastels" },
+      { id: "set", label: "Head-to-toe matching set" },
+    ],
+  },
+  {
+    key: "fit",
+    title: "How do you like your fit?",
+    options: [
+      { id: "sleek", label: "Sleek and fitted" },
+      { id: "relaxed", label: "Relaxed and flowy" },
+      { id: "coverage", label: "More coverage" },
+      { id: "showoff", label: "Show it off" },
+    ],
+  },
+  {
+    key: "height",
+    title: "How tall are you?",
+    options: [
+      { id: "petite", label: "Under 5'4\"" },
+      { id: "regular", label: "5'4\" to 5'7\"" },
+      { id: "tall", label: "Over 5'7\"" },
+    ],
+  },
+  {
+    key: "after",
+    title: "Where do you head after?",
+    options: [
+      { id: "home", label: "Straight home" },
+      { id: "coffee", label: "Coffee with the girls" },
+      { id: "work", label: "Office or college" },
+    ],
+  },
 ];
 
-const FEEL_OPTIONS: { id: Feel; title: string; desc: string }[] = [
-  { id: "sculpt", title: "Sculpted & secure", desc: "A close fit that holds you in place" },
-  { id: "soft", title: "Soft & balanced", desc: "Second-skin feel, held but never squeezed" },
-  { id: "relaxed", title: "Relaxed & easy", desc: "Room to breathe, nothing tight" },
-];
-
-const PALETTE_OPTIONS: { id: Palette; title: string; desc: string; hex: string }[] = [
-  { id: "sage", title: "Sage", desc: "Cool and easy with everything", hex: "#c8d5c8" },
-  { id: "peach", title: "Peach & Pink", desc: "Warm and bright", hex: "#ffe5d9" },
-  { id: "mauve", title: "Mauve & Rose", desc: "Deep and polished", hex: "#9d8189" },
-];
-
-// Each answer adds weight; the highest-scoring products become the recommendation.
-const RHYTHM_WEIGHTS: Record<Rhythm, Partial<Record<ProductCategory, number>>> = {
-  yoga: { leggings: 3, sets: 3, "sports-bras": 2, tops: 1 },
-  strength: { "sports-bras": 3, leggings: 3, shorts: 2, tops: 1 },
-  running: { shorts: 3, "sports-bras": 2, tops: 2, court: 1 },
-  casual: { layers: 3, sets: 2, tops: 2, court: 1, leggings: 1 },
+const HEIGHT_WHY: Record<Answers["height"], string> = {
+  petite: "You're under 5'4\", so your leggings and flares come in Petite and end at your ankle, not the floor.",
+  regular: "You're 5'4\" to 5'7\", so Regular length lands right at your ankle.",
+  tall: "You're over 5'7\", so we picked Tall: no hems stopping short.",
 };
 
-const FEEL_WEIGHTS: Record<Feel, Partial<Record<ProductCategory, number>>> = {
-  sculpt: { leggings: 2, "sports-bras": 2, sets: 1 },
-  soft: { tops: 2, sets: 2, "sports-bras": 1 },
-  relaxed: { layers: 2, tops: 2, shorts: 1 },
-};
-
-const PALETTE_COLORS: Record<Palette, string[]> = {
-  sage: ["Sage", "Sage / Rose"],
-  peach: ["Pale Peach", "Soft Pink"],
-  mauve: ["Muted Mauve", "Rose", "Sage / Rose", "Aubergine"],
-};
-
-function getRecommendations(rhythm: Rhythm, feel: Feel, palette: Palette): Product[] {
-  const scored = products
-    .map((p, index) => {
-      let score = (RHYTHM_WEIGHTS[rhythm][p.category] ?? 0) + (FEEL_WEIGHTS[feel][p.category] ?? 0);
-      if (p.colorName && PALETTE_COLORS[palette].includes(p.colorName)) score += 3;
-      if (p.featured) score += 0.5;
-      return { p, score, index };
-    })
-    .sort((a, b) => b.score - a.score || a.index - b.index);
-
-  const first = scored[0].p;
-  // Second pick comes from a different category so the result reads as an outfit.
-  const second = scored.find((s) => s.p.category !== first.category)?.p ?? scored[1].p;
-  return [first, second];
-}
-
-const optionClass = (selected: boolean) =>
-  `p-5 rounded-xl border text-left transition-colors cursor-pointer ${
-    selected
-      ? "border-[var(--color-text)] bg-[var(--vybe-petal)]/50"
-      : "border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-text)]/40"
-  }`;
+const AFTER_WHY = "You're heading out after, so we added a jacket you can throw on over it.";
 
 const stepMotion = {
   initial: { opacity: 0, x: 16 },
@@ -81,201 +89,213 @@ const stepMotion = {
   transition: { duration: 0.2 },
 };
 
-function StepHeading({ n, children }: { n: number; children: React.ReactNode }) {
-  return (
-    <div className="text-center space-y-2">
-      <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">
-        Question {n} of 3
-      </span>
-      <h3 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">{children}</h3>
-    </div>
-  );
-}
+const optionClass = (selected: boolean) =>
+  `w-full p-4 sm:p-5 rounded-2xl border text-left transition-colors cursor-pointer ${
+    selected
+      ? "border-[var(--color-text)] bg-[var(--vybe-petal)]/60"
+      : "border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-text)]/40"
+  }`;
 
-function BackButton({ onClick }: { onClick: () => void }) {
+/** Demo only, like the footer sign-up: nothing is sent or stored. */
+function EarlyAccessForm() {
+  const [email, setEmail] = useState("");
+  const [done, setDone] = useState(false);
+  if (done) {
+    return (
+      <p role="status" className="text-sm text-center text-[var(--color-text)]">
+        <span className="font-headline font-bold text-lg block">You&apos;re on the list.</span>
+        VYBE is a concept store, so we haven&apos;t saved your email and won&apos;t send anything.
+      </p>
+    );
+  }
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] cursor-pointer"
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (email.trim()) setDone(true);
+      }}
+      className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto"
     >
-      &larr; Back
-    </button>
+      <label htmlFor="quiz-email" className="sr-only">
+        Email address
+      </label>
+      <input
+        id="quiz-email"
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Your email"
+        autoComplete="email"
+        className="w-full sm:flex-1 min-w-0 h-12 px-5 rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] text-sm text-[var(--color-text)] focus:outline-none focus:border-[var(--color-text)]"
+      />
+      <button
+        type="submit"
+        className="h-12 px-6 rounded-full text-sm font-semibold bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
+      >
+        Get early access to your outfit
+      </button>
+    </form>
   );
 }
 
 export function StyleQuiz() {
-  const [step, setStep] = useState<number>(1);
-  const [rhythm, setRhythm] = useState<Rhythm | null>(null);
-  const [feel, setFeel] = useState<Feel | null>(null);
-  const [palette, setPalette] = useState<Palette | null>(null);
+  // step 0 = intro, 1–6 = questions, 7 = result
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<Partial<Answers>>({});
 
-  const recommendations = rhythm && feel && palette ? getRecommendations(rhythm, feel, palette) : [];
-  const rhythmLabel = RHYTHM_OPTIONS.find((o) => o.id === rhythm)?.title;
-  const feelLabel = FEEL_OPTIONS.find((o) => o.id === feel)?.title;
-  const paletteLabel = PALETTE_OPTIONS.find((o) => o.id === palette)?.title;
+  const done = step > QUESTIONS.length;
+  const result = done ? recommend(answers as Answers) : null;
+  const outfit = result ? result.products.map(getProductBySlug).filter((p) => p !== undefined) : [];
+  const total = outfit.reduce((sum, p) => sum + p.price, 0);
+  const lengthMatters = outfit.some((p) => p.lengths);
+
+  const choose = (key: keyof Answers, id: string) => {
+    const next = { ...answers, [key]: id };
+    setAnswers(next);
+    if (step === QUESTIONS.length) {
+      const r = recommend(next as Answers);
+      trackQuizComplete(next as Record<string, string>, r.name);
+    }
+    setStep(step + 1);
+  };
+
+  const restart = () => {
+    setAnswers({});
+    setStep(1);
+  };
+
+  const q = QUESTIONS[step - 1];
 
   return (
-    <section id="style-quiz" className="py-20 sm:py-28 bg-[var(--color-bg)] scroll-mt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 space-y-3">
-          <h2 className="font-headline text-3xl sm:text-5xl font-bold tracking-[-0.02em] text-[var(--color-text)]">
-            What&apos;s your kind of movement?
-          </h2>
-          <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-md mx-auto">
-            3 questions, one outfit.
-          </p>
-        </div>
-
-        <div className="p-6 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)]">
-          {/* Progress */}
-          <div className="flex items-center justify-center gap-2 mb-8" aria-hidden="true">
-            {[1, 2, 3].map((i) => (
-              <span
-                key={i}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  step === i ? "w-10 bg-[var(--color-text)]" : step > i ? "w-5 bg-[var(--vybe-mauve)]" : "w-5 bg-[var(--color-border)]"
-                }`}
-              />
-            ))}
-          </div>
-
+    <section id="style-quiz" className="py-16 sm:py-24 bg-[var(--vybe-petal)]/50 scroll-mt-28">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl bg-[var(--color-surface)] border border-[var(--color-border)] overflow-hidden">
           <AnimatePresence mode="wait" initial={false}>
-            {step === 1 && (
-              <motion.div key="step1" {...stepMotion} className="space-y-6">
-                <StepHeading n={1}>How do you usually move?</StepHeading>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {RHYTHM_OPTIONS.map((opt) => (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      aria-pressed={rhythm === opt.id}
-                      onClick={() => {
-                        setRhythm(opt.id);
-                        setStep(2);
-                      }}
-                      className={optionClass(rhythm === opt.id)}
-                    >
-                      <span className="block text-sm font-semibold text-[var(--color-text)]">{opt.title}</span>
-                      <span className="block text-sm text-[var(--color-muted)] mt-0.5">{opt.desc}</span>
-                    </button>
-                  ))}
+            {step === 0 && (
+              <motion.div key="intro" {...stepMotion} className="grid grid-cols-1 md:grid-cols-2">
+                <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[460px]">
+                  <Image
+                    src="/images/products/new/built-in-bra-tank-1.jpg"
+                    alt="A woman in the Built-In Bra Tank and side-stripe track pants, holding a ball"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-[center_25%]"
+                  />
+                </div>
+                <div className="p-8 sm:p-12 flex flex-col justify-center">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-cherry-ink)]">Find your VYBE</p>
+                  <h2 className="mt-3 font-headline text-3xl lg:text-4xl font-extrabold leading-[1.05] tracking-[-0.02em] text-[var(--color-text)]">
+                    What&apos;s your kind of movement?
+                  </h2>
+                  <p className="mt-4 text-base text-[var(--color-muted)]">6 quick questions. One outfit made for how you move.</p>
+                  <button
+                    type="button"
+                    onClick={() => setStep(1)}
+                    className="mt-8 self-start px-8 py-3.5 rounded-full text-sm font-semibold bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
+                  >
+                    Let&apos;s go
+                  </button>
                 </div>
               </motion.div>
             )}
 
-            {step === 2 && (
-              <motion.div key="step2" {...stepMotion} className="space-y-6">
-                <StepHeading n={2}>How do you like it to feel?</StepHeading>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {FEEL_OPTIONS.map((opt) => (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      aria-pressed={feel === opt.id}
-                      onClick={() => {
-                        setFeel(opt.id);
-                        setStep(3);
-                      }}
-                      className={optionClass(feel === opt.id)}
-                    >
-                      <span className="block text-sm font-semibold text-[var(--color-text)]">{opt.title}</span>
-                      <span className="block text-sm text-[var(--color-muted)] mt-0.5">{opt.desc}</span>
-                    </button>
+            {q && (
+              <motion.div key={q.key} {...stepMotion} className="p-6 sm:p-12 space-y-8">
+                <div className="flex items-center gap-1.5" aria-hidden="true">
+                  {QUESTIONS.map((_, i) => (
+                    <span
+                      key={i}
+                      className={`h-1 flex-1 rounded-full transition-colors ${i < step ? "bg-[var(--color-text)]" : "bg-[var(--color-border)]"}`}
+                    />
                   ))}
                 </div>
-                <BackButton onClick={() => setStep(1)} />
-              </motion.div>
-            )}
-
-            {step === 3 && (
-              <motion.div key="step3" {...stepMotion} className="space-y-6">
-                <StepHeading n={3}>Which colours draw you in?</StepHeading>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {PALETTE_OPTIONS.map((opt) => (
-                    <button
-                      key={opt.id}
-                      type="button"
-                      aria-pressed={palette === opt.id}
-                      onClick={() => {
-                        setPalette(opt.id);
-                        setStep(4);
-                      }}
-                      className={`${optionClass(palette === opt.id)} flex items-center gap-4`}
-                    >
-                      <span
-                        className="w-9 h-9 rounded-full border border-black/10 shrink-0"
-                        style={{ backgroundColor: opt.hex }}
-                      />
-                      <span>
-                        <span className="block text-sm font-semibold text-[var(--color-text)]">{opt.title}</span>
-                        <span className="block text-sm text-[var(--color-muted)] mt-0.5">{opt.desc}</span>
-                      </span>
-                    </button>
-                  ))}
-                </div>
-                <BackButton onClick={() => setStep(2)} />
-              </motion.div>
-            )}
-
-            {step === 4 && recommendations.length > 0 && (
-              <motion.div key="step4" {...stepMotion} className="space-y-8">
                 <div className="text-center space-y-2">
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">
-                    Your pairing
-                  </span>
-                  <h3 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">Here&apos;s what we&apos;d pick</h3>
-                  <p className="text-sm text-[var(--color-muted)] max-w-md mx-auto">
-                    For {rhythmLabel?.toLowerCase()}, a {feelLabel?.toLowerCase()} fit, in {paletteLabel?.toLowerCase()} tones.
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">
+                    Question {step} of {QUESTIONS.length}
+                  </p>
+                  <h3 className="font-headline text-2xl sm:text-4xl font-bold tracking-[-0.01em] text-[var(--color-text)]">{q.title}</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-3xl mx-auto">
+                  {q.options.map((opt) => (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      aria-pressed={answers[q.key] === opt.id}
+                      onClick={() => choose(q.key, opt.id)}
+                      className={optionClass(answers[q.key] === opt.id)}
+                    >
+                      <span className="block text-sm sm:text-base font-semibold text-[var(--color-text)]">{opt.label}</span>
+                      {opt.hint && <span className="block text-sm text-[var(--color-muted)] mt-0.5">{opt.hint}</span>}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setStep(step - 1)}
+                  className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] cursor-pointer"
+                >
+                  &larr; Back
+                </button>
+              </motion.div>
+            )}
+
+            {result && (
+              <motion.div key="result" {...stepMotion} className="p-6 sm:p-12 space-y-8">
+                <div className="text-center space-y-3">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-mauve-ink)]">Your kind of movement is</p>
+                  <h3 className="font-headline text-5xl sm:text-7xl font-extrabold tracking-[-0.03em] text-[var(--color-text)]">{result.name}</h3>
+                  <p className="text-base sm:text-lg text-[var(--color-muted)]">{result.line}</p>
+                </div>
+
+                <ul className={`grid gap-4 ${outfit.length === 3 ? "grid-cols-2 sm:grid-cols-3" : "grid-cols-2 max-w-xl mx-auto"}`}>
+                  {outfit.map((p) => (
+                    <li key={p.id}>
+                      <Link
+                        href={`/product/${p.slug}${p.lengths ? `?length=${result.length}` : ""}`}
+                        className="group block"
+                      >
+                        <span className="relative block aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--vybe-petal)]/40">
+                          <Image src={p.images[0].src} alt={p.images[0].alt} fill sizes="(max-width: 640px) 50vw, 300px" className="object-cover" />
+                          {p.slug === result.tagged && (
+                            <span className="absolute top-3 left-3 -rotate-3 px-3 py-1 rounded-full bg-[var(--vybe-pastel-pink)] text-[var(--vybe-ink)] text-[10px] font-bold uppercase tracking-[0.08em]">
+                              Breathable pick
+                            </span>
+                          )}
+                        </span>
+                        <span className="block mt-3 text-sm sm:text-[15px] font-medium text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)]">
+                          {p.name}
+                          {p.lengths && <span className="text-[var(--color-muted)]"> ({result.length})</span>}
+                        </span>
+                        <span className="block text-sm text-[var(--color-text)]">{formatPrice(p.price)}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="text-center space-y-3 max-w-2xl mx-auto">
+                  <p className="font-headline font-bold text-lg text-[var(--color-text)]">
+                    Your outfit: {formatPrice(total)} · every piece under ₹3,000
+                  </p>
+                  <p className="text-sm sm:text-base text-[var(--color-muted)] leading-relaxed">
+                    <span className="font-semibold text-[var(--color-text)]">Why these: </span>
+                    {result.why}
+                    {lengthMatters && ` ${HEIGHT_WHY[answers.height as Answers["height"]]}`}
+                    {answers.after !== "home" && ` ${AFTER_WHY}`}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {recommendations.map((p) => (
-                    <Link
-                      key={p.id}
-                      href={`/product/${p.slug}`}
-                      className="group flex gap-4 items-center p-3 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-text)]/40 transition-colors"
-                    >
-                      <span className="relative w-20 h-24 rounded-full overflow-hidden bg-[var(--vybe-petal)]/40 shrink-0">
-                        <Image
-                          src={p.images[0]?.src ?? "/images/products/concept-silhouette.svg"}
-                          alt=""
-                          fill
-                          className="object-cover"
-                          sizes="80px"
-                        />
-                      </span>
-                      <span className="min-w-0">
-                        <span className="block text-[11px] uppercase tracking-[0.15em] text-[var(--color-muted)]">
-                          {p.colorName}
-                        </span>
-                        <span className="block font-serif text-lg text-[var(--color-text)] group-hover:text-[var(--vybe-mauve-ink)] transition-colors">
-                          {p.name}
-                        </span>
-                        <span className="block text-sm text-[var(--color-text)] mt-1">{formatPrice(p.price)}</span>
-                      </span>
-                    </Link>
-                  ))}
-                </div>
+                <EarlyAccessForm />
 
                 <div className="flex items-center justify-center gap-6">
                   <button
                     type="button"
-                    onClick={() => {
-                      setRhythm(null);
-                      setFeel(null);
-                      setPalette(null);
-                      setStep(1);
-                    }}
+                    onClick={restart}
                     className="text-sm text-[var(--color-muted)] hover:text-[var(--color-text)] underline underline-offset-4 cursor-pointer"
                   >
                     Start again
                   </button>
-                  <Link
-                    href="/shop"
-                    className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
-                  >
+                  <Link href="/shop" className="text-sm font-semibold text-[var(--color-text)] underline underline-offset-4">
                     Shop everything
                   </Link>
                 </div>

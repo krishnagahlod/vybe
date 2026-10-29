@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Browse VYBE's concept catalogue of women's activewear: leggings in three lengths, sports bras, tops, matching sets, jackets and the Court line.",
 };
 
-type ShopSearchParams = Promise<{ category?: string; activity?: string; fabric?: string; size?: string; color?: string; print?: string; q?: string }>;
+type ShopSearchParams = Promise<{ category?: string; activity?: string; fabric?: string; size?: string; color?: string; q?: string }>;
 
 async function ShopCatalog({ searchParams }: { searchParams: ShopSearchParams }) {
   const params = await searchParams;
@@ -19,15 +19,14 @@ async function ShopCatalog({ searchParams }: { searchParams: ShopSearchParams })
   const fabric = params.fabric || "all";
   const size = params.size || "all";
   const color = params.color || "all";
-  const print = params.print || "all";
   const q = params.q || "";
 
   return (
     <ShopFilters
       // Remount when the menu links to a different filter, so the view always matches the URL
-      key={[category, activity, fabric, size, color, print, q].join("|")}
+      key={[category, activity, fabric, size, color, q].join("|")}
       initialProducts={products}
-      initial={{ collection: category, activity, fabric, size, color, print, query: q }}
+      initial={{ collection: category, activity, fabric, size, color, query: q }}
     />
   );
 }

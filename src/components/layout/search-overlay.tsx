@@ -39,7 +39,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
   const trimmed = query.trim();
   const results = trimmed
-    ? filterProducts(products, { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", print: "all", query: trimmed })
+    ? filterProducts(products, { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", query: trimmed })
     : products.filter((p) => p.featured);
 
   const close = () => {

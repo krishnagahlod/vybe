@@ -1,4 +1,4 @@
-const LINE = "BUILT-IN SUPPORT · NO LINES · CUT FOR INDIAN BODIES · EVERY PIECE UNDER ₹3,000 · XS–5XL · ";
+const LINE = "BUILT-IN SUPPORT · NO LINES · CUT FOR INDIAN BODIES · EVERY PIECE UNDER ₹3,000 · XS–2XL · ";
 
 export function MarqueeStrip() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { Product } from "@/types/product";
 import { useCart } from "@/lib/cart-context";
@@ -17,7 +17,7 @@ type ProductActionsProps = {
 export function ProductActions({ product }: ProductActionsProps) {
   const { addItem, openCartDrawer } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
-  const [selectedLength, setSelectedLength] = useState<string>("");
+  const [pickedLength, setSelectedLength] = useState<string>("");
   const [variant, setVariant] = useState(0);
   const [lengthError, setLengthError] = useState<boolean>(false);
   const lengthOptions = LENGTHS.filter((l) => product.lengths?.includes(l.id));
@@ -27,6 +27,14 @@ export function ProductActions({ product }: ProductActionsProps) {
   const [isFitFinderOpen, setIsFitFinderOpen] = useState<boolean>(false);
   const [showStickyBar, setShowStickyBar] = useState<boolean>(false);
   const formRef = useRef<HTMLFormElement>(null);
+
+  // The style quiz links here with ?length=Petite, so her leg length starts out chosen
+  const quizLength = useSyncExternalStore(
+    () => () => {},
+    () => new URLSearchParams(window.location.search).get("length"),
+    () => null
+  );
+  const selectedLength = pickedLength || (quizLength && product.lengths?.includes(quizLength) ? quizLength : "");
 
   // Monitor scroll to show mobile sticky bar when scrolled past primary button
   useEffect(() => {

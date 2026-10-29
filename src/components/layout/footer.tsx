@@ -84,7 +84,7 @@ export function Footer() {
           <div>
             <h3 className={heading}>Made for you</h3>
             <p className="text-sm text-[var(--color-text)]/75 leading-relaxed">
-              Built-in support, no lines, cut for Indian bodies in XS to 5XL. Every piece under ₹3,000.
+              Built-in support, no lines, cut for Indian bodies in XS to 2XL. Every piece under ₹3,000.
             </p>
           </div>
         </div>
@@ -95,6 +95,11 @@ export function Footer() {
             VYBE is a concept brand and storefront created for ENT 625 Digital Marketing. Products, prices and imagery
             are concepts; no payments are taken, no card details are collected, and no orders are fulfilled.
             <br />
+            <span className="block mt-2 font-semibold text-[var(--color-text)]/85">
+              This website is a course project. Product photos belong to their original brands and photographers (including
+              P.E Nation, adidas by Stella McCartney, SET Active, Michi, Alura and Victoria&apos;s Secret) and are used for
+              educational purposes only. No copyright infringement is intended.
+            </span>
             &copy; 2026 VYBE
           </p>
         </div>
