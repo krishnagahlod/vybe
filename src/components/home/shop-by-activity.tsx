@@ -18,7 +18,7 @@ export function ShopByActivity() {
     <section id="shop-by-activity" className="py-12 sm:py-16 scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between gap-6 mb-6 sm:mb-8">
-          <h2 className="font-headline font-semibold text-2xl sm:text-4xl tracking-[-0.01em] text-[var(--color-text)]">Shop by activity</h2>
+          <h2 className="font-headline font-semibold text-2xl sm:text-4xl tracking-[-0.01em] text-[var(--color-text)]">Shop by movement</h2>
           <div className="hidden sm:flex items-center gap-2">
             <button type="button" onClick={() => scroll(-1)} aria-label="Previous activities" className={arrow}>
               &#8249;
@@ -35,7 +35,7 @@ export function ShopByActivity() {
         >
           {ACTIVITIES.map((activity) => (
             <li key={activity.id} className="snap-start shrink-0 w-[72%] sm:w-[40%] lg:w-[calc(25%-15px)]">
-              <Link href={shopHref({ activity: activity.id })} className="group relative block aspect-[3/4] rounded-md overflow-hidden bg-[var(--vybe-sage)]">
+              <Link href={shopHref({ activity: activity.id })} className="group relative block aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--vybe-alabaster)]">
                 <Image
                   src={activity.image}
                   alt=""

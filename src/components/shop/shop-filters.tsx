@@ -8,6 +8,7 @@ import {
   COLLECTIONS,
   FABRICS,
   FABRIC_IDS,
+  PRINTS,
   SIZES,
   ShopFilterState,
   filterProducts,
@@ -31,10 +32,10 @@ const COLORS = [
 
 type SortOption = "featured" | "price-asc" | "price-desc" | "name-asc";
 
-const DEFAULTS: ShopFilterState = { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", query: "" };
+const DEFAULTS: ShopFilterState = { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", print: "all", query: "" };
 
 const selectClass =
-  "h-10 pl-3 pr-8 rounded-sm border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-text)] hover:border-[var(--color-text)] focus:outline-none focus:border-[var(--color-text)] cursor-pointer transition-colors";
+  "h-10 pl-3 pr-8 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-text)] hover:border-[var(--color-text)] focus:outline-none focus:border-[var(--color-text)] cursor-pointer transition-colors";
 
 export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
   const [filters, setFilters] = useState<ShopFilterState>({ ...DEFAULTS, ...initial });
@@ -59,25 +60,29 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
   const collection = getCollection(filters.collection);
   const activity = ACTIVITIES.find((a) => a.id === filters.activity);
   const fabric = filters.fabric !== "all" ? FABRICS[filters.fabric as keyof typeof FABRICS] : undefined;
+  const print = PRINTS.find((p) => p.id === filters.print);
   const heading = filters.query.trim()
     ? { eyebrow: "Search", title: `“${filters.query.trim()}”`, text: "Pieces that match your search." }
     : collection
-      ? { eyebrow: "Collection", title: collection.label, text: "Cut for Indian bodies in soft, considered colour." }
+      ? { eyebrow: "Collection", title: collection.label, text: "Cut for Indian bodies. Every piece under ₹3,000." }
       : activity
-        ? { eyebrow: "Shop by activity", title: activity.label, text: activity.blurb }
+        ? { eyebrow: "Shop by movement", title: activity.label, text: activity.blurb }
+        : print
+          ? { eyebrow: "Shop by print", title: print.label, text: print.line }
         : fabric
           ? { eyebrow: "Core fabric", title: fabric.name, text: `${fabric.tagline}: ${fabric.properties.join(" · ").toLowerCase()}.` }
           : filters.size !== "all"
             ? { eyebrow: "Shop by size", title: `Size ${filters.size}`, text: "Every piece available in your size." }
             : {
-                eyebrow: "Volume 01 · The Studio Collection",
+                eyebrow: "All pieces",
                 title: "Shop the collection",
-                text: `${initialProducts.length} pieces in chalk, sage, aubergine and soft pastels, made to mix and match.`,
+                text: `${initialProducts.length} pieces, every one under ₹3,000, in sizes XS to 5XL.`,
               };
 
   const activeChips = [
     filters.activity !== "all" && { label: activity?.label ?? filters.activity, clear: { activity: "all" } },
     filters.fabric !== "all" && { label: fabric?.name ?? filters.fabric, clear: { fabric: "all" } },
+    filters.print !== "all" && { label: print?.label ?? filters.print, clear: { print: "all" } },
     filters.size !== "all" && { label: `Size ${filters.size}`, clear: { size: "all" } },
     filters.color !== "all" && { label: filters.color, clear: { color: "all" } },
     filters.query.trim() && { label: `“${filters.query.trim()}”`, clear: { query: "" } },
@@ -127,7 +132,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
         <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-6 justify-between">
           <div className="flex flex-wrap items-center gap-2.5">
             <select aria-label="Activity" value={filters.activity} onChange={(e) => set({ activity: e.target.value })} className={selectClass}>
-              <option value="all">Activity</option>
+              <option value="all">Movement</option>
               {ACTIVITIES.map((a) => (
                 <option key={a.id} value={a.id}>
                   {a.label}
@@ -139,6 +144,14 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
               {FABRIC_IDS.map((id) => (
                 <option key={id} value={id}>
                   {FABRICS[id].name}
+                </option>
+              ))}
+            </select>
+            <select aria-label="Print" value={filters.print} onChange={(e) => set({ print: e.target.value })} className={selectClass}>
+              <option value="all">Print</option>
+              {PRINTS.map((p) => (
+                <option key={p.id} value={p.id}>
+                  {p.label}
                 </option>
               ))}
             </select>
@@ -252,7 +265,7 @@ export function ShopFilters({ initialProducts, initial }: ShopFiltersProps) {
           <button
             type="button"
             onClick={reset}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
           >
             Show everything
           </button>

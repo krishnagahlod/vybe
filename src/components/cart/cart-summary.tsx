@@ -15,7 +15,7 @@ export function CartSummary({ subtotal, totalItems }: CartSummaryProps) {
   const freeDelivery = deliveryFee === 0;
 
   return (
-    <div className="p-6 sm:p-8 rounded-md bg-[var(--vybe-peach)]/40 space-y-6">
+    <div className="p-6 sm:p-8 rounded-2xl bg-[var(--vybe-petal)]/40 space-y-6">
       <h2 className="font-headline text-2xl sm:text-3xl text-[var(--color-text)] font-semibold">Summary</h2>
 
       <dl className="space-y-3 text-sm">
@@ -45,13 +45,13 @@ export function CartSummary({ subtotal, totalItems }: CartSummaryProps) {
       <div className="space-y-3">
         <Link
           href="/checkout"
-          className="flex items-center justify-center w-full h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="flex items-center justify-center w-full h-12 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Checkout
         </Link>
         <Link
           href="/shop"
-          className="flex items-center justify-center w-full h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="flex items-center justify-center w-full h-12 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Keep shopping
         </Link>

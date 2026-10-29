@@ -148,7 +148,7 @@ export default function CheckoutPage() {
           </p>
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
           >
             Shop the collection
           </Link>
@@ -158,8 +158,8 @@ export default function CheckoutPage() {
   }
 
   const inputClass = (hasError?: boolean) =>
-    `w-full h-12 px-4 rounded-sm border bg-[var(--color-surface)] text-base text-[var(--color-text)] placeholder-[var(--color-muted)]/70 focus:outline-none focus:border-[var(--color-text)] transition-colors ${
-      hasError ? "border-[var(--vybe-rose-ink)]" : "border-[var(--color-border)]"
+    `w-full h-12 px-4 rounded-full border bg-[var(--color-surface)] text-base text-[var(--color-text)] placeholder-[var(--color-muted)]/70 focus:outline-none focus:border-[var(--color-text)] transition-colors ${
+      hasError ? "border-[var(--vybe-cherry-ink)]" : "border-[var(--color-border)]"
     }`;
   const labelClass = "block text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--color-text)] mb-2";
   const stepHeading = "font-serif text-2xl sm:text-3xl text-[var(--color-text)] flex items-baseline gap-3";
@@ -204,7 +204,7 @@ export default function CheckoutPage() {
                     className={inputClass(!!errors.fullName)}
                   />
                   {errors.fullName && (
-                    <p id="fullName-error" className="mt-2 text-xs text-[var(--vybe-rose-ink)]">
+                    <p id="fullName-error" className="mt-2 text-xs text-[var(--vybe-cherry-ink)]">
                       {errors.fullName}
                     </p>
                   )}
@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                     className={inputClass(!!errors.email)}
                   />
                   {errors.email && (
-                    <p id="email-error" className="mt-2 text-xs text-[var(--vybe-rose-ink)]">
+                    <p id="email-error" className="mt-2 text-xs text-[var(--vybe-cherry-ink)]">
                       {errors.email}
                     </p>
                   )}
@@ -245,7 +245,7 @@ export default function CheckoutPage() {
                   {DELIVERY_CITIES.map((c) => (
                     <label
                       key={c}
-                      className={`px-5 h-11 inline-flex items-center rounded-sm text-sm border cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--vybe-mauve-ink)] ${
+                      className={`px-5 h-11 inline-flex items-center rounded-full text-sm border cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--vybe-mauve-ink)] ${
                         formData.city === c
                           ? "bg-[var(--color-text)] text-white border-[var(--color-text)]"
                           : "border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
@@ -283,7 +283,7 @@ export default function CheckoutPage() {
               <h2 className={stepHeading}>
                 <span className={stepNumber}>03</span> Payment
               </h2>
-              <div className="p-5 sm:p-6 rounded-sm bg-[var(--vybe-peach)]/50 border border-[var(--vybe-rose)] space-y-2" role="note">
+              <div className="p-5 sm:p-6 rounded-full bg-[var(--vybe-petal)]/50 border border-[var(--vybe-blossom)] space-y-2" role="note">
                 <p className="text-sm font-semibold text-[var(--color-text)]">This is a demo checkout. Nothing will be charged.</p>
                 <p className="text-sm text-[var(--color-muted)] leading-relaxed">
                   VYBE is a concept store for ENT 625. There is no payment step, no card details are collected, and no
@@ -295,14 +295,14 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-14 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+              className="w-full h-14 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] disabled:opacity-50 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
             >
               {isSubmitting ? "Placing demo order…" : `Place demo order · ${formatPrice(total)}`}
             </button>
           </form>
 
           {/* Order summary */}
-          <aside className="lg:col-span-5 lg:sticky lg:top-28 rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
+          <aside className="lg:col-span-5 lg:sticky lg:top-28 rounded-2xl bg-[var(--vybe-alabaster)]/50 p-6 sm:p-8 space-y-6">
             <h2 className="font-headline text-2xl text-[var(--color-text)] font-semibold">
               Your order <span className="text-base text-[var(--color-muted)]">({totalCount})</span>
             </h2>
@@ -310,7 +310,7 @@ export default function CheckoutPage() {
             <ul className="max-h-80 overflow-y-auto divide-y divide-[var(--color-text)]/10">
               {resolvedItems.map(({ item, product, lineTotal }) => (
                 <li key={`${item.productId}-${item.size}`} className="py-4 flex items-center gap-4">
-                  <span className="relative w-14 aspect-[3/4] rounded-sm overflow-hidden bg-[var(--vybe-peach)] shrink-0">
+                  <span className="relative w-14 aspect-[3/4] rounded-full overflow-hidden bg-[var(--vybe-petal)] shrink-0">
                     <Image
                       src={product.images[0]?.src ?? "/images/products/concept-silhouette.svg"}
                       alt=""

@@ -21,12 +21,12 @@ const RHYTHM_OPTIONS: { id: Rhythm; title: string; desc: string }[] = [
 
 const FEEL_OPTIONS: { id: Feel; title: string; desc: string }[] = [
   { id: "sculpt", title: "Sculpted & secure", desc: "A close fit that holds you in place" },
-  { id: "soft", title: "Soft & balanced", desc: "Second-skin feel with gentle hold" },
+  { id: "soft", title: "Soft & balanced", desc: "Second-skin feel, held but never squeezed" },
   { id: "relaxed", title: "Relaxed & easy", desc: "Room to breathe, nothing tight" },
 ];
 
 const PALETTE_OPTIONS: { id: Palette; title: string; desc: string; hex: string }[] = [
-  { id: "sage", title: "Sage", desc: "Calm and grounded", hex: "#c8d5c8" },
+  { id: "sage", title: "Sage", desc: "Cool and easy with everything", hex: "#c8d5c8" },
   { id: "peach", title: "Peach & Pink", desc: "Warm and bright", hex: "#ffe5d9" },
   { id: "mauve", title: "Mauve & Rose", desc: "Deep and polished", hex: "#9d8189" },
 ];
@@ -70,7 +70,7 @@ function getRecommendations(rhythm: Rhythm, feel: Feel, palette: Palette): Produ
 const optionClass = (selected: boolean) =>
   `p-5 rounded-xl border text-left transition-colors cursor-pointer ${
     selected
-      ? "border-[var(--color-text)] bg-[var(--vybe-peach)]/50"
+      ? "border-[var(--color-text)] bg-[var(--vybe-petal)]/50"
       : "border-[var(--color-border)] bg-[var(--color-bg)] hover:border-[var(--color-text)]/40"
   }`;
 
@@ -119,15 +119,15 @@ export function StyleQuiz() {
     <section id="style-quiz" className="py-20 sm:py-28 bg-[var(--color-bg)] scroll-mt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 space-y-3">
-          <h2 className="font-headline text-3xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)]">
-            Three questions, one outfit
+          <h2 className="font-headline text-3xl sm:text-5xl font-bold tracking-[-0.02em] text-[var(--color-text)]">
+            What&apos;s your kind of movement?
           </h2>
           <p className="text-sm sm:text-base text-[var(--color-muted)] max-w-md mx-auto">
-            Tell us how you move and we&apos;ll put together a pairing for you.
+            3 questions, one outfit.
           </p>
         </div>
 
-        <div className="p-6 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)]">
+        <div className="p-6 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)]">
           {/* Progress */}
           <div className="flex items-center justify-center gap-2 mb-8" aria-hidden="true">
             {[1, 2, 3].map((i) => (
@@ -235,9 +235,9 @@ export function StyleQuiz() {
                     <Link
                       key={p.id}
                       href={`/product/${p.slug}`}
-                      className="group flex gap-4 items-center p-3 rounded-md border border-[var(--color-border)] hover:border-[var(--color-text)]/40 transition-colors"
+                      className="group flex gap-4 items-center p-3 rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-text)]/40 transition-colors"
                     >
-                      <span className="relative w-20 h-24 rounded-sm overflow-hidden bg-[var(--vybe-peach)]/40 shrink-0">
+                      <span className="relative w-20 h-24 rounded-full overflow-hidden bg-[var(--vybe-petal)]/40 shrink-0">
                         <Image
                           src={p.images[0]?.src ?? "/images/products/concept-silhouette.svg"}
                           alt=""
@@ -274,7 +274,7 @@ export function StyleQuiz() {
                   </button>
                   <Link
                     href="/shop"
-                    className="px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+                    className="px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
                   >
                     Shop everything
                   </Link>

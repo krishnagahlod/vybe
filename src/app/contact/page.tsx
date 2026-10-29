@@ -67,7 +67,7 @@ export default function ContactPage() {
 
         {/* Form */}
         <div className="lg:col-span-7">
-          <div className="rounded-md bg-[var(--vybe-peach)]/40 p-6 sm:p-12">
+          <div className="rounded-2xl bg-[var(--vybe-petal)]/40 p-6 sm:p-12">
             {submitted ? (
               <div className="py-16 text-center space-y-4 animate-fade-up" role="status">
                 <p className="font-headline text-4xl text-[var(--color-text)] font-semibold">
@@ -83,7 +83,7 @@ export default function ContactPage() {
                     setSubmitted(false);
                     setFormData({ name: "", email: "", subject: TOPICS[0], message: "" });
                   }}
-                  className="mt-4 inline-flex px-6 py-3 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors cursor-pointer"
+                  className="mt-4 inline-flex px-6 py-3 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors cursor-pointer"
                 >
                   Send another message
                 </button>
@@ -129,7 +129,7 @@ export default function ContactPage() {
                     {TOPICS.map((topic) => (
                       <label
                         key={topic}
-                        className={`px-4 py-2 rounded-sm text-sm border cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--vybe-mauve-ink)] ${
+                        className={`px-4 py-2 rounded-full text-sm border cursor-pointer transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[var(--vybe-mauve-ink)] ${
                           formData.subject === topic
                             ? "bg-[var(--color-text)] text-white border-[var(--color-text)]"
                             : "border-[var(--color-text)]/20 text-[var(--color-text)] hover:border-[var(--color-text)]"
@@ -166,7 +166,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-10 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
                 >
                   Send message
                 </button>

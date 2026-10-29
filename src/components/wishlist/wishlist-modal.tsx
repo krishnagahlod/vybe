@@ -52,7 +52,7 @@ export function WishlistModal() {
             <Link
               href="/shop?category=new"
               onClick={closeWishlistModal}
-              className="mt-2 inline-flex items-center justify-center h-12 px-8 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+              className="mt-2 inline-flex items-center justify-center h-12 px-8 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
             >
               See what&apos;s new
             </Link>
@@ -72,7 +72,7 @@ export function WishlistModal() {
                 <Link
                   href={`/product/${p.slug}`}
                   onClick={closeWishlistModal}
-                  className="relative w-20 sm:w-24 aspect-[3/4] rounded-sm overflow-hidden bg-[var(--vybe-peach)]/40 shrink-0"
+                  className="relative w-20 sm:w-24 aspect-[3/4] rounded-full overflow-hidden bg-[var(--vybe-petal)]/40 shrink-0"
                 >
                   <Image src={p.images[0]?.src ?? "/images/products/concept-silhouette.svg"} alt={p.name} fill className="object-cover" sizes="96px" />
                 </Link>
@@ -93,7 +93,7 @@ export function WishlistModal() {
                     <button
                       type="button"
                       onClick={() => toggleWishlist(p.id)}
-                      className="text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-rose-ink)] cursor-pointer"
+                      className="text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-cherry-ink)] cursor-pointer"
                     >
                       Remove
                     </button>

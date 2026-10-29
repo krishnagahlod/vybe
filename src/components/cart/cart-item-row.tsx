@@ -25,7 +25,7 @@ export function CartItemRow({ item, product, onUpdateQuantity, onRemove }: CartI
     <article className="py-6 flex gap-5 sm:gap-6 border-b border-[var(--color-border)]">
       <Link
         href={`/product/${product.slug}`}
-        className="relative w-24 sm:w-32 aspect-[3/4] rounded-sm overflow-hidden bg-[var(--vybe-peach)]/40 shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+        className="relative w-24 sm:w-32 aspect-[3/4] rounded-full overflow-hidden bg-[var(--vybe-petal)]/40 shrink-0 focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
       >
         <Image src={imageSrc} alt={product.name} fill sizes="128px" className="object-cover object-center" />
       </Link>
@@ -53,12 +53,12 @@ export function CartItemRow({ item, product, onUpdateQuantity, onRemove }: CartI
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="flex items-center h-10 border border-[var(--color-border)] rounded-sm">
+          <div className="flex items-center h-10 border border-[var(--color-border)] rounded-full">
             <button
               type="button"
               onClick={() => onUpdateQuantity(item.productId, item.size, item.quantity - 1)}
               aria-label={`Decrease quantity for ${product.name}`}
-              className="w-10 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors cursor-pointer"
+              className="w-10 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/60 transition-colors cursor-pointer"
             >
               &minus;
             </button>
@@ -70,7 +70,7 @@ export function CartItemRow({ item, product, onUpdateQuantity, onRemove }: CartI
               onClick={() => onUpdateQuantity(item.productId, item.size, item.quantity + 1)}
               disabled={item.quantity >= 10}
               aria-label={`Increase quantity for ${product.name}`}
-              className="w-10 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 disabled:opacity-30 disabled:hover:bg-transparent transition-colors cursor-pointer"
+              className="w-10 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/60 disabled:opacity-30 disabled:hover:bg-transparent transition-colors cursor-pointer"
             >
               +
             </button>
@@ -80,7 +80,7 @@ export function CartItemRow({ item, product, onUpdateQuantity, onRemove }: CartI
             type="button"
             onClick={() => onRemove(item.productId, item.size)}
             aria-label={`Remove ${product.name} (size ${item.size}) from bag`}
-            className="text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-rose-ink)] transition-colors cursor-pointer"
+            className="text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-cherry-ink)] transition-colors cursor-pointer"
           >
             Remove
           </button>

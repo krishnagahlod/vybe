@@ -7,7 +7,7 @@ import { useToast, ToastType } from "@/lib/toast-context";
 function ToastIcon({ type }: { type: ToastType }) {
   if (type === "warning") {
     return (
-      <span className="w-6 h-6 rounded-full bg-[var(--vybe-peach)]/50 text-[var(--vybe-mauve-ink)] flex items-center justify-center shrink-0">
+      <span className="w-6 h-6 rounded-full bg-[var(--vybe-petal)]/50 text-[var(--vybe-mauve-ink)] flex items-center justify-center shrink-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-3.5 h-3.5"
@@ -26,7 +26,7 @@ function ToastIcon({ type }: { type: ToastType }) {
 
   if (type === "info") {
     return (
-      <span className="w-6 h-6 rounded-full bg-[var(--vybe-sage)]/40 text-[var(--color-text)] flex items-center justify-center shrink-0">
+      <span className="w-6 h-6 rounded-full bg-[var(--vybe-alabaster)]/40 text-[var(--color-text)] flex items-center justify-center shrink-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-3.5 h-3.5"
@@ -45,7 +45,7 @@ function ToastIcon({ type }: { type: ToastType }) {
 
   // default: success
   return (
-    <span className="w-6 h-6 rounded-full bg-[var(--vybe-sage)] text-[var(--color-text)] flex items-center justify-center shrink-0">
+    <span className="w-6 h-6 rounded-full bg-[var(--vybe-alabaster)] text-[var(--color-text)] flex items-center justify-center shrink-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="w-3.5 h-3.5"
@@ -79,7 +79,7 @@ export function ToastContainer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto bg-[var(--color-surface)]/95 backdrop-blur-md border border-[var(--color-border)] shadow-xl rounded-md p-3.5 flex items-center gap-3 text-xs text-[var(--color-text)]"
+            className="pointer-events-auto bg-[var(--color-surface)]/95 backdrop-blur-md border border-[var(--color-border)] shadow-xl rounded-2xl p-3.5 flex items-center gap-3 text-xs text-[var(--color-text)]"
           >
             <ToastIcon type={toast.type} />
             <div className="flex-1 font-medium leading-snug">{toast.message}</div>

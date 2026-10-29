@@ -24,7 +24,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Academic Prototype Notice */}
-        <div className="p-6 rounded-md bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
+        <div className="p-6 rounded-2xl bg-[var(--vybe-petal)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Academic Evaluation Disclaimer
@@ -35,7 +35,7 @@ export default function ShippingReturnsPage() {
         </div>
 
         {/* Policies Content */}
-        <div className="p-8 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
           {/* Section 1: Campaign Delivery Focus */}
           <section className="space-y-4">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
@@ -45,20 +45,20 @@ export default function ShippingReturnsPage() {
               Our initial digital marketing rollout focuses on activewear enthusiasts across four primary metropolitan centers in India:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-md bg-[var(--vybe-sage)]/25 border border-[var(--vybe-sage)]/50">
+              <div className="p-4 rounded-2xl bg-[var(--vybe-alabaster)]/25 border border-[var(--vybe-alabaster)]/50">
                 <h3 className="font-semibold text-xs text-[var(--color-text)] uppercase mb-1">
                   Mumbai &amp; Pune
                 </h3>
                 <p className="text-xs">
-                  Simulated 2-3 business day standard delivery. Complimentary test shipping on all bag sizes.
+                  Simulated 2-3 business day standard delivery. Complimentary delivery on orders over ₹1,500.
                 </p>
               </div>
-              <div className="p-4 rounded-md bg-[var(--vybe-peach)]/25 border border-[var(--vybe-peach)]/50">
+              <div className="p-4 rounded-2xl bg-[var(--vybe-petal)]/25 border border-[var(--vybe-petal)]/50">
                 <h3 className="font-semibold text-xs text-[var(--color-text)] uppercase mb-1">
                   Delhi &amp; Bangalore
                 </h3>
                 <p className="text-xs">
-                  Simulated 3-4 business day standard delivery. Complimentary test shipping on all bag sizes.
+                  Simulated 3-4 business day standard delivery. Complimentary delivery on orders over ₹1,500.
                 </p>
               </div>
             </div>
@@ -67,10 +67,10 @@ export default function ShippingReturnsPage() {
           {/* Section 2: Conceptual Trial Policy */}
           <section className="space-y-3 pt-6 border-t border-[var(--color-border)]">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
-              2. Simulated 30-Day Movement Trial
+              2. Free Size Exchange Within 14 Days
             </h2>
             <p>
-              In our brand model, activewear should be tested in real movement. Our concept policy proposes a 30-day trial period where customers may wear their leggings, bras, or tops during workouts, washes, and daily wear to ensure the fit and fabric suit their personal rhythm.
+              Wrong size? Exchange it free within 14 days of delivery for any other size from XS to 5XL. Unworn, tags on, and we cover pickup and the new delivery.
             </p>
             <p className="text-xs text-[var(--color-muted)] italic">
               Note: Because this storefront is an educational prototype, simulated demo orders cannot be returned or refunded.

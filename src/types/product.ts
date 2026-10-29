@@ -8,9 +8,18 @@ export type ProductCategory =
   | "layers"
   | "court";
 
-export type ActivityId = "yoga-pilates" | "strength" | "court" | "walk-run" | "everyday";
+export type ActivityId = "dance" | "court" | "strength" | "yoga-pilates" | "walk-run" | "everyday";
 
 export type FabricId = "cloudflex" | "airdry" | "flowweave";
+
+export type PrintFamily = "bold" | "soft" | "pop" | "pastel";
+
+/** A colour or print option; `image` is the index into `images` it switches to. */
+export type ProductVariant = {
+  name: string;
+  swatch: string; // CSS colour or an image URL for prints
+  image: number;
+};
 
 export type ProductImage = {
   src: string;
@@ -27,7 +36,7 @@ export type Product = {
   shortDescription: string;
   images: ProductImage[];
   sizes: string[];
-  featured: boolean; // shown as "Founder's Favourites"
+  featured: boolean; // shown as "Bestsellers"
   isNew?: boolean;
   colorName?: string;
   fabric: FabricId;
@@ -36,5 +45,11 @@ export type Product = {
   lengths?: string[];
   /** Short feature bullets shown on the product page. */
   features: string[];
+  print: PrintFamily;
+  variants?: ProductVariant[];
+  /** Sticker on product cards, e.g. "Built-in bra". */
+  badge?: string;
+  /** One emotional + functional line under the product name. */
+  storyLine?: string;
   conceptNote?: string;
 };

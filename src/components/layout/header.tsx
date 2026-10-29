@@ -14,7 +14,7 @@ const HEADER_COLLECTIONS = HEADER_COLLECTION_IDS.map((id) => COLLECTIONS.find((c
 );
 
 const iconButtonClass =
-  "relative inline-flex items-center justify-center w-10 h-10 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
+  "relative inline-flex items-center justify-center w-10 h-10 rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/60 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
 
 function CountBadge({ count }: { count: number }) {
   if (count <= 0) return null;
@@ -96,7 +96,7 @@ export function Header() {
                 <Link
                   href={shopHref({ category: c.id })}
                   className={`group relative block py-3 text-[11px] font-semibold uppercase tracking-[0.18em] transition-colors ${
-                    c.id === "new" ? "text-[var(--vybe-rose-ink)]" : "text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)]"
+                    c.id === "new" ? "text-[var(--vybe-cherry-ink)]" : "text-[var(--color-text)] hover:text-[var(--vybe-mauve-ink)]"
                   }`}
                 >
                   {c.label}

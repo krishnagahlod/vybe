@@ -39,7 +39,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
   const trimmed = query.trim();
   const results = trimmed
-    ? filterProducts(products, { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", query: trimmed })
+    ? filterProducts(products, { collection: "all", activity: "all", fabric: "all", size: "all", color: "all", print: "all", query: trimmed })
     : products.filter((p) => p.featured);
 
   const close = () => {
@@ -135,7 +135,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                   {results.slice(0, 4).map((p) => (
                     <li key={p.id}>
                       <Link href={`/product/${p.slug}`} onClick={close} className="group block">
-                        <div className="relative aspect-[3/4] rounded-md overflow-hidden bg-[var(--vybe-peach)]/40">
+                        <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--vybe-petal)]/40">
                           <Image
                             src={p.images[0]?.src ?? "/images/products/concept-silhouette.svg"}
                             alt={p.images[0]?.alt ?? p.name}

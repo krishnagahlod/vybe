@@ -9,12 +9,12 @@ function LeggingsSketch({ legLength }: { legLength: number }) {
     <svg viewBox={`0 0 120 ${hem + 6}`} className="h-full w-auto" aria-hidden="true">
       <path
         d={`M24 ${top} H96 L100 ${crotch} L84 ${hem} H70 L61 ${crotch + 6} H59 L50 ${hem} H36 L20 ${crotch} Z`}
-        fill="var(--vybe-sage)"
-        stroke="var(--vybe-sage-ink)"
+        fill="var(--vybe-alabaster)"
+        stroke="var(--vybe-ink-soft)"
         strokeWidth="1.2"
         strokeLinejoin="round"
       />
-      <path d={`M24 ${top + 16} H96`} stroke="var(--vybe-sage-ink)" strokeWidth="1.2" />
+      <path d={`M24 ${top + 16} H96`} stroke="var(--vybe-ink-soft)" strokeWidth="1.2" />
     </svg>
   );
 }

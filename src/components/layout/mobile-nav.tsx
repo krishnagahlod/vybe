@@ -63,7 +63,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       titleId="site-menu-title"
       title={<span className="font-headline font-bold tracking-[0.16em]">VYBE</span>}
       footer={() => (
-        <p className="px-6 py-5 bg-[var(--vybe-sage)] font-serif text-xl text-[var(--color-text)]">
+        <p className="px-6 py-5 bg-[var(--vybe-alabaster)] font-serif text-xl text-[var(--color-text)]">
           Made for your kind of movement.
         </p>
       )}
@@ -121,7 +121,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   key={size}
                   href={shopHref({ size })}
                   onClick={onClose}
-                  className="h-11 flex items-center justify-center rounded-sm bg-[var(--vybe-sage)] text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-white transition-colors"
+                  className="h-11 flex items-center justify-center rounded-full bg-[var(--vybe-alabaster)] text-xs font-semibold text-[var(--color-text)] hover:bg-[var(--color-text)] hover:text-white transition-colors"
                 >
                   {size}
                 </Link>
@@ -131,10 +131,6 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
               Size &amp; length guide
             </Link>
           </Group>
-
-          <Link href="/#garment-anatomy" onClick={onClose} className={`${rowClass} border-b border-[var(--color-border)]`}>
-            Fit &amp; fabric
-          </Link>
           <Link href="/about" onClick={onClose} className={`${rowClass} border-b border-[var(--color-border)]`}>
             Our story
           </Link>

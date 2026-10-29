@@ -25,11 +25,11 @@ export default function SizeGuidePage() {
           </p>
 
           {/* Unit Switcher */}
-          <div className="mt-6 inline-flex rounded-md bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)]">
+          <div className="mt-6 inline-flex rounded-2xl bg-[var(--color-surface)] p-1.5 border border-[var(--color-border)]">
             <button
               type="button"
               onClick={() => setUnit("in")}
-              className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "in"
                   ? "bg-[var(--color-text)] text-white"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -40,7 +40,7 @@ export default function SizeGuidePage() {
             <button
               type="button"
               onClick={() => setUnit("cm")}
-              className={`px-5 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 unit === "cm"
                   ? "bg-[var(--color-text)] text-white"
                   : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -52,7 +52,7 @@ export default function SizeGuidePage() {
         </div>
 
         {/* Leg lengths */}
-        <section id="lengths" className="mb-16 scroll-mt-40 p-6 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)]">
+        <section id="lengths" className="mb-16 scroll-mt-40 p-6 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)]">
           <div className="text-center mb-8 space-y-2">
             <h2 className="font-headline text-3xl sm:text-4xl text-[var(--color-text)] font-semibold">
               Petite, Regular or Tall?
@@ -70,8 +70,8 @@ export default function SizeGuidePage() {
             How to Take Your Measurements
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
+            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-petal)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 1
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -82,8 +82,8 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
+            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-petal)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 2
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -94,8 +94,8 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
+            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-petal)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 3
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -106,8 +106,8 @@ export default function SizeGuidePage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
-              <span className="w-7 h-7 rounded-full bg-[var(--vybe-peach)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
+            <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-2">
+              <span className="w-7 h-7 rounded-full bg-[var(--vybe-petal)] text-[var(--vybe-mauve-ink)] font-bold text-xs flex items-center justify-center">
                 4
               </span>
               <h3 className="font-semibold text-xs uppercase tracking-wider text-[var(--color-text)]">
@@ -123,7 +123,7 @@ export default function SizeGuidePage() {
         {/* Measurement Tables */}
         <div className="space-y-12">
           {/* Bottoms Table */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -133,7 +133,7 @@ export default function SizeGuidePage() {
                   Engineered with an ergonomic high-rise contoured waistband.
                 </p>
               </div>
-              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-sm bg-[var(--vybe-sage)]/40 text-[var(--color-text)]">
+              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--vybe-alabaster)]/40 text-[var(--color-text)]">
                 {unit === "in" ? "Values in Inches" : "Values in Centimeters"}
               </span>
             </div>
@@ -185,13 +185,41 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
                     <td className="py-3 px-3">{unit === "in" ? "9\"" : "23 cm"}</td>
                   </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "36 - 39\"" : "91 - 99 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "46 - 49\"" : "117 - 124 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "9\"" : "23 cm"}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "39 - 42\"" : "99 - 107 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "49 - 52\"" : "124 - 132 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "9.5\"" : "24 cm"}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "42 - 45\"" : "107 - 114 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "52 - 55\"" : "132 - 140 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "9.5\"" : "24 cm"}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "45 - 48\"" : "114 - 122 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "55 - 58\"" : "140 - 147 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "28\"" : "71 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "10\"" : "25 cm"}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
           {/* Sports Bras & Tops Table */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
               <div>
                 <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
@@ -201,7 +229,7 @@ export default function SizeGuidePage() {
                   Medium-to-high support with removable soft-form padding.
                 </p>
               </div>
-              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-sm bg-[var(--vybe-peach)]/50 text-[var(--color-text)]">
+              <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-[var(--vybe-petal)]/50 text-[var(--color-text)]">
                 {unit === "in" ? "Values in Inches" : "Values in Centimeters"}
               </span>
             </div>
@@ -247,13 +275,37 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">{unit === "in" ? "34 - 37\"" : "86 - 94 cm"}</td>
                     <td className="py-3 px-3">38C, 38D, 40C</td>
                   </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "42 - 45\"" : "107 - 114 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "37 - 40\"" : "94 - 102 cm"}</td>
+                    <td className="py-3 px-3">40D, 42C, 42D</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "45 - 48\"" : "114 - 122 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "40 - 43\"" : "102 - 109 cm"}</td>
+                    <td className="py-3 px-3">42DD, 44C, 44D</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "48 - 51\"" : "122 - 130 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "43 - 46\"" : "109 - 117 cm"}</td>
+                    <td className="py-3 px-3">44DD, 46C, 46D</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
+                    <td className="py-3 px-3">{unit === "in" ? "51 - 54\"" : "130 - 137 cm"}</td>
+                    <td className="py-3 px-3">{unit === "in" ? "46 - 49\"" : "117 - 124 cm"}</td>
+                    <td className="py-3 px-3">46DD, 48C, 48D</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
           {/* International Size Conversions */}
-          <div className="p-6 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
+          <div className="p-6 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-4">
             <div className="border-b border-[var(--color-border)] pb-3">
               <h3 className="font-serif text-xl font-semibold text-[var(--color-text)]">
                 International Size Conversions
@@ -310,6 +362,34 @@ export default function SizeGuidePage() {
                     <td className="py-3 px-3">EU 42</td>
                     <td className="py-3 px-3 font-sans">Relaxed Movement</td>
                   </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">2XL</td>
+                    <td className="py-3 px-3">UK 16</td>
+                    <td className="py-3 px-3">US 12</td>
+                    <td className="py-3 px-3">EU 44</td>
+                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">3XL</td>
+                    <td className="py-3 px-3">UK 18</td>
+                    <td className="py-3 px-3">US 14</td>
+                    <td className="py-3 px-3">EU 46</td>
+                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">4XL</td>
+                    <td className="py-3 px-3">UK 20</td>
+                    <td className="py-3 px-3">US 16</td>
+                    <td className="py-3 px-3">EU 48</td>
+                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-3 font-bold text-[var(--color-text)]">5XL</td>
+                    <td className="py-3 px-3">UK 22</td>
+                    <td className="py-3 px-3">US 18</td>
+                    <td className="py-3 px-3">EU 50</td>
+                    <td className="py-3 px-3 font-sans">Relaxed Movement</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -320,7 +400,7 @@ export default function SizeGuidePage() {
         <div className="mt-16 text-center">
           <Link
             href="/shop"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all"
+            className="inline-flex items-center justify-center px-8 py-3.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all"
           >
             Shop the collection
           </Link>

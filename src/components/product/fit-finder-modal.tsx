@@ -3,6 +3,7 @@
 import React, { useState, useId, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ProductCategory } from "@/types/product";
+import { SIZES } from "@/lib/catalog";
 
 type FitFinderModalProps = {
   isOpen: boolean;
@@ -47,7 +48,7 @@ export function FitFinderModal({
 
   // Size calculation algorithm
   const calculateRecommendedSize = (): { size: string; reason: string } => {
-    let rawScore = 0; // 0 = XS, 1 = S, 2 = M, 3 = L, 4 = XL
+    let rawScore = 0; // index into sizeOrder: 0 = XS … 8 = 5XL
 
     if (isBottoms) {
       // Base on waist & hips
@@ -55,13 +56,21 @@ export function FitFinderModal({
       else if (waistIn < 28 && hipsIn < 38) rawScore = 1; // S
       else if (waistIn < 31 && hipsIn < 41) rawScore = 2; // M
       else if (waistIn < 34 && hipsIn < 44) rawScore = 3; // L
-      else rawScore = 4; // XL
+      else if (waistIn < 36 && hipsIn < 46) rawScore = 4; // XL
+      else if (waistIn < 38 && hipsIn < 48) rawScore = 5; // 2XL
+      else if (waistIn < 40 && hipsIn < 50) rawScore = 6; // 3XL
+      else if (waistIn < 42 && hipsIn < 52) rawScore = 7; // 4XL
+      else rawScore = 8; // 5XL
     } else if (isTops) {
       if (bustIn < 32) rawScore = 0; // XS
       else if (bustIn < 35) rawScore = 1; // S
       else if (bustIn < 38) rawScore = 2; // M
       else if (bustIn < 41) rawScore = 3; // L
-      else rawScore = 4; // XL
+      else if (bustIn < 43) rawScore = 4; // XL
+      else if (bustIn < 45) rawScore = 5; // 2XL
+      else if (bustIn < 47) rawScore = 6; // 3XL
+      else if (bustIn < 49) rawScore = 7; // 4XL
+      else rawScore = 8; // 5XL
     } else {
       // General layers
       const avg = (waistIn + bustIn) / 2;
@@ -69,25 +78,29 @@ export function FitFinderModal({
       else if (avg < 32) rawScore = 1;
       else if (avg < 35) rawScore = 2;
       else if (avg < 38) rawScore = 3;
-      else rawScore = 4;
+      else if (avg < 40) rawScore = 4;
+      else if (avg < 42) rawScore = 5;
+      else if (avg < 44) rawScore = 6;
+      else if (avg < 46) rawScore = 7;
+      else rawScore = 8;
     }
 
     // Apply fit preference modifier
     if (fitPref === "snug" && rawScore > 0) {
       rawScore -= 0.5;
-    } else if (fitPref === "relaxed" && rawScore < 4) {
+    } else if (fitPref === "relaxed" && rawScore < 8) {
       rawScore += 0.5;
     }
 
-    const sizeOrder = ["XS", "S", "M", "L", "XL"];
-    const finalIndex = Math.max(0, Math.min(4, Math.round(rawScore)));
+    const sizeOrder = SIZES;
+    const finalIndex = Math.max(0, Math.min(sizeOrder.length - 1, Math.round(rawScore)));
     const recommended = sizeOrder[finalIndex];
 
     const reason =
       fitPref === "snug"
         ? `We adjusted toward a supportive, athletic compression fit based on your preference.`
         : fitPref === "relaxed"
-        ? `We adjusted toward a gentler, relaxed silhouette with zero waistband pinch.`
+        ? `We adjusted toward a relaxed silhouette with zero waistband pinch.`
         : `This size gives you standard studio support with balanced 4-way flexibility.`;
 
     return { size: recommended, reason };
@@ -121,7 +134,7 @@ export function FitFinderModal({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 16 }}
             transition={{ type: "spring", damping: 25, stiffness: 320 }}
-            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-md shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
+            className="relative w-full max-w-lg bg-[var(--color-bg)] rounded-2xl shadow-2xl border border-[var(--color-border)] overflow-hidden z-10"
           >
             {/* Header */}
             <div className="p-6 border-b border-[var(--color-border)] bg-[var(--color-surface)]/70 flex items-center justify-between">
@@ -137,7 +150,7 @@ export function FitFinderModal({
                 type="button"
                 onClick={onClose}
                 aria-label="Close fit finder"
-                className="p-2 -mr-2 rounded-full text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 transition-colors"
+                className="p-2 -mr-2 rounded-full text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/50 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -152,11 +165,11 @@ export function FitFinderModal({
                 <p id={descId} className="text-xs text-[var(--color-muted)]">
                   Adjust measurements to find your optimal movement fit.
                 </p>
-                <div className="inline-flex rounded-sm bg-[var(--color-surface)] p-1 border border-[var(--color-border)]">
+                <div className="inline-flex rounded-full bg-[var(--color-surface)] p-1 border border-[var(--color-border)]">
                   <button
                     type="button"
                     onClick={() => setUnit("in")}
-                    className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                    className={`px-3 py-1 rounded-2xl text-xs font-semibold transition-all ${
                       unit === "in"
                         ? "bg-[var(--color-text)] text-white shadow-xs"
                         : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -167,7 +180,7 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setUnit("cm")}
-                    className={`px-3 py-1 rounded-md text-xs font-semibold transition-all ${
+                    className={`px-3 py-1 rounded-2xl text-xs font-semibold transition-all ${
                       unit === "cm"
                         ? "bg-[var(--color-text)] text-white shadow-xs"
                         : "text-[var(--color-muted)] hover:text-[var(--color-text)]"
@@ -192,7 +205,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={30}
-                      max={44}
+                      max={52}
                       step={0.5}
                       value={bustIn}
                       onChange={(e) => setBustIn(parseFloat(e.target.value))}
@@ -213,7 +226,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={23}
-                      max={38}
+                      max={46}
                       step={0.5}
                       value={waistIn}
                       onChange={(e) => setWaistIn(parseFloat(e.target.value))}
@@ -234,7 +247,7 @@ export function FitFinderModal({
                     <input
                       type="range"
                       min={33}
-                      max={46}
+                      max={56}
                       step={0.5}
                       value={hipsIn}
                       onChange={(e) => setHipsIn(parseFloat(e.target.value))}
@@ -253,9 +266,9 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("snug")}
-                    className={`p-2.5 rounded-md border text-center transition-all ${
+                    className={`p-2.5 rounded-2xl border text-center transition-all ${
                       fitPref === "snug"
-                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-petal)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
@@ -266,9 +279,9 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("true")}
-                    className={`p-2.5 rounded-md border text-center transition-all ${
+                    className={`p-2.5 rounded-2xl border text-center transition-all ${
                       fitPref === "true"
-                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-petal)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
@@ -279,9 +292,9 @@ export function FitFinderModal({
                   <button
                     type="button"
                     onClick={() => setFitPref("relaxed")}
-                    className={`p-2.5 rounded-md border text-center transition-all ${
+                    className={`p-2.5 rounded-2xl border text-center transition-all ${
                       fitPref === "relaxed"
-                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-peach)]/40 font-semibold text-[var(--color-text)]"
+                        ? "border-[var(--vybe-mauve-ink)] bg-[var(--vybe-petal)]/40 font-semibold text-[var(--color-text)]"
                         : "border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-gray-400"
                     }`}
                   >
@@ -292,12 +305,12 @@ export function FitFinderModal({
               </div>
 
               {/* Recommendation Result Card */}
-              <div className="p-4 rounded-md bg-linear-to-br from-[var(--vybe-sage)]/40 to-[var(--vybe-peach)]/40 border border-[var(--vybe-rose)]/50 space-y-2">
+              <div className="p-4 rounded-2xl bg-linear-to-br from-[var(--vybe-alabaster)]/40 to-[var(--vybe-petal)]/40 border border-[var(--vybe-blossom)]/50 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">
                     Recommended Size
                   </span>
-                  <span className="font-headline text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-md bg-white/80 shadow-xs border border-[var(--color-border)]">
+                  <span className="font-headline text-2xl font-bold text-[var(--color-text)] px-3 py-0.5 rounded-2xl bg-white/80 shadow-xs border border-[var(--color-border)]">
                     {recommendedSize}
                   </span>
                 </div>
@@ -317,7 +330,7 @@ export function FitFinderModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2.5 rounded-sm text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/30 transition-colors"
+                className="px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)] hover:text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/30 transition-colors"
               >
                 Cancel
               </button>
@@ -328,7 +341,7 @@ export function FitFinderModal({
                   onSelectSize(recommendedSize);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-sm text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
+                className="px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-all shadow-xs disabled:opacity-40 disabled:hover:bg-[var(--color-text)]"
               >
                 Apply Size {recommendedSize} &amp; Close
               </button>

@@ -22,7 +22,7 @@ export function CartEmptyState() {
 
       <Link
         href="/shop"
-        className="inline-flex items-center justify-center px-10 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+        className="inline-flex items-center justify-center px-10 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
       >
         Shop the collection
       </Link>

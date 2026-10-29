@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Academic Project Status Disclaimer */}
-        <div className="p-6 rounded-md bg-[var(--vybe-peach)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
+        <div className="p-6 rounded-2xl bg-[var(--vybe-petal)]/35 border border-[var(--color-border)] text-xs text-[var(--color-text)] leading-relaxed space-y-2">
           <p className="font-semibold uppercase tracking-wider flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[var(--vybe-mauve-ink)]" />
             Notice on Prototype Language
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Detailed Sections */}
-        <div className="p-8 sm:p-10 rounded-md bg-[var(--color-surface)] border border-[var(--color-border)] space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
+        <div className="p-8 sm:p-10 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-8 text-sm text-[var(--color-muted)] leading-relaxed">
           <section className="space-y-3">
             <h2 className="font-serif text-xl font-medium text-[var(--color-text)]">
               1. Non-Collection of Financial Information

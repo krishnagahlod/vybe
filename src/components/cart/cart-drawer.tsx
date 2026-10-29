@@ -12,7 +12,7 @@ import { SideDrawer } from "@/components/ui/side-drawer";
 import { ProductCard } from "@/components/product/product-card";
 
 const primaryButton =
-  "flex items-center justify-center h-12 rounded-sm text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
+  "flex items-center justify-center h-12 rounded-full text-xs font-semibold tracking-[0.15em] uppercase bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
 
 export function CartDrawer() {
   const { items, totalCount, isCartDrawerOpen, closeCartDrawer, updateQuantity, removeItem } = useCart();
@@ -31,7 +31,7 @@ export function CartDrawer() {
   const suggestions = products.filter((p) => p.featured && !inBag.has(p.id)).slice(0, 4);
 
   const deliveryNote = !isEmpty && (
-    <div className="px-5 sm:px-6 py-4 bg-[var(--vybe-peach)]/40 space-y-2.5">
+    <div className="px-5 sm:px-6 py-4 bg-[var(--vybe-petal)]/40 space-y-2.5">
       <p className="text-sm text-[var(--color-text)]">
         {subtotal >= FREE_DELIVERY_THRESHOLD ? (
           <>You&apos;ve unlocked complimentary delivery.</>
@@ -83,7 +83,7 @@ export function CartDrawer() {
             <Link
               href={product ? `/product/${product.slug}` : "/shop"}
               onClick={closeCartDrawer}
-              className="relative w-20 sm:w-24 aspect-[3/4] rounded-sm bg-[var(--vybe-peach)]/40 overflow-hidden shrink-0"
+              className="relative w-20 sm:w-24 aspect-[3/4] rounded-full bg-[var(--vybe-petal)]/40 overflow-hidden shrink-0"
             >
               <Image src={imageSrc} alt={product?.name ?? "VYBE product"} fill className="object-cover" sizes="96px" />
             </Link>
@@ -103,12 +103,12 @@ export function CartDrawer() {
               </div>
 
               <div className="flex items-center justify-between mt-3">
-                <div className="flex items-center h-8 border border-[var(--color-border)] rounded-sm">
+                <div className="flex items-center h-8 border border-[var(--color-border)] rounded-full">
                   <button
                     type="button"
                     onClick={() => updateQuantity(item.productId, item.size, item.quantity - 1)}
                     aria-label="Decrease quantity"
-                    className="w-8 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 transition-colors cursor-pointer"
+                    className="w-8 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/50 transition-colors cursor-pointer"
                   >
                     &minus;
                   </button>
@@ -119,7 +119,7 @@ export function CartDrawer() {
                     type="button"
                     onClick={() => updateQuantity(item.productId, item.size, item.quantity + 1)}
                     aria-label="Increase quantity"
-                    className="w-8 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 transition-colors cursor-pointer"
+                    className="w-8 h-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/50 transition-colors cursor-pointer"
                   >
                     +
                   </button>
@@ -129,7 +129,7 @@ export function CartDrawer() {
                   type="button"
                   onClick={() => removeItem(item.productId, item.size)}
                   aria-label={`Remove ${product?.name ?? "item"} from bag`}
-                  className="text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-rose-ink)] transition-colors cursor-pointer"
+                  className="text-xs text-[var(--color-muted)] underline underline-offset-4 hover:text-[var(--vybe-cherry-ink)] transition-colors cursor-pointer"
                 >
                   Remove
                 </button>
@@ -177,7 +177,7 @@ export function CartDrawer() {
           <div className="max-w-6xl mx-auto px-6 lg:px-10 py-10 space-y-16">
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10 lg:gap-14 items-start">
               <div className="border-t border-[var(--color-border)]">{itemList}</div>
-              <div className="lg:sticky lg:top-6 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden">
+              <div className="lg:sticky lg:top-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden">
                 {deliveryNote}
                 <div className="p-6">{summary}</div>
               </div>

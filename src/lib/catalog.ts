@@ -1,12 +1,12 @@
 import { products } from "@/data/products";
-import { ActivityId, FabricId, Product } from "@/types/product";
+import { ActivityId, FabricId, PrintFamily, Product } from "@/types/product";
 
 /**
  * Shared navigation and filtering vocabulary for the header, menu, shop and footer,
  * so every entry point lands on the same filtered view.
  */
 
-export const SIZES = ["XS", "S", "M", "L", "XL"];
+export const SIZES = ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL", "5XL"];
 
 export const INSTAGRAM_HANDLE = "vybe.athleisure";
 export const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
@@ -19,10 +19,10 @@ type Collection = {
 
 const ALL_COLLECTIONS: Collection[] = [
   { id: "new", label: "New", match: (p) => Boolean(p.isNew) },
-  { id: "favourites", label: "Founder's Favourites", match: (p) => p.featured },
+  { id: "favourites", label: "Bestsellers", match: (p) => p.featured },
   { id: "tops", label: "Tops", match: (p) => p.category === "tops" },
   { id: "flared", label: "Flared Bottoms", match: (p) => p.category === "flared" },
-  { id: "shorts", label: "Shorts & Skorts", match: (p) => p.category === "shorts" || p.slug === "baseline-skort" },
+  { id: "shorts", label: "Shorts & Skorts", match: (p) => p.category === "shorts" || p.slug === "baseline-skort" || p.slug === "colour-pop-liner-skort" },
   { id: "leggings", label: "Leggings", match: (p) => p.category === "leggings" },
   { id: "layers", label: "Jackets", match: (p) => p.category === "layers" },
   { id: "sports-bras", label: "Sports Bras", match: (p) => p.category === "sports-bras" },
@@ -48,33 +48,39 @@ export const ACTIVITIES: {
   imagePosition?: string;
 }[] = [
   {
-    id: "yoga-pilates",
-    label: "Yoga & Pilates",
-    blurb: "Soft, second-skin layers for slow flows and the reformer.",
-    image: "/images/products/flow-matching-set-1.jpg",
-  },
-  {
-    id: "strength",
-    label: "Strength & Gym",
-    blurb: "Held in where it counts, free everywhere else.",
-    image: "/images/products/studio-support-bra-2.jpg",
+    id: "dance",
+    label: "Dance",
+    blurb: "For Bollywood class, Zumba and the wedding sangeet rehearsal.",
+    image: "/images/products/ease-crop-top-2.jpg",
   },
   {
     id: "court",
-    label: "Racquet Sports",
-    blurb: "Pleats, skorts and dresses for court days and after.",
+    label: "Court",
+    blurb: "Sunday badminton, pickleball, tennis. Skorts with liners built in.",
     image: "/images/products/baseline-skort-2.jpg",
+  },
+  {
+    id: "strength",
+    label: "Gym",
+    blurb: "Squats, sets and selfies with the girls. Held, never squeezed.",
+    image: "/images/products/studio-support-bra-2.jpg",
+  },
+  {
+    id: "yoga-pilates",
+    label: "Yoga & Pilates",
+    blurb: "The 6 a.m. class. Nothing rides up, nothing shows through.",
+    image: "/images/products/flow-matching-set-1.jpg",
   },
   {
     id: "walk-run",
     label: "Walk & Run",
-    blurb: "Rapid-dry pieces for morning laps and long walks.",
+    blurb: "Marine Drive laps and park rounds. Cool when it gets hot.",
     image: "/images/products/cloudline-training-tee-2.jpg",
   },
   {
     id: "everyday",
-    label: "Studio to Street",
-    blurb: "Easy layers that look right long after class.",
+    label: "Coffee After Class",
+    blurb: "Straight from class to brunch. Nobody needs to know.",
     image: "/images/lifestyle/lifestyle-studio-to-street.jpg",
     imagePosition: "48% center",
   },
@@ -83,18 +89,18 @@ export const ACTIVITIES: {
 export const FABRICS: Record<FabricId, { name: string; tagline: string; properties: string[] }> = {
   cloudflex: {
     name: "CloudFlex",
-    tagline: "Buttery, super-stretchy and light",
-    properties: ["Four-way super stretch", "Lightweight, never thick", "Rapid-dry"],
+    tagline: "Stretches through a 90-minute dance class and snaps back",
+    properties: ["Moves every way you do", "Thin, never sweaty-thick", "Dry before your chai is"],
   },
   airdry: {
     name: "AirDry",
-    tagline: "A light, rapid-dry knit for warm city days",
-    properties: ["Rapid-dry", "Breathable and airy", "Easy stretch"],
+    tagline: "Made for a 35° Mumbai afternoon",
+    properties: ["Breathes in humid heat", "Sweat dries fast", "Feather-light on skin"],
   },
   flowweave: {
     name: "FlowWeave",
-    tagline: "A soft, flowy weave with stretch",
-    properties: ["Flowy drape", "Two-way stretch", "Rapid-dry"],
+    tagline: "Light enough for a sticky Delhi commute",
+    properties: ["Falls and swings as you move", "Airy, not clingy", "Dries on the walk home"],
   },
 };
 
@@ -107,6 +113,13 @@ export const LENGTHS = [
 ];
 
 /** Cart lines store size and length together, e.g. "M, Regular". */
+export const PRINTS: { id: PrintFamily; label: string; line: string; swatch: string }[] = [
+  { id: "bold", label: "Bold Prints", line: "Tiger, swirl, graphic. For days you want to be seen.", swatch: "/images/prints/bold.png" },
+  { id: "soft", label: "Soft Prints", line: "Polka, petal, watercolour. Pretty, not precious.", swatch: "/images/prints/soft.png" },
+  { id: "pop", label: "Colour Pop", line: "Cherry, tangerine, cobalt. Loud solids.", swatch: "/images/prints/pop.png" },
+  { id: "pastel", label: "Pastels", line: "Sage, rose, peach, mauve. The quiet favourites.", swatch: "/images/prints/pastel.png" },
+];
+
 export function sizeWithLength(size: string, length?: string) {
   return length ? `${size}, ${length}` : size;
 }
@@ -117,6 +130,7 @@ export type ShopFilterState = {
   fabric: string;
   size: string;
   color: string;
+  print: string;
   query: string;
 };
 
@@ -128,8 +142,10 @@ export function filterProducts(list: Product[], f: ShopFilterState) {
     if (f.activity !== "all" && !p.activities.includes(f.activity as ActivityId)) return false;
     if (f.fabric !== "all" && p.fabric !== f.fabric) return false;
     if (f.size !== "all" && !p.sizes.includes(f.size)) return false;
-    // Multi-colour pieces ("Sage / Rose") match each of their colours
-    if (f.color !== "all" && !p.colorName?.split(" / ").some((c) => c.toLowerCase() === f.color.toLowerCase())) {
+    if (f.print !== "all" && p.print !== f.print) return false;
+    // Multi-colour pieces ("Sage / Rose") and print variants match each of their colours
+    const colours = [...(p.colorName?.split(" / ") ?? []), ...(p.variants?.map((v) => v.name) ?? [])];
+    if (f.color !== "all" && !colours.some((c) => c.toLowerCase() === f.color.toLowerCase())) {
       return false;
     }
     if (q) {
@@ -150,7 +166,7 @@ export function filterProducts(list: Product[], f: ShopFilterState) {
   });
 }
 
-export function shopHref(params: Partial<Record<"category" | "activity" | "fabric" | "size" | "color" | "q", string>>) {
+export function shopHref(params: Partial<Record<"category" | "activity" | "fabric" | "size" | "color" | "print" | "q", string>>) {
   const search = new URLSearchParams(Object.entries(params).filter(([, v]) => v) as [string, string][]);
   const qs = search.toString();
   return qs ? `/shop?${qs}` : "/shop";

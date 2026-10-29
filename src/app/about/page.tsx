@@ -5,48 +5,23 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "VYBE is a contemporary women's athleisure brand concept built around mindful movement, a gentle palette, and everyday rhythm.",
+    "VYBE is fashion-led athleisure for Indian women: built-in support, no lines, cut for Indian bodies, every piece under ₹3,000.",
 };
 
+// shortcut: placeholder story in the new tone, replace with the team's About Us copy when it arrives
 const PRINCIPLES = [
   {
-    title: "A restorative palette",
-    text: "Chalk, sage and aubergine, with soft peach and rose: colours that feel calm on the body and easy to combine.",
+    title: "Fit, built in",
+    text: "Tanks with bras inside, leggings with a seamless liner, skorts with shorts underneath. Fewer layers, nothing to adjust.",
   },
   {
-    title: "Freedom to move",
-    text: "Close-fitting without pinching. Waistbands that stay put, seams that stay out of the way.",
+    title: "Cut for Indian bodies",
+    text: "A higher back rise, three leg lengths and sizes XS to 5XL. No more hitching, rolling or hemming.",
   },
   {
-    title: "Studio to street",
-    text: "Pieces that look as considered at the café or on the commute as they do on the mat.",
+    title: "Designer looks under ₹3,000",
+    text: "Bold prints and colour pops alongside the pastels, priced so your reward to yourself doesn't need a budget meeting.",
   },
-];
-
-const PALETTE = [
-  { name: "Warm Chalk", hex: "#F6F1EA", role: "Main background" },
-  { name: "Motion Sage", hex: "#C8D5C8", role: "Signature green" },
-  { name: "Deep Aubergine", hex: "#452B3A", role: "Logo, headings and text" },
-];
-
-const ACCENTS = [
-  { name: "Pale Peach", hex: "#FFE5D9" },
-  { name: "Soft Pink", hex: "#FFCAD4" },
-  { name: "Rose", hex: "#F4ACB7" },
-  { name: "Muted Mauve", hex: "#9D8189" },
-];
-
-const INKS = [
-  { name: "Sage Ink", hex: "#3F5242", role: "Green text on light backgrounds" },
-  { name: "Plum", hex: "#7A5866", role: "Accent text and hover" },
-  { name: "Muted", hex: "#5F4F57", role: "Secondary text" },
-  { name: "Rose Ink", hex: "#9A4B5A", role: "Alerts and saves" },
-];
-
-const VOICE = [
-  { trait: "Warm, not saccharine", example: "“Cut for studio flows, gym sessions, and the walk home afterwards.”" },
-  { trait: "Confident, not aggressive", example: "“Activewear that honours your pace, not someone else’s metrics.”" },
-  { trait: "Practical, not technical", example: "“A wide, double-layer waistband that sits flat through forward folds.”" },
 ];
 
 const eyebrow = "text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]";
@@ -62,14 +37,14 @@ export default function AboutPage() {
             Made for your kind of movement.
           </h1>
           <p className="text-base sm:text-lg text-[var(--color-muted)] leading-relaxed max-w-xl">
-            VYBE is women&apos;s activewear for movement that feels restorative rather than punishing, and for days
-            that don&apos;t stop when the class does.
+            VYBE is activewear for the best hour of your day: built-in support, no lines, cut for Indian bodies, in prints
+            you actually want to be seen in.
           </p>
         </div>
-        <div className="relative aspect-[4/3] sm:aspect-[16/9] w-full rounded-md overflow-hidden bg-[var(--vybe-sage)]">
+        <div className="relative aspect-[4/3] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden bg-[var(--vybe-alabaster)]">
           <Image
             src="/images/lifestyle/lifestyle-court-wide.jpg"
-            alt="Two friends laughing as they walk off a tennis court in VYBE chalk and sage"
+            alt="Two friends laughing as they walk off a tennis court together, rackets in hand"
             fill
             priority
             sizes="(max-width: 1280px) 100vw, 1216px"
@@ -83,21 +58,21 @@ export default function AboutPage() {
         <div className="lg:col-span-5">
           <p className={eyebrow}>Why VYBE</p>
           <p className="mt-4 font-headline text-4xl sm:text-5xl text-[var(--color-text)] leading-[1.1] font-semibold">
-            Movement belongs to you.
+            Stop saving yourself for later.
           </p>
         </div>
         <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[var(--color-muted)] leading-relaxed">
           <p>
-            For years, activewear has been sold on intensity: punishment, transformation, and neon. We think movement
-            can be gentler than that, and more personal.
+            Your workout is the one hour that&apos;s just yours. The 6 a.m. dance class, Sunday badminton, the gym with
+            the girls, coffee straight after.
           </p>
           <p>
-            It might be a reformer class, an unhurried morning walk through Cubbon Park, a run along Marine Drive, or
-            a quiet yoga sequence before work in Pune. VYBE is designed for all of it.
+            Most activewear makes you choose: plain black basics that fit, or fun pieces that ride up, show lines and
+            need a second layer. We built VYBE so you don&apos;t have to choose.
           </p>
           <p>
-            So we make pieces that feel soft on the skin, sit close without pinching, and look just as right on the
-            way home as they did in the studio.
+            Support is built into the piece, the fit is cut for Indian bodies, the fabric breathes in Indian heat, and
+            every piece costs under ₹3,000.
           </p>
         </div>
       </section>
@@ -113,107 +88,6 @@ export default function AboutPage() {
             </li>
           ))}
         </ol>
-      </section>
-
-      {/* Brand identity */}
-      <section id="brand-identity" className="mt-24 sm:mt-32 py-20 sm:py-28 bg-[var(--vybe-peach)]/40 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          <div className="max-w-2xl space-y-4">
-            <p className={eyebrow}>Brand identity</p>
-            <h2 className="font-headline text-4xl sm:text-5xl font-semibold tracking-tight text-[var(--color-text)]">
-              The system behind VYBE
-            </h2>
-            <p className="text-base text-[var(--color-muted)] leading-relaxed">
-              One soft palette, two typefaces, and a voice that speaks to women as people who move, not projects to
-              be fixed.
-            </p>
-          </div>
-
-          {/* Palette */}
-          <div className="space-y-8">
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Palette</h3>
-            <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {PALETTE.map((c) => (
-                <li key={c.hex} className="space-y-3">
-                  <div className="aspect-[4/3] sm:aspect-[3/4] rounded-md border border-black/10" style={{ backgroundColor: c.hex }} />
-                  <div>
-                    <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">{c.name}</p>
-                    <p className="text-xs uppercase tracking-[0.15em] text-[var(--color-muted)]">{c.hex}</p>
-                    <p className="mt-1 text-sm text-[var(--color-muted)]">{c.role}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="space-y-3">
-              <p className="text-sm text-[var(--color-muted)]">Soft accents, used sparingly for highlights and colourways</p>
-              <ul className="flex flex-wrap gap-x-6 gap-y-3">
-                {ACCENTS.map((c) => (
-                  <li key={c.hex} className="flex items-center gap-2 text-sm text-[var(--color-text)]">
-                    <span className="w-6 h-6 rounded-full border border-black/10" style={{ backgroundColor: c.hex }} />
-                    {c.name} <span className="text-[var(--color-muted)]">{c.hex}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <ul className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {INKS.map((c) => (
-                <li key={c.hex} className="flex items-center gap-3">
-                  <span className="w-10 h-10 rounded-full shrink-0" style={{ backgroundColor: c.hex }} />
-                  <span className="text-sm">
-                    <span className="block text-[var(--color-text)]">
-                      {c.name} <span className="text-[var(--color-muted)]">{c.hex}</span>
-                    </span>
-                    <span className="block text-[var(--color-muted)]">{c.role}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Typography & wordmark */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="lg:col-span-1 rounded-md bg-[var(--color-bg)] p-8 flex flex-col justify-between gap-10 min-h-64">
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Wordmark</h3>
-              <div className="space-y-3 text-center">
-                <p className="font-headline text-6xl font-bold tracking-[0.16em] pl-[0.16em] text-[var(--color-text)]">VYBE</p>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-[var(--vybe-mauve-ink)]">
-                  Made for your kind of movement
-                </p>
-              </div>
-            </div>
-            <div className="rounded-md bg-[var(--color-bg)] p-8 space-y-6">
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Display</h3>
-              <p className="font-headline text-8xl leading-none text-[var(--color-text)] font-semibold">
-                Aa
-              </p>
-              <div>
-                <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">Syne</p>
-                <p className="text-sm text-[var(--color-muted)]">Headlines, campaign banners and the wordmark</p>
-              </div>
-            </div>
-            <div className="rounded-md bg-[var(--color-bg)] p-8 space-y-6">
-              <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Text</h3>
-              <p className="text-8xl leading-none font-light text-[var(--color-text)]">Aa</p>
-              <div>
-                <p className="text-xl text-[var(--color-text)]">Plus Jakarta Sans</p>
-                <p className="text-sm text-[var(--color-muted)]">Body copy, product names, buttons and navigation</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Voice */}
-          <div className="space-y-8">
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.25em] text-[var(--color-text)]">Tone of voice</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {VOICE.map((v) => (
-                <li key={v.trait} className="border-t border-[var(--color-text)]/15 pt-5 space-y-3">
-                  <p className="font-headline text-2xl text-[var(--color-text)] font-semibold">{v.trait}</p>
-                  <p className="text-sm italic text-[var(--color-muted)] leading-relaxed">{v.example}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
       </section>
 
       {/* Academic project context */}
@@ -237,13 +111,13 @@ export default function AboutPage() {
             <div className="pt-4 flex flex-wrap gap-3">
               <Link
                 href="/shop"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors"
               >
                 Shop the collection
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors"
               >
                 Get in touch
               </Link>

@@ -5,7 +5,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import { WishlistProvider } from "@/lib/wishlist-context";
 import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
-import { AnnouncementBar } from "@/components/layout/announcement-bar";
+import { AnnouncementBar, ConceptNotice } from "@/components/layout/announcement-bar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
@@ -90,7 +90,7 @@ export default function RootLayout({
       lang="en"
       className={`${jakartaSans.variable} ${syne.variable} h-full scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pink)] selection:text-[var(--color-text)]">
+      <body className="min-h-full flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] selection:bg-[var(--vybe-pastel-pink)] selection:text-[var(--color-text)]">
         <OrganizationJsonLd />
         <ToastProvider>
           <CartProvider>
@@ -101,6 +101,7 @@ export default function RootLayout({
               <ToastContainer />
               <AnnouncementBar />
               <Header />
+              <ConceptNotice />
               <main id="main-content" className="flex-1 w-full">
                 <ViewTransition>{children}</ViewTransition>
               </main>

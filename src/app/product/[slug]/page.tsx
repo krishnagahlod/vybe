@@ -29,6 +29,10 @@ const SIZE_ROWS = [
   ["M", "34–36″", "28–30″", "38–40″"],
   ["L", "36–38″", "30–32″", "40–42″"],
   ["XL", "38–40″", "32–34″", "42–44″"],
+  ["2XL", "40–42″", "34–36″", "44–46″"],
+  ["3XL", "42–44″", "36–38″", "46–48″"],
+  ["4XL", "44–46″", "38–40″", "48–50″"],
+  ["5XL", "46–48″", "40–42″", "50–52″"],
 ];
 
 const DETAIL_SECTIONS = [
@@ -211,7 +215,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               {gallery.map((image, index) => (
                 <div
                   key={image.src}
-                  className={`relative aspect-[3/4] shrink-0 snap-center rounded-md overflow-hidden bg-[var(--vybe-peach)]/40 ${
+                  className={`relative aspect-[3/4] shrink-0 snap-center rounded-2xl overflow-hidden bg-[var(--vybe-petal)]/40 ${
                     gallery.length > 1 ? "w-[86%] sm:w-[70%] lg:w-full" : "w-full"
                   }`}
                 >
@@ -255,13 +259,14 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                 {CATEGORY_LABELS[product.category]}
               </Link>
               {product.isNew && (
-                <span className="ml-3 align-middle px-2 py-0.5 rounded-sm text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white">
+                <span className="ml-3 align-middle px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white">
                   New
                 </span>
               )}
               <h1 className="font-headline text-4xl sm:text-5xl font-semibold text-[var(--color-text)] leading-[1.05]">
                 {product.name}
               </h1>
+              {product.storyLine && <p className="text-lg font-semibold text-[var(--vybe-cherry-ink)]">{product.storyLine}</p>}
               <p className="text-xl text-[var(--color-text)]">{formatPrice(product.price)}</p>
             </div>
 
@@ -284,7 +289,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <ul className="space-y-2.5">
               {product.features.map((feature) => (
                 <li key={feature} className="flex items-start gap-3 text-sm text-[var(--color-text)]">
-                  <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[var(--vybe-sage-ink)] shrink-0" aria-hidden="true" />
+                  <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-[var(--vybe-ink-soft)] shrink-0" aria-hidden="true" />
                   {feature}
                 </li>
               ))}
@@ -296,9 +301,9 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             {/* Core fabric */}
             <Link
               href={`/shop?fabric=${product.fabric}`}
-              className="group block p-5 rounded-md bg-[var(--vybe-sage)]/45 hover:bg-[var(--vybe-sage)]/70 transition-colors"
+              className="group block p-5 rounded-2xl bg-[var(--vybe-alabaster)]/45 hover:bg-[var(--vybe-alabaster)]/70 transition-colors"
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-sage-ink)]">Core fabric</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--vybe-ink-soft)]">Core fabric</p>
               <p className="mt-1 font-headline text-2xl text-[var(--color-text)] font-semibold">
                 {fabric.name} <span className="block mt-1 text-sm font-normal text-[var(--color-muted)]">{fabric.tagline}</span>
               </p>

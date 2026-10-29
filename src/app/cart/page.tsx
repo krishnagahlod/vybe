@@ -70,7 +70,7 @@ export default function CartPage() {
                 <button
                   type="button"
                   onClick={clearCart}
-                  className="text-xs text-[var(--color-muted)] hover:text-[var(--vybe-rose-ink)] transition-colors underline underline-offset-4 cursor-pointer"
+                  className="text-xs text-[var(--color-muted)] hover:text-[var(--vybe-cherry-ink)] transition-colors underline underline-offset-4 cursor-pointer"
                 >
                   Empty bag
                 </button>

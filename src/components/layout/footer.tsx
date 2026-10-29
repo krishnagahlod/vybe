@@ -22,7 +22,6 @@ const COLUMNS = [
     title: "VYBE",
     links: [
       { label: "Our story", href: "/about" },
-      { label: "Brand identity", href: "/about#brand-identity" },
       { label: "About the project", href: "/about#project" },
       { label: "Privacy", href: "/privacy" },
     ],
@@ -33,14 +32,14 @@ const heading = "text-[11px] font-semibold uppercase tracking-[0.25em] mb-5";
 
 export function Footer() {
   return (
-    <footer className="mt-auto bg-[var(--vybe-sage)] text-[var(--color-text)]">
+    <footer className="mt-auto bg-[var(--vybe-alabaster)] text-[var(--color-text)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-10">
         {/* Sign up and contact */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pb-14 border-b border-[var(--color-text)]/15">
           <div className="lg:col-span-6 space-y-5">
             <h2 className={heading}>Sign up and save</h2>
             <p className="font-headline text-3xl sm:text-4xl leading-[1.12] max-w-md font-semibold">
-              First look at new drops, studio stories and members-only offers.
+              Get first access to new prints.
             </p>
             <div className="max-w-md">
               <NewsletterForm />
@@ -85,7 +84,7 @@ export function Footer() {
           <div>
             <h3 className={heading}>Made for you</h3>
             <p className="text-sm text-[var(--color-text)]/75 leading-relaxed">
-              Cut for Indian bodies, in three leg lengths and fabrics that stay light in humid cities.
+              Built-in support, no lines, cut for Indian bodies in XS to 5XL. Every piece under ₹3,000.
             </p>
           </div>
         </div>

@@ -18,6 +18,7 @@ export function ProductActions({ product }: ProductActionsProps) {
   const { addItem, openCartDrawer } = useCart();
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [selectedLength, setSelectedLength] = useState<string>("");
+  const [variant, setVariant] = useState(0);
   const [lengthError, setLengthError] = useState<boolean>(false);
   const lengthOptions = LENGTHS.filter((l) => product.lengths?.includes(l.id));
   const [quantity, setQuantity] = useState<number>(1);
@@ -56,7 +57,8 @@ export function ProductActions({ product }: ProductActionsProps) {
       return;
     }
 
-    const line = sizeWithLength(selectedSize, selectedLength || undefined);
+    const sized = sizeWithLength(selectedSize, selectedLength || undefined);
+    const line = product.variants ? `${sized}, ${product.variants[variant].name}` : sized;
     addItem(product.id, line, quantity);
     trackAddToCart(product, quantity, line);
     setIsAdded(true);
@@ -90,7 +92,7 @@ export function ProductActions({ product }: ProductActionsProps) {
               onClick={() => setIsFitFinderOpen(true)}
               className="text-xs font-semibold text-[var(--vybe-mauve-ink)] hover:text-[var(--color-text)] flex items-center gap-1.5 underline underline-offset-4 transition-colors cursor-pointer"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[var(--vybe-rose-ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-[var(--vybe-cherry-ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               <span>Fit Finder</span>
@@ -111,7 +113,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                   role="radio"
                   aria-checked={isSelected}
                   onClick={() => handleSelectSize(size)}
-                  className={`min-w-12 h-12 px-3 rounded-sm text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
+                  className={`min-w-12 h-12 px-3 rounded-full text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
                     isSelected
                       ? "bg-[var(--color-text)] text-white border border-[var(--color-text)]"
                       : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
@@ -127,7 +129,7 @@ export function ProductActions({ product }: ProductActionsProps) {
           {sizeError && (
             <div
               role="alert"
-              className="p-3 rounded-sm bg-[var(--vybe-pink)]/40 border border-[var(--vybe-rose)] text-[var(--vybe-rose-ink)] text-xs flex items-center gap-2 animate-fade-up"
+              className="p-3 rounded-full bg-[var(--vybe-pastel-pink)]/40 border border-[var(--vybe-blossom)] text-[var(--vybe-cherry-ink)] text-xs flex items-center gap-2 animate-fade-up"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -145,6 +147,29 @@ export function ProductActions({ product }: ProductActionsProps) {
             </div>
           )}
         </div>
+
+        {/* Colour / print */}
+        {product.variants && (
+          <div className="space-y-2.5">
+            <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text)]">
+              Print: <span className="normal-case tracking-normal font-medium">{product.variants[variant].name}</span>
+            </span>
+            <div role="radiogroup" aria-label="Colour or print" className="flex gap-2.5">
+              {product.variants.map((v, i) => (
+                <button
+                  key={v.name}
+                  type="button"
+                  role="radio"
+                  aria-checked={i === variant}
+                  aria-label={v.name}
+                  onClick={() => setVariant(i)}
+                  className={`w-10 h-10 rounded-full border border-black/10 cursor-pointer ${i === variant ? "ring-2 ring-offset-2 ring-[var(--vybe-ink)]" : ""}`}
+                  style={{ background: v.swatch.startsWith("/") ? `url(${v.swatch}) center / cover` : v.swatch }}
+                />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Leg length (bottoms) */}
         {lengthOptions.length > 0 && (
@@ -170,7 +195,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                       setSelectedLength(l.id);
                       setLengthError(false);
                     }}
-                    className={`px-2 py-3 rounded-sm text-center transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
+                    className={`px-2 py-3 rounded-full text-center transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] ${
                       isSelected
                         ? "bg-[var(--color-text)] text-white border border-[var(--color-text)]"
                         : "bg-[var(--color-surface)] border border-[var(--color-border)] text-[var(--color-text)] hover:border-[var(--color-text)]"
@@ -183,7 +208,7 @@ export function ProductActions({ product }: ProductActionsProps) {
               })}
             </div>
             {lengthError && (
-              <p role="alert" className="text-xs text-[var(--vybe-rose-ink)]">
+              <p role="alert" className="text-xs text-[var(--vybe-cherry-ink)]">
                 Please choose a leg length.
               </p>
             )}
@@ -194,13 +219,13 @@ export function ProductActions({ product }: ProductActionsProps) {
         <div className="space-y-4">
           <div className="flex items-center gap-4">
             {/* Quantity Selector */}
-            <div className="flex items-center h-12 border border-[var(--color-border)] rounded-sm bg-[var(--color-surface)] px-1">
+            <div className="flex items-center h-12 border border-[var(--color-border)] rounded-full bg-[var(--color-surface)] px-1">
               <button
                 type="button"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}
                 disabled={quantity <= 1}
                 aria-label="Decrease quantity"
-                className="w-8 h-8 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 &minus;
               </button>
@@ -215,7 +240,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                 onClick={() => setQuantity((q) => Math.min(10, q + 1))}
                 disabled={quantity >= 10}
                 aria-label="Increase quantity"
-                className="w-8 h-8 rounded-sm flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/50 disabled:opacity-30 disabled:hover:bg-transparent transition-colors"
               >
                 &#43;
               </button>
@@ -224,7 +249,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             {/* Primary Add to Cart Button */}
             <button
               type="submit"
-              className="flex-1 h-12 px-6 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
+              className="flex-1 h-12 px-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)] flex items-center justify-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -244,6 +269,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             </button>
           </div>
         </div>
+        <p className="text-sm text-center text-[var(--color-text)]">Free size exchange within 14 days</p>
       </form>
 
       {/* Added to Bag Feedback Notification Card */}
@@ -251,7 +277,7 @@ export function ProductActions({ product }: ProductActionsProps) {
         <div
           role="status"
           aria-live="polite"
-          className="p-4 rounded-md bg-[var(--vybe-sage)]/35 border border-[var(--vybe-sage)] text-[var(--color-text)] space-y-3 animate-fade-up shadow-xs"
+          className="p-4 rounded-2xl bg-[var(--vybe-alabaster)]/35 border border-[var(--vybe-alabaster)] text-[var(--color-text)] space-y-3 animate-fade-up shadow-xs"
         >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -275,13 +301,13 @@ export function ProductActions({ product }: ProductActionsProps) {
             <button
               type="button"
               onClick={openCartDrawer}
-              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors cursor-pointer"
             >
               View bag
             </button>
             <Link
               href="/shop"
-              className="px-4 py-2 rounded-sm text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/40 transition-colors"
+              className="px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider bg-white border border-[var(--color-border)] text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/40 transition-colors"
             >
               Keep browsing
             </Link>
@@ -301,7 +327,7 @@ export function ProductActions({ product }: ProductActionsProps) {
               value={selectedSize}
               onChange={(e) => handleSelectSize(e.target.value)}
               aria-label="Select size"
-              className="h-10 px-2.5 rounded-sm border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold text-[var(--color-text)]"
+              className="h-10 px-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-xs font-semibold text-[var(--color-text)]"
             >
               <option value="">Size</option>
               {product.sizes.map((s) => (
@@ -319,7 +345,7 @@ export function ProductActions({ product }: ProductActionsProps) {
                 }
                 handleAddToCart();
               }}
-              className="h-10 px-4 rounded-sm bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
+              className="h-10 px-4 rounded-full bg-[var(--color-text)] text-white text-xs font-bold uppercase tracking-wider hover:bg-[var(--vybe-mauve-ink)] transition-colors shadow-xs"
             >
               Add to Bag
             </button>

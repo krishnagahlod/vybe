@@ -1,45 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  /* Core brand palette: Warm Chalk (background), Motion Sage (signature green), Deep Aubergine (logo, headings, ink). */
-  --vybe-chalk: #f6f1ea;
-  --vybe-sage: #c8d5c8;
-  --vybe-aubergine: #452b3a;
+  /* Base: a calm canvas so prints and product colour do the talking */
+  --vybe-canvas: #fff6f1; /* warm powder white, main background */
+  --vybe-petal: #ffe5d9; /* alternate section background */
+  --vybe-ink: #2b1d24; /* deep plum-black: text and primary buttons */
+  --vybe-mauve: #9d8189; /* secondary UI, borders */
 
-  /* Soft accents from the original palette, used sparingly for highlights and colour swatches. */
-  --vybe-peach: #ffe5d9;
-  --vybe-pink: #ffcad4;
-  --vybe-rose: #f4acb7;
-  --vybe-mauve: #9d8189;
+  /* Brand pastels: supporting surfaces, tags, cards */
+  --vybe-pastel-pink: #ffcad4;
+  --vybe-blossom: #f4acb7;
+  --vybe-alabaster: #d8e2dc;
 
-  /* Ink variants — deeper shades for text, icons, and hover states (WCAG AA on chalk). */
-  --vybe-sage-ink: #3f5242;
-  --vybe-rose-ink: #9a4b5a;
-  --vybe-mauve-ink: #7a5866;
+  /* Bold accents: one per section at most, large text only */
+  --vybe-cherry: #e2365b;
+  --vybe-tangerine: #ff7a3d;
+  --vybe-cobalt: #3d5afe;
 
-  --color-bg: var(--vybe-chalk);
-  --color-surface: #fcfaf6;
-  --color-text: var(--vybe-aubergine);
-  --color-muted: #5f4f57;
-  --color-border: #e4dcd0;
+  /* Text-safe inks (WCAG AA on canvas) */
+  --vybe-ink-soft: #4a3a42;
+  --vybe-cherry-ink: #b3203f;
+  --vybe-mauve-ink: #6e5560;
+
+  --color-bg: var(--vybe-canvas);
+  --color-surface: #fffbf8;
+  --color-text: var(--vybe-ink);
+  --color-muted: #5e4b55;
+  --color-border: #f0dcd3;
 }
 
 @theme inline {
-  --color-vybe-chalk: var(--vybe-chalk);
-  --color-vybe-sage: var(--vybe-sage);
-  --color-vybe-aubergine: var(--vybe-aubergine);
-  --color-vybe-peach: var(--vybe-peach);
-  --color-vybe-pink: var(--vybe-pink);
-  --color-vybe-rose: var(--vybe-rose);
+  --color-vybe-canvas: var(--vybe-canvas);
+  --color-vybe-petal: var(--vybe-petal);
+  --color-vybe-ink: var(--vybe-ink);
   --color-vybe-mauve: var(--vybe-mauve);
-  --color-vybe-sage-ink: var(--vybe-sage-ink);
-  --color-vybe-rose-ink: var(--vybe-rose-ink);
-  --color-vybe-mauve-ink: var(--vybe-mauve-ink);
-  --color-vybe-bg: var(--color-bg);
-  --color-vybe-surface: var(--color-surface);
-  --color-vybe-text: var(--color-text);
-  --color-vybe-muted: var(--color-muted);
-  --color-vybe-border: var(--color-border);
+  --color-vybe-pastel-pink: var(--vybe-pastel-pink);
+  --color-vybe-blossom: var(--vybe-blossom);
+  --color-vybe-alabaster: var(--vybe-alabaster);
+  --color-vybe-cherry: var(--vybe-cherry);
+  --color-vybe-tangerine: var(--vybe-tangerine);
+  --color-vybe-cobalt: var(--vybe-cobalt);
   /* Syne for headlines and the wordmark; everything else is Plus Jakarta Sans */
   --font-serif: var(--font-jakarta);
   --font-headline: var(--font-syne);

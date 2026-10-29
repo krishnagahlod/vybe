@@ -41,7 +41,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
         </p>
       </div>
 
-      <div className="p-5 sm:p-6 rounded-sm bg-[var(--vybe-peach)]/50 border border-[var(--vybe-rose)] text-sm leading-relaxed" role="note">
+      <div className="p-5 sm:p-6 rounded-full bg-[var(--vybe-petal)]/50 border border-[var(--vybe-blossom)] text-sm leading-relaxed" role="note">
         <p className="font-semibold text-[var(--color-text)]">This was a demonstration. Nothing was charged and nothing will ship.</p>
         <p className="mt-1 text-[var(--color-muted)]">
           VYBE is a concept store for ENT 625. No payment details were collected and no email has been sent to{" "}
@@ -49,7 +49,7 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
         </p>
       </div>
 
-      <div className="rounded-md bg-[var(--vybe-sage)]/50 p-6 sm:p-8 space-y-6">
+      <div className="rounded-2xl bg-[var(--vybe-alabaster)]/50 p-6 sm:p-8 space-y-6">
         <h2 className="font-headline text-2xl text-[var(--color-text)] font-semibold">Order summary</h2>
         <ul className="divide-y divide-[var(--color-text)]/10">
           {order.items.map(({ item, product, lineTotal }) => (
@@ -85,13 +85,13 @@ export function CheckoutConfirmation({ order }: CheckoutConfirmationProps) {
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
         <Link
           href={`/track-order?ref=${encodeURIComponent(order.orderId)}`}
-          className="inline-flex items-center justify-center px-8 h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="inline-flex items-center justify-center px-8 h-12 rounded-full text-xs font-semibold uppercase tracking-[0.15em] bg-[var(--color-text)] text-white hover:bg-[var(--vybe-mauve-ink)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Track this order
         </Link>
         <Link
           href="/shop"
-          className="inline-flex items-center justify-center px-8 h-12 rounded-sm text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
+          className="inline-flex items-center justify-center px-8 h-12 rounded-full text-xs font-semibold uppercase tracking-[0.15em] border border-[var(--color-text)]/25 text-[var(--color-text)] hover:border-[var(--color-text)] transition-colors focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]"
         >
           Keep shopping
         </Link>

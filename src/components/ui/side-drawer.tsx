@@ -17,7 +17,7 @@ type SideDrawerProps = {
 };
 
 const iconButton =
-  "w-10 h-10 inline-flex items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-peach)]/60 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
+  "w-10 h-10 inline-flex items-center justify-center rounded-full text-[var(--color-text)] hover:bg-[var(--vybe-petal)]/60 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-[var(--vybe-mauve-ink)]";
 
 export function SideDrawer({
   isOpen,

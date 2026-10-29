@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Browse VYBE's concept catalogue of women's activewear: leggings in three lengths, sports bras, tops, matching sets, jackets and the Court line.",
 };
 
-type ShopSearchParams = Promise<{ category?: string; activity?: string; fabric?: string; size?: string; color?: string; q?: string }>;
+type ShopSearchParams = Promise<{ category?: string; activity?: string; fabric?: string; size?: string; color?: string; print?: string; q?: string }>;
 
 async function ShopCatalog({ searchParams }: { searchParams: ShopSearchParams }) {
   const params = await searchParams;
@@ -19,14 +19,15 @@ async function ShopCatalog({ searchParams }: { searchParams: ShopSearchParams })
   const fabric = params.fabric || "all";
   const size = params.size || "all";
   const color = params.color || "all";
+  const print = params.print || "all";
   const q = params.q || "";
 
   return (
     <ShopFilters
       // Remount when the menu links to a different filter, so the view always matches the URL
-      key={[category, activity, fabric, size, color, q].join("|")}
+      key={[category, activity, fabric, size, color, print, q].join("|")}
       initialProducts={products}
-      initial={{ collection: category, activity, fabric, size, color, query: q }}
+      initial={{ collection: category, activity, fabric, size, color, print, query: q }}
     />
   );
 }
@@ -35,12 +36,12 @@ function ShopSkeleton() {
   return (
     <div className="space-y-12 animate-pulse">
       <div className="space-y-3">
-        <div className="h-3 w-40 rounded-sm bg-[var(--vybe-peach)]/60" />
-        <div className="h-12 w-80 rounded-sm bg-[var(--vybe-peach)]/60" />
+        <div className="h-3 w-40 rounded-full bg-[var(--vybe-petal)]/60" />
+        <div className="h-12 w-80 rounded-full bg-[var(--vybe-petal)]/60" />
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
         {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-          <div key={i} className="aspect-[3/4] rounded-md bg-[var(--vybe-sage)]/30" />
+          <div key={i} className="aspect-[3/4] rounded-2xl bg-[var(--vybe-alabaster)]/30" />
         ))}
       </div>
     </div>
