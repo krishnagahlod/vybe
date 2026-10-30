@@ -6,7 +6,8 @@ export type ProductCategory =
   | "shorts"
   | "sets"
   | "layers"
-  | "court";
+  | "court"
+  | "pants";
 
 export type ActivityId = "dance" | "court" | "strength" | "yoga-pilates" | "walk-run" | "everyday";
 

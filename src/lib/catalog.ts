@@ -90,7 +90,7 @@ export const FABRICS: Record<FabricId, { name: string; tagline: string; properti
   cloudflex: {
     name: "CloudFlex",
     tagline: "Stretches through a 90-minute dance class and snaps back",
-    properties: ["Moves every way you do", "Thin, never sweaty-thick", "Dry before your chai is"],
+    properties: ["Moves every way you do", "Thin, never sweaty-thick", "Dries before your post-class chai"],
   },
   airdry: {
     name: "AirDry",

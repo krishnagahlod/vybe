@@ -21,6 +21,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   sets: "Matching Sets",
   layers: "Layers",
   court: "Court",
+  pants: "Pants",
 };
 
 const SIZE_ROWS = [
@@ -149,6 +150,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
     sets: ["layers", "sports-bras", "tops"],
     court: ["court", "layers"],
     flared: ["sports-bras", "tops", "layers"],
+    pants: ["sports-bras", "tops", "layers"],
   };
 
   const fabric = FABRICS[product.fabric];

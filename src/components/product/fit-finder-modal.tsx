@@ -26,7 +26,7 @@ export function FitFinderModal({
   const [unit, setUnit] = useState<Unit>("in");
   const [fitPref, setFitPref] = useState<FitPreference>("true");
 
-  const isBottoms = category === "leggings" || category === "shorts";
+  const isBottoms = category === "leggings" || category === "shorts" || category === "pants";
   const isTops = category === "sports-bras" || category === "tops";
 
   // State in inches internally

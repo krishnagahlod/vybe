@@ -613,7 +613,7 @@ export const products: Product[] = [
     id: "vybe-011",
     slug: "everyday-joggers",
     name: "Everyday Joggers",
-    category: "layers",
+    category: "pants",
     price: 1899,
     shortDescription: "Tapered relaxed joggers with deep side pockets and drawcord waist.",
     description: "Tailored with a neat cuff and generous pocketing, the Everyday Joggers combine cozy lounge comfort with elevated street aesthetics for city transit.",
