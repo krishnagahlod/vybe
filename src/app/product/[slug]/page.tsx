@@ -6,11 +6,13 @@ import Link from "next/link";
 import { products, getProductBySlug } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { getSwatch } from "@/lib/colors";
+import { ZoomFrame } from "@/components/product/zoom-frame";
 import { ProductActions } from "@/components/product/product-actions";
 import { ProductCard } from "@/components/product/product-card";
 import { ProductViewTracker } from "@/components/product/product-view-tracker";
 import { ProductJsonLd } from "@/components/seo/json-ld";
 import { FABRICS } from "@/lib/catalog";
+import type { Product } from "@/types/product";
 
 const CATEGORY_LABELS: Record<string, string> = {
   leggings: "Leggings",
@@ -23,6 +25,29 @@ const CATEGORY_LABELS: Record<string, string> = {
   court: "Court",
   pants: "Pants",
 };
+
+const BENEFIT_ICONS = {
+  bra: "M7 4l-1 5M17 4l1 5M4 12c0-2 1-3 2-3 2 0 4 3 6 3s4-3 6-3c1 0 2 1 2 3v3H4z",
+  lines: "M4 12h16M6 18L18 6",
+  liner: "M6 4h12l1 15h-5l-2-7-2 7H5z",
+  air: "M3 9h11a3 3 0 1 0-3-3M3 15h15a3 3 0 1 1-3 3",
+  stretch: "M3 12h18M7 8l-4 4 4 4M17 8l4 4-4 4",
+  length: "M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4",
+  fit: "M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z",
+};
+
+/** Up to four benefit icons, read from what is actually built into the piece. */
+function benefitsFor(product: Product) {
+  const text = [product.description, ...product.features].join(" ").toLowerCase();
+  const list: { label: string; icon: keyof typeof BENEFIT_ICONS }[] = [];
+  if (/shelf bra|bra built in|bra is built/.test(text)) list.push({ label: "Built-in bra", icon: "bra" });
+  if (/seamless (underwear|liner)/.test(text)) list.push({ label: "No lines", icon: "lines" });
+  if (/liner shorts|built-in brief/.test(text)) list.push({ label: "Built-in liner", icon: "liner" });
+  list.push(product.fabric === "cloudflex" ? { label: "4-way stretch", icon: "stretch" } : { label: "Breathable", icon: "air" });
+  if (product.lengths) list.push({ label: "3 leg lengths", icon: "length" });
+  list.push({ label: "Cut for Indian bodies", icon: "fit" });
+  return list.slice(0, 4);
+}
 
 const SIZE_ROWS = [
   ["XS", "30–32″", "24–26″", "34–36″"],
@@ -217,26 +242,28 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                     gallery.length > 1 ? "w-[86%] sm:w-[70%] lg:w-full" : "w-full"
                   }`}
                 >
-                  {index === 0 ? (
-                    <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
+                  <ZoomFrame>
+                    {index === 0 ? (
+                      <ViewTransition name={`product-${product.slug}`} share="morph" default="none">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          priority
+                          sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
+                          className="object-cover object-center"
+                        />
+                      </ViewTransition>
+                    ) : (
                       <Image
                         src={image.src}
                         alt={image.alt}
                         fill
-                        priority
                         sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
                         className="object-cover object-center"
                       />
-                    </ViewTransition>
-                  ) : (
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      fill
-                      sizes="(max-width: 640px) 86vw, (max-width: 1024px) 70vw, 58vw"
-                      className="object-cover object-center"
-                    />
-                  )}
+                    )}
+                  </ZoomFrame>
                 </div>
               ))}
             </div>
@@ -267,6 +294,20 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               {product.storyLine && <p className="text-lg font-semibold text-[var(--vybe-cherry-ink)]">{product.storyLine}</p>}
               <p className="text-xl text-[var(--color-text)]">{formatPrice(product.price)}</p>
             </div>
+
+            <ul className="grid grid-cols-2 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-fr gap-2" aria-label="Built into this piece">
+              {benefitsFor(product).map((b) => (
+                <li
+                  key={b.label}
+                  className="flex flex-col items-center gap-2 px-2 py-3.5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-center"
+                >
+                  <svg viewBox="0 0 24 24" className="w-6 h-6 text-[var(--vybe-cherry-ink)]" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d={BENEFIT_ICONS[b.icon]} />
+                  </svg>
+                  <span className="text-[11px] font-semibold leading-tight text-[var(--color-text)]">{b.label}</span>
+                </li>
+              ))}
+            </ul>
 
             <div className="space-y-4">
               <p className="text-base text-[var(--color-muted)] leading-relaxed">{product.description}</p>

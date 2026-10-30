@@ -6,6 +6,7 @@ import { CartProvider } from "@/lib/cart-context";
 import { WishlistProvider } from "@/lib/wishlist-context";
 import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
 import { AnnouncementBar, ConceptNotice } from "@/components/layout/announcement-bar";
+import { ImageFadeIn } from "@/components/ui/image-fade-in";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { CartDrawer } from "@/components/cart/cart-drawer";
@@ -102,6 +103,7 @@ export default function RootLayout({
               <AnnouncementBar />
               <Header />
               <ConceptNotice />
+              <ImageFadeIn />
               <main id="main-content" className="flex-1 w-full">
                 <ViewTransition>{children}</ViewTransition>
               </main>

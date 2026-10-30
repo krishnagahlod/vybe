@@ -5,7 +5,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "Why we started VYBE: designer athleisure for women of every size, with support, no lines and breathable fabric built into every piece.",
+    "Why we started VYBE: designer athleisure for real Indian bodies, with support, no lines and breathable fabric built into every piece.",
 };
 
 // What she told us, answered by what we built into the piece and how that feels
@@ -52,7 +52,7 @@ export default function AboutPage() {
           />
         </div>
         <p className="text-2xl sm:text-3xl font-semibold text-[var(--color-text)] leading-snug">
-          We wanted to bring designer athleisure to women of every size. So we built VYBE.
+          We wanted to bring designer athleisure to real Indian bodies. So we built VYBE.
         </p>
       </section>
 
